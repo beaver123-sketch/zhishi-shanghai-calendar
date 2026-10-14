@@ -44,6 +44,11 @@ body,.app{background:var(--page);color:var(--ink)}
 .xhs-action{display:flex;width:100%;align-items:center;justify-content:center;text-align:center;min-height:49px;margin-top:10px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:760;padding:11px 13px;border:1px solid #eee3d4;cursor:pointer}
 .xhs-action-app{background:#bb454b;color:white;border-color:#bb454b}.xhs-action-note{background:#ae4d54;color:white;border-color:#ae4d54}.xhs-action-web{background:#fff2f1;color:#a33f44;border-color:#f3d9d8}.xhs-action-copy{background:#f9f6ed;color:#756343}
 .xhs-disclaimer{font-size:11px;color:#999183;line-height:1.7;margin:14px 3px 0}
+/* iOS safety: avoid color-emoji rendering of a very large ornamental ✳ pseudo-element. */
+.joy::after{content:none!important;display:none!important}
+.joy-eyebrow{display:flex;align-items:center;gap:9px;min-height:19px}
+.joy-flower{width:17px;height:17px;display:block;flex:0 0 17px}
+.joy h2{overflow-wrap:break-word;word-break:normal}
 /* Non-activity surfaces use only CSS color, gradients and vector icons; photographs remain limited to .activity-art. */
 @media(max-width:390px){.act-links a,.act-links button{font-size:10px;padding:7px 8px}.header .brand{font-size:21px}}
 </style></head><body>
@@ -52,7 +57,7 @@ body,.app{background:var(--page);color:var(--ink)}
 <section class="screen active" id="screen-home">
 <div class="intro"><div class="eyebrow" id="homeGreeting">SHANGHAI · TODAY</div><div class="date-row"><div><span class="date-large" id="homeDate">10月14日</span> <span class="weekday" id="homeWeekday">星期三</span></div><span class="today-flag" id="homeDateFlag">今天</span></div><div class="lunar" id="homeLunar">农历 · 节气</div><div class="intro-bottom"><div class="weather"><span class="weather-icon" id="weatherIcon">◌</span><span class="weather-number" id="weatherTemp">--°</span><span class="weather-meta" id="weatherDesc">正在获取<br>上海天气</span></div><span class="c-note" id="weatherAdvice">根据天气安排今天的小期待</span></div></div>
 <div class="mini-week" id="miniWeek"></div>
-<section class="section"><div class="joy"><div class="joy-eyebrow">✳ &nbsp; 每天一件值得期待的事</div><h2 id="ideaTitle">今天做一点不一样的事</h2><p id="ideaDesc">上海每天都有新鲜的生活灵感。</p><div class="chips"><span class="chip" id="ideaDuration">约1小时</span><span class="chip" id="ideaPlace">上海</span></div><div class="joy-actions"><button class="primary" id="addIdea">＋ 加到日历</button><button class="text-btn" id="rotateIdea">换一个 ↻</button></div><div class="alt-list" id="altIdeas"></div></div></section>
+<section class="section"><div class="joy"><div class="joy-eyebrow"><svg class="joy-flower" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 11.1C8.8 7.5 9.4 4.7 12 3.2c2.6 1.5 3.2 4.3 0 7.9ZM12.9 12c3.6-3.2 6.4-2.6 7.9 0-1.5 2.6-4.3 3.2-7.9 0ZM12 12.9c3.2 3.6 2.6 6.4 0 7.9-2.6-1.5-3.2-4.3 0-7.9ZM11.1 12c-3.6 3.2-6.4 2.6-7.9 0 1.5-2.6 4.3-3.2-7.9 0Z" fill="#BD923B"/><circle cx="12" cy="12" r="2.1" fill="#FFF8E4"/></svg><span>每天一件值得期待的事</span></div><h2 id="ideaTitle">今天做一点不一样的事</h2><p id="ideaDesc">上海每天都有新鲜的生活灵感。</p><div class="chips"><span class="chip" id="ideaDuration">约1小时</span><span class="chip" id="ideaPlace">上海</span></div><div class="joy-actions"><button class="primary" id="addIdea">＋ 加到日历</button><button class="text-btn" id="rotateIdea">换一个 ↻</button></div><div class="alt-list" id="altIdeas"></div></div></section>
 <section class="section"><div class="section-title"><h2>上海正在发生</h2><button class="more" data-goto="events">全部活动 ↗</button></div><div class="activity-inline" id="homeEvents"><div class="empty">活动读取中…</div></div><p class="tiny-foot" id="activityFreshness">真实活动以主办方最新公告为准</p></section>
 <section class="section"><div class="section-title"><h2>这一天的安排</h2><button class="more" id="homeAddMemo">＋ 添加</button></div><div class="card todo-box" id="homeMemos"></div></section>
 <section class="section"><details class="card almanac"><summary><span>☯ 传统黄历 · 今日宜忌 <small>民俗择日参考，不代表个人运势</small></span><span>⌄</span></summary><div id="homeAlmanac" class="almanac-body"></div></details></section>
