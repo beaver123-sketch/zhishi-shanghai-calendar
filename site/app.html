@@ -2,7 +2,7 @@
 <html lang="zh-CN"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f8f8f4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest?v=wcosm20261014a"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=wcosm20261014a">
 <title>知时 · 上海生活日历</title>
 <style>
 :root{--ink:#163e46;--sub:#60757a;--mute:#95a5a8;--page:#f5f7f6;--paper:#fff;--primary:#0e5963;--border:#e6eded;--blue:#edf4f6;--blue2:#c9e0e5;--mint:#eaf4ee;--sun:#f8efd7;--brown:#82623a;--shadow:0 10px 32px rgba(27,64,66,.045);--safe:env(safe-area-inset-bottom,0px)}
@@ -53,7 +53,7 @@ body,.app{background:var(--page);color:var(--ink)}
 @media(max-width:390px){.act-links a,.act-links button{font-size:10px;padding:7px 8px}.header .brand{font-size:21px}}
 </style></head><body>
 <div class="app">
-<header class="header"><div><div class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none"><path d="M22 7.5c-4 6-4 11 0 14.1 4-3.1 4-8.1 0-14.1ZM36.5 22c-6-4-11-4-14.1 0 3.1 4 8.1 4 14.1 0ZM22 36.5c4-6 4-11 0-14.1-4 3.1-4 8.1 0 14.1ZM7.5 22c6 4 11 4 14.1 0-3.1-4-8.1-4-14.1 0Z" fill="#C9993D"/><circle cx="22" cy="22" r="3.5" fill="#FFF8E5"/><path d="M10 34h24" stroke="#9EAD88" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>知时</span></div><div class="tagline">把日子过成喜欢的样子</div></div><div class="header-actions"><span class="location">⌁ 上海</span><button class="circle" id="settingsShortcut" aria-label="设置"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M4 8l2-3 3 1 3-3 3 3 3-1 2 3-2 3 2 3-2 3-3-1-3 3-3-3-3 1-2-3 2-3z"/></svg></button></div></header>
+<header class="header"><div><div class="brand"><span class="brand-mark" aria-hidden="true"><img src="/icon-192.png?v=wcosm20261014a" width="32" height="32" style="width:32px;height:32px;object-fit:cover;border-radius:9px;display:block" alt=""></span><span>知时</span></div><div class="tagline">把日子过成喜欢的样子</div></div><div class="header-actions"><span class="location">⌁ 上海</span><button class="circle" id="settingsShortcut" aria-label="设置"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M4 8l2-3 3 1 3-3 3 3 3-1 2 3-2 3 2 3-2 3-3-1-3 3-3-3-3 1-2-3 2-3z"/></svg></button></div></header>
 <section class="screen active" id="screen-home">
 <div class="intro"><div class="eyebrow" id="homeGreeting">SHANGHAI · TODAY</div><div class="date-row"><div><span class="date-large" id="homeDate">10月14日</span> <span class="weekday" id="homeWeekday">星期三</span></div><span class="today-flag" id="homeDateFlag">今天</span></div><div class="lunar" id="homeLunar">农历 · 节气</div><div class="intro-bottom"><div class="weather"><span class="weather-icon" id="weatherIcon">◌</span><span class="weather-number" id="weatherTemp">--°</span><span class="weather-meta" id="weatherDesc">正在获取<br>上海天气</span></div><span class="c-note" id="weatherAdvice">根据天气安排今天的小期待</span></div></div>
 <div class="mini-week" id="miniWeek"></div>
