@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f4f7f8" /><meta name="description" content="上海生活日历：农历、节气、节假日、天气、城市活动、个人备忘与每日小期待。" />
+<title>知时 · 上海生活日历｜天气、节气与城市活动</title>
+<style>
+:root{--ink:#24382d;--ink2:#4a5c50;--muted:#89948a;--bg:#f7f8f4;--paper:#fff;--soft:#f5f7f1;--line:#e8eee7;--green:#2f644d;--greenlight:#e5f1e9;--gold:#b98654;--amber:#fff0d9;--red:#c76861;--redbg:#fcebe8;--shadow:0 13px 38px rgba(33,59,44,.052)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 89% 8%,#eef2e7 0,transparent 29%),var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.42}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #b8d4b9;outline-offset:2px}svg{display:block}.page{max-width:1452px;padding:0 43px 45px;margin:auto}
+.topbar{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px;margin:8px 0 4px}.brand{display:flex;align-items:center;gap:12px;user-select:none}.mark{height:37px;width:37px;background:var(--green);border-radius:12px;display:grid;place-items:center;box-shadow:0 5px 12px #2f644d20}.mark svg{width:24px;color:#fff}.brand-words strong{display:block;font-size:21px;letter-spacing:2px;font-family:"Noto Serif SC","Songti SC","SimSun",serif;line-height:1.1}.brand-words small{font-size:10px;letter-spacing:1.6px;color:#8a978a}.topcenter{display:flex;align-items:center;gap:7px;background:#fff;box-shadow:0 2px 15px #294b3810;border:1px solid #edf0e9;border-radius:50px;padding:5px}.topcenter button{border:0;background:transparent;color:#68786d;padding:9px 19px;border-radius:40px;transition:.2s}.topcenter button:hover{background:#f6f8f3}.topcenter button.active{background:var(--green);color:#fff;box-shadow:0 3px 8px #31664c20}.toolbar{display:flex;align-items:center;gap:10px}.city-tag{display:flex;align-items:center;gap:7px;color:#526957;font-size:12px;background:#eef3ea;border:1px solid #e1eadd;border-radius:22px;padding:8px 12px}.circle-btn{display:grid;place-items:center;width:37px;height:37px;border:1px solid #e6ece5;border-radius:50%;background:#fff;color:#526e59;transition:.2s}.circle-btn:hover{background:var(--green);color:white}.circle-btn svg{width:18px;height:18px}.icon{width:17px;height:17px;flex:none}
+.main-layout{display:grid;grid-template-columns:minmax(650px,1fr) 354px;align-items:start;gap:21px;margin-top:10px}.calendar-panel,.detail-panel{background:var(--paper);border:1px solid #e9eee8;border-radius:20px;box-shadow:var(--shadow)}.calendar-panel{padding:27px 26px 19px;min-width:0}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px}.month-title h2{font-size:26px;letter-spacing:.4px;line-height:1.2;margin:0 0 6px;font-weight:650}.month-title p{margin:0;color:#97a096;font-size:12px;letter-spacing:1px}.month-controllers{display:flex;align-items:center;gap:8px}.narrow-btn{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid #e4ebe3;color:#57705f;background:white;border-radius:9px;min-width:37px;height:36px;padding:0 12px;transition:.2s}.narrow-btn:hover{background:var(--soft);border-color:#c9ddca}.narrow-btn svg{width:15px}.today-btn{font-weight:600;font-size:12px}.view-legend{display:flex;flex-wrap:wrap;align-items:center;gap:13px;border-top:1px solid var(--line);padding:15px 0 16px;color:#819083;font-size:11px}.legend-item{display:inline-flex;gap:6px;align-items:center}.badge-sample{font-size:10px;display:inline-flex;justify-content:center;align-items:center;border-radius:5px;width:17px;height:17px;font-weight:650}.badge-sample.off{color:#b8594d;background:#fde7e3}.badge-sample.on{color:#2f6c53;background:#e3f1e7}.state-strip-sample{width:22px;height:8px;border-radius:99px;display:inline-block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)}.state-strip-sample.rest{background:#f4d7d2}.state-strip-sample.work{background:#d8eadc}.sample-dot{height:7px;width:7px;border-radius:50%;background:#e4a87c}.legend-right{margin-left:auto;color:#a0a9a0}.weekdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));padding:0 0 11px}.weekdays span{text-align:center;color:#8d978c;font-size:12px}.weekdays span:nth-child(6),.weekdays span:nth-child(7){color:#d4a38e}.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:minmax(108px,auto);border-top:1px solid var(--line);border-left:1px solid var(--line);border-radius:11px;overflow:hidden}.day-cell{appearance:none;-webkit-appearance:none;text-align:left;display:flex;flex-direction:column;gap:0;min-width:0;position:relative;padding:12px 8px 14px 11px;background:#fff;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--ink);transition:background .18s ease,box-shadow .18s ease}.day-cell::after{content:"";position:absolute;left:0;right:0;bottom:0;height:0;transition:height .18s ease,opacity .18s ease;opacity:.95}.day-cell.rest-day::after{height:12px;background:#f5deda}.day-cell.makeup-work::after{height:12px;background:#dcecdf}.day-cell:hover:not(.outside){background:#f8faf5}.day-cell.selected{background:#eef6ee;box-shadow:inset 0 0 0 1.5px #73a58a;z-index:1}.day-cell.today .date-num{background:var(--green);color:#fff}.day-cell.outside{background:#fbfcf9;opacity:.38}.day-cell.outside:hover{background:#f7faf5;opacity:.65}.day-cell.weekend .date-num,.day-cell.rest-day .date-num{color:#c47d69}.day-cell.makeup-work .date-num{color:#2f7a59}.day-cell.today .date-num{color:#fff}.cell-top{display:flex;justify-content:space-between;align-items:center;gap:4px;width:100%;position:relative;z-index:1}.date-num{height:26px;width:26px;border-radius:50%;display:grid;place-items:center;font-size:15px;font-weight:620;letter-spacing:-.4px;line-height:1}.date-badge{font-size:10px;line-height:1;height:18px;min-width:18px;padding:0 4px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:660;position:relative;z-index:1}.date-badge.rest{background:#fce8e3;color:#c4625c}.date-badge.work{background:#e2f1e5;color:#378363}.lunar-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:#9aaba0;margin-top:5px;line-height:17px;position:relative;z-index:1}.lunar-label.term{color:#b48147;font-weight:650}.lunar-label.festival{color:#c07969;font-weight:650}.cell-inspiration{display:flex;align-items:center;gap:4px;color:#7a987e;font-size:10px;margin-top:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;padding-top:8px;position:relative;z-index:1}.cell-inspiration svg{width:11px;height:11px;flex:none}.cell-inspiration span{overflow:hidden;text-overflow:ellipsis}.memo-points{display:flex;gap:4px;align-items:center;min-height:8px;margin-top:6px;position:relative;z-index:1}.memo-dot{height:5px;width:5px;border-radius:50%;display:inline-block;flex:none}.month-foot{display:flex;align-items:center;justify-content:space-between;padding:14px 1px 1px;color:#96a294;font-size:11px;gap:10px}.month-foot strong{color:#567863;font-weight:500}.foot-link{border:0;background:none;padding:2px;color:#457b60;font-size:11px}.foot-link:hover{text-decoration:underline}
+.detail-panel{padding:23px;display:flex;flex-direction:column;gap:19px}.detail-heading{display:flex;align-items:flex-start;justify-content:space-between}.side-label{font-size:10px;letter-spacing:2.6px;color:#a1aa9d;font-weight:650}.side-date{font-size:24px;font-weight:620;line-height:1.35;letter-spacing:-.5px;margin-top:7px}.side-lunar{font-size:12px;color:#7c8d7f;margin-top:5px}.sunburst{height:38px;width:38px;border-radius:12px;background:#fff7eb;display:grid;place-items:center;color:#b58c52}.sunburst svg{width:23px}.day-status{display:flex;gap:7px;flex-wrap:wrap;align-items:center;min-height:5px;margin-top:11px}.status-pill{padding:4px 9px;border-radius:20px;font-size:10px;background:#edf4ed;color:#528360}.status-pill.red{background:#fff0ee;color:#c56b61}.status-pill.gold{background:#fcf2e4;color:#b38349}.inspiration-card{position:relative;background:linear-gradient(145deg,#f9f2e4 0%,#fdf7eb 55%,#f8efdc 100%);border-radius:17px;padding:20px 20px 18px;overflow:hidden;border:1px solid #f5e8d2}.inspiration-card:after{content:"✺";position:absolute;font-size:95px;color:#e7c69646;right:-11px;top:-43px;pointer-events:none}.inspiration-card .head{color:#a78455;letter-spacing:2px;font-size:11px;display:flex;gap:8px;align-items:center}.spark{font-size:17px;line-height:1}.inspiration-card h3{font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-size:22px;color:#6c5539;font-weight:600;line-height:1.48;margin:14px 0 8px;position:relative;z-index:1}.inspiration-card p{color:#917d62;font-size:12px;line-height:1.85;margin:0;max-width:260px;min-height:44px;position:relative;z-index:1}.inspiration-info{display:flex;align-items:center;gap:8px;color:#a69174;font-size:10px;margin-top:13px}.inspiration-info span{background:#f7e8cc;border-radius:7px;padding:4px 7px}.inspiration-actions{display:flex;justify-content:space-between;align-items:center;margin-top:17px;gap:8px}.pill-action{display:flex;align-items:center;gap:6px;background:#426e51;color:#fff;border:none;border-radius:8px;font-size:11px;padding:10px 12px;transition:.2s}.pill-action:hover{background:#30593c;transform:translateY(-1px)}.pill-action svg{width:14px;height:14px}.small-arrow{display:flex;align-items:center;gap:3px;border:none;background:none;color:#9b8059;font-size:11px;padding:8px 0}.small-arrow:hover{color:#6f4b23}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.section-title h4{margin:0;font-size:14px;font-weight:660;letter-spacing:.1px}.section-title button{display:flex;align-items:center;gap:4px;background:transparent;border:none;color:#54846b;font-size:11px;padding:5px 0}.section-title button:hover{text-decoration:underline}.memo-card{border-top:1px solid var(--line);padding-top:2px}.memo-empty{background:#f8faf7;border:1px dashed #dee9de;border-radius:11px;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;padding:17px 8px;color:#a3aea3;font-size:11px}.memo-empty svg{width:24px;color:#9eb6a3;margin-bottom:2px}.memo-row{display:flex;align-items:flex-start;gap:9px;padding:10px 0;border-bottom:1px solid #f0f3ed}.memo-color{width:7px;height:30px;flex:none;border-radius:4px;margin-top:2px}.memo-text{flex:1;min-width:0}.memo-text strong{display:block;font-size:12px;color:#4b604f;line-height:1.6;word-break:break-all;font-weight:580}.memo-text small{display:block;color:#a0ab9f;margin-top:2px;font-size:10px}.remove-btn{border:0;background:transparent;font-size:16px;color:#abb5ab;padding:2px 5px;border-radius:6px;line-height:1}.remove-btn:hover{background:#fce9e5;color:#c96f62}.add-blank{display:flex;gap:7px;align-items:center;width:100%;border:1px dashed #d6e4d4;background:#f8faf7;border-radius:9px;padding:10px 13px;color:#608269;font-size:11px;margin-top:10px}.add-blank:hover{background:#eaf3e9}
+.fortune-card{background:#f8faf8;border:1px solid #ecf0e9;border-radius:14px;padding:15px 15px 13px}.fortune-card .fortune-top{display:flex;justify-content:space-between;align-items:center}.fortune-card .fortune-top strong{font-size:13px;color:#536d5a}.fortune-lock{font-size:10px;background:#e8eee7;border-radius:20px;padding:3px 7px;color:#7d927f}.fortune-card p{margin:9px 0 0;font-size:11px;color:#94a094;line-height:1.8}
+.bottom-note{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#99a499;padding:18px 4px 7px;gap:12px}.bottom-note a{color:#779681;text-decoration:none}.bottom-note a:hover{text-decoration:underline}
+.overlay{position:fixed;inset:0;background:#1f2f26a1;z-index:30;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}.overlay.open{display:flex}.modal{background:#fff;border-radius:20px;max-width:460px;width:100%;padding:26px;box-shadow:0 25px 80px #13251d3b;max-height:88vh;overflow:auto}.modal.large{max-width:670px}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:9px}.modal-head h3{font-size:19px;margin:0;color:#244c36}.modal-head .close{border:0;background:#f2f6f0;border-radius:50%;height:30px;width:30px;font-size:20px;color:#6d826f}.modal-intro{margin:6px 0 23px;color:#92a094;font-size:12px}.form-label{display:block;margin:17px 0 7px;font-size:12px;color:#59725d;font-weight:650}.text-input,.text-area{display:block;width:100%;outline:none;border:1px solid #e0e9df;border-radius:11px;background:#fbfcfa;padding:12px;font-size:13px;color:#314b39}.text-area{min-height:86px;resize:vertical}.text-input:focus,.text-area:focus{border-color:#74a387;box-shadow:0 0 0 3px #e4f1e4}.colors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.color-option{border:1px solid #e5ece3;border-radius:9px;padding:9px 7px;display:flex;align-items:center;justify-content:center;gap:6px;color:#66816b;font-size:12px;background:#fff}.color-option.active{border-color:#a7c7ac;background:#f2f8f1;color:#35583c}.color-dot{height:10px;width:10px;border-radius:50%}.submit{background:var(--green);border:0;border-radius:10px;color:white;padding:12px 24px;font-weight:600;margin-top:22px;width:100%;transition:.2s}.submit:hover{background:#214b35}.modal-section{margin-top:17px;border-radius:12px;border:1px solid #e9eee7;background:#fbfcfa;padding:13px 16px}.modal-section h4{margin:0 0 7px;font-size:13px;color:#506956}.modal-section p{color:#84988a;font-size:12px;line-height:1.9;margin:0}.holiday-list{display:grid;gap:7px;margin-top:18px}.holiday-item{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:12px;border:1px solid #e8eee8;border-radius:11px;font-size:12px}.holiday-item strong{color:#4c6956;font-size:13px}.holiday-item .muted{color:#9aaa9a;font-size:11px;display:block;margin-top:2px}.holiday-item .mini{color:#b66f60;font-size:11px;text-align:right}.tip-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}.tip-item{padding:12px;border:1px solid #e8eee6;border-radius:11px;background:#fbfcf8;display:block;text-align:left;transition:.2s}.tip-item:hover{background:#f1f7ed;border-color:#d6e6d0}.tip-item .tip-date{color:#a4a89d;font-size:10px}.tip-item strong{display:block;color:#4f6a52;margin:4px 0;font-size:12px}.tip-item p{color:#a1aa9c;font-size:11px;margin:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.toast{position:fixed;z-index:100;bottom:30px;left:50%;transform:translate(-50%,25px);padding:11px 17px;border-radius:12px;color:#fff;background:#294d36;box-shadow:0 9px 30px #172d1b35;opacity:0;transition:.25s;pointer-events:none;font-size:12px}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1180px){.page{padding-left:24px;padding-right:24px}.main-layout{grid-template-columns:minmax(560px,1fr) 310px;gap:16px}.detail-panel{padding:18px}.calendar-panel{padding:23px 17px 15px}.day-cell{padding-left:8px}.cell-inspiration{font-size:9px}}
+@media(max-width:900px){.page{padding:0 16px 25px}.topbar{height:auto;flex-wrap:wrap;padding-top:10px}.topcenter{display:none}.main-layout{grid-template-columns:minmax(0,1fr)}.detail-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px}.detail-heading{grid-column:1/-1}.fortune-card{grid-column:2}.calendar-panel{padding:19px}.month-grid{grid-auto-rows:105px}.bottom-note{font-size:10px}}
+@media(max-width:560px){.page{padding:0 10px 20px}.topbar{height:auto;gap:10px;padding-top:10px}.brand-words strong{font-size:19px}.brand-words small{font-size:8px}.toolbar{gap:6px}.city-tag{padding:7px 9px;font-size:11px}.main-layout{gap:13px;margin-top:13px}.calendar-panel{padding:14px 9px 12px;border-radius:15px}.panel-heading{padding:4px 4px 0;margin-bottom:15px}.month-title h2{font-size:21px}.month-title p{font-size:10px}.month-controllers{gap:4px}.narrow-btn{height:31px;min-width:29px;padding:0 7px}.view-legend{gap:6px;padding:11px 0}.legend-item{font-size:9px}.legend-right{display:none}.weekdays span{font-size:10px}.month-grid{grid-auto-rows:minmax(86px,auto);border-radius:8px}.day-cell{padding:5px 3px 11px 5px;min-height:86px}.day-cell.rest-day::after,.day-cell.makeup-work::after{height:9px}.date-num{height:21px;width:21px;font-size:12px}.date-badge{min-width:14px;height:15px;font-size:9px}.lunar-label{font-size:9px;margin-top:3px}.cell-inspiration{font-size:8px;gap:2px;padding-top:3px}.cell-inspiration svg{width:9px;height:9px}.memo-points{margin-top:3px}.month-foot{font-size:9px;padding:10px 5px}.detail-panel{grid-template-columns:minmax(0,1fr);padding:18px;border-radius:15px}.detail-heading,.fortune-card{grid-column:auto}.bottom-note{display:block;text-align:center;line-height:2}.modal{padding:20px}.tip-list{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* V4 黄历择日区：宜忌使用传统术语标签，与生活小期待在视觉上独立 */
+.fortune-card{background:#fffdfa;border-color:#eae7de;padding:20px 18px 17px;box-shadow:0 4px 18px rgba(90,76,53,.025)}
+.fortune-card .fortune-top strong{font-family:"Noto Serif SC","Songti SC",serif;font-size:16px;color:#534b3c;font-weight:700;letter-spacing:.2px}
+.fortune-symbol{color:#967c59;font-size:17px}
+.fortune-lock{font-size:10px;background:#f4efe4;color:#998363;border-radius:6px;padding:5px 9px}
+.huangli-sub{font-size:11px;color:#8d8a80;display:flex;align-items:center;gap:6px;margin:11px 0 15px;flex-wrap:wrap}
+.huangli-sub span:first-child{font-weight:680;color:#5e6857}
+.huangli-sep{color:#d3d0c6}
+.fortune-split{gap:9px}
+.fortune-block{background:#f2f7f1;border:1px solid #e8efe5;border-radius:12px;padding:12px 10px 14px}
+.fortune-block.avoid{background:#fbf4f1;border:1px solid #f4eae5}
+.fortune-mini-head{font-size:11px;color:#879988}
+.avoid .fortune-mini-head{color:#ab8f84}
+.fortune-mini-head span{height:23px;width:23px;border-radius:7px;font-size:12px}
+.huangli-keywords{display:flex;flex-wrap:wrap;gap:7px 5px;margin-top:14px;align-content:flex-start;min-height:56px}
+.huangli-keywords span{font-size:11px;line-height:1.45;font-weight:600;color:#50715a;padding:5px 6px;background:#ffffffbd;border:1px solid #e7eee7;border-radius:6px}
+.avoid .huangli-keywords span{color:#9e6f63;background:#fffcfa;border-color:#f0e2dc}
+.fortune-card .fortune-foot{font-size:10px;color:#8e968e;margin:13px 1px 0;line-height:1.7}
+.huangli-source{display:inline-flex;margin-top:7px;text-decoration:none;font-size:10px;color:#927858;border-bottom:1px solid #d7c7ae;padding-bottom:2px}
+.huangli-source:hover{color:#5c4d35}
+.personal-bazi{border-top:1px solid #eeece5;margin-top:17px;padding-top:16px}
+.personal-bazi-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.personal-bazi-title span{font-size:12px;font-weight:670;color:#5e715c}
+.personal-bazi-title em{font-size:10px;font-style:normal;color:#a5ada2}
+.personal-bazi .birth-line{margin-top:9px;font-size:10px}
+.personal-bazi .pillar-row{margin-top:10px}
+.personal-bazi .pillar-row>span{background:#f6f8f4;border-color:#eef0ea}
+.personal-bazi .pillar-row b{color:#59715a}
+.personal-bazi .pillar-row .missing{background:#fafbf8;border-style:dashed}
+.personal-bazi-note{color:#a0a99f!important;font-size:9.6px!important;margin-top:10px!important;line-height:1.7!important}
+@media(max-width:980px){.fortune-card{grid-column:2}}
+@media(max-width:620px){.fortune-card{grid-column:auto}.fortune-card .fortune-top strong{font-size:16px}.huangli-keywords span{font-size:11px}}
+
+/* V8 在线版：状态说明、官方资讯列表、本机备份 */
+.personal-tools-btn{border:1px solid #dde7e6;background:#fff;border-radius:99px;padding:8px 12px;color:#4b6568;font-size:12px;white-space:nowrap}.personal-tools-btn:hover{background:#f0f7f7}
+.official-feed{margin-top:22px;background:#f7fafb;border:1px solid #e2ecee;border-radius:15px;padding:16px}.feed-head{display:flex;align-items:center;justify-content:space-between;gap:9px}.feed-head h4{font-size:15px;font-weight:700;margin:5px 0 0;color:#304d53}.feed-badge{font-size:10px;color:#24766e;background:#e1f1ed;padding:3px 8px;border-radius:22px;font-weight:500}.feed-time{font-size:10px;color:#789094}.feed-explain{margin:9px 0 12px;color:#788c90;font-size:11px;line-height:1.8}.feed-list{display:grid;gap:8px;max-height:390px;overflow:auto}.feed-item{display:block;text-decoration:none;color:#334d52;background:white;border:1px solid #e9f0ef;padding:10px 12px;border-radius:10px;transition:.15s}.feed-item:hover{border-color:#afcbca;background:#fcffff}.feed-item strong{display:block;font-size:12px;line-height:1.5;font-weight:650}.feed-item small{font-size:10px;color:#899a9c}.feed-empty{color:#8d9da0;font-size:12px}.pref-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pref-backup{border-top:1px solid #e8eef0;margin-top:19px;padding-top:16px}.pref-backup h4{margin:0;font-size:14px}.pref-backup p{font-size:11px;color:#89969a}.backup-buttons{display:flex;gap:10px}.backup-buttons button{border:1px solid #d6e5e5;background:white;border-radius:10px;padding:10px 14px;color:#426366;font-weight:600}.backup-buttons button:hover{background:#f3f8f8}.activity-footnote{line-height:1.7}
+@media(max-width:560px){.personal-tools-btn{font-size:11px;padding:7px 8px}.pref-fields{grid-template-columns:1fr}.feed-head{align-items:start;flex-direction:column}}
+</style>
+<style id="visual-v3">
+:root{--ink:#25342e;--ink2:#607169;--muted:#9daba1;--bg:#f8f8f4;--paper:#ffffff;--soft:#f7f8f4;--line:#e9ece6;--green:#295d4c;--greenlight:#e9f1ec;--gold:#b68b5d;--red:#c87a70;--shadow:0 10px 40px rgba(52,71,55,.035)}
+html,body{min-height:100%;}body{background:#f8f8f5;background-image:radial-gradient(circle at 95% -10%,rgba(220,232,216,.33),transparent 38%);color:var(--ink);letter-spacing:.04px}
+.page{max-width:1510px;padding:0 48px 36px}.topbar{height:88px;margin:0;border-bottom:1px solid #e9ede6}
+.mark{width:40px;height:40px;background:#264f42;border-radius:13px;box-shadow:none}.brand{gap:13px}.brand-words strong{font-size:22px;letter-spacing:3px}.brand-words small{letter-spacing:1.85px;color:#a3aca2}
+.topcenter{background:transparent;box-shadow:none;border:0;gap:4px}.topcenter button{padding:9px 19px;border-radius:8px;font-size:12px;color:#768479}.topcenter button.active{background:#eaf0e9;color:#315d4a;font-weight:650;box-shadow:none}.topcenter button:hover{background:#eef3ec}
+.city-tag{background:#f0f3ec;border:1px solid #e7ede4;color:#5b705e;font-weight:550;padding:8px 13px}.circle-btn{box-shadow:none;border-color:#e5ece6}
+.micro-intro{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:19px 1px 3px;color:#8d9c8d;font-size:11px;letter-spacing:.6px}.micro-intro-title{display:flex;align-items:center;gap:10px;font-weight:650;color:#687b6c}.micro-dot{width:7px;height:7px;background:#c6a16b;border-radius:50%}.micro-divider{color:#c7d0c5}.micro-intro-note{font-size:11px;color:#a4ada2}.micro-intro-note span{color:#c29f65;margin-left:6px}
+.main-layout{grid-template-columns:minmax(660px,1fr) 377px;gap:21px;margin-top:13px;align-items:start}.calendar-panel,.detail-panel{background:#fff;border:1px solid #edf0e9;border-radius:18px;box-shadow:0 5px 26px rgba(43,65,51,.026)}.calendar-panel{padding:30px 30px 21px}.panel-heading{margin-bottom:18px;align-items:end}.month-title h2{font-family:"Noto Serif SC","Songti SC",serif;font-size:32px;font-weight:650;letter-spacing:.7px;margin:0 0 7px;color:#203c32}.month-title p{color:#9eaaa0;font-size:11px;letter-spacing:1.8px}.narrow-btn{border-radius:10px;width:36px;height:36px;color:#6c8172;border:1px solid #e7ede5}.today-btn{width:auto;padding:0 14px!important;background:#eef3ed;color:#365e48;border:0;font-size:12px}
+.view-legend{padding:15px 0 18px;border-top:1px solid #f0f1ed;gap:17px;color:#8b978d;font-size:11px}.state-strip-sample{height:8px;width:20px;border-radius:3px}.state-strip-sample.rest{background:#eecbc2}.state-strip-sample.work{background:#b7d8bd}.legend-right{color:#a8b1a8}
+.weekdays{padding:0 0 10px;gap:8px}.weekdays span{font-size:11px;font-weight:560;color:#8c9d90}.weekdays span:nth-child(6),.weekdays span:nth-child(7){color:#c98978}
+.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;border:0;border-radius:0;overflow:visible;grid-auto-rows:minmax(113px,auto)}
+.day-cell{border:1px solid #f0f0ec;border-radius:11px;background:#fafbf9;padding:12px 10px 14px;color:#374b3e;min-width:0;box-shadow:none;overflow:hidden;transition:transform .16s,background .16s,box-shadow .16s,border-color .16s}
+.day-cell:hover:not(.outside){transform:translateY(-2px);background:#f7faf4;box-shadow:0 8px 17px #294a3510;border-color:#dae6d8}
+.day-cell.selected{background:#f0f5ee!important;border-color:#7ba48b;box-shadow:0 0 0 1px #8cad95,0 6px 22px #274a3010;z-index:2}
+.day-cell.today:not(.selected){border-color:#a2bda9;background:#f5f9f4}
+.day-cell.outside{background:#fafaf8;opacity:.37}
+.day-cell.rest-day{background:#fff8f5;border-color:#f4e9e4}.day-cell.makeup-work{background:#f4f8f4;border-color:#e6f0e6}
+.day-cell::after{border-radius:0;height:0}.day-cell.rest-day::after{height:8px;background:#eecfc8}.day-cell.makeup-work::after{height:8px;background:#c4dec9}
+.day-cell.today .date-num{background:#315f4a!important;color:white}.day-cell.weekend .date-num,.day-cell.rest-day .date-num{color:#bf786e}.day-cell.makeup-work .date-num{color:#2d7653}.date-num{font-family:Inter,-apple-system,sans-serif;font-size:17px;font-weight:630;width:29px;height:29px;border-radius:9px}
+.date-badge{font-size:10px;border-radius:6px;min-width:21px;height:20px;letter-spacing:0}.date-badge.rest{background:#f8e4dd;color:#b86d63}.date-badge.work{background:#dcefe0;color:#3a7b54}
+.lunar-label{font-size:11px;color:#9cab9c;line-height:18px;margin-top:7px}.lunar-label.term{color:#bd915e}.lunar-label.festival{color:#b98372}
+.cell-inspiration{color:#60866d;margin-top:auto;gap:4px;font-size:10.6px;line-height:1.55;padding-top:12px;min-height:29px}.cell-inspiration svg{width:11px;height:11px}.memo-points{margin-top:4px;min-height:7px}
+.month-foot{margin-top:12px;padding-top:12px;border-top:1px solid #f0f2ed}.foot-link{color:#477d60;font-weight:550}
+.detail-panel{padding:23px;gap:16px;align-self:start}.detail-heading{padding:5px 1px 1px}.side-label{font-size:10px;letter-spacing:2.3px;color:#91a393}.side-label-line{color:#cfd9cb}.side-date{font-family:"Noto Serif SC","Songti SC",serif;font-size:25px;color:#2c4335;font-weight:650;margin-top:7px}.side-lunar{font-size:11.5px;color:#8c9f8e}.sunburst{width:38px;height:38px;border-radius:50%;font-size:28px;color:#b9966c;background:#fbf5e9;font-weight:400}.day-status{margin-top:9px}.status-pill{border-radius:7px;font-size:10px;padding:3px 7px}
+.inspiration-card{background:#f5f1e9;background-image:radial-gradient(circle at 95% 5%,#f4e7cb 0,transparent 37%),linear-gradient(135deg,#f8f2e6,#f9f6ed);border:1px solid #efe4d3;border-radius:14px;padding:19px 19px 18px;box-shadow:none}
+.inspiration-card:after{content:'✳';color:#dbcbad50;right:8px;top:26px;font-size:100px}.inspo-heading{display:flex;align-items:center;gap:7px;color:#9b7c50;font-size:11px;font-weight:630;letter-spacing:.9px}.inspo-star{font-size:15px;color:#b98c52}.inspo-serial{margin-left:auto;font-size:9px;font-family:Georgia,serif;letter-spacing:1px;color:#b8a58b;font-weight:normal}
+.inspiration-card h3{font-family:"Noto Serif SC","Songti SC",serif;font-size:25px;line-height:1.38;color:#604d35;font-weight:650;letter-spacing:.1px;margin:16px 0 8px;min-height:33px}.inspiration-card p{font-size:12px;color:#8b7965;line-height:1.85;max-width:none;min-height:42px}
+.inspiration-info{gap:7px;flex-wrap:wrap;margin-top:16px}.inspiration-info span{font-size:10px;background:#ffffffab;color:#9b8064;border:1px solid #eee4d5;border-radius:6px;padding:4px 7px}.inspiration-info span:first-child{color:#7c725c;font-weight:670}
+.inspiration-actions{margin-top:17px;gap:10px}.pill-action{background:#345e4d;border-radius:8px;font-size:11px;font-weight:600;padding:10px 13px}.pill-action:hover{background:#244d3d}.small-arrow{color:#8c775a;font-weight:600;font-size:11px;white-space:nowrap}
+.fortune-card{background:#fbfbfa;border:1px solid #e9ede6;border-radius:14px;padding:18px 17px 15px}.fortune-top{display:flex;align-items:center}.fortune-card .fortune-top strong{color:#435e4b;font-size:14px}.fortune-symbol{color:#a08352;margin-right:3px;font-size:15px}.fortune-lock{background:#edf1e9;color:#79917b;font-size:10px;padding:4px 8px}.birth-line{margin-top:12px;color:#9caa9c;font-size:10px;letter-spacing:.2px}.birth-line span{margin:0 2px;color:#c9d2c5}.pillar-row{margin-top:12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.pillar-row>span{background:#f1f5ee;border:1px solid #e7eee4;border-radius:8px;padding:7px 3px 8px;text-align:center;display:flex;flex-direction:column;gap:3px}.pillar-row small{color:#9bab9a;font-size:10px}.pillar-row b{font-family:"Noto Serif SC","Songti SC",serif;color:#4f7056;font-size:15px;font-weight:550}.pillar-row .missing{background:#fbfbf9;border:1px dashed #e0e5dd}.pillar-row .missing b{font-family:inherit;font-size:10px;color:#a1aaa0;line-height:23px}
+.fortune-today{display:flex;justify-content:space-between;align-items:center;gap:6px;margin:16px 0 9px;font-size:10px;color:#869789}.fortune-today #fortuneDayStem{color:#5e7865;font-weight:630}.fortune-today #fortuneMood{background:#f2f3eb;border-radius:30px;padding:3px 8px;color:#a48a5e}
+.fortune-split{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fortune-block{background:#f1f7f0;border-radius:9px;padding:10px 11px;min-width:0}.fortune-block.avoid{background:#fbf3ef}.fortune-mini-head{font-size:10px;color:#9aa99a;display:flex;align-items:center;gap:5px}.fortune-mini-head span{font-weight:700;color:#4e8562;background:#dfeee1;border-radius:5px;display:inline-grid;place-items:center;width:19px;height:19px;font-size:11px}.avoid .fortune-mini-head span{color:#b2776b;background:#f3e3dc}.fortune-block p{color:#57735d;line-height:1.65;margin:9px 0 0;font-size:11px;font-weight:550;min-height:36px}.fortune-block.avoid p{color:#96756d}.fortune-card .fortune-foot{font-size:10px;line-height:1.65;margin:12px 1px 0;color:#a7b0a4}
+.memo-card{border-top:1px solid #eaefe9;padding-top:15px}.section-title h4{font-size:14px;color:#314a37}.section-title button{color:#4f8262}.memo-empty{background:#f8faf6;border:1px dashed #e4ebe1;color:#a1aea2;border-radius:10px}.add-blank{border-radius:9px;background:#f7faf6;color:#6b8b70}
+.bottom-note{padding-top:25px;color:#9daa9d}.bottom-note a{color:#6c967a}
+.modal{box-shadow:0 24px 80px #19312427}.modal-head h3{font-family:"Noto Serif SC","Songti SC",serif}
+@media(max-width:1200px){.page{padding-left:24px;padding-right:24px}.main-layout{grid-template-columns:minmax(600px,1fr) 340px;gap:14px}.calendar-panel{padding:24px 20px}.detail-panel{padding:17px}.day-cell{padding-left:8px;padding-right:6px}.cell-inspiration{font-size:9.5px}}
+@media(max-width:980px){.page{padding:0 19px 27px}.topbar{min-height:77px}.topcenter{display:none}.main-layout{grid-template-columns:1fr}.detail-panel{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px}.detail-heading{grid-column:1/-1}.fortune-card{grid-column:2}.memo-card{grid-column:1/-1}.month-grid{grid-auto-rows:minmax(112px,auto)}.micro-intro{margin-top:16px}}
+@media(max-width:620px){.page{padding:0 11px 25px}.topbar{min-height:70px;height:70px;margin:0}.brand-words strong{font-size:19px}.brand-words small{font-size:8px}.mark{width:36px;height:36px}.city-tag{font-size:10px;padding:7px 9px}.micro-intro{margin-top:12px;margin-bottom:2px}.micro-intro-note{display:none}.main-layout{margin-top:11px;gap:13px}.calendar-panel{padding:16px 10px 13px;border-radius:14px}.panel-heading{margin-bottom:17px;padding:3px 2px 0}.month-title h2{font-size:24px}.month-title p{font-size:9px}.month-controllers{gap:4px}.narrow-btn{height:31px;min-width:30px;width:30px;padding:0 4px}.today-btn{width:auto;padding:0 9px!important}.view-legend{padding:12px 2px;gap:9px 12px}.legend-item{font-size:9px}.legend-right{display:none}.weekdays{gap:4px}.weekdays span{font-size:10px}.month-grid{gap:4px;grid-auto-rows:minmax(94px,auto)}.day-cell{padding:5px 4px 11px;min-height:94px;border-radius:7px}.date-num{font-size:13px;width:22px;height:22px;border-radius:6px}.date-badge{font-size:9px;min-width:15px;height:16px;padding:0 2px;border-radius:4px}.lunar-label{margin-top:5px;font-size:9px}.cell-inspiration{font-size:8px;line-height:1.35;padding-top:7px;min-height:23px}.cell-inspiration svg{display:none}.day-cell.rest-day::after,.day-cell.makeup-work::after{height:7px}.memo-points{margin-top:3px}.month-foot{flex-direction:column;align-items:flex-start;font-size:10px}.detail-panel{display:flex;flex-direction:column;border-radius:14px;padding:18px;gap:15px}.side-date{font-size:25px}.fortune-card,.detail-heading,.memo-card{grid-column:auto}.fortune-split{grid-template-columns:1fr 1fr}.bottom-note{display:block;text-align:center;line-height:1.9}.modal{padding:21px}.tip-list{grid-template-columns:1fr}}
+@media(max-width:380px){.month-grid{gap:3px}.day-cell{padding:5px 2px 9px}.date-num{font-size:12px}.lunar-label{font-size:8px}.cell-inspiration{font-size:7px}.inspiration-card h3{font-size:23px}}
+
+/* V4 黄历择日区：宜忌使用传统术语标签，与生活小期待在视觉上独立 */
+.fortune-card{background:#fffdfa;border-color:#eae7de;padding:20px 18px 17px;box-shadow:0 4px 18px rgba(90,76,53,.025)}
+.fortune-card .fortune-top strong{font-family:"Noto Serif SC","Songti SC",serif;font-size:16px;color:#534b3c;font-weight:700;letter-spacing:.2px}
+.fortune-symbol{color:#967c59;font-size:17px}
+.fortune-lock{font-size:10px;background:#f4efe4;color:#998363;border-radius:6px;padding:5px 9px}
+.huangli-sub{font-size:11px;color:#8d8a80;display:flex;align-items:center;gap:6px;margin:11px 0 15px;flex-wrap:wrap}
+.huangli-sub span:first-child{font-weight:680;color:#5e6857}
+.huangli-sep{color:#d3d0c6}
+.fortune-split{gap:9px}
+.fortune-block{background:#f2f7f1;border:1px solid #e8efe5;border-radius:12px;padding:12px 10px 14px}
+.fortune-block.avoid{background:#fbf4f1;border:1px solid #f4eae5}
+.fortune-mini-head{font-size:11px;color:#879988}
+.avoid .fortune-mini-head{color:#ab8f84}
+.fortune-mini-head span{height:23px;width:23px;border-radius:7px;font-size:12px}
+.huangli-keywords{display:flex;flex-wrap:wrap;gap:7px 5px;margin-top:14px;align-content:flex-start;min-height:56px}
+.huangli-keywords span{font-size:11px;line-height:1.45;font-weight:600;color:#50715a;padding:5px 6px;background:#ffffffbd;border:1px solid #e7eee7;border-radius:6px}
+.avoid .huangli-keywords span{color:#9e6f63;background:#fffcfa;border-color:#f0e2dc}
+.fortune-card .fortune-foot{font-size:10px;color:#8e968e;margin:13px 1px 0;line-height:1.7}
+.huangli-source{display:inline-flex;margin-top:7px;text-decoration:none;font-size:10px;color:#927858;border-bottom:1px solid #d7c7ae;padding-bottom:2px}
+.huangli-source:hover{color:#5c4d35}
+.personal-bazi{border-top:1px solid #eeece5;margin-top:17px;padding-top:16px}
+.personal-bazi-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.personal-bazi-title span{font-size:12px;font-weight:670;color:#5e715c}
+.personal-bazi-title em{font-size:10px;font-style:normal;color:#a5ada2}
+.personal-bazi .birth-line{margin-top:9px;font-size:10px}
+.personal-bazi .pillar-row{margin-top:10px}
+.personal-bazi .pillar-row>span{background:#f6f8f4;border-color:#eef0ea}
+.personal-bazi .pillar-row b{color:#59715a}
+.personal-bazi .pillar-row .missing{background:#fafbf8;border-style:dashed}
+.personal-bazi-note{color:#a0a99f!important;font-size:9.6px!important;margin-top:10px!important;line-height:1.7!important}
+@media(max-width:980px){.fortune-card{grid-column:2}}
+@media(max-width:620px){.fortune-card{grid-column:auto}.fortune-card .fortune-top strong{font-size:16px}.huangli-keywords span{font-size:11px}}
+/* V5 · 日常手账 / 现代东方编辑式界面。保留既有功能与事件处理 */
+:root{
+  --ink:#403b34;--ink2:#6e675b;--muted:#958d7e;
+  --bg:#f8f6f0;--paper:#fffefa;--soft:#fbf6ec;--line:#ece6da;
+  --green:#476d59;--greenlight:#ecf2e8;--gold:#c38f54;--amber:#f8e8c5;
+  --red:#bd735e;--redbg:#fff0e9;--shadow:0 14px 38px rgba(102,80,43,.055);
+}
+html{scroll-behavior:smooth}
+body{
+  color:var(--ink);
+  background:radial-gradient(ellipse 65% 45% at 94% 0%,#f2e9db 0%,transparent 73%),
+    radial-gradient(ellipse 45% 40% at 0% 92%,#f0eee3 0%,transparent 72%),#f8f6f0;
+  font-size:14px;line-height:1.65;
+}
+.page{max-width:1490px;padding:0 44px 48px}
+.topbar{height:94px;margin:0;gap:18px;border-bottom:1px solid #e9e1d3}
+.brand{gap:13px}.mark{height:44px;width:44px;border-radius:14px;
+  background:#514d3c;box-shadow:0 7px 15px rgba(95,68,36,.13)}
+.mark svg{color:#f9dca2;width:26px}
+.brand-words strong{font-family:"Songti SC","Noto Serif SC","SimSun",serif;font-size:25px;letter-spacing:4px;font-weight:700;color:#47463a}
+.brand-words small{font-size:9px;color:#af9f87;letter-spacing:2px;margin-top:4px}
+.topcenter{background:#f2ede4;border:1px solid #eee5d7;border-radius:999px;padding:5px;box-shadow:none;gap:3px}
+.topcenter button{font-size:12px;font-weight:600;color:#988b77;border-radius:999px;padding:9px 20px}
+.topcenter button:hover{background:#fef9f0}
+.topcenter button.active{background:#fffdfa;color:#66523e;box-shadow:0 2px 7px #5d43201c}
+.city-tag{background:#f4efe5;border-color:#ede4d6;color:#766d5e;font-weight:550;padding:9px 14px}
+.circle-btn{background:#fffdfa;border-color:#e9e1d5;color:#897e6c;width:39px;height:39px}
+.circle-btn:hover{background:#ede1c9;color:#5f4b31}
+.micro-intro{margin:25px 3px 0;display:flex;align-items:center;justify-content:space-between;min-height:44px;gap:20px}
+.micro-intro-title{font-family:"Songti SC","Noto Serif SC",serif;color:#877354;letter-spacing:1.2px;font-size:14px;font-weight:700;gap:12px}
+.micro-dot{width:8px;height:8px;background:#cf9c62;box-shadow:0 0 0 4px #f5e8d5}
+.micro-divider{color:#c1aa8b}
+.micro-intro-note{font-size:12px;letter-spacing:.3px;color:#a19581}
+.micro-intro-note span{color:#ba8b52}
+.main-layout{grid-template-columns:minmax(600px,1fr) 373px;gap:23px;margin-top:17px;align-items:start}
+.calendar-panel,.detail-panel{box-shadow:var(--shadow)}
+.calendar-panel{background:linear-gradient(160deg,#fffefa 0%,#fffcf8 55%,#fffbf7 100%);border:1px solid #ece4d8;border-radius:23px;padding:29px 29px 22px}
+.panel-heading{margin-bottom:24px;align-items:end;gap:15px}
+.month-title{position:relative}
+.month-title:before{content:'MONTHLY CALENDAR  /  上海生活月历';display:block;letter-spacing:2.2px;color:#bd9d73;font-size:10px;font-weight:650;margin-bottom:8px}
+.month-title h2{font-family:"Songti SC","Noto Serif SC","SimSun",serif;font-size:36px;font-weight:700;letter-spacing:1.3px;color:#473d32;margin:0 0 3px}
+.month-title p{font-size:11px;letter-spacing:1.7px;color:#a3947e}
+.month-controllers{gap:8px;padding-bottom:5px}
+.narrow-btn{background:#fffdfa;border:1px solid #e9dfd0;color:#86735b;border-radius:11px;width:39px;height:39px;box-shadow:0 2px 6px #725c3d0a}
+.narrow-btn:hover{background:#f4e8d2;border-color:#dcc39e;color:#6b5138}
+.today-btn{background:#f1e2c8!important;color:#7e5e34;border-color:#eddec3!important;font-size:12px;font-weight:700;width:auto;padding:0 17px!important}
+.view-legend{gap:9px 19px;padding:17px 2px 19px;border-top:1px dashed #e9dfd1;color:#918777;font-size:11px}
+.state-strip-sample{width:23px;height:9px;border-radius:4px}
+.state-strip-sample.rest{background:#eccac1}.state-strip-sample.work{background:#abcbb4}
+.legend-right{color:#b5a796}
+.weekdays{gap:7px;padding:0 0 11px}
+.weekdays span{font-size:12px;font-weight:700;color:#8d8577;letter-spacing:.5px}
+.weekdays span:nth-child(6),.weekdays span:nth-child(7){color:#bc826e}
+.month-grid{gap:7px;grid-auto-rows:minmax(112px,auto);overflow:visible;border:0;border-radius:0}
+.day-cell{background:#fffdf9;border:1px solid #eee8dd;border-radius:12px;padding:10px 8px 13px;box-shadow:0 2px 0 #f6f1e9;transition:transform .18s ease,background .18s ease,box-shadow .18s ease,border-color .18s ease}
+.day-cell:hover:not(.outside){transform:translateY(-2px);background:#fffbf0;box-shadow:0 8px 21px rgba(116,86,45,.1);border-color:#e5cfaa}
+.day-cell.selected{background:linear-gradient(145deg,#fff4da,#fffaf0)!important;border-color:#dcb878;box-shadow:0 0 0 1px #d8b26b,0 8px 17px rgba(186,142,78,.15);z-index:2}
+.day-cell.today:not(.selected){border-color:#caa875;background:#fffaed}
+.day-cell.outside{background:#f8f5ef;opacity:.36}
+.day-cell.rest-day{background:#fff4f0;border-color:#f5e3dc}
+.day-cell.makeup-work{background:#f1f7f0;border-color:#e0ebe0}
+.day-cell.rest-day.selected{background:linear-gradient(145deg,#fff0df,#fff9ef)!important}
+.day-cell.rest-day::after,.day-cell.makeup-work::after{height:6px;left:7px;right:7px;bottom:5px;border-radius:10px}
+.day-cell.rest-day::after{background:#dca99c}
+.day-cell.makeup-work::after{background:#93b99d}
+.day-cell.today .date-num{background:#6e5c42!important;color:#fff;border-radius:9px}
+.day-cell.weekend .date-num,.day-cell.rest-day .date-num{color:#bc725f}
+.day-cell.makeup-work .date-num{color:#4a8862}
+.day-cell.today .date-num{color:#fff}
+.date-num{width:29px;height:29px;font-size:17px;font-weight:750;color:#4a4b3f;border-radius:8px}
+.date-badge{border-radius:6px;min-width:21px;height:20px;font-size:10px;font-weight:700}
+.date-badge.rest{background:#f4d9d1;color:#b36351}
+.date-badge.work{background:#d8e9dc;color:#48805b}
+.lunar-label{color:#ac9f8b;font-size:11px;margin-top:7px;line-height:1.45}
+.lunar-label.term{color:#b17c43}.lunar-label.festival{color:#c08468}
+.cell-inspiration{color:#847966;font-size:10.4px;line-height:1.45;padding-top:8px;min-height:27px}
+.cell-inspiration svg path:first-child{fill:#b8b48d}
+.memo-points{margin-top:6px;min-height:7px}
+.month-foot{color:#afa18f;font-size:11px;border-top:1px dashed #e9dfd0;margin-top:18px;padding:17px 1px 0}
+.foot-link{color:#967146;font-size:11px;font-weight:700}
+.foot-link:hover{color:#6b4c2e}
+/* 右侧分卡设计：每块有自己的视觉语气，告别整列大白框 */
+.detail-panel{display:flex;flex-direction:column;gap:14px;background:none;border:0;border-radius:0;box-shadow:none;padding:0}
+.detail-heading{position:relative;overflow:hidden;background:linear-gradient(115deg,#f0ddba,#f7ead2 68%,#fff2d9);border:1px solid #ecdbbd;border-radius:19px;padding:22px 22px 21px;min-height:145px;box-shadow:0 9px 24px #8c682f10}
+.detail-heading:before{content:'◌';font-family:Georgia,serif;font-size:185px;position:absolute;right:-22px;top:-87px;line-height:1;color:#e8ce9e80;pointer-events:none}
+.side-label{font-size:10px;letter-spacing:2px;color:#9f814f;font-weight:700}
+.side-label-line{color:#c4a77d}
+.side-date{font-family:"Songti SC","Noto Serif SC","SimSun",serif;color:#4d4031;font-size:28px;font-weight:700;margin-top:11px;letter-spacing:.2px}
+.side-lunar{color:#8f7858;font-size:11.5px;margin-top:5px}
+.sunburst{background:#ffffff85;color:#b6884d;font-size:27px;width:42px;height:42px;border-radius:50%;border:1px solid #f7e9cd;flex:none}
+.day-status{margin-top:10px}.status-pill{background:#fff7e8;color:#997343;border:1px solid #ecdbba;border-radius:7px;font-size:10px;font-weight:600}
+.status-pill.red{background:#ffede3;color:#b96a51;border-color:#efd4c8}.status-pill.gold{background:#fdf1d9;color:#a87b43;border-color:#efd9b4}
+/* 每日小事：用黄油色作为全站主视觉 */
+.inspiration-card{background:linear-gradient(145deg,#faebc9 0%,#f8e4b7 55%,#f7e9cb 100%);border:1px solid #efd5a1;border-radius:19px;padding:23px 22px 21px;box-shadow:0 9px 25px rgba(162,122,60,.095)}
+.inspiration-card:before{content:'';position:absolute;right:24px;top:61px;width:68px;height:68px;border:1px solid rgba(169,127,65,.16);border-radius:50%;pointer-events:none}
+.inspiration-card:after{content:'✳';font-size:117px;right:-7px;top:25px;color:#e7c68d80}
+.inspo-heading{font-size:12px;color:#96703d;font-weight:750;letter-spacing:1px}
+.inspo-star{color:#a7773c;font-size:17px}
+.inspo-serial{color:#b59664;font-size:9px;letter-spacing:1.1px}
+.inspiration-card h3{font-family:"Songti SC","Noto Serif SC","SimSun",serif;font-weight:700;font-size:26px;line-height:1.48;color:#634929;margin:16px 0 9px;position:relative;z-index:1}
+.inspiration-card p{color:#8a704c;font-size:12px;line-height:1.85;min-height:40px;position:relative;z-index:1}
+.inspiration-info{margin-top:16px;gap:6px}
+.inspiration-info span{font-size:10px;color:#866942;background:#fffaedaa;border-color:#f0dcb6;border-radius:7px;padding:5px 8px;font-weight:550}
+.inspiration-info span:first-child{color:#72582f}
+.inspiration-actions{margin-top:19px;gap:8px}
+.pill-action{background:#665039;color:#fff8e8;font-weight:700;font-size:11px;padding:11px 14px;border-radius:9px;box-shadow:0 5px 12px rgba(102,72,35,.1)}
+.pill-action:hover{background:#513a26;transform:translateY(-2px)}
+.small-arrow{color:#8d6d3f;font-weight:700;font-size:11px}
+.small-arrow:hover{color:#593e22}
+/* 黄历与八字：古籍纸张底色，较深的字重和舒适信息密度 */
+.fortune-card{background:#fffefb;border:1px solid #ece3d4;border-radius:19px;box-shadow:0 9px 25px rgba(92,67,40,.045);padding:22px 20px 20px}
+.fortune-card .fortune-top strong{font-family:"Songti SC","Noto Serif SC","SimSun",serif;font-size:18px;font-weight:700;color:#584635}
+.fortune-symbol{color:#b08853}
+.fortune-lock{border-radius:99px;padding:5px 9px;background:#f7efdd;color:#aa875b;font-size:10px}
+.huangli-sub{margin:11px 0 17px;color:#8f8675;font-size:11px;gap:7px}
+.huangli-sub span:first-child{color:#725f4b}
+.fortune-split{gap:10px}
+.fortune-block{background:#eff4eb;border:1px solid #e3ecde;border-radius:12px;padding:13px 11px 14px}
+.fortune-block.avoid{background:#fcf1eb;border-color:#f3e6de}
+.fortune-mini-head{font-size:11px;color:#7e927e;font-weight:600}
+.avoid .fortune-mini-head{color:#b28a7c}
+.fortune-mini-head span{background:#dcead9;color:#47735a;border-radius:7px;width:25px;height:25px;font-size:13px}
+.avoid .fortune-mini-head span{background:#efdcd2;color:#ae725f}
+.huangli-keywords{margin-top:14px;gap:6px;min-height:66px}
+.huangli-keywords span{border-color:#e2eadc;background:#fffefa;color:#566c53;border-radius:6px;font-size:11px;font-weight:650;padding:5px 6px}
+.avoid .huangli-keywords span{border-color:#eedbd2;background:#fffbf8;color:#9b695b}
+.fortune-card .fortune-foot{color:#9a9184;font-size:10.3px;line-height:1.75;margin-top:13px}
+.huangli-source{color:#a17d4d;font-size:10.5px}
+.personal-bazi{border-top:1px dashed #e8dfd3;margin-top:18px;padding-top:17px}
+.personal-bazi-title span{font-size:13px;font-weight:750;color:#695440}
+.personal-bazi-title em{color:#a59680}
+.personal-bazi .birth-line{color:#938977}
+.personal-bazi .pillar-row{gap:7px}
+.personal-bazi .pillar-row>span{border-color:#ede3d4;background:#fbf8f1;border-radius:9px;padding:9px 3px}
+.personal-bazi .pillar-row small{color:#a3937b}
+.personal-bazi .pillar-row b{color:#775d3f;font-size:16px}
+.personal-bazi .pillar-row .missing{background:#fffefa;border-color:#e9e0d2}
+.personal-bazi-note{color:#aaa092!important}
+/* 备忘独立成柔和的白色信息卡 */
+.memo-card{border:1px solid #ebe3d7;background:#fffefa;border-radius:19px;padding:19px 20px 18px;box-shadow:0 8px 24px rgba(92,67,40,.04)}
+.section-title{padding-bottom:11px}
+.section-title h4{font-family:"Songti SC","Noto Serif SC",serif;color:#574634;font-size:17px;font-weight:700}
+.section-title button{font-size:11px;font-weight:700;color:#986f40}
+.memo-empty{background:#fbf8f1;border-color:#ebdfcb;color:#aa9d89;border-radius:11px}
+.add-blank{border:1px dashed #e8d8bd;background:#fff9ec;color:#9a784b;border-radius:10px;font-size:11px}
+.add-blank:hover{background:#f9edd6}
+.memo-row{background:#fffdfa;border-bottom-color:#eee5d9}
+.bottom-note{color:#a99e8b;padding-top:32px;font-size:10px}
+.bottom-note a{color:#8c7756}
+/* 弹层跟随整体主题 */
+.overlay{backdrop-filter:blur(7px);background:#3c30234d}
+.modal{border:1px solid #eadcc8;background:#fffdfa;border-radius:20px;box-shadow:0 26px 90px #40301c32}
+.modal-head h3{color:#56432d}
+.text-input,.text-area{background:#fffdf8;border-color:#e9ddcb}
+.submit{background:#70553b}
+.submit:hover{background:#594128}
+.toast{background:#5c4c38;color:#fff9e9}
+@media(max-width:1250px){
+  .page{padding-left:25px;padding-right:25px}
+  .main-layout{grid-template-columns:minmax(555px,1fr) 345px;gap:16px}
+  .calendar-panel{padding:24px 21px 18px}
+  .day-cell{padding-left:7px;padding-right:7px}
+  .cell-inspiration{font-size:9.7px}
+  .detail-heading{padding:20px}
+  .fortune-card,.memo-card{padding-left:17px;padding-right:17px}
+}
+@media(max-width:1010px){
+  .page{padding:0 23px 32px}
+  .topcenter{display:none}
+  .main-layout{grid-template-columns:1fr;gap:18px}
+  .detail-panel{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  .detail-heading{grid-column:1/-1;min-height:135px}
+  .inspiration-card{grid-column:1}
+  .fortune-card{grid-column:2;grid-row:2/4}
+  .memo-card{grid-column:1}
+  .month-grid{grid-auto-rows:minmax(117px,auto)}
+}
+@media(max-width:700px){
+  .page{padding:0 12px 26px}
+  .topbar{height:79px;min-height:79px;margin:0}
+  .brand{gap:9px}.mark{width:38px;height:38px;border-radius:11px}
+  .brand-words strong{font-size:22px;letter-spacing:2px}.brand-words small{font-size:8px}
+  .city-tag{font-size:10px;padding:7px 10px}.toolbar{gap:7px}
+  .micro-intro{margin:14px 3px 5px;min-height:30px}.micro-intro-title{font-size:12px;gap:8px}.micro-intro-note{display:none}
+  .main-layout{gap:15px;margin-top:9px}
+  .calendar-panel{padding:18px 11px 17px;border-radius:17px}
+  .panel-heading{margin-bottom:18px;padding:3px 2px 0}
+  .month-title:before{font-size:8px;letter-spacing:1.4px;margin-bottom:6px}
+  .month-title h2{font-size:28px}.month-title p{font-size:9px}
+  .month-controllers{gap:5px;padding-bottom:4px}
+  .narrow-btn{width:32px;min-width:32px;height:32px;border-radius:9px}
+  .today-btn{width:auto;padding:0 11px!important}
+  .view-legend{gap:7px 13px;padding:12px 2px 14px}
+  .legend-item{font-size:10px}.legend-right{display:none}
+  .weekdays{gap:4px;padding-bottom:8px}.weekdays span{font-size:10px}
+  .month-grid{gap:4px;grid-auto-rows:minmax(98px,auto)}
+  .day-cell{padding:6px 4px 12px;min-height:98px;border-radius:8px;box-shadow:none}
+  .date-num{font-size:14px;width:24px;height:24px}
+  .date-badge{font-size:9px;min-width:16px;height:17px;padding:0 2px}
+  .lunar-label{font-size:9px;margin-top:6px;line-height:1.4}
+  .cell-inspiration{font-size:8px;min-height:25px;line-height:1.3;padding-top:6px}
+  .cell-inspiration svg{display:none}
+  .day-cell.rest-day::after,.day-cell.makeup-work::after{height:5px;left:4px;right:4px;bottom:4px}
+  .memo-points{margin-top:4px}
+  .month-foot{flex-wrap:wrap;gap:3px;margin-top:12px;padding-top:12px;font-size:9.5px}
+  .detail-panel{display:flex;flex-direction:column;gap:12px}
+  .detail-heading,.inspiration-card,.fortune-card,.memo-card{grid-column:auto;grid-row:auto;border-radius:15px}
+  .detail-heading{padding:20px;min-height:134px}
+  .side-date{font-size:27px}
+  .inspiration-card{padding:22px}.inspiration-card h3{font-size:25px}
+  .fortune-card{padding:20px}
+  .memo-card{padding:18px}
+  .bottom-note{padding-top:26px;line-height:2.1;font-size:9px}
+}
+@media(max-width:390px){
+  .page{padding-left:8px;padding-right:8px}
+  .calendar-panel{padding:15px 7px}
+  .month-grid{gap:3px;grid-auto-rows:minmax(93px,auto)}
+  .day-cell{padding-left:3px;padding-right:2px;min-height:93px}
+  .date-num{font-size:13px;width:22px;height:22px}
+  .lunar-label{font-size:8px}
+  .cell-inspiration{font-size:7.5px}
+  .view-legend{gap:5px 9px}
+  .legend-item{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* V6 · 上海日常：冷静蓝灰 × 雾白 × 雾松绿，以柔和浅黄作为每日小期待的唯一暖色焦点 */
+:root{--ink:#263b46;--ink2:#5e7279;--muted:#84959d;--bg:#f4f7f8;--paper:#fff;--soft:#f4f8f9;--line:#e6edf0;--green:#3d736b;--greenlight:#e9f4ef;--gold:#b69b68;--amber:#f5edda;--red:#678da2;--redbg:#e9f1f6;--shadow:0 14px 42px rgba(35,67,77,.055)}
+body{background:radial-gradient(ellipse 60% 40% at 100% 0%,#edf3f5,transparent 72%),linear-gradient(#f7f9fa,#f2f6f7);color:var(--ink)}
+.page{max-width:1510px}
+.topbar{border-bottom:1px solid #e6eef0;height:85px}
+.mark{background:#315861;box-shadow:0 8px 18px #31586122;border-radius:13px}.mark svg{color:#e2f5eb}
+.brand-words strong{color:#2c4951;font-size:24px;letter-spacing:3px}.brand-words small{color:#95aab0}
+.topcenter{background:#edf3f5;border-color:#e4ebef;gap:3px}.topcenter button{color:#718993}.topcenter button:hover{background:#f8fbfc}.topcenter button.active{background:#fff;color:#315662;box-shadow:0 3px 12px #3156620d}
+.city-tag{background:#edf4f6;border:1px solid #e0eaee;color:#4b6b77}.circle-btn{color:#50717a;border-color:#e1e9ed}.circle-btn:hover{background:#315862;color:#fff}
+.micro-intro{margin-top:22px}.micro-intro-title{color:#516b73;letter-spacing:.75px}.micro-dot{background:#86aead;box-shadow:0 0 0 4px #e5f0f0}.micro-divider{color:#bdccd0}.micro-intro-note{color:#83989f}.micro-intro-note span{color:#a3aaa0}
+.calendar-panel{background:#fff;border:1px solid #e4ecef;box-shadow:var(--shadow);border-radius:22px}
+.month-title:before{content:'MONTHLY CALENDAR   /   上海日历';color:#97aeb6;letter-spacing:1.8px}
+.month-title h2{color:#284651;font-size:35px}.month-title p{color:#90a3ac}
+.narrow-btn{background:#fff;color:#526e77;border:1px solid #e0e9ed;box-shadow:none}.narrow-btn:hover{background:#edf5f7;border-color:#cadae1;color:#315762}
+.today-btn{background:#e7f2f1!important;color:#336a65;border-color:#d4e9e5!important}
+.view-legend{border-color:#e5ecef;color:#708792}.legend-right{color:#a3b2b8}
+.state-strip-sample.rest{background:#a6c4d6}.state-strip-sample.work{background:#9fcbb7}
+.weekdays span{color:#8397a0}.weekdays span:nth-child(6),.weekdays span:nth-child(7){color:#6f96ac}
+.month-grid{gap:7px;grid-auto-rows:minmax(118px,auto)}
+.day-cell{background:#fbfdfe;border:1px solid #eaf0f3;border-radius:12px;box-shadow:none;color:#36515a;padding:11px 9px 16px}
+.day-cell:hover:not(.outside){background:#f4f9fa;border-color:#c5dade;box-shadow:0 7px 16px rgba(60,98,108,.07)}
+.day-cell.selected{background:#eaf4f4!important;border-color:#73a4a5;box-shadow:0 0 0 1px #87b0ad,0 9px 18px #486b6a12}
+.day-cell.today:not(.selected){border-color:#8db9b3;background:#f3faf8}
+.day-cell.outside{background:#f9fbfc;opacity:.35}
+.day-cell.rest-day{background:#eff5f9;border-color:#dfebf2}
+.day-cell.makeup-work{background:#edf7f2;border-color:#dcece3}
+.day-cell.rest-day.selected{background:#e7f0f4!important}
+.day-cell.rest-day::after,.day-cell.makeup-work::after{height:6px;left:7px;right:7px;bottom:5px}
+.day-cell.rest-day::after{background:#abc7d8}.day-cell.makeup-work::after{background:#9bc8b1}
+.day-cell.weekend .date-num,.day-cell.rest-day .date-num{color:#5f8498}
+.day-cell.today .date-num{background:#376a68!important;color:#fff;border-radius:9px}
+.day-cell.makeup-work .date-num{color:#42836e}
+.date-num{color:#3e5660}.date-badge.rest{background:#dcebf4;color:#547f96}.date-badge.work{background:#dcefe5;color:#3c8065}
+.lunar-label{color:#93a5aa}.lunar-label.term{color:#a37d53}.lunar-label.festival{color:#7f849b}
+.cell-inspiration{color:#557880;font-size:10px}.cell-inspiration svg path:first-child{fill:#8db1a7}
+.month-foot{border-top:1px solid #eaf0f1;color:#9aaab0}.foot-link{color:#477e82}.foot-link:hover{color:#2c5a60}
+/* 右侧：清爽日期摘要 + 唯一浅金主视觉 */
+.detail-heading{border:1px solid #dfeaf0;background:linear-gradient(125deg,#eaf3f7 0%,#f5f9fb 70%,#f9fbfb 100%);box-shadow:none;border-radius:18px;padding:21px 22px;min-height:139px}
+.detail-heading:before{color:#cbdfe582}.side-label{color:#7b9ba8}.side-label-line{color:#b4cbd1}
+.side-date{color:#2d525c}.side-lunar{color:#6d8a94}.sunburst{background:#ffffffa8;border-color:#d7e6e8;color:#7aa2a7}
+.status-pill{background:#fff;color:#6b8891;border-color:#dfebee}.status-pill.red{background:#e2eff5;color:#567f96;border-color:#d2e4ed}.status-pill.gold{background:#f8f2e7;color:#a1875b;border-color:#ebe1cc}
+.inspiration-card{background:linear-gradient(136deg,#f8f0db 0%,#f6eddb 60%,#f9f4e8 100%);border:1px solid #eee1c5;box-shadow:0 12px 26px rgba(108,99,72,.04);border-radius:19px}
+.inspiration-card:after{color:#d8c89d50}.inspiration-card:before{border-color:#c9b99036}
+.inspo-heading{color:#937e59}.inspo-star{color:#aa986d}.inspo-serial{color:#b5a98e}
+.inspiration-card h3{color:#5d5542;font-size:24px;line-height:1.47;margin:14px 0 10px}.inspiration-card p{color:#7b7260}
+.inspiration-info span{color:#6c6c5b;background:#ffffffad;border-color:#e7dcc4}.inspiration-info span:first-child{color:#4d706b}
+.pill-action{background:#376b68;color:white;box-shadow:0 5px 14px #376b6822}.pill-action:hover{background:#285b59}
+.small-arrow{color:#7b776b}.small-arrow:hover{color:#4e6865}
+.idea-scope{display:inline-flex;align-items:center;gap:7px;color:#6c817a;font-size:10.5px;font-weight:650;margin-top:11px;letter-spacing:.15px}
+.idea-scope:before{content:'';height:6px;width:6px;background:#90b5a6;border-radius:50%}
+.idea-source{font-size:10.5px;color:#7d8d85;line-height:1.75;margin-top:11px;position:relative;z-index:1}
+.idea-source a{color:#3c7b7b;text-decoration:underline;text-underline-offset:2px}
+/* 传统黄历保留古籍韵味，但摆脱整体泛黄与红色禁忌区 */
+.fortune-card,.memo-card{background:#fff;border-color:#e4ebed;border-radius:18px;box-shadow:var(--shadow)}
+.fortune-card .fortune-top strong{color:#3e5960}.fortune-symbol{color:#86a29c}
+.fortune-lock{background:#edf4f4;color:#658b8a}
+.huangli-sub{color:#83959a}.huangli-sub span:first-child{color:#536b73}
+.fortune-block{background:#eef6f2;border-color:#ddece6}.fortune-block.avoid{background:#f4f4f7;border-color:#e9e9ef}
+.fortune-mini-head{color:#688778}.avoid .fortune-mini-head{color:#858598}
+.fortune-mini-head span{background:#d8e9df;color:#3e7a61}.avoid .fortune-mini-head span{background:#e5e5ec;color:#74758b}
+.huangli-keywords span{background:#fff;border-color:#e2eee6;color:#4b7760}.avoid .huangli-keywords span{background:#fff;border-color:#e5e5eb;color:#757589}
+.fortune-card .fortune-foot{color:#89989b}.huangli-source{color:#467d83}
+.personal-bazi{border-color:#e5eef0}.personal-bazi-title span{color:#506a70}.personal-bazi-title em{color:#8ea1a7}
+.personal-bazi .birth-line{color:#8c9ca1}.personal-bazi .pillar-row>span{background:#f4f8f8;border-color:#e5eeee}
+.personal-bazi .pillar-row small{color:#91a2a5}.personal-bazi .pillar-row b{color:#497378}
+.personal-bazi .pillar-row .missing{background:#fafcfc;border-color:#e3eaeb}
+.section-title h4{color:#3d5963}.section-title button{color:#3b797b}
+.memo-empty{background:#f6f9fa;border-color:#e1ebed;color:#96a6ad}.add-blank{background:#f6faf9;border-color:#dbe9e7;color:#58817b}.add-blank:hover{background:#eef6f4}.memo-row{background:#fff;border-bottom-color:#e9eff0}
+.bottom-note{color:#93a4aa}.bottom-note a{color:#467c83}
+.overlay{background:#243d465b}.modal{background:#fff;border-color:#e1ebee}.modal-head h3{color:#385a63}.text-input,.text-area{background:#fcfefe;border-color:#dce8ea}.submit{background:#376b68}.submit:hover{background:#275b58}.toast{background:#325961;color:#fff}
+@media(max-width:700px){.topbar{height:75px;min-height:75px}.month-title h2{font-size:27px}.calendar-panel{padding:17px 10px}.month-grid{grid-auto-rows:minmax(103px,auto);gap:4px}.day-cell{min-height:103px;padding:6px 4px 12px}.detail-heading{min-height:129px}.inspiration-card h3{font-size:24px}.idea-source{font-size:10px}.micro-intro{margin-top:13px}.micro-intro-title{font-size:11.5px}}
+
+
+/* V7 · right-column information architecture */
+:root{--v7-ink:#293d47;--v7-muted:#8195a0;--v7-line:#e7eef0;--v7-blue:#68869a}
+.main-layout{grid-template-columns:minmax(0,1fr) 405px;gap:19px;align-items:start}
+.detail-panel.zh-sidebar{display:flex;flex-direction:column;align-items:stretch;gap:13px;background:transparent;border:0;box-shadow:none;padding:0;min-width:0}
+.zh-sidebar>section,.zh-sidebar>details{border:1px solid #e4ecee;box-shadow:0 8px 26px rgba(41,69,78,.039);border-radius:19px;min-width:0;background:#fff}
+.zh-sidebar .side-overview{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:5px 9px;padding:20px 20px 15px}
+.zh-sidebar .day-overview-left{min-width:0}
+.zh-sidebar .side-label{letter-spacing:1.4px;font-size:10px;color:#8b9da4;font-weight:750}
+.zh-sidebar .side-label span{color:#c4d1d5}
+.zh-sidebar .side-date{font-size:23px;color:#283f4a;margin-top:8px;font-weight:680}
+.zh-sidebar .side-lunar{font-size:11px;color:#81959b;line-height:1.6;margin-top:6px}
+.zh-sidebar .day-status{margin-top:9px;gap:6px}
+.zh-sidebar .weather-module{border:1px solid #deecf3;background:linear-gradient(145deg,#f3f8fc,#edf5f8);border-radius:15px;text-align:center;padding:7px 4px 8px;color:#456d84;align-self:start}
+.zh-sidebar .weather-mark{font-size:25px;height:33px;line-height:33px}
+.zh-sidebar .weather-temp{font-size:22px;font-weight:700;letter-spacing:-1px;line-height:1.22}
+.zh-sidebar .weather-label{font-size:11px;font-weight:650;margin-top:4px}
+.zh-sidebar .weather-rain{font-size:9px;line-height:1.5;margin-top:2px;color:#7d9aab}
+.zh-sidebar .weather-advice{grid-column:1/-1;border-top:1px solid #edf1f2;padding-top:11px;font-size:11px;color:#7b8f97;margin-top:2px;line-height:1.7}
+.v7-eyebrow{font-size:10px;letter-spacing:1.2px;color:#92a2a5;font-weight:750}
+.zh-sidebar .inspiration-card.v7-joy-card{padding:23px 21px 18px;background:linear-gradient(135deg,#fff8e9 0%,#fffaf1 72%,#fffbf6 100%);border:1px solid #f5ead0;box-shadow:0 8px 28px #a58d5830}
+.zh-sidebar .inspiration-card.v7-joy-card::after{content:"✽";font-size:125px;top:-55px;right:-12px;opacity:.2;color:#e0ba78}
+.v7-card-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;position:relative;z-index:1}
+.v7-card-heading .v7-eyebrow{color:#b9a47c}
+.v7-label{background:#fff1d7;color:#a27a37;border-radius:20px;padding:4px 9px;font-size:10px;font-weight:680}
+.zh-sidebar .idea-scope{margin-top:18px;color:#9a835d;font-size:11px}
+.zh-sidebar .inspiration-card h3{font-size:23px;line-height:1.45;letter-spacing:-.2px;color:#4c4a3c;margin:8px 0 9px}
+.zh-sidebar .inspiration-card p{font-size:12px;color:#887e6b;line-height:1.85;min-height:0;max-width:none}
+.zh-sidebar .inspiration-info{margin-top:13px;flex-wrap:wrap}
+.zh-sidebar .inspiration-info span{background:#f4ebd8;color:#8c7959;font-size:10px}
+.zh-sidebar .inspiration-actions{margin-top:15px}
+.zh-sidebar .pill-action{background:#435d68;border-radius:9px;padding:10px 13px}
+.zh-sidebar .pill-action:hover{background:#304b56}
+.zh-sidebar .small-arrow{color:#887b5f}
+.also-try{border-top:1px solid #f0e5d1;margin-top:16px;padding-top:13px;position:relative;z-index:1}
+.also-try-title{font-size:11px;color:#7a7869;font-weight:700;margin-bottom:7px}
+.also-try-title span{font-size:10px;color:#afa391;font-weight:450}
+.also-try-list{display:grid;gap:6px}
+.also-try-option{border:1px solid #eee5d2;background:#fffcf6;color:#645b4c;width:100%;padding:10px 11px;display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;border-radius:10px;transition:.18s}
+.also-try-option:hover{border-color:#d9c5a0;background:#fff6e4}
+.also-try-option strong{font-size:11px;font-weight:640;line-height:1.5}
+.also-try-option span{font-size:9px;color:#ab9679;white-space:nowrap}
+.zh-sidebar .side-activity-card,.zh-sidebar .memo-card.v7-memo-card{padding:20px}
+.v7-section-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.v7-section-head h4{margin:4px 0 0;color:#293e48;font-size:16px;letter-spacing:-.2px}
+.v7-section-head button{border:0;background:#eef4f6;border-radius:8px;color:#5e8391;font-size:11px;padding:7px 10px;white-space:nowrap;font-weight:640}
+.v7-section-head button:hover{background:#e1edf1}
+.mini-live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#89b9a4;vertical-align:middle;margin-left:4px}
+.activity-time-tip{font-size:11px;color:#91a0a7;margin:9px 0 12px}
+.activity-mini-list{display:grid;gap:0}
+.activity-mini{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-top:1px solid #f0f3f3;min-width:0}
+.activity-icon{width:37px;height:37px;display:grid;place-items:center;background:#eef5f7;color:#537885;border-radius:11px;flex:none;font-size:16px}
+.activity-body{min-width:0;flex:1}
+.activity-tag{display:inline-block;font-size:9px;color:#628e97;margin-bottom:3px;font-weight:700}
+.activity-body strong{display:block;font-size:12px;color:#334b56;line-height:1.45}
+.activity-body small{display:block;font-size:10px;color:#99a5ac;margin-top:4px;line-height:1.5}
+.activity-mini>a{font-size:10px;color:#5d8595;white-space:nowrap;padding:2px 0;text-decoration:none;align-self:center}
+.activity-mini>a:hover{text-decoration:underline}
+.activity-footnote{margin-top:7px;color:#9cabb0;font-size:10px;line-height:1.7}
+.zh-sidebar .v7-memo-card{border:1px solid #e4ecee!important;padding:20px!important}
+.zh-sidebar .v7-memo-card #memoCount{color:#9daeb5;font-size:11px;font-weight:450}
+.zh-sidebar .v7-memo-card #memoList{margin-top:13px}
+.zh-sidebar .v7-memo-card .memo-empty{padding:13px 8px}
+.zh-sidebar .v7-memo-card .add-blank{margin-top:10px;justify-content:center;font-size:11px}
+.zh-sidebar .fortune-collapsible{display:block;overflow:hidden}
+.fortune-collapsible summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;padding:17px 19px}
+.fortune-collapsible summary::-webkit-details-marker{display:none}
+.fortune-collapsible summary b{display:block;margin-top:4px;font-size:14px;color:#4a626e}
+.fortune-collapsible summary small{display:block;margin-top:6px;color:#93a3a8;font-size:10px}
+.expand-toggle{background:#f1f5f5;color:#68838d;padding:6px 9px;font-size:10px;border-radius:7px;white-space:nowrap}
+.fortune-collapsible[open] .expand-toggle{background:#e9f1ef}
+.zh-sidebar .fortune-card{box-shadow:none;border:0;border-top:1px solid #edf1f1;border-radius:0;padding:17px 18px 19px;background:#fff}
+.zh-sidebar .fortune-card .fortune-top strong{font-size:14px;color:#4a626e}
+.zh-sidebar .fortune-block.avoid{background:#f7f7f9;border-color:#ececf0}
+.zh-sidebar .fortune-mini-head,.zh-sidebar .avoid .fortune-mini-head{color:#6d838a}
+.zh-sidebar .fortune-mini-head span{background:#e2ece8;color:#437760}
+.zh-sidebar .avoid .fortune-mini-head span{background:#e8eaf0;color:#797e97}
+.zh-sidebar .avoid .huangli-keywords span{background:#fff;color:#7b8194;border-color:#e9e9ed}
+.events-modal{max-width:780px!important;padding:27px 28px!important}
+.events-modal .modal-head{align-items:start}
+.events-modal #eventsTitle{margin:6px 0 0;font-size:24px;letter-spacing:-.4px;color:#304952}
+.event-tools{display:flex;gap:9px;margin-top:16px}
+.event-tools input,.event-tools select{background:#f8fafb;border:1px solid #e0e9ed;border-radius:10px;padding:11px;color:#47606c;min-width:0}
+.event-tools input{flex:1}
+.event-tools select{width:147px;font-size:12px}
+.event-filters{display:flex;gap:7px;overflow-x:auto;margin:14px 0 12px;padding-bottom:6px}
+.filter-chip{border:1px solid #e2e9ec;border-radius:30px;background:white;font-size:11px;color:#728991;padding:7px 11px;white-space:nowrap}
+.filter-chip.active{background:#496d7b;border-color:#496d7b;color:#fff}
+.event-count{font-size:11px;color:#94a5ab;margin-bottom:7px}
+.all-event-list{display:grid;gap:9px}
+.full-event{border:1px solid #e6eef0;background:#fff;border-radius:14px;padding:15px;display:grid;grid-template-columns:43px minmax(0,1fr);gap:11px}
+.full-event .activity-icon{height:43px;width:43px;font-size:18px}
+.full-event h4{font-size:14px;line-height:1.45;margin:1px 0 8px;color:#304b54}
+.full-event .event-meta{font-size:11px;color:#8a9ca3;line-height:1.7}
+.full-event .event-badges{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:6px}
+.full-event .event-badges span{font-size:10px;border-radius:30px;padding:3px 8px;background:#eff5f5;color:#64818e}
+.full-event .event-badges span.verified{background:#e8f3ed;color:#4a856c}
+.full-event .event-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.full-event .event-actions a,.full-event .event-actions button{font-size:11px;border:1px solid #dae7eb;border-radius:8px;padding:7px 10px;background:#fff;color:#467786;text-decoration:none}
+.full-event .event-actions button{background:#eaf3f4}
+.full-event .event-actions button:hover,.full-event .event-actions a:hover{background:#dcecef}
+.events-reference{color:#91a2a8;font-size:10px;line-height:1.7;padding-top:13px}
+.empty-event{padding:27px 12px;text-align:center;color:#94a7aa;font-size:12px;background:#f8fafb;border-radius:10px}
+@media(max-width:1220px){.main-layout{grid-template-columns:minmax(0,1fr) 365px;gap:15px}.zh-sidebar .inspiration-card h3{font-size:21px}}
+@media(max-width:920px){.main-layout{grid-template-columns:minmax(0,1fr)}.detail-panel.zh-sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:13px}.zh-sidebar .side-overview,.zh-sidebar .v7-joy-card{grid-column:1/-1}.zh-sidebar .fortune-collapsible{grid-column:1/-1}.zh-sidebar .side-activity-card,.zh-sidebar .v7-memo-card{grid-column:auto}.events-modal{max-width:720px!important}}
+@media(max-width:600px){.detail-panel.zh-sidebar{display:flex;align-items:stretch;gap:12px}.zh-sidebar .side-overview{grid-template-columns:minmax(0,1fr) 105px;padding:17px}.zh-sidebar .side-date{font-size:22px}.zh-sidebar .inspiration-card.v7-joy-card{padding:20px 17px}.zh-sidebar .side-activity-card,.zh-sidebar .memo-card.v7-memo-card{padding:17px!important}.events-modal{padding:19px 15px!important}.event-tools{flex-wrap:wrap}.event-tools select{width:100%}.full-event{padding:12px;grid-template-columns:34px minmax(0,1fr);gap:8px}.full-event .activity-icon{height:34px;width:34px;font-size:16px}.micro-intro-note{display:none}}
+
+
+/* V8 在线版：状态说明、官方资讯列表、本机备份 */
+.personal-tools-btn{border:1px solid #dde7e6;background:#fff;border-radius:99px;padding:8px 12px;color:#4b6568;font-size:12px;white-space:nowrap}.personal-tools-btn:hover{background:#f0f7f7}
+.official-feed{margin-top:22px;background:#f7fafb;border:1px solid #e2ecee;border-radius:15px;padding:16px}.feed-head{display:flex;align-items:center;justify-content:space-between;gap:9px}.feed-head h4{font-size:15px;font-weight:700;margin:5px 0 0;color:#304d53}.feed-badge{font-size:10px;color:#24766e;background:#e1f1ed;padding:3px 8px;border-radius:22px;font-weight:500}.feed-time{font-size:10px;color:#789094}.feed-explain{margin:9px 0 12px;color:#788c90;font-size:11px;line-height:1.8}.feed-list{display:grid;gap:8px;max-height:390px;overflow:auto}.feed-item{display:block;text-decoration:none;color:#334d52;background:white;border:1px solid #e9f0ef;padding:10px 12px;border-radius:10px;transition:.15s}.feed-item:hover{border-color:#afcbca;background:#fcffff}.feed-item strong{display:block;font-size:12px;line-height:1.5;font-weight:650}.feed-item small{font-size:10px;color:#899a9c}.feed-empty{color:#8d9da0;font-size:12px}.pref-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pref-backup{border-top:1px solid #e8eef0;margin-top:19px;padding-top:16px}.pref-backup h4{margin:0;font-size:14px}.pref-backup p{font-size:11px;color:#89969a}.backup-buttons{display:flex;gap:10px}.backup-buttons button{border:1px solid #d6e5e5;background:white;border-radius:10px;padding:10px 14px;color:#426366;font-weight:600}.backup-buttons button:hover{background:#f3f8f8}.activity-footnote{line-height:1.7}
+@media(max-width:560px){.personal-tools-btn{font-size:11px;padding:7px 8px}.pref-fields{grid-template-columns:1fr}.feed-head{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="topbar">
+  <div class="brand"><div class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4v24M4 16h24M8 8l16 16M24 8 8 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="16" r="5.5" fill="currentColor"/></svg></div><div class="brand-words"><strong>知时</strong><small>SHI · YOUR DAY</small></div></div>
+  <nav class="topcenter" aria-label="主导航"><button class="active" type="button" id="navCalendar">月历 · 日常</button><button type="button" id="navInspo">每月小期待</button><button type="button" id="navHolidays">节假日安排</button><button type="button" id="navEvents">上海活动</button></nav>
+  <div class="toolbar"><button class="personal-tools-btn" id="prefsBtn" type="button" title="本机资料与备份">⚙ 我的设置</button><div class="city-tag"><svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.5"/></svg>上海 · 中国</div><button class="circle-btn" title="查看功能说明与数据来源" aria-label="查看功能说明与数据来源" id="aboutBtn"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v6M12 7.5v.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+</header>
+<section class="micro-intro" aria-label="本月生活主题"><div class="micro-intro-title"><span class="micro-dot"></span><span>上海 · 节气与城市生活</span><span class="micro-divider">/</span><span>每天一件值得期待的事</span></div><div class="micro-intro-note">工作日轻松体验 · 假日探索上海 <span>✳</span></div></section>
+<div class="main-layout">
+  <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+  <div class="view-legend"><span class="legend-item"><span class="state-strip-sample rest"></span>周末 / 节假日休息</span><span class="legend-item"><span class="state-strip-sample work"></span>调休补班</span><span class="legend-item"><span class="sample-dot"></span>个人备忘</span><span class="legend-item"><span style="color:#b88951">✳</span>节气</span><span class="legend-right">点击任意日期 · 查看小期待与传统黄历</span></div>
+  <div class="weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div class="month-grid" id="monthGrid" role="grid" aria-label="月历"></div><div class="month-foot"><span id="footerStats">本月 · 每天都有值得期待的小事</span><button class="foot-link" id="monthIdeasBtn">查看本月全部生活提案 ↗</button></div>
+  </main>
+  <aside class="detail-panel zh-sidebar" aria-label="所选日期生活助手">
+    <section class="side-overview">
+      <div class="day-overview-left">
+        <div class="side-label">MY DAY <span>·</span> 上海生活提案</div>
+        <div class="side-date" id="detailDate">10月14日 · 星期三</div>
+        <div class="side-lunar" id="detailLunar">农历 · 节气</div>
+        <div class="day-status" id="dayStatus"></div>
+      </div>
+      <div class="weather-module" aria-live="polite">
+        <div class="weather-mark" id="weatherIcon">☁</div>
+        <div class="weather-temp" id="weatherTemp">--°</div>
+        <div class="weather-label" id="weatherLabel">天气加载中</div>
+        <div class="weather-rain" id="weatherRain">上海天气 · Open-Meteo</div>
+      </div>
+      <div class="weather-advice" id="weatherAdvice">获取所选日期的预报后，推荐会考虑雨天与晴天。天气数据由 Open-Meteo 提供。</div>
+    </section>
+    <section class="inspiration-card v7-joy-card" aria-label="今天的生活建议">
+      <div class="v7-card-heading"><div class="v7-eyebrow">✳ TODAY'S LITTLE JOY</div><span class="v7-label">每日小期待</span></div>
+      <div class="idea-scope" id="ideaScope">工作日 · 下班后约1小时</div>
+      <h3 id="ideaTitle">给今天留一件值得期待的事</h3>
+      <p id="ideaDesc">为这一天选择一件有趣的事。</p>
+      <div class="inspiration-info"><span id="ideaDuration">60分钟</span><span id="ideaPlace">上海</span><span id="ideaType">生活灵感</span></div>
+      <div class="idea-source" id="ideaSource" aria-live="polite"></div>
+      <div class="inspiration-actions"><button class="pill-action" id="saveInspo">＋ 加入我的日历</button><button class="small-arrow" id="otherIdeas">换一件 ↻</button></div>
+      <div class="also-try"><div class="also-try-title">也可以试试 <span>· 点击切换</span></div><div id="ideaAlternatives" class="also-try-list"></div></div>
+    </section>
+    <section class="side-activity-card" aria-label="上海近期真实活动">
+      <div class="v7-section-head"><div><div class="v7-eyebrow">EXPLORE SHANGHAI</div><h4>上海近期可关注 <span class="mini-live-dot"></span></h4></div><button id="moreEvents" type="button">全部活动 ↗</button></div>
+      <div class="activity-time-tip" id="eventTimeTip">根据所选日期展示仍可安排的活动</div>
+      <div class="activity-mini-list" id="rightEvents"></div>
+      <div class="activity-footnote" id="eventsFreshness">活动库正在读取 · 具体场次及购票以官方为准</div>
+    </section>
+    <section class="memo-card v7-memo-card">
+      <div class="v7-section-head"><div><div class="v7-eyebrow">MY PLANS</div><h4>这一天的安排 <span id="memoCount"></span></h4></div><button id="addMemoTop" type="button">＋ 添加</button></div>
+      <div id="memoList"></div><button class="add-blank" id="addMemoBlank">＋ 记录一个待办或小期待</button>
+    </section>
+    <details class="fortune-collapsible" id="fortuneCollapse">
+      <summary><span><span class="v7-eyebrow">TRADITIONAL ALMANAC</span><b>☯ 今日黄历宜忌</b><small id="compactFortune">所选日期 · 传统民俗参考</small></span><span class="expand-toggle">查看详情 ▾</span></summary>
+      <section class="fortune-card" aria-label="传统黄历宜忌">
+        <div class="fortune-top"><strong>传统择日 · 宜忌</strong><span class="fortune-lock" id="fortuneBadge">择日参考</span></div>
+        <div class="huangli-sub"><span id="fortuneDayStem">干支</span><span class="huangli-sep">·</span><span id="fortuneJianchu">建除</span><span class="huangli-sep">·</span><span id="fortuneClash">冲煞</span></div>
+        <div class="fortune-split"><div class="fortune-block good"><div class="fortune-mini-head"><span>宜</span> 宜行之事</div><div class="huangli-keywords" id="fortuneGood"></div></div><div class="fortune-block avoid"><div class="fortune-mini-head"><span>忌</span> 慎行之事</div><div class="huangli-keywords" id="fortuneAvoid"></div></div></div>
+        <p class="fortune-foot" id="fortuneFoot">传统民俗参考</p><a id="huangliSource" class="huangli-source" target="_blank" rel="noopener noreferrer">查看黄历资料出处 ↗</a>
+        <div class="personal-bazi"><div class="personal-bazi-title"><span>个人八字</span><em>个人资料仅在本机保存</em></div>
+          <div class="birth-line">尚未设置个人资料</div>
+          <div class="pillar-row"><span><small>年柱</small><b>—</b></span><span><small>月柱</small><b>—</b></span><span><small>日柱</small><b>—</b></span><span class="missing"><small>时柱</small><b>待补充</b></span></div>
+          <p class="personal-bazi-note">黄历宜忌属于传统通用择日文化，与个人四柱命理不同，均不具备科学预测能力。</p>
+        </div>
+      </section>
+    </details>
+  </aside>
+</div>
+<footer class="bottom-note"><span>知时 · 上海生活日历 · 在线版 &nbsp;|&nbsp; 时间使用北京时间（UTC+8） · 农历以中国历法显示</span><span>2026 法定假期以<a href="https://www.gov.cn/zhengce/zhengceku/202511/content_7047091.htm" target="_blank" rel="noopener">国务院办公厅公告</a>为准 · <a href="https://whlyj.sh.gov.cn/cysc/20260904/416f9aea667449759fcceeb7d4457f20.html" target="_blank" rel="noopener">上海文旅活动参考</a></span><span>天气资料：<a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>（CC BY 4.0）</span></footer>
+</div>
+<div class="overlay" id="eventsOverlay" aria-hidden="true"><div class="modal events-modal" role="dialog" aria-modal="true" aria-labelledby="eventsTitle">
+  <div class="modal-head"><div><div class="v7-eyebrow">SHANGHAI CITY GUIDE</div><h3 id="eventsTitle">上海活动日历</h3></div><button class="close" data-close="eventsOverlay" aria-label="关闭">×</button></div>
+  <p class="modal-intro">按所选日期筛选已录入活动；另有定时获取的上海官方资讯线索和常设景点入口。具体场次以主办方公布为准。</p>
+  <div class="event-tools"><input id="eventSearch" type="search" placeholder="搜索活动 / 地点 / 关键词" aria-label="搜索上海活动"/><select id="eventPeriod" aria-label="活动时间"><option value="upcoming">从所选日期起</option><option value="month">所选月份</option><option value="all">全部已录入活动</option></select></div>
+  <div class="event-filters" id="eventFilters"></div><div id="eventsResultCount" class="event-count"></div><div id="allEvents" class="all-event-list"></div>
+  <section class="official-feed"><div class="feed-head"><div><div class="v7-eyebrow">OFFICIAL NEWS WATCH</div><h4>上海官方活动资讯 <span class="feed-badge">定时更新</span></h4></div><span id="feedChecked" class="feed-time">尚未更新</span></div><p class="feed-explain">自动读取上海市文旅局公开资讯。它们是待核实的活动线索，不等于已经确认的具体场次；点开原文确认日期和预约信息。</p><div id="officialLeads" class="feed-list"><p class="feed-empty">正在载入官方资讯…</p></div></section><div class="events-reference" id="eventsStatus">已核对活动来自独立活动库；临时改期、取消和票务请以主办方为准。自动资讯为线索，不作为已确认场次。</div>
+</div></div>
+<div class="overlay" id="memoOverlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="memoModalTitle"><div class="modal-head"><h3 id="memoModalTitle">为这一天留下点什么</h3><button class="close" data-close="memoOverlay" aria-label="关闭">×</button></div><p class="modal-intro" id="memoModalDate">2026年10月12日</p><form id="memoForm"><label class="form-label" for="memoName">备忘内容</label><input id="memoName" class="text-input" maxlength="80" placeholder="例如：傍晚去闻一闻桂花香" required><label class="form-label" for="memoDetail">补充说明（可选）</label><textarea id="memoDetail" class="text-area" maxlength="320" placeholder="想去的地方、想记住的话……"></textarea><label class="form-label" for="memoTime">时间（可选）</label><input id="memoTime" class="text-input" type="time"><label class="form-label">颜色分类</label><div class="colors" id="colorChoices"></div><button type="submit" class="submit">保存这份备忘</button></form></div></div>
+<div class="overlay" id="infoOverlay" aria-hidden="true"><div class="modal large" role="dialog" aria-modal="true" aria-labelledby="infoTitle"><div class="modal-head"><h3 id="infoTitle">节假日安排</h3><button class="close" data-close="infoOverlay" aria-label="关闭">×</button></div><p class="modal-intro" id="infoIntro"></p><div id="infoContent"></div></div></div>
+<div class="overlay" id="prefsOverlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="prefsTitle"><div class="modal-head"><h3 id="prefsTitle">个人设置与数据备份</h3><button class="close" data-close="prefsOverlay" aria-label="关闭">×</button></div><p class="modal-intro">生日与备忘仅保存在当前浏览器，不会随公开网页上传。跨设备同步尚未启用。</p><label class="form-label" for="myBirthday">公历生日（可选）</label><input id="myBirthday" class="text-input" type="date"><div class="pref-fields"><div><label class="form-label" for="myLunarMonth">农历生日月份（可选）</label><select id="myLunarMonth" class="text-input"><option value="">不设置</option><option>正月</option><option>二月</option><option>三月</option><option>四月</option><option>五月</option><option>六月</option><option>七月</option><option>八月</option><option>九月</option><option>十月</option><option>冬月</option><option>腊月</option></select></div><div><label class="form-label" for="myLunarDay">农历日期</label><input id="myLunarDay" class="text-input" type="number" min="1" max="30" placeholder="1 - 30"></div></div><button class="submit" id="savePrefs" type="button">保存到本机</button><div class="pref-backup"><h4>备忘备份</h4><p>定期导出 JSON 文件，可以在更换设备后导入。覆盖导入前建议先备份。</p><div class="backup-buttons"><button type="button" id="exportData">↓ 导出备忘</button><button type="button" id="importData">↑ 导入备忘</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite">已保存</div>
+<script>
+'use strict';
+const LS_KEY='zhishi-shanghai-calendar-v2';
+const PROFILE_KEY='zhishi-shanghai-profile-v1';
+let profile={birthday:'',lunarMonth:'',lunarDay:''};try{profile={...profile,...JSON.parse(localStorage.getItem(PROFILE_KEY)||'{}')}}catch(e){}
+const nowShanghai=()=>{const parts=new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Shanghai'}).formatToParts(new Date());const get=n=>parts.find(p=>p.type===n).value;return `${get('year')}-${get('month')}-${get('day')}`;};
+const todayISO=nowShanghai();
+const pad=n=>String(n).padStart(2,'0');
+const iso=(y,m,d)=>`${y}-${pad(m)}-${pad(d)}`;
+const parseISO=s=>{const [y,m,d]=s.split('-').map(Number);return {y,m,d}};
+const dateObj=s=>new Date(`${s}T12:00:00+08:00`);
+const weekday=s=>['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][dateObj(s).getUTCDay()];
+// 上海时区的公历某日正午换算为 UTC 时是 04:00，星期计算不受时区跨日影响。
+const mondayIndex=s=>(dateObj(s).getUTCDay()+6)%7;
+const chinese=new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{year:'numeric',month:'long',day:'numeric',timeZone:'Asia/Shanghai'});
+const numerals=['','一','二','三','四','五','六','七','八','九','十'];
+function lunarDay(n){if(n<=10)return '初'+numerals[n];if(n<20)return '十'+numerals[n-10];if(n===20)return '二十';if(n<30)return '廿'+numerals[n-20];return '三十';}
+function lunarInfo(s){const p=chinese.formatToParts(dateObj(s));const val=k=>(p.find(x=>x.type===k)||{}).value||'';const month=val('month'),day=Number(val('day'));return {yearName:val('yearName'),month,day,label:day===1?month:lunarDay(day),full:month+lunarDay(day)}}
+// 2026 年二十四节气，日期按北京时间核对。其他年份使用简化历算，仅供 Demo 浏览参考。
+const termNames=['小寒','大寒','立春','雨水','惊蛰','春分','清明','谷雨','立夏','小满','芒种','夏至','小暑','大暑','立秋','处暑','白露','秋分','寒露','霜降','立冬','小雪','大雪','冬至'];
+const term2026=['01-05','01-20','02-04','02-18','03-05','03-20','04-05','04-20','05-05','05-21','06-05','06-21','07-07','07-23','08-07','08-23','09-07','09-23','10-08','10-23','11-07','11-22','12-07','12-22'];
+const termOffset=[0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758];
+function estimatedTermDate(y,n){const dt=new Date(31556925974.7*(y-1900)+termOffset[n]*60000+Date.UTC(1900,0,6,2,5));return pad(dt.getUTCMonth()+1)+'-'+pad(dt.getUTCDate());}
+const termsByYear={};
+function getTerms(y){if(!termsByYear[y]){const dates=y===2026?term2026:termNames.map((_,n)=>estimatedTermDate(y,n));termsByYear[y]=Object.fromEntries(dates.map((md,i)=>[`${y}-${md}`,termNames[i]]));}return termsByYear[y];}
+// 国办发明电〔2025〕7号：2026 年全国统一放假调休。法定节日之外的通常周末不会标“休”。
+const holidayGroups=[
+{name:'元旦',start:'2026-01-01',end:'2026-01-03',work:['2026-01-04'],desc:'1月1日至3日放假；1月4日（周日）上班'},
+{name:'春节',start:'2026-02-15',end:'2026-02-23',work:['2026-02-14','2026-02-28'],desc:'2月15日至23日放假；2月14日、28日（周六）上班'},
+{name:'清明节',start:'2026-04-04',end:'2026-04-06',work:[],desc:'4月4日至6日放假，无额外调休补班'},
+{name:'劳动节',start:'2026-05-01',end:'2026-05-05',work:['2026-05-09'],desc:'5月1日至5日放假；5月9日（周六）上班'},
+{name:'端午节',start:'2026-06-19',end:'2026-06-21',work:[],desc:'6月19日至21日放假，无额外调休补班'},
+{name:'中秋节',start:'2026-09-25',end:'2026-09-27',work:[],desc:'9月25日至27日放假，无额外调休补班'},
+{name:'国庆节',start:'2026-10-01',end:'2026-10-07',work:['2026-09-20','2026-10-10'],desc:'10月1日至7日放假；9月20日（周日）、10月10日（周六）上班'}
+];
+const holidayMap={};function plusDay(s,amount=1){const p=parseISO(s);const d=new Date(Date.UTC(p.y,p.m-1,p.d+amount));return `${d.getUTCFullYear()}-${pad(d.getUTCMonth()+1)}-${pad(d.getUTCDate())}`;}
+for(const group of holidayGroups){for(let cur=group.start;cur<=group.end;cur=plusDay(cur)){holidayMap[cur]={type:'off',name:group.name};}for(const day of group.work)holidayMap[day]={type:'work',name:group.name};}
+const commemorations={'01-01':'元旦','02-14':'情人节','03-08':'妇女节','03-12':'植树节','04-22':'世界地球日','05-04':'青年节','05-20':'小满时光','06-01':'儿童节','09-10':'教师节','10-01':'国庆节','10-16':'世界粮食日','10-24':'联合国日','10-31':'万圣夜','12-24':'平安夜','12-25':'圣诞节'};
+function festivalFor(s,l){const key=l.month.replace('闰','')+'-'+l.day;const lunarFest={'正月-1':'春节','正月-15':'元宵节','五月-5':'端午节','七月-7':'七夕','八月-15':'中秋节','九月-9':'重阳节','腊月-8':'腊八节'};if(!l.month.startsWith('闰')&&lunarFest[key])return lunarFest[key];return commemorations[s.slice(5)]||'';}
+// V6 生活提案：以中国 2026 放假安排区分真实休息日；2026年10月逐日策划。
+// 节庆项目只在官网公布的日期范围内推荐，其他月份用有季节感的稳定目的地；花期以天气为准。
+const SHANGHAI_EVENT_SOURCE='https://whlyj.sh.gov.cn/cysc/20260904/416f9aea667449759fcceeb7d4457f20.html';
+const PLANTS_SOURCE='https://lhsr.sh.gov.cn/gyhd/20260930/852f540b-eae5-415f-81a6-c28995a5eca9.html';
+function plan(title,desc,type,place,duration,source='',sourceLabel='',tip=''){return {title,desc,type,place,duration,source,sourceLabel,tip};}
+const P=(title,desc,type,place,duration,source='',tip='')=>plan(title,desc,type,place,duration,source,source?'上海市文旅局 · 官方活动清单':'',tip);
+const october2026=[
+ P('到上海影视乐园赴一场海派旗袍之约','国庆放慢脚步，去影视乐园看看老上海街景与旗袍文化主题活动，留半天给电影感的街道。','国庆 · 海派文化','上海影视乐园 · 松江','约 4–5 小时',SHANGHAI_EVENT_SOURCE,'活动公布为10月1–7日；出发前核对门票与当日演出。'),
+ P('去辰山植物园收集秋天的颜色','去辰山自然生活季走走，看看当季花果与植物展陈；不必赶场，把午后留给大自然。','国庆 · 秋日花园','辰山植物园 · 松江','约 4–5 小时',SHANGHAI_EVENT_SOURCE,'自然生活季公布为10月1–7日，需留意票务。'),
+ P('到北外滩过一场城市假日','趁假期去北外滩滨江，看江景、吹风，也可以关注正在举办的城市沙滩嘉年华。','国庆 · 滨江活动','北外滩滨江 · 虹口','约 3–4 小时',SHANGHAI_EVENT_SOURCE,'城市沙滩嘉年华公布为10月1–14日，部分项目须购票。'),
+ P('在朱家角过半天江南慢生活','沿河走石桥、逛巷子，感受水乡秋日；有兴趣可看看同期的江南文化季内容。','国庆 · 江南古镇','朱家角古镇 · 青浦','约 4–6 小时',SHANGHAI_EVENT_SOURCE,'文化季公布为9月28日至10月28日。'),
+ P('走进大观园的红楼秋色','国庆找一天到青浦大观园，看园林景致与传统文化主题活动，适合完整安排一日出游。','国庆 · 文化游园','上海大观园 · 青浦','约 5–6 小时',SHANGHAI_EVENT_SOURCE,'公布的红楼主题活动日期为10月1–6日，需查询票务。'),
+ P('去蟠龙新天地逛一个中式游园','石桥、水岸、小店与传统节庆文化放在同一条路线里，可以吃饭、逛店、慢慢坐一下午。','国庆 · 节庆游园','蟠龙新天地 · 青浦','约 4–5 小时',SHANGHAI_EVENT_SOURCE,'新焺游园公布为9月16日至11月8日。'),
+ P('在假期最后一天看一场秋日植物展','去上海植物园逛秋景，看看桂花与季节性植物；用一场安静的游园给假期收尾。','国庆 · 赏秋','上海植物园 · 徐汇','约 3–4 小时',PLANTS_SOURCE,'上植园艺生活季公布为9月25日至10月11日，花期随天气变化。'),
+ P('寒露，下班后寻一小段桂花香','晚饭前在公司或家附近挑一段林荫路走走，再找家小店喝杯热饮，留一小时给秋天。','节气 · 寒露','公司或家附近的公园','约 50–70 分钟'),
+ P('解锁一家下班路上的新餐馆','找一家一直经过却没进去的小馆，点一道招牌菜，让周五晚饭有一点探索感。','下班 · 城市味道','通勤沿线','约 60–75 分钟'),
+ P('补班结束，安排一场认真吃饭','这天是周六补班，不用跨城区赶行程。下班挑一家想吃的小馆，给自己一点补偿。','补班 · 小奖励','公司附近 / 回家路上','约 60 分钟'),
+ P('上植秋日生活季，赶一场赏秋尾声','去上海植物园看看桂花园、盆景、秋日植物，这是今年公布活动的最后一天。','周末 · 秋日植物','上海植物园 · 徐汇','约 3–4 小时',PLANTS_SOURCE,'活动公布日期截至10月11日；出门前核对园区开放与实时花况。'),
+ P('下班去菜场做一顿上海秋日晚餐','买一点当季蔬菜和栗子，回家煮一锅暖汤或做一份家常菜，比随便吃点更有仪式感。','工作日 · 时令餐桌','家附近菜场＋厨房','约 60–80 分钟'),
+ P('逛一家书店，为十月挑一本书','选一家交通方便的书店，翻翻新书，再带一本喜欢的书回家开启秋夜。','工作日 · 文化生活','公司或住处附近的书店','约 45–70 分钟'),
+ P('给平常的一晚安排一场小型展览','看看附近美术馆、社区文化中心或商场艺术空间有没有小展，选一家下班能到的。','工作日 · 看展','就近文化空间','约 60–90 分钟','','出发前确认当天开放时间与预约要求。'),
+ P('做一次桂花主题的秋日甜品','下班买齐材料，试着做桂花酒酿小圆子或桂花糖水，简单但值得期待。','工作日 · 节气美食','附近超市＋家里','约 60–75 分钟'),
+ P('世界粮食日，认真尝一家本帮小馆','换一家没吃过的本帮菜小店，点一份有上海味道的菜，吃完顺路走走。','节日 · 城市美食','公司附近 / 住处周边','约 60–90 分钟'),
+ P('去远香湖过一个艺术周末','逛逛远香湖周边的艺术月活动，再沿水岸散步，留出完整半天慢慢体验。','周末 · 上海活动','远香湖 · 嘉定','约 4–5 小时',SHANGHAI_EVENT_SOURCE,'远香湖艺术月公布为9月20日至10月20日，具体节目以现场公布为准。'),
+ P('重阳节，去森林公园走一段秋路','重阳登高也可以是亲近自然：和家人朋友到共青森林公园散步，顺便向长辈送上问候。','传统节日 · 重阳','共青森林公园 · 杨浦','约 3–5 小时'),
+ P('下班给自己挑一小束应季花','在通勤沿线找家花店，认识两三种应季花材，带一束回家换换房间的气息。','工作日 · 花与生活','下班顺路的花店','约 45–60 分钟'),
+ P('探索一碗属于秋天的上海味道','在附近找一家面馆或老字号小店，点一份之前没试过的浇头，饭后慢慢回家。','工作日 · 寻味','通勤沿线 / 住处周边','约 60 分钟'),
+ P('走一条属于自己的秋日夜色路线','挑一条熟悉、安全且有人气的街道，拍下路灯、店招和季节变化，回家选出三张照片。','工作日 · 街头摄影','家附近的街区','约 50–70 分钟'),
+ P('提前一站下车，找一处秋夜小店','下班提前一站下车，逛一段熟悉街区，顺便买一份糖炒栗子或热饮。','工作日 · 小探索','通勤地铁沿线','约 45–60 分钟'),
+ P('霜降，做一顿有秋天气息的晚餐','霜降适合以一锅热汤迎接深秋。去菜场买点新鲜食材，再为自己做一道热菜。','节气 · 霜降','下班顺路＋家里','约 60–80 分钟'),
+ P('去蟠龙新天地过一次中式生活节','逛水乡街巷、看园林与文化市集，顺着节庆氛围安排一段完整的周末。','周末 · 上海活动','蟠龙新天地 · 青浦','约 4–5 小时',SHANGHAI_EVENT_SOURCE,'新焺游园公布至11月8日，具体体验以主办方通知为准。'),
+ P('在共青森林公园等秋色渐浓','留半天给树林、草坪与湖边步道，观察落叶和阳光。具体变色情况要看当年天气。','周末 · 城市森林','共青森林公园 · 杨浦','约 3–4 小时'),
+ P('工作日也可以认真看一场电影','挑离家不远的影院，选一部想看的片子。提前看场次，给周一晚上安排一段真正的休闲。','工作日 · 夜间文化','附近影院','约 90–120 分钟'),
+ P('找家小馆吃一顿秋日热锅','下班约朋友或者自己出门，吃一顿热乎的火锅、砂锅或汤面，把秋天吃进晚饭里。','工作日 · 夜食','公司 / 家附近','约 60–90 分钟'),
+ P('用一小时走进附近的艺术空间','看看就近商场公共展陈、社区图书馆或文化空间，慢慢看一点设计、插画或摄影。','工作日 · 轻看展','家附近的文化空间','约 50–80 分钟','','开放时间与展期需提前核实。'),
+ P('换一条散步路线，顺路探一家咖啡店','下班走一段平常少走的街区，再去一家没尝试过的小店坐坐，给生活加一点新鲜感。','工作日 · 街区漫游','家附近 / 通勤沿线','约 60–80 分钟'),
+ P('万圣节前夜，解锁一份南瓜限定','下班看看附近甜品店或咖啡馆有没有南瓜、肉桂主题的季节限定，顺便拍张秋日照片。','节日氛围 · 南瓜季','附近咖啡馆 / 甜品店','约 45–70 分钟','','季节限定商品以门店实际供应为准。'),
+ P('给万圣夜安排一场上海主题夜游','想热闹就选主题乐园、夜场展览或节日市集，想轻松就去有氛围的商圈走走。','周末 · 万圣主题','上海市内主题场馆 / 商圈','约 3–5 小时','','活动场次、售票与开放时间请提前在场馆官方渠道核对。')
+];
+// 12个月上海时令库：休息日去真正的目的地，工作日安排不费力却有内容的1小时体验。
+const seasonalPlans={
+1:{work:[['挑个工作日晚餐吃一锅热汤','下班在附近找一家砂锅或热汤店，慢慢把身体暖起来。','冬日食味','通勤沿线','约 60 分钟'],['夜里看一次冬季城市灯光','沿家附近有灯光的街道走走，再去一家热饮店坐半小时。','冬日街头','家附近','约 50–70 分钟']],rest:[['去豫园感受冬日老城厢','逛九曲桥和老城厢街巷，找家小馆尝尝上海冬季点心。','上海经典','豫园 · 黄浦','约 3–5 小时'],['到上海博物馆过一个文化下午','挑一个感兴趣的馆藏主题，慢慢看展，出发前核对预约信息。','冬日看展','上海博物馆','约 3–4 小时']]},
+2:{work:[['挑一盏灯，走一段夜晚老街','到附近商圈或街巷寻找节日灯饰，顺便尝一份热乎的点心。','年味散步','家附近','约 60 分钟'],['学做一份节令汤圆','下班买好材料，在家煮一次汤圆或小点心。','节令食味','附近超市＋家里','约 50–70 分钟']],rest:[['走进豫园，找一点上海年味','到老城厢看建筑、尝小吃，具体灯会举办与否需查当年公告。','城市年味','豫园 · 黄浦','约 4–5 小时'],['过一个上海滨江冬日','午后到徐汇滨江散步看展，沿途找一家咖啡馆停一停。','滨江漫游','徐汇滨江','约 3–4 小时']]},
+3:{work:[['找一株正在开花的春树','下班绕一小段街区，记录早春第一朵花；实际开花以天气为准。','春日花讯','家附近的街心绿地','约 45–60 分钟'],['春天给晚餐加一点鲜','找家附近的小馆尝春笋或时令蔬菜，吃完走一会儿。','春日鲜味','家附近','约 60–75 分钟']],rest:[['去顾村公园寻找春樱','带上相机走一段樱花步道；花期、活动与预约要看当年公告。','春日赏花','顾村公园 · 宝山','约 4–5 小时'],['春天走一走苏州河步道','挑一段苏州河岸线，逛桥、老建筑与河边公园。','上海漫游','苏州河沿线','约 3–4 小时']]},
+4:{work:[['工作日安排一场春茶与街头漫步','下班找间茶饮店小坐，再走一段开花的街道。','春日散步','通勤沿线','约 60 分钟'],['在菜场找一种新鲜春菜','挑一种当季蔬菜带回家，做一顿简单的春日家常菜。','春日餐桌','家附近','约 60–80 分钟']],rest:[['到上海植物园看春色','走走花圃、树林与主题园区，具体盛花期随天气变化。','春日花景','上海植物园 · 徐汇','约 3–4 小时'],['到共青森林公园散步野餐','带一些简单食物，在草坪或树林里过完整的春日午后。','自然体验','共青森林公园 · 杨浦','约 4–5 小时']]},
+5:{work:[['解锁一份初夏夜市小吃','下班找一条有烟火气的街道，认真选一份小吃，走完再回家。','初夏寻味','公司附近 / 住处周边','约 60–75 分钟'],['给自己安排一段沿河晚风','下班选附近一段河岸或街心绿地散步，放松一小时。','初夏夜风','就近滨水步道','约 45–60 分钟']],rest:[['去世纪公园过一个初夏周末','看看绿地与水景，坐一会儿，完成一场轻松的城市野餐。','城市公园','世纪公园 · 浦东','约 3–5 小时'],['沿武康路看上海街区与建筑','挑一段衡复风貌区步行路线，逛书店和特色街区。','上海街景','武康路 / 衡复风貌区','约 3–4 小时']]},
+6:{work:[['夏天的第一碗清凉甜品','找间便利的甜品店，试试绿豆汤、冰粉或应季水果甜品。','夏日滋味','下班顺路','约 45–65 分钟'],['雨后去看街道的绿色','如果天气合适，出门找一段树荫下的小路，拍下初夏的绿。','雨后散步','家附近','约 45–60 分钟']],rest:[['端午时节逛江南古镇','去七宝或朱家角感受水乡与时令点心，节庆节目需核实。','民俗体验','七宝古镇 / 朱家角','约 3–5 小时'],['去上海自然博物馆消磨半天','选一个喜欢的展区，边看边拍照，提前核实预约。','城市看展','上海自然博物馆 · 静安','约 3–4 小时']]},
+7:{work:[['晚饭后尝一次夏日冰品','下班找一家附近冰店，挑款没试过的口味。','夏夜味道','附近商圈','约 45–60 分钟'],['等一场城市的蓝调时刻','选择安全的开放街区散步，留意傍晚到入夜的蓝色天空。','夏夜摄影','家附近','约 50–70 分钟']],rest:[['去滴水湖吹一场夏风','选择天气舒适的日子沿湖散步，注意遮阳防暑。','夏季滨湖','滴水湖 · 临港','约 4–6 小时'],['到上海天文馆认识星空','逛常设展和天文主题空间，须查票务与预约。','夏日室内','上海天文馆 · 临港','约 4–5 小时']]},
+8:{work:[['为自己选一家夏夜小店','下班找间便利的新餐馆尝一顿夜宵，让平常夜晚不一样。','夏夜寻味','家附近','约 60–80 分钟'],['逛一段有空调的夏日书店','下班翻翻新书或杂志，结束一天的忙碌。','夏夜阅读','就近书店','约 50–70 分钟']],rest:[['用半天认识上海的海派艺术','挑上海当期艺术馆展览，看画、设计与当代作品。','周末看展','市内美术馆','约 3–5 小时'],['去黄浦江边看一次城市夜景','傍晚到外滩或北外滩，沿江走走拍张夜景。','城市夜游','外滩 / 北外滩','约 3–4 小时']]},
+9:{work:[['给一顿晚餐加上秋日气息','买一点新鲜当季菜，晚上认真做一顿属于初秋的饭。','时令餐桌','家附近','约 60–80 分钟'],['下班寻找第一缕桂花香','沿家附近公园走一圈，看看树上的花苞是否开始开放。','季节花讯','家附近绿地','约 45–60 分钟']],rest:[['到上海植物园看初秋花草','挑天气舒适的午后看看桂花等应季植物，实际花期以天气为准。','秋季赏花','上海植物园 · 徐汇','约 3–4 小时'],['走一遍老上海石库门街区','挑新天地或田子坊周边慢慢看建筑与街景。','城市建筑','新天地 / 田子坊','约 3–4 小时']]},
+10:{work:[['秋日晚饭后逛一家小馆','找个通勤沿线的小店，吃一顿热乎饭，再走一段秋夜街道。','秋日寻味','通勤沿线','约 60–75 分钟'],['下班为自己做一份桂花小甜','挑桂花酒酿、桂花糖水或时令水果，用一个小时认真准备。','秋日甜品','附近超市＋家里','约 60–75 分钟']],rest:[['去共青森林公园收集秋天','走走林间步道，观察秋日植物与草坪的变化。','秋日森林','共青森林公园 · 杨浦','约 3–5 小时'],['去蟠龙新天地慢慢逛一天','看水乡、逛小店、吃饭，活动是否举办要以当年公布为准。','江南街区','蟠龙新天地 · 青浦','约 3–5 小时']]},
+11:{work:[['买一小袋热栗子去散步','下班找一段熟悉街道，给秋夜安排一份热乎的小吃。','秋夜味道','通勤沿线','约 45–60 分钟'],['认真看一场附近的电影','提前选好场次，到家附近影院看一部想看的片子。','城市夜生活','附近影院','约 90–120 分钟']],rest:[['去武康路看深秋的街树','沿老洋房与街区慢慢走，留意梧桐秋色，实际变色随天气变化。','深秋漫游','武康路 / 衡复风貌区','约 3–4 小时'],['到世纪公园感受落叶季','选一天走走林荫路与草坪，给自己一个深秋下午。','秋日公园','世纪公园 · 浦东','约 3–4 小时']]},
+12:{work:[['下班喝一杯冬日热饮','找一间近处的咖啡或茶饮店，坐一会儿，慢慢整理一天的心情。','冬日温暖','附近小店','约 50–70 分钟'],['冬至做一次汤圆或饺子晚餐','下班买材料回家简单烹饪，给平常夜晚一点节日感。','传统冬食','附近超市＋家里','约 60–80 分钟']],rest:[['到上海博物馆看一次年度展览','选一个感兴趣的主题，把周末留给文化空间；具体展览需核实。','冬日艺术','上海博物馆','约 3–4 小时'],['去外滩看冬夜城市灯光','傍晚沿江走走、拍夜景，冷天做好保暖，周末不必赶。','冬日夜游','外滩 · 黄浦','约 3–4 小时']]}
+};
+function isRest(s){const h=holidayMap[s];return !!(h&&h.type==='off')||((mondayIndex(s)>=5)&&!(h&&h.type==='work'));}
+function scopeName(s){const h=holidayMap[s];if(h&&h.type==='work')return '调休补班 · 下班后可实现';if(h&&h.type==='off')return h.name+'假期 · 可以走远一点';if(mondayIndex(s)>=5)return '周末休息 · 值得一次出门';return '工作日 · 下班后约1小时';}
+const festivalPlans={
+ '春节':[['过一天有上海味道的新年','去豫园及老城厢看看年味、尝点心，活动和票务要以当年公告为准。','春节民俗','豫园 · 黄浦','约 4–5 小时'],['给年夜饭添一道自己喜欢的菜','买好食材，一起准备节日里的那道家常味道。','新春餐桌','家里 / 菜场','约 60–90 分钟']],
+ '元宵节':[['尝一份汤圆，看看城市灯火','下班买份热汤圆，沿家附近亮灯的街区散散步。','传统节日','家附近','约 60 分钟'],['在上海寻找元宵的灯火','白天逛老街、晚上看灯饰，具体灯会须查当年官方信息。','元宵民俗','豫园 / 老城厢','约 4–5 小时']],
+ '端午节':[['给自己准备一次端午味道','下班挑两种口味的粽子，给餐桌一点节气的香气。','端午食俗','附近小店','约 50–65 分钟'],['端午去水乡逛一逛','到朱家角或七宝古镇看看水岸与民俗文化，活动时间提前查询。','端午出游','朱家角 / 七宝','约 4–5 小时']],
+ '七夕':[['下班约一顿认真吃的晚餐','选一家交通方便又喜欢的小馆，两个人或一个人都值得好好对待。','七夕心意','附近餐馆','约 60–90 分钟'],['七夕去江边看一次黄昏','挑一段黄浦江滨江步道，傍晚慢慢走，看城市入夜。','七夕夜游','徐汇滨江 / 北外滩','约 3–4 小时']],
+ '中秋节':[['下班尝一块新口味月饼','找家顺路的老字号，搭一杯茶，给中秋多一点味道。','中秋赏味','就近老字号','约 50–70 分钟'],['中秋夜到黄浦江边赏月','找开阔的江边步道，赏月看天气，提前核对交通及开放信息。','中秋赏月','黄浦江沿岸','约 3–4 小时']],
+ '重阳节':[['重阳这天，带一份点心问候长辈','买份重阳糕或应季点心，抽时间与家人聊聊近况。','重阳心意','下班顺路 / 家里','约 60 分钟'],['重阳去森林公园登高散步','和家人去共青森林公园步行赏秋，享受周末。','重阳秋游','共青森林公园','约 4 小时']]
+};
+const solarTermPlans={
+ '立春':[['做一道迎春的时令菜','下班挑一点新鲜蔬菜，给春天做一顿好吃的。','立春饮食','家里','约 60 分钟'],['去上海植物园寻早春','在花与树枝之间寻找春意，注意实际花期。','节气春游','上海植物园','约 3–4 小时']],
+ '清明':[['清明前后认真尝一份青团','下班顺路挑一家熟悉的点心店，尝一份清明味道。','清明时令','下班顺路','约 50–65 分钟'],['去古镇或公园感受春天','在上海找一段绿意浓的水岸路，给春日留半天。','踏青春游','七宝 / 世纪公园','约 4 小时']],
+ '夏至':[['找一碗爽口的夏日面','晚饭挑一家凉面或汤面小店，给夏至一点仪式感。','夏至味道','下班顺路','约 60 分钟'],['把日落留给黄浦江边','夏至日前后选晴朗的傍晚，去江边看暮色。','夏至日落','徐汇滨江','约 3 小时']],
+ '寒露':[['下班追一段桂花香','找一条公园小径，观察桂花是否盛放，回家喝杯热茶。','寒露赏桂','家附近','约 50–70 分钟'],['去上海植物园寻桂花','秋天适合寻找桂花香气，实际花期视天气而定。','节气秋游','上海植物园','约 3–4 小时']],
+ '霜降':[['做一顿霜降热汤饭','下班买菜回家煮一锅暖汤，把霜降过得有滋味。','霜降时令','家附近＋家里','约 60–75 分钟'],['去森林公园看深秋初色','走一段林间步道，等待上海入秋的树木变色。','霜降赏秋','共青森林公园','约 4 小时']],
+ '冬至':[['包一点饺子或煮份汤圆','下班试做一顿节气晚餐，吃得暖和。','冬至食俗','家里','约 60–80 分钟'],['去老街过一个冬至下午','尝传统点心，走一走城市老街。','冬至民俗','豫园周边','约 3–4 小时']]
+};
+function toIdea(a){if(!Array.isArray(a))return a;return plan(a[0],a[1],a[2],a[3],a[4]);}
+function getIdea(s,variant=0){
+ const {y,m,d}=parseISO(s);const rest=isRest(s);const meta=getCalendarMeta(s);
+ const pool=seasonalPlans[m]||(seasonalPlans[10]);
+ const catalogue=(rest?pool.rest:pool.work).map(toIdea);
+ const special=meta.festival&&festivalPlans[meta.festival]?toIdea(festivalPlans[meta.festival][rest?1:0]):meta.term&&solarTermPlans[meta.term]?toIdea(solarTermPlans[meta.term][rest?1:0]):null;
+ let first=(y===2026&&m===10)?october2026[d-1]:(special||catalogue[(d+m)%catalogue.length]);
+ if(variant===0)return first;
+ const candidates=[...catalogue];
+ if(special&&!candidates.some(x=>x.title===special.title))candidates.unshift(special);
+ const cleaned=candidates.filter(x=>x.title!==first.title);
+ if(!cleaned.length)return first;
+ return cleaned[(d+variant-1)%cleaned.length];
+}
+const ideaVariants={};
+const categoryOptions=[['work','工作','#6497c7'],['life','生活','#e2a16f'],['health','健康','#78a889'],['family','纪念日','#c98dad'],['fun','兴趣','#a995ce'],['important','重要事项','#d87972']];
+const catObject=Object.fromEntries(categoryOptions.map(([id,name,color])=>[id,{name,color}]));
+let memos=[];try{const existing=localStorage.getItem(LS_KEY),legacy=localStorage.getItem('zhishi-shanghai-calendar-v1');const v=JSON.parse(existing!==null?existing:(legacy||'[]'));memos=Array.isArray(v)?v:[]}catch(e){memos=[];}
+let selectedISO=todayISO,displayYear=Number(selectedISO.slice(0,4)),displayMonth=Number(selectedISO.slice(5,7)),chosenCategory='life',memoPendingTitle='',memoPendingDetail='';
+const $=id=>document.getElementById(id);
+const safeText=s=>String(s==null?'':s);
+function saveMemos(){try{localStorage.setItem(LS_KEY,JSON.stringify(memos));return true}catch(e){showToast('浏览器无法本地保存，请检查隐私模式');return false}}
+function showToast(s){const el=$('toast');el.textContent=s;el.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.remove('show'),2500)}
+function getCalendarMeta(s){const l=lunarInfo(s),term=getTerms(parseISO(s).y)[s]||'',holiday=holidayMap[s]||null,festival=festivalFor(s,l);const {m,d}=parseISO(s);const solarBirth=Boolean(profile.birthday&&s.slice(5)===profile.birthday.slice(5));const lunarBirth=Boolean(profile.lunarMonth&&profile.lunarDay&&l.month===profile.lunarMonth&&l.day===Number(profile.lunarDay));return {l,term,holiday,festival,solarBirth,lunarBirth}};
+function getPeriodTerm(s){const y=Number(s.slice(0,4));let all=Object.entries({...getTerms(y-1),...getTerms(y)}).sort((a,b)=>a[0].localeCompare(b[0]));let last='冬至';for(const [date,name]of all){if(date<=s)last=name;else break;}return last;}
+// 日干支按 2026-10-12 己未日作六十甲子连续推移，日期基准为中国公历日期。
+const heavenly=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+const earthly=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+// 传统建除十二神：按节令月建与日支推算。与完整通胜的吉神凶煞择日体系不同。
+// 已交叉核验的黄历条目用原文数据；其余日期呈现建除十二神通行概览，明确标注层级。
+const jianchuNames=['建','除','满','平','定','执','破','危','成','收','开','闭'];
+const jianchuGuide=[
+ {good:['出行','赴任','祈福'],avoid:['安葬','动土']},
+ {good:['扫舍','沐浴','解除'],avoid:['婚嫁','开市']},
+ {good:['祭祀','祈福','修造'],avoid:['远行','赴任']},
+ {good:['修饰垣墙','平治道涂'],avoid:['婚嫁','动土']},
+ {good:['嫁娶','订盟','交易'],avoid:['诉讼','迁徙']},
+ {good:['祭祀','捕捉','纳畜'],avoid:['开市','远行']},
+ {good:['破屋','坏垣','求医'],avoid:['嫁娶','开市','入宅']},
+ {good:['祭祀','祈福','安床'],avoid:['登高','远行']},
+ {good:['开市','嫁娶','入宅'],avoid:['诉讼','争执']},
+ {good:['纳财','收纳','修整'],avoid:['开市','安葬']},
+ {good:['开市','嫁娶','出行'],avoid:['安葬','破土']},
+ {good:['闭藏','筑堤','整理'],avoid:['开市','嫁娶']}
+];
+// 已经与公开黄历资料交叉对照的 2026-10-12 条目
+const verifiedAlmanac={
+ '2026-10-12':{good:['嫁娶','祭祀','作灶','纳财'],avoid:['安葬','开市','修坟','立碑'],source:'https://www.rilihuangli.com/2026-10-12.html'}
+};
+// 节气中每月第一个“节”确定月建（而非按照公历每月1日切换）。
+const jieBranch={'立春':2,'惊蛰':3,'清明':4,'立夏':5,'芒种':6,'小暑':7,'立秋':8,'白露':9,'寒露':10,'立冬':11,'大雪':0,'小寒':1};
+const signs=['鼠','牛','虎','兔','龙','蛇','马','羊','猴','鸡','狗','猪'];
+function monthBranchFor(s){
+ const y=parseISO(s).y;const terms=[];
+ for(const year of [y-1,y,y+1])for(const [date,name]of Object.entries(getTerms(year)))if(Object.prototype.hasOwnProperty.call(jieBranch,name))terms.push([date,jieBranch[name]]);
+ terms.sort((a,b)=>a[0].localeCompare(b[0]));let branch=1;
+ for(const [date,b]of terms){if(date>s)break;branch=b;}return branch;
+}
+function renderAlmanacKeywords(id,items){const target=$(id);target.textContent='';items.forEach(word=>{const el=document.createElement('span');el.textContent=word;target.append(el)});}
+function renderFortune(s){
+ const base=Date.UTC(2026,9,12),p=parseISO(s),cur=Date.UTC(p.y,p.m-1,p.d),delta=Math.round((cur-base)/86400000);
+ const cycle=((55+delta)%60+60)%60,stemIndex=cycle%10,branchIndex=cycle%12;
+ const dayStem=heavenly[stemIndex]+earthly[branchIndex];
+ const monthBranch=monthBranchFor(s);
+ const starIndex=(branchIndex-monthBranch+12)%12;
+ const star=jianchuNames[starIndex];
+ const clash=(branchIndex+6)%12;
+ const direction=[2,6,10].includes(branchIndex)?'北':[8,0,4].includes(branchIndex)?'南':[11,3,7].includes(branchIndex)?'西':'东';
+ const record=verifiedAlmanac[s];const rule=record||jianchuGuide[starIndex];
+ $('fortuneDayStem').textContent=dayStem+'日';
+ $('fortuneJianchu').textContent=star+'日';
+ $('fortuneClash').textContent=`冲${signs[clash]} · 煞${direction}`;
+ renderAlmanacKeywords('fortuneGood',rule.good);
+ renderAlmanacKeywords('fortuneAvoid',rule.avoid);
+ $('fortuneBadge').textContent=record?'已核对黄历':'建除民俗参考';
+ $('fortuneFoot').textContent=record?'此日宜忌已与公开黄历资料核对。属于传统择日文化，不代表个人运势或现实吉凶。':`按建除十二神「${star}日」的通用民俗规则概括，并非当日完整通胜宜忌；各家黄历可能不同。`;
+ const link=$('huangliSource');link.href=record?record.source:`https://www.rilihuangli.com/${s}.html`;link.textContent=record?'查看此日黄历原文 ↗':'外部查询该日完整黄历 ↗';
+}
+
+function renderCalendar(){
+ $('monthTitle').textContent=`${displayYear}年 ${displayMonth}月`;
+ const monthNames=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+ const mid=iso(displayYear,displayMonth,15);$('monthSubtitle').textContent=`${monthNames[displayMonth-1]} · ${lunarInfo(mid).yearName}年 · 上海`;
+ const start=iso(displayYear,displayMonth,1),offset=mondayIndex(start),days=new Date(Date.UTC(displayYear,displayMonth,0)).getUTCDate();
+ const rows=Math.ceil((offset+days)/7),count=Math.max(35,rows*7),first=plusDay(start,-offset);
+ const grid=$('monthGrid');grid.textContent='';
+ const frag=document.createDocumentFragment();
+ for(let i=0;i<count;i++){
+  const s=plusDay(first,i),{y,m,d}=parseISO(s),outside=m!==displayMonth||y!==displayYear,meta=getCalendarMeta(s),idea=getIdea(s),all=memos.filter(a=>a.date===s),dayOfWeek=mondayIndex(s);
+  const isWeekend=dayOfWeek>=5;const isMakeupWork=!outside&&meta.holiday&&meta.holiday.type==='work';const isRestDay=!outside&&((meta.holiday&&meta.holiday.type==='off')||(isWeekend&&!isMakeupWork));
+  const cell=document.createElement('button');cell.type='button';cell.className=`day-cell${outside?' outside':''}${s===selectedISO?' selected':''}${s===todayISO?' today':''}${isWeekend&&!isMakeupWork?' weekend':''}${isRestDay?' rest-day':''}${isMakeupWork?' makeup-work':''}`;
+  cell.setAttribute('role','gridcell');cell.setAttribute('aria-label',`${y}年${m}月${d}日，${meta.l.full}${meta.term?'，'+meta.term:''}${meta.holiday?'，'+meta.holiday.name+(meta.holiday.type==='off'?'放假':'调休上班'):''}，生活提案：${idea.title}`);
+  const top=document.createElement('div');top.className='cell-top';const number=document.createElement('span');number.className='date-num';number.textContent=d;top.append(number);
+  if(meta.holiday||isRestDay){const badge=document.createElement('span');badge.className=`date-badge ${isRestDay?'rest':'work'}`;badge.textContent=isRestDay?'休':'班';top.append(badge)}
+  const lunar=document.createElement('span');lunar.className='lunar-label'+(meta.term?' term':meta.festival?' festival':'');lunar.textContent=meta.term?`✳ ${meta.term}`:meta.festival||(meta.solarBirth?'♡ 公历生日':meta.lunarBirth?'♡ 农历生日':meta.l.label);
+  const hint=document.createElement('div');hint.className='cell-inspiration';hint.innerHTML='<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M15 4c-7-.2-11 4.2-10 11 6.4 1 11-3 10-11Z" fill="#94b49a"/><path d="M4 17c3-5 5-7 10-10" stroke="#799e80" stroke-width="1.2"/></svg>';
+  const hintText=document.createElement('span');hintText.textContent=idea.title;hint.append(hintText);
+  const points=document.createElement('div');points.className='memo-points';all.slice(0,6).forEach(a=>{const dot=document.createElement('span');dot.className='memo-dot';dot.style.background=catObject[a.category]?.color||'#e4a87c';points.append(dot)});
+  cell.append(top,lunar,hint,points);cell.addEventListener('click',()=>{selectedISO=s;displayYear=y;displayMonth=m;renderAll()});frag.append(cell);
+ }
+ grid.append(frag);
+ const memoN=memos.filter(a=>{const p=parseISO(a.date);return p.y===displayYear&&p.m===displayMonth}).length;
+ $('footerStats').textContent=`${displayMonth}月 · ${days}份生活提案 · ${Object.keys(getTerms(displayYear)).filter(s=>s.startsWith(iso(displayYear,displayMonth,1).slice(0,7))).length}个节气${memoN?' · '+memoN+'条个人备忘':''}`;
+}
+function renderDetails(){
+ const {y,m,d}=parseISO(selectedISO),meta=getCalendarMeta(selectedISO),idea=getIdea(selectedISO,preferredVariant(selectedISO));
+ $('detailDate').textContent=`${m}月${d}日 · ${weekday(selectedISO)}`;
+ $('detailLunar').textContent=`农历${meta.l.full} · ${getPeriodTerm(selectedISO)}时节`;
+ $('ideaTitle').textContent=idea.title;$('ideaDesc').textContent=idea.desc;$('ideaType').textContent=idea.type;$('ideaPlace').textContent=idea.place;$('ideaDuration').textContent=idea.duration;
+ $('ideaScope').textContent=scopeName(selectedISO);
+ const sourceArea=$('ideaSource');sourceArea.textContent='';
+ if(idea.source){const link=document.createElement('a');link.href=idea.source;link.target='_blank';link.rel='noopener noreferrer';link.textContent=(idea.sourceLabel||'官方活动资料')+' ↗';sourceArea.append(link)}
+ if(idea.tip){const info=document.createElement('div');info.textContent=idea.tip;sourceArea.append(info)}
+ else if(!idea.source&&/赏花|桂花|樱|落叶|秋色|花园/.test(idea.title+idea.desc)){sourceArea.textContent='自然花期与天气有关，出发前可查询实时花讯。'}
+ const status=$('dayStatus');status.textContent='';
+ const weekendRest=mondayIndex(selectedISO)>=5 && !(meta.holiday&&meta.holiday.type==='work');
+ if(meta.holiday){const sp=document.createElement('span');sp.className=`status-pill ${meta.holiday.type==='off'?'red':''}`;sp.textContent=meta.holiday.type==='off'?`${meta.holiday.name} · 放假`:`${meta.holiday.name} · 补班`;status.append(sp)} else if(weekendRest){const sp=document.createElement('span');sp.className='status-pill red';sp.textContent='周末休息';status.append(sp)}
+ if(meta.term){const sp=document.createElement('span');sp.className='status-pill gold';sp.textContent=`✳ ${meta.term}`;status.append(sp)}
+ if(meta.festival&&meta.festival!==meta.term){const sp=document.createElement('span');sp.className='status-pill';sp.textContent=meta.festival;status.append(sp)}
+ if(meta.solarBirth||meta.lunarBirth){const sp=document.createElement('span');sp.className='status-pill gold';sp.textContent=(meta.solarBirth&&meta.lunarBirth)?'♡ 公历与农历生日':meta.solarBirth?'♡ 你的公历生日':'♡ 你的农历生日';status.append(sp)}
+ renderFortune(selectedISO);renderWeather();renderIdeaAlternatives();renderRightEvents();
+ $('compactFortune').textContent=$('fortuneDayStem').textContent+' · '+$('fortuneJianchu').textContent+' · '+$('fortuneClash').textContent;
+ const list=$('memoList');list.textContent='';const todays=memos.filter(x=>x.date===selectedISO).sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99'));
+ $('memoCount').textContent=todays.length?`· ${todays.length}`:'';
+ if(!todays.length){const empty=document.createElement('div');empty.className='memo-empty';empty.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M8 3h8a2 2 0 0 1 2 2v15H6V5a2 2 0 0 1 2-2ZM9 9h6M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>今天还没有备忘</span><span>写下一个小计划吧</span>';list.append(empty)}
+ for(const memo of todays){const row=document.createElement('div');row.className='memo-row';const color=document.createElement('span');color.className='memo-color';color.style.background=catObject[memo.category]?.color||'#e2a16f';const body=document.createElement('div');body.className='memo-text';const title=document.createElement('strong');title.textContent=memo.title;const detail=document.createElement('small');detail.textContent=[memo.time,catObject[memo.category]?.name,memo.detail].filter(Boolean).join(' · ');body.append(title,detail);const del=document.createElement('button');del.className='remove-btn';del.textContent='×';del.title='删除备忘';del.setAttribute('aria-label','删除备忘：'+memo.title);del.addEventListener('click',()=>{memos=memos.filter(x=>x.id!==memo.id);saveMemos();renderAll();showToast('已删除备忘')});row.append(color,body,del);list.append(row)}
+}
+function renderAll(){renderCalendar();renderDetails()}
+function selectMonth(delta){const d=new Date(Date.UTC(displayYear,displayMonth-1+delta,1));displayYear=d.getUTCFullYear();displayMonth=d.getUTCMonth()+1;const lastDay=new Date(Date.UTC(displayYear,displayMonth,0)).getUTCDate();const keep=Math.min(parseISO(selectedISO).d,lastDay);selectedISO=iso(displayYear,displayMonth,keep);renderAll()}
+$('prevMonth').addEventListener('click',()=>selectMonth(-1));$('nextMonth').addEventListener('click',()=>selectMonth(1));$('todayBtn').addEventListener('click',()=>{selectedISO=todayISO;const p=parseISO(todayISO);displayYear=p.y;displayMonth=p.m;renderAll();showToast('已回到上海今天')});
+function openOverlay(id){$(id).classList.add('open');$(id).setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeOverlay(id){$(id).classList.remove('open');$(id).setAttribute('aria-hidden','true');document.body.style.overflow=''}
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeOverlay(b.dataset.close)));
+document.querySelectorAll('.overlay').forEach(b=>b.addEventListener('mousedown',e=>{if(e.target===b)closeOverlay(b.id)}));document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(el=>closeOverlay(el.id))});
+const choices=$('colorChoices');function renderChoices(){choices.textContent='';for(const [id,label,color] of categoryOptions){const b=document.createElement('button');b.type='button';b.className='color-option'+(id===chosenCategory?' active':'');b.innerHTML=`<span class="color-dot" style="background:${color}"></span>${label}`;b.addEventListener('click',()=>{chosenCategory=id;renderChoices()});choices.append(b)}}
+function openMemo(title='',description='',cat='life'){chosenCategory=cat;memoPendingTitle=title;memoPendingDetail=description;const {y,m,d}=parseISO(selectedISO);$('memoModalDate').textContent=`${y}年${m}月${d}日 · ${weekday(selectedISO)} · 上海`;$('memoName').value=title;$('memoDetail').value=description;$('memoTime').value='';renderChoices();openOverlay('memoOverlay');setTimeout(()=>$('memoName').focus(),40)}
+$('addMemoTop').addEventListener('click',()=>openMemo());$('addMemoBlank').addEventListener('click',()=>openMemo());$('saveInspo').addEventListener('click',()=>{const idea=getIdea(selectedISO,preferredVariant(selectedISO));const already=memos.find(a=>a.date===selectedISO&&a.title===idea.title);if(already){showToast('这条期待已经在备忘中了');return}memos.push({id:String(Date.now())+Math.random().toString(36).slice(2),date:selectedISO,title:idea.title,detail:idea.desc+'（'+idea.place+'）',category:'fun',time:''});saveMemos();renderAll();showToast('已把这份小期待收藏到备忘 ♡')});
+$('memoForm').addEventListener('submit',e=>{e.preventDefault();const title=$('memoName').value.trim(),detail=$('memoDetail').value.trim(),time=$('memoTime').value;if(!title)return;memos.push({id:String(Date.now())+Math.random().toString(36).slice(2),date:selectedISO,title,detail,time,category:chosenCategory});saveMemos();closeOverlay('memoOverlay');renderAll();showToast('备忘已保存到此浏览器 ✨')});
+function openInfo(type){const title=$('infoTitle'),intro=$('infoIntro'),content=$('infoContent');content.textContent='';if(type==='holiday'){
+ title.textContent='2026年放假与调休';intro.textContent='依据国务院办公厅国办发明电〔2025〕7号；蓝灰色“休”表示法定放假或普通周末，绿色“班”表示调休补班。';
+ const list=document.createElement('div');list.className='holiday-list';for(const g of holidayGroups){const row=document.createElement('div');row.className='holiday-item';const left=document.createElement('div');const name=document.createElement('strong');name.textContent=g.name;const description=document.createElement('span');description.className='muted';description.textContent=g.desc;left.append(name,description);const right=document.createElement('span');right.className='mini';right.textContent=`${Math.round((dateObj(g.end)-dateObj(g.start))/86400000)+1}天假期`;row.append(left,right);list.append(row)}content.append(list);
+ const foot=document.createElement('div');foot.className='modal-section';foot.innerHTML='<h4>数据说明</h4><p>仅 2026 年的放假和补班日期已录入并核对。其他年份的国务院放假安排尚未在 Demo 中配置，因此不会猜测或套用 2026 年规则。</p>';content.append(foot);
+ }else if(type==='ideas'){
+ title.textContent=`${displayYear}年${displayMonth}月 · 值得期待的小事`;intro.textContent='上海时令、传统节日和城市活动相结合：工作日多为一小时左右的体验，休息日可安排半日或一日出游。点击查看详情。';const ideas=document.createElement('div');ideas.className='tip-list';const n=new Date(Date.UTC(displayYear,displayMonth,0)).getUTCDate();for(let d=1;d<=n;d++){const s=iso(displayYear,displayMonth,d),item=getIdea(s);const b=document.createElement('button');b.type='button';b.className='tip-item';const date=document.createElement('div');date.className='tip-date';date.textContent=`${displayMonth}月${d}日 · ${isRest(s)?'休息日':'工作日'} · ${item.duration}`;const name=document.createElement('strong');name.textContent=item.title;const p=document.createElement('p');p.textContent=item.type+' · '+item.place;b.append(date,name,p);b.addEventListener('click',()=>{selectedISO=s;closeOverlay('infoOverlay');renderAll();$('calendarMain').scrollIntoView({behavior:'smooth',block:'start'})});ideas.append(b)}content.append(ideas);
+ }else{
+ title.textContent='关于「知时」';intro.textContent='上海生活日历（在线版）：天气与生活推荐联动，精选已公布的真实活动，并保留传统历法与个人备忘。';const div=document.createElement('div');div.className='modal-section';div.innerHTML='<h4>这个 Demo 已经可以做什么？</h4><p>① 查看公历、农历与二十四节气；② 查看 2026 年国务院正式公布的放假和调休；③ 浏览不需跨城区出行的每日生活小期待，切换同日备选；④ 点击任意日期添加、删除彩色备忘，并在当前浏览器本地保存；⑤ 将生活提案一键添加到备忘。</p><h4 style="margin-top:12px">尚未接入的功能</h4><p>黄历宜忌与个人八字已分开：2026 年 10 月 12 日宜忌经公开黄历核对，其他日期按“建除十二神”民俗规则给出概览（非完整通胜原文），可点击来源链接进一步查询。个人四柱请自行配置，本网站不会在公共资源中发布私人出生信息。传统择日及八字不能预测现实吉凶。已加入第三方在线天气预报获取（需联网，数据不可用时不展示模拟天气）；花讯、提醒推送及多设备同步仍未接入。2026 年节气日期已预置，其他年份为近似历算。2026年部分文化活动参照上海市文旅局官方清单且限定其公布日期；其他月份是常设地点与季节建议，并非实时展期或开花、营业保证。</p><h4 style="margin-top:12px">数据与隐私</h4><p>备忘仅保存在本机浏览器 localStorage；清理浏览器数据可能丢失，暂无账号同步。暂无服务端收集出生信息。</p>';content.append(div);
+ }openOverlay('infoOverlay')}
+$('navHolidays').addEventListener('click',()=>openInfo('holiday'));$('navInspo').addEventListener('click',()=>openInfo('ideas'));$('monthIdeasBtn').addEventListener('click',()=>openInfo('ideas'));$('aboutBtn').addEventListener('click',()=>openInfo('about'));$('otherIdeas').addEventListener('click',()=>{ideaVariants[selectedISO]=(ideaVariants[selectedISO]||0)+1;renderDetails();});$('navCalendar').addEventListener('click',()=>$('calendarMain').scrollIntoView({behavior:'smooth',block:'start'}));
+
+// V7: Real Shanghai event mini-catalogue; public dates and official source links.
+let EVENT_DATA=[]; // 从独立的 data/events.json 加载；页面不会伪造活动实时性。
+const EVENT_CATEGORIES=['全部','公园','景点','展览','演出','音乐剧','音乐会','快闪','节庆','迪士尼','巡游','演唱会'];
+let activeEventCategory='全部',weatherReady=false,weatherData={},weatherFailed=false;
+const categoryMatch=(item,category)=>category==='全部'||(category==='演出'?['舞剧','音乐剧','音乐会'].includes(item.kind):item.kind===category);
+const shortDate=s=>s?s.slice(5).replace('-','.'):'以官方公布为准';
+const eventDates=item=>item.start?(item.start===item.end?shortDate(item.start):`${shortDate(item.start)}—${shortDate(item.end)}`):'常设/每日安排以官方为准';
+function eventIsRelevant(item,s){if(!item.start)return true;return item.end>=s&&item.start<=plusDay(s,21);}
+function filteredEvents(){let items=EVENT_DATA.filter(item=>{
+  const p=$('eventPeriod').value;
+  if(p==='upcoming'&&item.start&&item.end<selectedISO)return false;
+  if(p==='month'&&item.start&&(item.end<iso(displayYear,displayMonth,1)||item.start>iso(displayYear,displayMonth,new Date(Date.UTC(displayYear,displayMonth,0)).getUTCDate())))return false;
+  if(!categoryMatch(item,activeEventCategory))return false;
+  const q=$('eventSearch').value.trim().toLowerCase();
+  return !q||(item.title+' '+item.location+' '+item.kind+' '+item.area).toLowerCase().includes(q);
+ });
+ return items.sort((a,b)=>{if(!a.start)return 1;if(!b.start)return -1;return a.start.localeCompare(b.start)});
+}
+function openEvents(){openOverlay('eventsOverlay');renderEventCatalog()}
+function renderEventCatalog(){
+ const filters=$('eventFilters');filters.textContent='';EVENT_CATEGORIES.forEach(c=>{const b=document.createElement('button');b.type='button';b.className='filter-chip'+(c===activeEventCategory?' active':'');b.textContent=c;b.addEventListener('click',()=>{activeEventCategory=c;renderEventCatalog()});filters.append(b)});
+ const items=filteredEvents(),list=$('allEvents');list.textContent='';$('eventsResultCount').textContent=`找到 ${items.length} 条活动 / 场馆信息 · ${selectedISO.slice(0,7)} 所选日期`;
+ if(!items.length){const el=document.createElement('div');el.className='empty-event';el.textContent=activeEventCategory==='演唱会'?'暂未收录可核验的具体演唱会场次，请查看官方票务与场馆发布。':'该筛选条件下暂无已核验的活动。';list.append(el)}
+ items.forEach(item=>{
+  const wrap=document.createElement('article');wrap.className='full-event';
+  const icon=document.createElement('span');icon.className='activity-icon';icon.textContent=item.icon;
+  const main=document.createElement('div');
+  const badges=document.createElement('div');badges.className='event-badges';
+  for(const t of [item.kind, item.start?'已录入日期 · 出行前核实':'常设地点 · 查询开放时段']){const sp=document.createElement('span');sp.textContent=t;if(t.startsWith('已核'))sp.className='verified';badges.append(sp)}
+  const title=document.createElement('h4');title.textContent=item.title;
+  const meta=document.createElement('div');meta.className='event-meta';meta.textContent=`${eventDates(item)} · ${item.location} · ${item.time}`;
+  const note=document.createElement('div');note.className='event-meta';note.textContent=item.note;
+  const actions=document.createElement('div');actions.className='event-actions';
+  const source=document.createElement('a');source.href=item.source;source.target='_blank';source.rel='noopener noreferrer';source.textContent='查看原始信息 ↗';actions.append(source);
+  if(item.start){const add=document.createElement('button');add.type='button';add.textContent='＋ 加入我的日历';add.addEventListener('click',()=>saveEventToMemo(item));actions.append(add)}
+  main.append(badges,title,meta,note,actions);wrap.append(icon,main);list.append(wrap);
+ });
+ if(activeEventCategory==='演唱会'){
+  const msg=document.createElement('div');msg.className='modal-section';msg.textContent='演唱会、演出信息将以场馆和主办方公布的确切日期为准。当前尚未接入实时票务库存，请到大麦或演出场馆官方渠道核验最新排期。';list.append(msg);
+ }
+}
+function saveEventToMemo(item){
+ let date=selectedISO;
+ if(item.start&&date<item.start)date=item.start;
+ if(item.end&&date>item.end){showToast('这场活动已不在所选日期范围内');return}
+ if(memos.some(m=>m.date===date&&m.title===item.title)){showToast('已经加入这一天的日历');return}
+ memos.push({id:String(Date.now())+Math.random().toString(36).slice(2),date,title:item.title,detail:`${item.location} · ${item.time} · 出发前核验: ${item.source}`,category:'fun',time:''});saveMemos();const parsed=parseISO(date);selectedISO=date;displayYear=parsed.y;displayMonth=parsed.m;renderAll();showToast('已加入 '+date+' 的备忘');
+}
+function renderRightEvents(){
+ const container=$('rightEvents');container.textContent='';const selected=EVENT_DATA.filter(x=>eventIsRelevant(x,selectedISO));
+ selected.sort((a,b)=>{
+  const ka=a.start?(a.start<selectedISO?selectedISO:a.start):'9999-12-31';
+  const kb=b.start?(b.start<selectedISO?selectedISO:b.start):'9999-12-31';
+  if(ka===kb)return (a.end===selectedISO?-1:1);return ka.localeCompare(kb)
+ });
+ $('eventTimeTip').textContent=`从 ${Number(selectedISO.slice(5,7))}月${Number(selectedISO.slice(8))}日 起 · 优先近期可安排项目`;
+ selected.slice(0,3).forEach(e=>{
+  const wrap=document.createElement('div');wrap.className='activity-mini';const ico=document.createElement('div');ico.className='activity-icon';ico.textContent=e.icon;
+  const body=document.createElement('div');body.className='activity-body';const tag=document.createElement('span');tag.className='activity-tag';tag.textContent=e.kind+'  /  '+eventDates(e);
+  const title=document.createElement('strong');title.textContent=e.title;const place=document.createElement('small');place.textContent=e.location;
+  body.append(tag,title,place);const a=document.createElement('a');a.href=e.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='详情 ↗';wrap.append(ico,body,a);container.append(wrap)
+ });
+ if(!container.children.length){const p=document.createElement('p');p.style.color='#879ca6';p.style.fontSize='12px';p.textContent='暂无所选日期之后21天内的确定活动，可查看常设景点与演出排期。';container.append(p)}
+}
+function renderIdeaAlternatives(){
+ const wrap=$('ideaAlternatives');wrap.textContent='';const current=preferredVariant(selectedISO);
+ const seen=new Set([getIdea(selectedISO,current).title]);let n=1;
+ for(let k=1;k<=20&&n<=2;k++){
+   const v=current+k,idea=getIdea(selectedISO,v);if(seen.has(idea.title))continue;seen.add(idea.title);n++;
+   const b=document.createElement('button');b.type='button';b.className='also-try-option';const title=document.createElement('strong');title.textContent=idea.title;const time=document.createElement('span');time.textContent=idea.duration+' ↗';b.append(title,time);
+   b.addEventListener('click',()=>{ideaVariants[selectedISO]=v;renderDetails()});wrap.append(b)
+ }
+}
+function wmoDesc(code){if(code===0)return ['晴朗','☀'];if([1,2].includes(code))return ['少云','⛅'];if(code===3)return ['阴天','☁'];if([45,48].includes(code))return ['雾','☁'];if(code>=51&&code<=67)return ['有雨','☔'];if(code>=71&&code<=86)return ['雨雪','❄'];if(code>=95)return ['雷雨','⛈'];return ['多云','☁']}
+function renderWeather(){
+ const temp=$('weatherTemp'),label=$('weatherLabel'),rain=$('weatherRain'),icon=$('weatherIcon'),advice=$('weatherAdvice'),w=weatherData[selectedISO];
+ if(w){const [desc,emoji]=wmoDesc(w.code);icon.textContent=emoji;temp.textContent=`${Math.round(w.min)}–${Math.round(w.max)}°`;label.textContent=desc;rain.textContent=`降雨概率 ${w.rain}%`;
+   advice.textContent=(w.rain>=55||w.code>=51)?'☔ 这天可能有雨，优先考虑剧场、展览、室内快闪；户外活动请核对天气和开演通知。':w.max>=32?'☀ 天气可能偏热，建议避开午后长时间户外活动。':'☀ 可结合气温安排轻松出门；具体活动仍需提前确认开放和票务。';return}
+ const delta=Math.round((dateObj(selectedISO)-dateObj(todayISO))/86400000);
+ icon.textContent='☁';temp.textContent='--°';label.textContent=delta<0?'历史日期':delta>15?'超出预报':'暂无数据';rain.textContent=delta>15?'仅提供近16天':'上海 · 天气';
+ advice.textContent=delta<0?'已过日期不展示未来预报。':delta>15?'天气服务仅提供近期预报，临近活动日期再查看即可。':weatherFailed?'天气接口暂不可用；建议联网后刷新，或通过天气服务查看。':'正在尝试获取上海的未来16天天气…';
+}
+async function loadWeather(){
+ try{
+ const ctrl=new AbortController();const t=setTimeout(()=>ctrl.abort(),9000);
+ const u='https://api.open-meteo.com/v1/forecast?latitude=31.2304&longitude=121.4737&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FShanghai&forecast_days=16';
+ const response=await fetch(u,{signal:ctrl.signal});clearTimeout(t);if(!response.ok)throw new Error('weather request '+response.status);
+ const data=await response.json();if(!data.daily||!Array.isArray(data.daily.time))throw new Error('invalid data');
+ weatherData={};data.daily.time.forEach((d,i)=>weatherData[d]={code:data.daily.weather_code[i],min:data.daily.temperature_2m_min[i],max:data.daily.temperature_2m_max[i],rain:data.daily.precipitation_probability_max[i]??0});weatherReady=true;weatherFailed=false;
+ }catch(e){weatherFailed=true}renderDetails();
+}
+function preferredVariant(s){
+ if(Object.prototype.hasOwnProperty.call(ideaVariants,s))return ideaVariants[s];
+ const weather=weatherData[s];
+ if(!weather||weather.rain<55)return 0;
+ const outdoors=/公园|滨江|花园|户外|登山|爬山|逛街|漫步|散步|游园|观景|野餐|赏花|露营|古镇|雨夜|骑行|湿地|远足|森林/;
+ for(let i=0;i<16;i++){
+   const activity=getIdea(s,i);
+   if(!outdoors.test(activity.title+' '+activity.desc+' '+activity.place))return i;
+ }
+ return 0;
+}
+// V7 hooks use existing day/idea render, preserving V6 content and local notes.
+$('navEvents').addEventListener('click',openEvents);
+$('moreEvents').addEventListener('click',openEvents);
+$('eventSearch').addEventListener('input',renderEventCatalog);
+$('eventPeriod').addEventListener('change',renderEventCatalog);
+
+
+// V8: 活动信息从 data/events.json 读取；官方新闻仅作线索，避免未经核实日期进入活动日历。
+async function loadJSON(path){const c=new AbortController();const timer=setTimeout(()=>c.abort(),11000);try{const response=await fetch(path+'?v='+Math.floor(Date.now()/3600000),{signal:c.signal,cache:'no-cache'});if(!response.ok)throw Error('HTTP '+response.status);return await response.json()}finally{clearTimeout(timer)}}
+async function loadCityInformation(){
+  const freshness=$('eventsFreshness'),state=$('eventsStatus');
+  const [events,leads,status]=await Promise.allSettled([loadJSON('./data/events.json'),loadJSON('./data/leads.json'),loadJSON('./data/update-status.json')]);
+  if(events.status==='fulfilled' && Array.isArray(events.value.events)){
+    EVENT_DATA=events.value.events.filter(e=>e&&e.id&&e.title&&e.kind&&e.source&&/^https:\/\//.test(e.source)&&(!e.start||(/^\d{4}-\d{2}-\d{2}$/.test(e.start)&&e.end>=e.start)));
+    freshness.textContent=`活动库 ${EVENT_DATA.length} 条 · 编辑确认数据 · 实际场次请再次核实`;
+    state.textContent='已确认活动库由独立 JSON 管理；更新发布后可自动在页面读取。自动资讯不代表已确认演出日期。';
+  }else{
+    freshness.textContent='活动数据暂不可用 · 请联网后刷新';
+    state.textContent='无法读取活动库。若在本地查看，请通过 http://localhost 启动，不要双击 HTML 文件。';
+  }
+  if(leads.status==='fulfilled' && Array.isArray(leads.value.items)){
+     renderOfficialLeads(leads.value.items);
+     const t=(leads.value.checkedAt||'').replace('T',' ').slice(0,16);
+     $('feedChecked').textContent=t?`更新 ${t}（北京时间）`:'尚未完成检查';
+  }else{$('officialLeads').innerHTML='<p class="feed-empty">尚未获得官方资讯，请稍后重试。活动库仍可独立使用。</p>'}
+  if(status.status==='fulfilled'&&status.value.failed&&status.value.failed.length){
+    $('feedChecked').textContent+=' · 部分来源抓取失败';
+  }
+  renderRightEvents();
+  if($('eventsOverlay').classList.contains('open'))renderEventCatalog();
+}
+function renderOfficialLeads(items){const root=$('officialLeads');root.textContent='';
+ const recent=items.filter(x=>x&&x.title&&/^https:\/\//.test(x.url||'')).slice(0,28);
+ if(!recent.length){const p=document.createElement('p');p.className='feed-empty';p.textContent='暂无自动采集到的活动线索。您仍可查看已确认活动及官方场馆入口。';root.append(p);return;}
+ for(const item of recent){const a=document.createElement('a');a.className='feed-item';a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';const t=document.createElement('strong');t.textContent=item.title;const sub=document.createElement('small');sub.textContent=[item.publishedAt||'发布日期未知',item.publisher||'上海市文旅局','查看官方原文 ↗'].join(' · ');a.append(t,sub);root.append(a)}
+}
+function refreshPersonalPanel(){const panel=document.querySelector('.personal-bazi');if(!panel)return;const line=panel.querySelector('.birth-line');const pillars=[...panel.querySelectorAll('.pillar-row b')];
+ if(profile.birthday){const date=profile.birthday;line.textContent='出生日期：'+date+' · 仅保存在本机';}
+ else line.textContent='未设置出生信息 · 点击顶部「我的设置」添加';
+ // 无出生时间、地点和专业历算时，不生成虚构的个人四柱。
+ pillars.forEach(b=>b.textContent='待核');
+}
+$('prefsBtn').addEventListener('click',()=>{$('myBirthday').value=profile.birthday||'';$('myLunarMonth').value=profile.lunarMonth||'';$('myLunarDay').value=profile.lunarDay||'';openOverlay('prefsOverlay')});
+$('savePrefs').addEventListener('click',()=>{const day=$('myLunarDay').value;if(day&&(Number(day)<1||Number(day)>30)){showToast('农历日期应为 1–30');return;}
+ profile={birthday:$('myBirthday').value,lunarMonth:$('myLunarMonth').value,lunarDay:day};try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile))}catch(e){showToast('本地存储不可用');return}
+ refreshPersonalPanel();closeOverlay('prefsOverlay');renderAll();showToast('个人设置已仅保存在本机')});
+$('exportData').addEventListener('click',()=>{const obj={format:'zhishi-backup-v1',exportedAt:new Date().toISOString(),memos,profile};const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='知时-个人备忘-'+todayISO+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),800);showToast('已导出本机备忘')});
+$('importData').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;if(file.size>2_000_000){showToast('文件过大，最多 2MB');return}
+ try{const val=JSON.parse(await file.text());if(val.format!=='zhishi-backup-v1'||!Array.isArray(val.memos))throw Error('无效的备份格式');
+ const safe=val.memos.filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')&&typeof x.title==='string').slice(0,3000).map(x=>({id:String(x.id||Math.random()),date:x.date,title:x.title.slice(0,80),detail:String(x.detail||'').slice(0,320),time:String(x.time||'').slice(0,5),category:['work','life','health','fun','family','important'].includes(x.category)?x.category:'life'}));
+ if(!confirm(`确定导入 ${safe.length} 条备忘吗？这会覆盖当前浏览器里的备忘。`))return;
+ memos=safe;saveMemos();if(val.profile&&typeof val.profile==='object'){profile={birthday:String(val.profile.birthday||''),lunarMonth:String(val.profile.lunarMonth||''),lunarDay:String(val.profile.lunarDay||'')};localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));}
+ refreshPersonalPanel();renderAll();showToast(`导入成功：${safe.length} 条`);
+ }catch(err){showToast('导入失败：文件不是有效的知时备份')}finally{e.target.value=''}});
+refreshPersonalPanel();
+loadCityInformation();
+
+renderAll();loadWeather();
+</script>
+</body>
+</html>
