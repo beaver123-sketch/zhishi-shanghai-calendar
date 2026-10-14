@@ -1,0 +1,43 @@
+name: 知时 · 上海官方活动资讯定时检查
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 每天北京时间 02:17、08:17、14:17、20:17（非准点保证）
+    - cron: '17 0,6,12,18 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zhishi-activity-updates
+  cancel-in-progress: false
+
+jobs:
+  update-activities:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 检查上海官方公开活动资讯
+        run: python scripts/update_official.py
+      - name: 验证活动库
+        run: |
+          python scripts/validate.py
+          python -m unittest discover -s tests -v
+      - name: 回写官方资讯缓存（Vercel 将根据仓库更新重新部署）
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/data/leads.json site/data/update-status.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: refresh Shanghai public activity leads'
+            git push
+          else
+            echo '没有需要提交的更新。'
+          fi
