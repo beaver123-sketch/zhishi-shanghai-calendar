@@ -199,3 +199,165 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px s
 @media(max-width:920px){.main-layout{grid-template-columns:minmax(0,1fr)!important}.detail-panel.zh-sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.zh-sidebar .side-overview,.zh-sidebar .v7-joy-card,.zh-sidebar .fortune-collapsible{grid-column:1/-1}.zh-sidebar .v7-memo-card,.zh-sidebar .side-activity-card{grid-column:auto}.calendar-left-column .calendar-panel{padding:23px!important}.life-hub{gap:12px!important}.life-card{padding:18px!important}.life-card-title{font-size:20px}}
 @media(max-width:630px){.page{padding:0 11px 27px}.topbar{min-height:68px;height:68px;gap:7px;margin:0}.watercolor-mark{width:36px!important;height:36px!important}.brand-words strong{font-size:20px}.brand-words small{font-size:7px;letter-spacing:1.2px}.topbar::after{display:none}.season-control{max-width:125px}.personal-tools-btn{padding:7px 8px!important;font-size:10px}.daily-culture-band{padding:11px 12px!important;margin:9px 0 12px!important;min-height:0!important;border-radius:14px}.daily-culture-band::after{opacity:.12;width:85px}.daily-verse-line{font-size:14px;letter-spacing:.1px}.daily-verse-source{font-size:9px}.today-fortune{padding:7px 9px;gap:8px;font-size:10px;max-width:100%}.fortune-today-tip{display:none}.calendar-left-column .calendar-panel{padding:15px 9px!important;border-radius:16px!important}.calendar-left-column .calendar-panel::before{width:100px;height:100px;top:-19px;right:-20px;opacity:.15}.month-title h2{font-size:25px!important}.month-title p{font-size:9px}.panel-heading{margin-bottom:10px!important}.view-legend{gap:6px 10px;padding:9px 0!important}.legend-right{display:none}.weekdays span{font-size:10px}.month-grid{gap:3px!important;grid-auto-rows:minmax(85px,auto)!important}.day-cell{min-height:85px;padding:5px 3px 11px!important;border-radius:7px!important}.date-num{font-size:13px;width:22px;height:22px}.date-badge{font-size:8px;min-width:16px;padding:0 2px}.lunar-label{font-size:9px;margin-top:3px}.cell-inspiration{font-size:8px}.month-foot{font-size:9px;flex-wrap:wrap;gap:4px}.detail-panel.zh-sidebar{display:flex;align-items:stretch;gap:11px}.zh-sidebar .side-overview{min-height:130px}.zh-sidebar .inspiration-card.v7-joy-card,.zh-sidebar .side-activity-card,.zh-sidebar .v7-memo-card{padding:16px!important}.life-hub{grid-template-columns:1fr!important;gap:12px!important}.life-card{padding:17px 15px!important;border-radius:17px!important}.life-card-title{font-size:20px}.life-card--flowers .life-card-head>div{max-width:80%}.life-card-art--flowers{width:42%!important;opacity:.31!important}.life-flower-picture{width:60px;flex-basis:60px;height:60px}.life-letter-stage{min-height:150px}.life-city-art{opacity:.1!important}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.life-card,.day-cell,.topcenter button{transition:none!important}}
+
+/* Solar-theme visual bridge · V1.1 (restores all 24 thematic palettes)
+ * The watercolor visual structure stays fixed; every theme paints its color
+ * into only selected surfaces and accents. Calendar rest/work stays invariant.
+ * Actual values come from /data/solar-term-themes.js via applySeasonTheme(). */
+:root{
+  --editorial-gold:color-mix(in srgb,var(--season-primary,#b18b50) 77%,#b18b50);
+  --editorial-olive:var(--season-primary,#7d8b70);
+  --editorial-active:var(--season-deep,#566a60);
+  --editorial-tint:color-mix(in srgb,var(--season-surface,#f5f1e6) 54%,#fffefa);
+  --editorial-wash:color-mix(in srgb,var(--season-surface,#f5f1e6) 24%,#fffefa);
+  --editorial-soft-border:color-mix(in srgb,var(--season-accent,#d7cbaa) 38%,#eae7de);
+}
+html{
+  background-color:var(--season-bg,#f9f8f2)!important;
+  transition:background-color .45s ease;
+}
+body{
+  background-color:var(--season-bg,#f9f8f2)!important;
+  background-image:
+    radial-gradient(ellipse at 3% 4%,color-mix(in srgb,var(--season-accent,#d7cbaa) 22%,transparent),transparent 43%),
+    radial-gradient(ellipse at 93% 81%,color-mix(in srgb,var(--season-surface,#f5f1e6) 26%,transparent),transparent 48%)!important;
+  transition:background-color .45s ease;
+}
+.topbar{
+  border-bottom-color:var(--editorial-soft-border)!important;
+}
+.topcenter{
+  border-color:var(--editorial-soft-border)!important;
+}
+.topcenter button.active{
+  background:color-mix(in srgb,var(--season-surface,#f5f1e6) 86%,#fffefa)!important;
+  color:var(--editorial-active)!important;
+}
+.topcenter button:not(.active):hover{
+  background:var(--editorial-wash)!important;
+}
+.season-control{
+  border-color:var(--season-border,#e5e5dc)!important;
+  background:var(--editorial-wash)!important;
+  color:var(--editorial-active)!important;
+}
+.season-control select,.season-control span{
+  color:var(--editorial-active)!important;
+}
+.season-control:focus-within{
+  outline:2px solid var(--season-primary,#9a9473);
+  outline-offset:2px;
+}
+.city-tag{
+  background:var(--editorial-wash)!important;
+  border-color:var(--season-border,#e5e5dc)!important;
+  color:var(--editorial-active)!important;
+}
+.daily-culture-band{
+  background:linear-gradient(105deg,#fffefa 0%,var(--editorial-wash) 69%,var(--editorial-tint) 100%)!important;
+  border-color:var(--editorial-soft-border)!important;
+}
+.today-fortune{
+  background:var(--editorial-tint)!important;
+  border-color:var(--season-border,#e5e5dc)!important;
+}
+.fortune-today-caption,.fortune-today-metric b{
+  color:var(--editorial-active)!important;
+}
+.calendar-left-column .calendar-panel{
+  background:linear-gradient(157deg,#fffefa 15%,var(--editorial-wash) 100%)!important;
+  border-color:var(--editorial-soft-border)!important;
+}
+.month-title h2{
+  color:var(--editorial-active)!important;
+}
+.today-btn{
+  background:var(--editorial-tint)!important;
+  border-color:var(--season-border,#e5e5dc)!important;
+  color:var(--editorial-active)!important;
+}
+.narrow-btn:hover{
+  background:var(--editorial-wash)!important;
+}
+.day-cell:hover:not(.outside):not(.selected){
+  background:var(--editorial-wash)!important;
+  border-color:var(--editorial-soft-border)!important;
+}
+.day-cell.selected,.day-cell.selected.rest-day,.day-cell.selected.makeup-work{
+  background:color-mix(in srgb,var(--season-surface,#f5f1e6) 78%,white)!important;
+  border-color:var(--season-primary,#96816c)!important;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--season-primary,#96816c) 65%,white)!important;
+}
+.day-cell.today .date-num{
+  background:var(--editorial-active)!important;
+  color:white!important;
+}
+.lunar-label.term{
+  color:var(--editorial-gold)!important;
+}
+.zh-sidebar>section,.zh-sidebar>details{
+  border-color:var(--editorial-soft-border)!important;
+}
+.zh-sidebar .weather-module{
+  background:var(--editorial-tint)!important;
+  border-color:var(--season-border,#e5e5dc)!important;
+}
+.zh-sidebar .inspiration-card.v7-joy-card{
+  background:linear-gradient(135deg,color-mix(in srgb,var(--season-surface,#f5f1e6) 74%,white),var(--editorial-wash) 91%)!important;
+  border-color:var(--season-border,#e5e5dc)!important;
+}
+.zh-sidebar .inspiration-card h3{
+  color:var(--editorial-active)!important;
+}
+.v7-label,.zh-sidebar .inspiration-info span{
+  background:color-mix(in srgb,var(--season-surface,#f5f1e6) 71%,white)!important;
+  border-color:var(--season-border,#e5e5dc)!important;
+  color:var(--editorial-active)!important;
+}
+.zh-sidebar .pill-action{
+  background:var(--editorial-active)!important;
+}
+.v7-section-head button{
+  background:var(--editorial-tint)!important;
+  border-color:var(--season-border,#e5e5dc)!important;
+  color:var(--editorial-active)!important;
+}
+.zh-sidebar .v7-memo-card .add-blank{
+  border-color:var(--season-border,#e5e5dc)!important;
+}
+.zh-sidebar .fortune-card{
+  border-color:var(--season-border,#e5e5dc)!important;
+}
+.expand-toggle{
+  background:var(--editorial-tint)!important;
+  color:var(--editorial-active)!important;
+}
+.life-card{
+  background:linear-gradient(154deg,#fffefa 10%,var(--editorial-wash) 100%)!important;
+  border-color:var(--editorial-soft-border)!important;
+}
+.life-card--flowers{
+  background:linear-gradient(125deg,#fffefa 35%,var(--editorial-tint) 100%)!important;
+}
+.life-card--days,.life-card--wishes,.life-card--letter{
+  background:linear-gradient(151deg,#fffefa 32%,var(--editorial-wash) 100%)!important;
+}
+.life-mini-button:hover{
+  background:var(--editorial-tint)!important;
+  color:var(--editorial-active)!important;
+}
+.life-mode-pill{
+  border-color:var(--season-border,#e5e5dc);
+}
+.month-foot .foot-link{
+  color:var(--editorial-active)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html,body{transition:none!important}
+}
+/* Keep off-days, weekends, and make-up workdays consistently distinct
+   across all 24 themes (do not theme their status backgrounds). */
+.day-cell.rest-day:not(.selected){background:#f1f6f8!important;border-color:#e4edf1!important}
+.day-cell.makeup-work:not(.selected){background:#eff6f0!important;border-color:#e3eee5!important}
+.day-cell.rest-day::after{background:#adc7d4!important}
+.day-cell.makeup-work::after{background:#a7cbb4!important}
