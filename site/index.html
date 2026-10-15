@@ -579,13 +579,54 @@ body{background:radial-gradient(ellipse 60% 40% at 100% 0%,#edf3f5,transparent 7
 @media(max-width:900px){.today-todo-strip{gap:9px;padding:10px;margin-bottom:19px}.today-todo-heading{flex-basis:85px}.today-todo-item{max-width:205px}.today-todo-name{max-width:148px}}
 @media(max-width:600px){.today-todo-strip{flex-wrap:wrap;gap:7px;padding:11px}.today-todo-heading{flex:1 1 auto;flex-direction:row;justify-content:space-between;align-items:center}.today-todo-track{flex:1 1 100%;order:3}.today-todo-add{order:2}.today-todo-item{max-width:180px}}
 </style>
+
+<style id="zhishi-solar-term-design-system-v1">
+:root{--season-bg:#F7F7F0;--season-primary:#7D8B67;--season-surface:#EDF0E3;--season-accent:#C1B47B;--season-deep:#4F634D;--season-border:#E3E9DC}
+html,body{background-color:var(--season-bg)!important}
+body{background-image:radial-gradient(ellipse at 94% 2%,color-mix(in srgb,var(--season-accent) 18%,transparent),transparent 37%)!important}
+body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter button,.today-btn,.day-cell{transition:background-color .42s ease,border-color .42s ease,color .3s ease}
+.watercolor-mark{width:43px!important;height:43px!important;background:transparent!important;box-shadow:none!important;border-radius:12px!important;overflow:hidden}
+.watercolor-mark img{width:100%;height:100%;display:block;object-fit:cover;border-radius:12px}
+.month-title h2,.brand-words strong{color:var(--season-deep)!important}
+.topcenter button.active,.today-btn{background:var(--season-surface)!important;color:var(--season-deep)!important;border-color:var(--season-border)!important}
+.topcenter button:hover{background:var(--season-surface)}
+.city-tag{background:var(--season-surface)!important;color:var(--season-deep)!important;border-color:var(--season-border)!important}
+.micro-dot,.mini-live-dot{background:var(--season-primary)!important}
+.calendar-panel{border-color:var(--season-border)!important}
+.day-cell.selected,.day-cell.selected.rest-day{background:color-mix(in srgb,var(--season-surface) 75%,white)!important;border-color:var(--season-primary)!important;box-shadow:0 0 0 1px var(--season-primary)!important}
+.day-cell.today .date-num{background:var(--season-deep)!important;color:#fff!important}
+.day-cell.rest-day:not(.selected){background:#EDF3F7!important;border-color:#DDE8F0!important}
+.day-cell.makeup-work:not(.selected){background:#EAF5EE!important;border-color:#D9E9E0!important}
+.day-cell.rest-day::after{background:#AAC5D5!important}
+.day-cell.makeup-work::after{background:#9FCBB3!important}
+.date-badge.rest{background:#DCECF5!important;color:#59849E!important}
+.date-badge.work{background:#DDEFE1!important;color:#508666!important}
+.inspiration-card.v7-joy-card{background:linear-gradient(135deg,var(--season-surface),color-mix(in srgb,var(--season-surface) 44%,white))!important;border-color:var(--season-border)!important;box-shadow:0 8px 26px color-mix(in srgb,var(--season-primary) 11%,transparent)!important}
+.zh-sidebar .inspiration-card.v7-joy-card::after{content:none!important;display:none!important}
+.v7-label{background:color-mix(in srgb,var(--season-accent) 35%,white)!important;color:var(--season-deep)!important}
+.v7-card-heading .v7-eyebrow,.inspo-heading,.idea-scope,.idea-source{color:var(--season-deep)!important}
+.inspiration-card h3{color:var(--season-deep)!important}
+.inspiration-info span{background:color-mix(in srgb,var(--season-surface) 50%,white)!important;border-color:var(--season-border)!important;color:var(--season-deep)!important}
+.inspiration-actions .primary,.inspiration-card .primary,.submit{background:var(--season-deep)!important;color:white!important}
+.today-todo-strip{background:color-mix(in srgb,var(--season-surface) 50%,white)!important;border-color:var(--season-border)!important}
+.today-todo-heading strong,.today-todo-add,.more{color:var(--season-deep)!important}
+.today-todo-item.is-done .today-todo-check,.memo-check.checked{background:var(--season-primary)!important;border-color:var(--season-primary)!important}
+.zh-sidebar .v7-memo-card{border-color:var(--season-border)!important}
+.zh-sidebar .v7-section-head button{background:var(--season-surface)!important;color:var(--season-deep)!important}
+.season-control{display:flex;align-items:center;gap:7px;color:var(--season-deep);font-size:11px;white-space:nowrap;border:1px solid var(--season-border);background:#ffffffb8;padding:5px 9px;border-radius:11px}
+.season-control span{font-size:10px;font-weight:700}
+.season-control select{max-width:106px;font:inherit;color:var(--season-deep);border:0;background:transparent;cursor:pointer;outline-offset:3px}
+@media(max-width:1150px){.season-control span{display:none}}
+@media(max-width:700px){.season-control{padding:6px}.season-control select{max-width:80px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter button,.today-btn,.day-cell{transition:none!important}}
+</style>
 </head>
 <body>
 <div class="page">
 <header class="topbar">
-  <div class="brand"><div class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4v24M4 16h24M8 8l16 16M24 8 8 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="16" r="5.5" fill="currentColor"/></svg></div><div class="brand-words"><strong>知时</strong><small>SHI · YOUR DAY</small></div></div>
+  <div class="brand"><div class="mark watercolor-mark" aria-hidden="true"><img src="/icon-192.png?v=wcosm20261014a" width="40" height="40" alt="" decoding="async"></div><div class="brand-words"><strong>知时</strong><small>SHI · YOUR DAY</small></div></div>
   <nav class="topcenter" aria-label="主导航"><button class="active" type="button" id="navCalendar">月历 · 日常</button><button type="button" id="navInspo">每月小期待</button><button type="button" id="navHolidays">节假日安排</button><button type="button" id="navEvents">上海活动</button></nav>
-  <div class="toolbar"><button class="personal-tools-btn" id="prefsBtn" type="button" title="本机资料与备份">⚙ 我的设置</button><div class="city-tag"><svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.5"/></svg>上海 · 中国</div><button class="circle-btn" title="查看功能说明与数据来源" aria-label="查看功能说明与数据来源" id="aboutBtn"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v6M12 7.5v.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+  <div class="toolbar"><label class="season-control" for="seasonThemeMode"><span id="seasonStatus">节气主题</span><select id="seasonThemeMode" aria-label="节气主题模式"><option value="auto">跟随节气</option><option value="neutral">简约固定</option><option value="小寒">小寒</option><option value="大寒">大寒</option><option value="立春">立春</option><option value="雨水">雨水</option><option value="惊蛰">惊蛰</option><option value="春分">春分</option><option value="清明">清明</option><option value="谷雨">谷雨</option><option value="立夏">立夏</option><option value="小满">小满</option><option value="芒种">芒种</option><option value="夏至">夏至</option><option value="小暑">小暑</option><option value="大暑">大暑</option><option value="立秋">立秋</option><option value="处暑">处暑</option><option value="白露">白露</option><option value="秋分">秋分</option><option value="寒露">寒露</option><option value="霜降">霜降</option><option value="立冬">立冬</option><option value="小雪">小雪</option><option value="大雪">大雪</option><option value="冬至">冬至</option></select></label><button class="personal-tools-btn" id="prefsBtn" type="button" title="本机资料与备份">⚙ 我的设置</button><div class="city-tag"><svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.5"/></svg>上海 · 中国</div><button class="circle-btn" title="查看功能说明与数据来源" aria-label="查看功能说明与数据来源" id="aboutBtn"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v6M12 7.5v.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
 </header>
 <section class="micro-intro" aria-label="本月生活主题"><div class="micro-intro-title"><span class="micro-dot"></span><span>上海 · 节气与城市生活</span><span class="micro-divider">/</span><span>每天一件值得期待的事</span></div><div class="micro-intro-note">工作日轻松体验 · 假日探索上海 <span>✳</span></div></section>
 <div class="main-layout">
@@ -623,16 +664,17 @@ body{background:radial-gradient(ellipse 60% 40% at 100% 0%,#edf3f5,transparent 7
       <div class="inspiration-actions"><button class="pill-action" id="saveInspo">＋ 加入我的日历</button><button class="small-arrow" id="otherIdeas">换一件 ↻</button></div>
       <div class="also-try"><div class="also-try-title">也可以试试 <span>· 点击切换</span></div><div id="ideaAlternatives" class="also-try-list"></div></div>
     </section>
+    <section class="memo-card v7-memo-card">
+      <div class="v7-section-head"><div><div class="v7-eyebrow">MY PLANS</div><h4>这一天的安排 <span id="memoCount"></span></h4></div><button id="addMemoTop" type="button">＋ 添加</button></div>
+      <div id="memoList"></div><button class="add-blank" id="addMemoBlank">＋ 记录一个待办或小期待</button>
+    </section>
     <section class="side-activity-card" aria-label="上海近期真实活动">
       <div class="v7-section-head"><div><div class="v7-eyebrow">EXPLORE SHANGHAI</div><h4>上海近期可关注 <span class="mini-live-dot"></span></h4></div><button id="moreEvents" type="button">全部活动 ↗</button></div>
       <div class="activity-time-tip" id="eventTimeTip">根据所选日期展示仍可安排的活动</div>
       <div class="activity-mini-list" id="rightEvents"></div>
       <div class="activity-footnote" id="eventsFreshness">活动库正在读取 · 具体场次及购票以官方为准</div>
     </section>
-    <section class="memo-card v7-memo-card">
-      <div class="v7-section-head"><div><div class="v7-eyebrow">MY PLANS</div><h4>这一天的安排 <span id="memoCount"></span></h4></div><button id="addMemoTop" type="button">＋ 添加</button></div>
-      <div id="memoList"></div><button class="add-blank" id="addMemoBlank">＋ 记录一个待办或小期待</button>
-    </section>
+
     <details class="fortune-collapsible" id="fortuneCollapse">
       <summary><span><span class="v7-eyebrow">TRADITIONAL ALMANAC</span><b>☯ 今日黄历宜忌</b><small id="compactFortune">所选日期 · 传统民俗参考</small></span><span class="expand-toggle">查看详情 ▾</span></summary>
       <section class="fortune-card" aria-label="传统黄历宜忌">
@@ -1111,6 +1153,49 @@ $('importFile').addEventListener('change',async e=>{const file=e.target.files[0]
  }catch(err){showToast('导入失败：文件不是有效的知时备份')}finally{e.target.value=''}});
 refreshPersonalPanel();
 loadCityInformation();
+
+
+/* 二十四节气 · 统一的网页主题设计系统。2026 年使用本项目已校准的日期，其他年份沿用现有历算日期。 */
+const SOLAR_TERM_THEMES={"小寒":{"bg":"#F4F7F8","primary":"#69848E","surface":"#E8EFF2","accent":"#B2C7CE"},"大寒":{"bg":"#F5F6F4","primary":"#5B707A","surface":"#E7EBED","accent":"#B0BFC5"},"立春":{"bg":"#F4F8F0","primary":"#648A6B","surface":"#E9F1E3","accent":"#B7CD9E"},"雨水":{"bg":"#F1F6F5","primary":"#658C91","surface":"#E4F0EF","accent":"#AACDCF"},"惊蛰":{"bg":"#F5F6EF","primary":"#738C54","surface":"#EEF1DF","accent":"#C5D49B"},"春分":{"bg":"#F9F5F3","primary":"#AA817C","surface":"#F6EAE6","accent":"#D7ABA8"},"清明":{"bg":"#F2F7F3","primary":"#4D8979","surface":"#E1F0E9","accent":"#9EC9B5"},"谷雨":{"bg":"#F4F7F1","primary":"#708B69","surface":"#EAF0E1","accent":"#B4C9A5"},"立夏":{"bg":"#F3F8F2","primary":"#538A72","surface":"#E3F1E7","accent":"#9FCEAE"},"小满":{"bg":"#F7F8F1","primary":"#8A9657","surface":"#EFF2DE","accent":"#CED6A0"},"芒种":{"bg":"#FAF8EF","primary":"#A08B45","surface":"#F4EDD5","accent":"#D6C17F"},"夏至":{"bg":"#F1F8FA","primary":"#4C8DA6","surface":"#E2F1F5","accent":"#A0D0DD"},"小暑":{"bg":"#F3F8F8","primary":"#538E91","surface":"#E6F3F1","accent":"#9DD1CB"},"大暑":{"bg":"#F1F6F8","primary":"#517F9C","surface":"#E2EDF5","accent":"#9EBFD6"},"立秋":{"bg":"#FAF8F0","primary":"#B68A36","surface":"#F8EDCF","accent":"#E2BD62"},"处暑":{"bg":"#F9F7F0","primary":"#A98B55","surface":"#F2EAD8","accent":"#D8BC83"},"白露":{"bg":"#F5F7F7","primary":"#7D9199","surface":"#EAF0F0","accent":"#C5BA91"},"秋分":{"bg":"#FAF7EE","primary":"#A78340","surface":"#F6EBD1","accent":"#D8B65F"},"寒露":{"bg":"#F7F7F0","primary":"#7D8B67","surface":"#EDF0E3","accent":"#C1B47B"},"霜降":{"bg":"#FAF5EF","primary":"#A36F4D","surface":"#F4E7D9","accent":"#CE9670"},"立冬":{"bg":"#F4F6F4","primary":"#607F73","surface":"#E6EEEA","accent":"#A0B8AA"},"小雪":{"bg":"#F5F8FA","primary":"#718DA2","surface":"#E9F0F5","accent":"#B7CAD9"},"大雪":{"bg":"#F3F7FA","primary":"#607F99","surface":"#E5EFF6","accent":"#A4BFD4"},"冬至":{"bg":"#F7F6F1","primary":"#557465","surface":"#ECEFE6","accent":"#B5B7A0"}};
+const THEME_STORAGE_KEY='zhishi-solar-theme-mode-v1';
+let currentSolarThemeName='';
+function termForShanghaiDay(date){
+ const y=Number(date.slice(0,4));
+ let current='冬至';
+ for(const [day,name] of Object.entries({...getTerms(y-1),...getTerms(y)}).sort((a,b)=>a[0].localeCompare(b[0]))){
+   if(day>date)break;
+   if(SOLAR_TERM_THEMES[name])current=name;
+ }
+ return current;
+}
+function readThemeMode(){
+ try{const mode=localStorage.getItem(THEME_STORAGE_KEY)||'auto';return mode==='auto'||mode==='neutral'||SOLAR_TERM_THEMES[mode]?mode:'auto'}catch(e){return 'auto'}
+}
+function applySeasonTheme(){
+ const mode=readThemeMode();
+ const term=termForShanghaiDay(nowShanghai());
+ const neutral={bg:'#F7F8F7',primary:'#728A80',surface:'#EDF2EE',accent:'#B8C7B7'};
+ const name=mode==='auto'?term:mode;
+ const colors=mode==='neutral'?neutral:(SOLAR_TERM_THEMES[name]||SOLAR_TERM_THEMES[term]);
+ const root=document.documentElement;
+ const deep='color-mix(in srgb,'+colors.primary+' 68%,#202F30)';
+ for(const [key,value] of Object.entries({'--season-bg':colors.bg,'--season-primary':colors.primary,'--season-surface':colors.surface,'--season-accent':colors.accent,'--season-deep':deep,'--season-border':'color-mix(in srgb,'+colors.accent+' 29%,#e4e9e8)'}))root.style.setProperty(key,value);
+ root.dataset.solarTheme=name;
+ const select=document.getElementById('seasonThemeMode');
+ if(select&&select.value!==mode)select.value=mode;
+ const status=document.getElementById('seasonStatus');
+ if(status){status.textContent=mode==='auto'?term+' · 自动':mode==='neutral'?'简约模式':name+' · 固定';status.title='北京时间 · 当前节气 '+term;}
+ currentSolarThemeName=name;
+}
+document.getElementById('seasonThemeMode').addEventListener('change',event=>{
+ try{localStorage.setItem(THEME_STORAGE_KEY,event.target.value)}catch(e){showToast('主题偏好无法保存')}
+ applySeasonTheme();
+ showToast(event.target.value==='auto'?'已开启随二十四节气自动换色':'主题已切换');
+});
+applySeasonTheme();
+window.setInterval(applySeasonTheme,60*1000);
+window.addEventListener('focus',applySeasonTheme);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)applySeasonTheme()});
 
 renderAll();loadWeather();
 </script>
