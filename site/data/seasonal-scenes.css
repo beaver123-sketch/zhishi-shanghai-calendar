@@ -1,0 +1,39 @@
+/* 知时24节气 · illustration-forward, never a screenshot skin.
+   Preserve full interactive DOM and all existing layout modules. */
+:root{--solar-flora-sprite:url('/data/solar-flora-atlas.webp');--solar-flora-x:0%;--solar-flora-y:0%}
+.month-work-summary{display:flex;flex-wrap:wrap;align-items:center;gap:5px 9px;margin-top:10px;font-size:11px;color:#85938c;letter-spacing:.1px}
+.month-work-summary strong{font:700 16px/1.3 Georgia,'Songti SC',serif;color:var(--season-deep);white-space:nowrap}
+.month-work-summary .month-work-lead{font-weight:700;color:#687d73}
+.month-work-summary span:last-child{padding-left:11px;border-left:1px solid var(--season-border,#dedad0);color:#a0a5a0}
+.solar-flower-label{margin-top:6px;color:var(--season-deep);font:11px/1.6 'Songti SC','Noto Serif SC',serif;opacity:.8;letter-spacing:.5px}
+/* Each of the 24 themes selects its own painted watercolor plate; blend smoothly
+   into a cream paper surface, with partial crops and significant negative space. */
+.topbar::after,.calendar-left-column .calendar-panel::before,
+.daily-culture-band::after,.zh-sidebar .inspiration-card.v7-joy-card::after,
+.life-card-art--flowers,.zh-sidebar .side-activity-card::after{
+ background-image:var(--solar-flora-sprite)!important;
+ background-size:600% 400%!important;
+ background-position:var(--solar-flora-x) var(--solar-flora-y)!important;
+ background-repeat:no-repeat!important;
+}
+.topbar::after{width:190px!important;height:73px!important;opacity:.45!important;left:6px!important;top:1px!important;mask-image:linear-gradient(90deg,#000 18%,transparent 94%);-webkit-mask-image:linear-gradient(90deg,#000 18%,transparent 94%)}
+.daily-culture-band::after{right:7px!important;top:-2px!important;width:150px!important;height:91px!important;opacity:.32!important;mask-image:linear-gradient(270deg,#000 30%,transparent 100%);-webkit-mask-image:linear-gradient(270deg,#000 30%,transparent 100%)}
+.calendar-left-column .calendar-panel::before{right:-4px!important;top:-2px!important;width:250px!important;height:180px!important;opacity:.59!important;mask-image:linear-gradient(260deg,#000 20%,transparent 90%)!important;-webkit-mask-image:linear-gradient(260deg,#000 20%,transparent 90%)!important}
+.zh-sidebar .inspiration-card.v7-joy-card::after{right:0!important;top:0!important;width:145px!important;height:110px!important;opacity:.38!important;display:block!important;content:""!important;font-size:0!important;mask-image:linear-gradient(270deg,#000 18%,transparent 98%);-webkit-mask-image:linear-gradient(270deg,#000 18%,transparent 98%)}
+.life-card-art--flowers{width:43%!important;height:155px!important;right:-10px!important;top:-7px!important;opacity:.6!important;mask-image:linear-gradient(270deg,#000 20%,transparent 94%)!important;-webkit-mask-image:linear-gradient(270deg,#000 20%,transparent 94%)!important}
+.zh-sidebar .side-activity-card::after{height:89px!important;width:115px!important;opacity:.21!important;mask-image:linear-gradient(270deg,#000,transparent);-webkit-mask-image:linear-gradient(270deg,#000,transparent)}
+/* Category headings inside current "this day's plans" card, no new sidebar. */
+.memo-category-group{display:flex;flex-direction:column;min-width:0;padding:0 0 3px}
+.memo-category-group+.memo-category-group{margin-top:12px;padding-top:10px;border-top:1px solid #f1eee6}
+.memo-category-heading{display:flex;align-items:center;gap:7px;color:#667a71;font-size:11px;line-height:1.4;font-weight:730;padding:5px 2px 6px}
+.memo-category-heading i{display:inline-block;width:5px;height:14px;border-radius:8px;opacity:.82}
+.memo-category-heading small{margin-left:auto;color:#9eaaa5;font-size:10px;font-weight:450}
+.memo-category-group .memo-row{padding:9px 0!important}
+.memo-category-group .memo-row:last-child{border-bottom:0!important}
+/* Seasonal label alongside the heading but never obscuring time controls. */
+.month-title{min-width:0}
+.month-work-summary,.solar-flower-label{position:relative;z-index:2}
+@media(max-width:1360px){.month-work-summary{gap:5px;font-size:10px}.month-work-summary strong{font-size:14px}.solar-flower-label{font-size:10px}}
+@media(max-width:1120px){.calendar-left-column .calendar-panel::before{width:185px!important;height:145px!important;opacity:.48!important}.month-work-summary span:last-child{padding-left:7px}}
+@media(max-width:720px){.calendar-left-column .calendar-panel::before{width:118px!important;height:115px!important;opacity:.27!important}.month-work-summary{margin-top:5px;gap:3px 7px;font-size:10px}.month-work-summary strong{font-size:13px}.solar-flower-label{font-size:10px}.daily-culture-band::after{opacity:.16!important}.topbar::after{display:none}}
+@media(prefers-reduced-motion:reduce){.calendar-left-column .calendar-panel::before,.daily-culture-band::after{transition:none!important}}
