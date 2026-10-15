@@ -1,0 +1,201 @@
+/* 知时 · 一页四时 / whole-page editorial watercolor skin · 2026-10-15
+   This stylesheet is intentionally a visual layer. It preserves the existing
+   DOM structure, localStorage data, calendar dates, widgets and all handlers.
+   All artwork references /data/life-art/*.webp are illustrated watercolors.
+   Real event photography remains limited to the existing events surface. */
+:root{
+  --editorial-ink:#283c41;
+  --editorial-muted:#8c938d;
+  --editorial-line:#e9e6dc;
+  --editorial-shadow:0 10px 34px rgba(104,91,64,.045);
+  --editorial-paper:#fffefa;
+  --editorial-gold:#b18b50;
+  --editorial-olive:#7d8b70;
+  --editorial-serif:'Songti SC','Noto Serif SC','Noto Serif CJK SC','STSong','SimSun',serif;
+}
+html{background:#fcfbf7}
+body{
+  background:radial-gradient(ellipse at 10% -10%,color-mix(in srgb,var(--season-surface,#f7f2e8) 24%,white) 0,transparent 42%),
+  color-mix(in srgb,var(--season-bg,#f9f8f2) 30%,#fafaf7) !important;
+  color:var(--editorial-ink);
+  font-size:13px;
+}
+.page{max-width:1640px;padding:0 clamp(19px,3vw,49px) 48px}
+/* Navigation: keep positions and click targets; no new functional regions. */
+.topbar{height:87px;min-height:87px;margin:0 0 5px;position:relative;border-bottom:1px solid #eae8df !important;gap:15px}
+.topbar::after{content:"";position:absolute;pointer-events:none;width:230px;height:74px;left:10px;top:0;opacity:.10;
+ background:url('/data/life-art/osmanthus-sprig.webp') center 32% / contain no-repeat;z-index:0}
+.topbar >*{position:relative;z-index:1}
+.brand{gap:10px}
+.watercolor-mark{width:45px!important;height:45px!important;overflow:hidden;border:1px solid #eee7d8!important;border-radius:13px!important;background:#faf5e8!important}
+.watercolor-mark img{width:100%;height:100%;object-fit:cover}
+.brand-words strong{font-family:var(--editorial-serif);font-size:25px;letter-spacing:3px;font-weight:700;color:var(--editorial-ink)}
+.brand-words small{font:500 9px/1.4 Georgia,serif;letter-spacing:2.8px;color:#9da4a0}
+.topcenter{background:#fffefbec;border:1px solid #eae7dd;padding:4px;border-radius:28px;box-shadow:0 2px 12px #9b8b7120;gap:2px}
+.topcenter button{font-size:12px;font-weight:550;border-radius:22px;color:#777f7b;padding:9px 15px}
+.topcenter button.active{background:color-mix(in srgb,var(--season-surface,#f3ead1) 72%,white)!important;color:var(--season-deep,#526853)!important;box-shadow:none!important}
+.topcenter button:hover{background:#f7f5ed;color:#586c61}
+.season-control,.personal-tools-btn,.city-tag,.circle-btn{background:#fffefa!important;border:1px solid #e6e7dd!important;color:#6b7872!important;box-shadow:none!important}
+.personal-tools-btn{padding:8px 11px!important}
+.circle-btn{width:36px;height:36px}
+/* Daily poem and cultural fortune: one airy horizontal editorial strip. */
+.daily-culture-band{
+ position:relative;overflow:hidden;min-height:72px!important;
+ padding:13px 20px!important;margin:13px 0 18px!important;
+ background:linear-gradient(105deg,#fffefa 0%,#fffefa 68%,color-mix(in srgb,var(--season-surface,#faf3df) 33%,white) 100%);
+ border:1px solid #ebe7db;border-radius:19px;box-shadow:var(--editorial-shadow);
+}
+.daily-culture-band::after{content:"";position:absolute;pointer-events:none;right:9px;top:-34px;width:125px;height:140px;opacity:.24;background:url('/data/life-art/osmanthus-sprig.webp') center / contain no-repeat}
+.daily-culture-band>*{position:relative;z-index:1}
+.daily-verse{gap:11px;color:var(--editorial-ink)}
+.daily-verse .micro-dot{background:var(--season-primary)!important;box-shadow:0 0 0 5px color-mix(in srgb,var(--season-surface) 55%,white)!important}
+.daily-verse-line{font-family:var(--editorial-serif);font-weight:650;font-size:19px;letter-spacing:1.2px;line-height:1.65;white-space:normal}
+.daily-verse-source{font-family:var(--editorial-serif);font-size:11px;color:#9f9587;white-space:nowrap}
+.today-fortune{padding:8px 13px;gap:11px;background:#fdfcf8ed;border:1px solid #eae5d8;border-radius:13px;box-shadow:none}
+.fortune-today-caption{color:var(--editorial-ink);font-weight:680}
+.fortune-today-metric{color:#87918a}
+.fortune-today-metric b{color:#5e6a5c}
+.fortune-today-tip{max-width:150px;color:#8b9187;border-left-color:#e7e4d9}
+/* Preserve main split: left calendar + four monthly lifestyle modules / right vertical sidebar. */
+.main-layout{grid-template-columns:minmax(0,1fr) minmax(332px,365px)!important;gap:16px!important;margin-top:0!important;align-items:start}
+.calendar-left-column{gap:15px!important}
+.calendar-left-column .calendar-panel{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:linear-gradient(160deg,#fffefa 0%,#fffefa 76%,#fcfaf4 100%)!important;
+ border:1px solid #e9e5d9!important;box-shadow:var(--editorial-shadow)!important;
+ border-radius:22px!important;padding:27px 27px 19px!important
+}
+.calendar-left-column .calendar-panel::before{content:"";position:absolute;top:-54px;right:-43px;z-index:-1;width:208px;height:195px;pointer-events:none;opacity:.29;background:url('/data/life-art/osmanthus-hero.webp') center / contain no-repeat;mask-image:linear-gradient(135deg,transparent,black 18%,black 67%,transparent);-webkit-mask-image:linear-gradient(135deg,transparent,black 18%,black 67%,transparent)}
+.panel-heading{align-items:center;margin-bottom:16px!important;position:relative;z-index:1}
+.month-title h2{font-family:var(--editorial-serif)!important;font-size:34px!important;letter-spacing:1px;font-weight:650;color:var(--editorial-ink);line-height:1.25}
+.month-title:before{color:#a4a18f!important;letter-spacing:1.6px!important;font-size:9px!important}
+.month-title p{color:#9fa19a;font-family:Georgia,var(--editorial-serif);font-size:11px;letter-spacing:.5px}
+.month-controllers{gap:6px}
+.narrow-btn{min-width:37px;height:37px;background:#fffefa;border:1px solid #eae7df;color:#687c74;border-radius:10px}
+.narrow-btn:hover{background:var(--season-surface);border-color:var(--season-accent)}
+.today-btn{background:color-mix(in srgb,var(--season-surface) 60%,white)!important;color:var(--season-deep)!important}
+.view-legend{gap:11px;padding:13px 0 13px!important;border-top:1px solid #f0eee7;color:#969f99;font-size:10px}
+.legend-right{color:#abb1ab}
+.state-strip-sample.rest{background:#b3cbd6!important}.state-strip-sample.work{background:#aacbbb!important}
+.weekdays{padding:2px 0 11px}
+.weekdays span{font-size:11px;font-weight:650;color:#8d9893}
+.weekdays span:nth-child(6),.weekdays span:nth-child(7){color:#809bab}
+.month-grid{gap:5px!important;grid-auto-rows:minmax(105px,auto)!important;overflow:visible;border:0!important;border-radius:0!important;background:transparent}
+.day-cell{min-height:105px;border:1px solid #f0eee6!important;border-radius:11px!important;background:#fffefa!important;padding:9px 8px 14px!important;box-shadow:none!important;color:#42595d!important}
+.day-cell:hover:not(.outside){border-color:color-mix(in srgb,var(--season-accent) 37%,#e6e8e0)!important;background:#fdfcf6!important}
+.day-cell.selected,.day-cell.selected.rest-day{background:color-mix(in srgb,var(--season-surface) 59%,white)!important;border-color:var(--season-primary)!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--season-primary) 55%,white)!important}
+.day-cell.rest-day:not(.selected){background:#f1f6f8!important;border-color:#e4edf1!important}
+.day-cell.makeup-work:not(.selected){background:#eff6f0!important;border-color:#e3eee5!important}
+.day-cell.outside{background:#fbfbf8!important;opacity:.50}
+.day-cell.rest-day::after,.day-cell.makeup-work::after{height:4px!important;left:10px!important;right:10px!important;bottom:5px!important;border-radius:4px!important}
+.day-cell.rest-day::after{background:#adc7d4!important}.day-cell.makeup-work::after{background:#a7cbb4!important}
+.day-cell.today .date-num{background:var(--season-deep)!important;color:white!important}
+.date-num{font-family:Georgia,var(--editorial-serif);font-weight:650;font-size:16px;color:#314b55}
+.day-cell.weekend .date-num,.day-cell.rest-day .date-num{color:#668a9c}
+.date-badge.rest{background:#dfedf5;color:#6998ae}.date-badge.work{background:#dcefe1;color:#638f73}
+.lunar-label{color:#a1a59c;font-size:10px}
+.lunar-label.term{color:var(--editorial-gold)}
+.cell-inspiration{font-size:9px;color:#879c8e;padding-top:4px!important}
+.month-foot{border-top:1px solid #f0eee7;margin-top:12px;padding-top:13px!important;color:#9ca69c;font-size:10px}
+.foot-link{color:var(--season-deep);font-size:10px}
+/* The right column remains a vertical stack, with distinct light cards. */
+.detail-panel.zh-sidebar{display:flex;flex-direction:column;gap:12px;padding:0;background:transparent;border:0;box-shadow:none}
+.zh-sidebar>section,.zh-sidebar>details{
+ border:1px solid #eae7de!important;border-radius:18px!important;
+ box-shadow:var(--editorial-shadow)!important;background:#fffefa!important;
+}
+.zh-sidebar .side-overview{position:relative;isolation:isolate;overflow:hidden;padding:18px 17px 15px;grid-template-columns:minmax(0,1fr) 111px;min-height:156px}
+.zh-sidebar .side-overview::before{content:"";pointer-events:none;position:absolute;z-index:-1;right:-8px;bottom:-17px;width:225px;height:110px;background:url('/data/life-art/shanghai-watercolor.webp') center / contain no-repeat;opacity:.24}
+.zh-sidebar .side-label,.v7-eyebrow{font:700 10px/1.5 Georgia,serif;letter-spacing:1.7px;color:#999f99}
+.zh-sidebar .side-date{font-family:var(--editorial-serif);font-size:22px;font-weight:650;color:var(--editorial-ink);margin-top:7px}
+.zh-sidebar .side-lunar{color:#949c96;font-size:11px}
+.zh-sidebar .weather-module{background:#f7f8f4ee;border:1px solid #e8e9df;border-radius:14px;color:#687f87;padding:7px 4px 9px}
+.zh-sidebar .weather-temp{font-size:22px;color:#4b6973}
+.zh-sidebar .weather-rain{color:#98a5a3;font-size:9px}
+.zh-sidebar .weather-advice{border-top:1px solid #ecece4;color:#8c9b93;font-size:10px;line-height:1.6}
+.zh-sidebar .inspiration-card.v7-joy-card{position:relative;isolation:isolate;background:linear-gradient(119deg,#fff9ed 0%,#fffdfa 70%)!important;border-color:#efe5d4!important;box-shadow:var(--editorial-shadow)!important;padding:20px 20px 17px!important}
+.zh-sidebar .inspiration-card.v7-joy-card::after{content:""!important;position:absolute;pointer-events:none;right:-12px;top:-16px;width:136px;height:133px;opacity:.17;background:url('/data/life-art/osmanthus-sprig.webp') center / contain no-repeat;z-index:-1;font-size:0!important}
+.v7-card-heading .v7-eyebrow{color:#af9b80}
+.v7-label{color:#9a7a47;background:#f8efdc;padding:5px 9px}
+.zh-sidebar .idea-scope{margin-top:14px;color:#8e927b;font-size:10px}
+.zh-sidebar .inspiration-card h3{font:700 22px/1.45 var(--editorial-serif);letter-spacing:.1px;color:#3b4c46;margin:7px 0 7px}
+.zh-sidebar .inspiration-card p{font-size:11px;line-height:1.72;color:#898b7e}
+.zh-sidebar .inspiration-info{margin-top:11px;gap:6px}
+.zh-sidebar .inspiration-info span{background:#f5efe4;border:1px solid #efe5d4;color:#927d5e;border-radius:7px;padding:5px 7px}
+.zh-sidebar .inspiration-actions{margin-top:12px}
+.zh-sidebar .pill-action{background:var(--season-deep)!important;border-radius:10px!important;font-size:11px;padding:9px 13px}
+.zh-sidebar .small-arrow{color:#8b806c}
+.also-try{margin-top:13px;padding-top:10px;border-top-color:#f0e8db}
+.also-try-option{background:#fffdfa;border-color:#efe9de;border-radius:9px;padding:8px 10px}
+.zh-sidebar .v7-memo-card,.zh-sidebar .side-activity-card{padding:18px!important}
+.zh-sidebar .v7-section-head h4{font-family:var(--editorial-serif);font-size:17px;font-weight:700;color:#304448}
+.v7-section-head button{border:1px solid #e7e8dd;background:var(--season-surface);color:var(--season-deep);border-radius:9px;padding:7px 10px}
+.zh-sidebar .v7-memo-card #memoList{margin-top:10px}
+.zh-sidebar .v7-memo-card .memo-row{padding:9px 0;border-bottom:1px solid #f0efe8}
+.memo-text strong{color:#536a62;font-size:11px}
+.memo-color{width:5px}
+.memo-check{border-radius:6px}
+.zh-sidebar .v7-memo-card .add-blank{background:#fffefa;border:1px dashed #dcded2;color:#76877a;padding:10px}
+.zh-sidebar .side-activity-card{position:relative;overflow:hidden;isolation:isolate}
+.zh-sidebar .side-activity-card::after{content:"";position:absolute;pointer-events:none;z-index:-1;right:-22px;top:1px;width:128px;height:70px;background:url('/data/life-art/shanghai-watercolor.webp') center / contain no-repeat;opacity:.14}
+.activity-time-tip{font-size:10px;color:#a1a59c}
+.activity-mini{border-top:1px solid #f0eee7;padding:10px 0}
+.activity-icon{background:#f5f3ea;color:#8c987a;border-radius:10px}
+.activity-body strong{font-size:11px;font-weight:660;color:#4b6265}
+.activity-tag{color:#a38b62}
+.activity-mini>a{color:#837951}
+.activity-footnote{color:#a7aaa3;font-size:9px}
+.zh-sidebar .fortune-collapsible{background:#fffefa!important}
+.fortune-collapsible summary{padding:16px 18px}
+.fortune-collapsible summary b{font-family:var(--editorial-serif);color:#4c625d;font-size:16px}
+.fortune-collapsible summary small{color:#97a49c}
+.expand-toggle{background:var(--season-surface);color:var(--season-deep)}
+.zh-sidebar .fortune-card{background:#fffefa!important;border-top:1px solid #f0ede5;padding:16px 17px}
+/* Life journal: illustration-led yet quiet, without crowded decorative shapes. */
+.life-hub{gap:13px!important;padding:0 0 3px!important;align-items:start}
+.life-card{overflow:hidden;border-radius:21px!important;padding:19px 18px!important;background:#fffefa!important;border:1px solid #e9e5d9!important;box-shadow:var(--editorial-shadow)!important;transform:none!important}
+.life-card::before{opacity:.10!important;background:radial-gradient(ellipse at 100% 0%,var(--season-surface),transparent 52%)!important}
+.life-card::after{display:none!important}
+.life-card--flowers,.life-card--days,.life-card--wishes,.life-card--letter{min-height:0!important;margin-top:0!important}
+.life-card--flowers{padding-bottom:18px!important}
+.life-card-head{margin-bottom:13px!important;min-height:0!important}
+.life-kicker{font-family:Georgia,serif;color:#a4a198;font-size:9px;letter-spacing:1.6px;margin-bottom:7px}
+.life-card-title{font:700 20px/1.35 var(--editorial-serif);color:var(--editorial-ink);letter-spacing:.2px}
+.life-card-sub{font:11px/1.6 var(--editorial-serif);color:#989a90;margin-top:4px}
+.life-seal{font-size:7px;opacity:.65}
+.life-mini-button,.life-card--days .life-mini-button{border:1px solid #e3dfd3;background:#fffefa!important;color:#657c6b!important;border-radius:10px;box-shadow:none;font-size:10px;min-height:31px;padding:7px 9px}
+.life-mini-button:hover{background:var(--season-surface)!important}
+.life-card-art--flowers{width:38%!important;height:152px!important;top:-17px!important;right:-11px!important;opacity:.43!important;mask-image:linear-gradient(270deg,#000 10%,transparent 93%)!important;-webkit-mask-image:linear-gradient(270deg,#000 10%,transparent 93%)!important}
+.life-card--flowers .life-card-head{min-height:78px!important}
+.life-card--flowers .life-card-head>div{max-width:75%}
+.life-season-poem{font-size:11px;color:#969184;min-height:0;margin:3px 0 11px;max-width:86%}
+.life-flower-row{min-height:64px;padding:7px 10px 7px 6px;border:1px solid #eeeadf;background:#fffefb;border-radius:12px;box-shadow:none}
+.life-flower-picture{width:66px;height:58px;flex-basis:66px;border-radius:10px;background:#f9f7ee}
+.life-flower-name{font-size:14px}
+.life-flower-desc{font-size:10px;line-height:1.45;color:#979b94}
+.life-flower-location{font-size:9px;color:#aaa9a0}
+.life-footnote{font-size:9px;line-height:1.55;color:#a5a69f;margin-top:10px}
+.life-card--days .life-list{margin-top:9px}
+.life-anniv-row{background:#fffefa;border:1px solid #eeeae2;border-radius:12px;box-shadow:none}
+.life-anniv-number{color:#496269}
+.life-mode-pill{border-radius:7px}
+.life-card--wishes .life-card-head{min-height:0!important}
+.life-card--wishes .life-card-head>div{padding-left:0!important}
+.life-card--wishes .life-card-title{font-size:19px;white-space:normal}
+.life-city-art{opacity:.13!important;width:25%!important}
+.life-ticket{box-shadow:none;border-color:#e9e3d8;transform:none!important}
+.life-ticket-body .life-row-title{font-size:12px}
+.life-card--letter .life-card-head{min-height:0!important;margin-bottom:10px}
+.life-letter-stage{min-height:146px;align-items:center}
+.life-envelope-art{left:-12px;width:56%;height:155px;opacity:.52}
+.life-list--letters{width:70%;margin-top:5px}
+.life-letter-stationery{background:#fffefbee;border:1px solid #e9e3d8;box-shadow:0 3px 12px #a992640d}
+.life-tools{font-size:9px;color:#aaa9a2;padding:4px 3px 7px}
+/* Active controls, keyboard states and accessibility. */
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px solid var(--season-primary);outline-offset:2px}
+::selection{background:var(--season-surface);color:#283c41}
+@media(max-width:1450px){.main-layout{grid-template-columns:minmax(0,1fr) minmax(325px,350px)!important;gap:13px!important}.calendar-left-column .calendar-panel{padding:23px 21px 17px!important}.month-grid{grid-auto-rows:minmax(101px,auto)!important}.day-cell{min-height:101px}.life-card-title{font-size:19px}.life-card--wishes .life-card-title{font-size:18px}.life-card{padding:17px 16px!important}.daily-verse-line{font-size:17px}}
+@media(max-width:1160px){.main-layout{grid-template-columns:minmax(0,1fr) minmax(307px,329px)!important;gap:12px!important}.page{padding:0 19px 35px}.topcenter button{padding:8px 10px}.life-hub{gap:10px!important}.life-card{padding:14px 12px!important}.life-card-title{font-size:17px}.life-card--wishes .life-card-title{font-size:17px}.life-flower-picture{width:50px;flex-basis:50px;height:55px}.life-flower-name{font-size:12px}.life-card--flowers .life-card-head>div{max-width:77%}.month-grid{grid-auto-rows:minmax(99px,auto)!important}.day-cell{min-height:99px;padding:7px 5px 12px!important}.today-fortune{flex-wrap:wrap}}
+@media(max-width:920px){.main-layout{grid-template-columns:minmax(0,1fr)!important}.detail-panel.zh-sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.zh-sidebar .side-overview,.zh-sidebar .v7-joy-card,.zh-sidebar .fortune-collapsible{grid-column:1/-1}.zh-sidebar .v7-memo-card,.zh-sidebar .side-activity-card{grid-column:auto}.calendar-left-column .calendar-panel{padding:23px!important}.life-hub{gap:12px!important}.life-card{padding:18px!important}.life-card-title{font-size:20px}}
+@media(max-width:630px){.page{padding:0 11px 27px}.topbar{min-height:68px;height:68px;gap:7px;margin:0}.watercolor-mark{width:36px!important;height:36px!important}.brand-words strong{font-size:20px}.brand-words small{font-size:7px;letter-spacing:1.2px}.topbar::after{display:none}.season-control{max-width:125px}.personal-tools-btn{padding:7px 8px!important;font-size:10px}.daily-culture-band{padding:11px 12px!important;margin:9px 0 12px!important;min-height:0!important;border-radius:14px}.daily-culture-band::after{opacity:.12;width:85px}.daily-verse-line{font-size:14px;letter-spacing:.1px}.daily-verse-source{font-size:9px}.today-fortune{padding:7px 9px;gap:8px;font-size:10px;max-width:100%}.fortune-today-tip{display:none}.calendar-left-column .calendar-panel{padding:15px 9px!important;border-radius:16px!important}.calendar-left-column .calendar-panel::before{width:100px;height:100px;top:-19px;right:-20px;opacity:.15}.month-title h2{font-size:25px!important}.month-title p{font-size:9px}.panel-heading{margin-bottom:10px!important}.view-legend{gap:6px 10px;padding:9px 0!important}.legend-right{display:none}.weekdays span{font-size:10px}.month-grid{gap:3px!important;grid-auto-rows:minmax(85px,auto)!important}.day-cell{min-height:85px;padding:5px 3px 11px!important;border-radius:7px!important}.date-num{font-size:13px;width:22px;height:22px}.date-badge{font-size:8px;min-width:16px;padding:0 2px}.lunar-label{font-size:9px;margin-top:3px}.cell-inspiration{font-size:8px}.month-foot{font-size:9px;flex-wrap:wrap;gap:4px}.detail-panel.zh-sidebar{display:flex;align-items:stretch;gap:11px}.zh-sidebar .side-overview{min-height:130px}.zh-sidebar .inspiration-card.v7-joy-card,.zh-sidebar .side-activity-card,.zh-sidebar .v7-memo-card{padding:16px!important}.life-hub{grid-template-columns:1fr!important;gap:12px!important}.life-card{padding:17px 15px!important;border-radius:17px!important}.life-card-title{font-size:20px}.life-card--flowers .life-card-head>div{max-width:80%}.life-card-art--flowers{width:42%!important;opacity:.31!important}.life-flower-picture{width:60px;flex-basis:60px;height:60px}.life-letter-stage{min-height:150px}.life-city-art{opacity:.1!important}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.life-card,.day-cell,.topcenter button{transition:none!important}}
