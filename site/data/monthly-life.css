@@ -1,0 +1,66 @@
+/* ZhiShi · monthly life hub | all illustrations SVG/CSS, no photographs */
+.calendar-left-column{min-width:0;display:flex;flex-direction:column;gap:18px}
+.calendar-left-column .calendar-panel{width:100%;min-width:0}
+.life-hub{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-content:start}
+.life-card{position:relative;min-width:0;padding:20px 21px 19px;background:rgba(255,255,255,.94);border:1px solid var(--season-border,#e7e7df);border-radius:22px;box-shadow:0 8px 30px rgba(47,57,45,.035);overflow:hidden;transition:border-color .3s ease,background-color .3s ease}
+.life-card--flowers{background:linear-gradient(135deg,color-mix(in srgb,var(--season-surface,#f6eed6) 60%,white),#fff 84%)}
+.life-card--letter{background:linear-gradient(140deg,#fffdfa 5%,color-mix(in srgb,var(--season-surface,#f6eed6) 26%,white) 100%)}
+.life-card::after{content:'';position:absolute;right:-35px;top:-42px;width:123px;height:123px;border-radius:50%;border:1px solid color-mix(in srgb,var(--season-accent,#ddc088) 28%,transparent);pointer-events:none}
+.life-card-head{display:flex;align-items:start;justify-content:space-between;gap:10px;position:relative;z-index:1;margin-bottom:15px}
+.life-kicker{font:700 10px/1.4 Arial,sans-serif;letter-spacing:1.6px;color:#9caeaf;margin-bottom:6px}
+.life-card-title{margin:0;color:#344c52;font-family:'Noto Serif SC','Songti SC',serif;font-weight:700;font-size:19px;letter-spacing:.3px;line-height:1.4}
+.life-card-sub{color:#96a5a1;font-size:11px;margin-top:6px;line-height:1.65}
+.life-mini-button{position:relative;z-index:2;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:3px;border:1px solid var(--season-border,#e2e9e4);border-radius:10px;background:#fffdfb;padding:8px 10px;color:var(--season-deep,#62766b);font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:34px}
+.life-mini-button:hover{border-color:var(--season-primary,#8eac9a);background:var(--season-surface,#f2f6ed)}
+.life-list{display:flex;flex-direction:column;gap:9px;position:relative;z-index:1}
+.life-flower-row{display:flex;gap:11px;align-items:center;padding:9px 10px;border:1px solid color-mix(in srgb,var(--season-border,#e6eadd) 90%,white);border-radius:13px;background:#fffdfbdc;min-width:0}
+.life-botanical{width:45px;height:45px;border-radius:12px;flex:0 0 45px;display:grid;place-items:center;background:color-mix(in srgb,var(--season-surface,#f2eedc) 75%,white);color:var(--season-primary,#ae8b51)}
+.life-botanical svg{width:32px;height:32px;display:block}
+.life-flower-info{flex:1;min-width:0}.life-flower-name{font-size:13px;font-weight:730;color:#465f5b}.life-flower-desc{font-size:10px;color:#91a19e;margin-top:4px;white-space:normal;line-height:1.55}
+.life-tag{display:inline-block;vertical-align:middle;margin-left:5px;padding:2px 5px;background:var(--season-surface,#f2efdf);border-radius:5px;color:var(--season-deep,#707c60);font-size:9px;font-weight:600}
+.life-flower-action{border:0;background:transparent;color:#809b91;font-size:11px;cursor:pointer;white-space:nowrap;align-self:center;padding:5px 1px}
+.life-flower-action:hover{text-decoration:underline;color:var(--season-deep,#566e62)}
+.life-footnote{margin:12px 0 0;color:#9aa9a6;font-size:10px;line-height:1.6}
+.life-empty{padding:15px 13px;border:1px dashed #dfe8e2;border-radius:12px;color:#8d9e97;background:#fdfefdfa;font-size:12px;line-height:1.75}
+.life-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:11px 12px;background:#fff;border:1px solid #e9eeec;border-radius:12px;min-width:0}
+.life-row-info{min-width:0;flex:1}.life-row-title{display:block;color:#425d5f;font-weight:730;font-size:12px;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.life-row-caption{display:block;color:#9caeaa;font-size:10px;margin-top:4px;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.life-days{flex:0 0 auto;min-width:48px;text-align:right;font-family:Arial,sans-serif;color:var(--season-deep,#778c73);font-size:20px;line-height:1;font-weight:760}.life-days small{font-size:10px;color:#a2ada7;margin-left:3px;font-weight:500}.life-days.past{font-size:11px;line-height:1.5;color:#99a8aa}
+.life-action-strip{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.life-text-button{background:none;border:0;color:#8da39a;cursor:pointer;font-size:11px;padding:4px 0;text-decoration:none}.life-text-button:hover{color:#3d7466;text-decoration:underline}
+.life-wish-source{font-size:11px;color:#8ca5a3;text-decoration:none}.life-wish-source:hover{text-decoration:underline}
+.life-status-tag{display:inline-block;padding:3px 6px;border-radius:5px;background:#eef3ee;color:#63837a;font-size:10px;white-space:nowrap}
+.life-status-tag.past{background:#f4f1ed;color:#9d978a}
+.life-wish-add{margin-left:7px!important;border-radius:7px!important;border:1px solid #d8e5df!important;padding:5px 8px!important;line-height:1.5!important;background:#f8fbfa!important;color:#5e8274!important;font-weight:690!important;font-size:11px!important;cursor:pointer!important}
+.life-wish-add:hover{background:#edf5ef!important}
+.life-wish-add.is-saved{background:#f2efe5!important;color:#a48a58!important;border-color:#e4d6b5!important}
+.activity-mini .life-wish-add{font-size:10px!important;margin:0 3px!important;padding:4px 6px!important;flex-shrink:0}
+.life-letter-row{display:flex;align-items:center;gap:11px;padding:11px 12px;background:#fff;min-width:0;border:1px solid #ece9df;border-radius:12px}
+.life-letter-envelope{flex:0 0 35px;width:35px;height:35px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--season-surface,#f5ecd7) 80%,white);color:#ab9064}
+.life-letter-envelope svg{width:22px;height:22px}
+.life-letter-info{flex:1;min-width:0}.life-letter-info strong{font-size:12px;color:#625c50;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.life-letter-info small{font-size:10px;color:#9e9b8f;display:block;margin-top:3px}
+.life-letter-open{border:0;background:transparent;color:#997d4f;padding:5px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap}
+.life-tools{grid-column:1/-1;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:0 4px 3px;color:#9aaba6;font-size:10px;line-height:1.6}
+.life-tools-group{display:flex;gap:10px;align-items:center;flex:0 0 auto}
+.life-tools button{font-size:10px;color:#7e9892;background:none;padding:4px 0;border:0;cursor:pointer}
+.life-tools button:hover{text-decoration:underline}
+.life-form-dialog{border:0;padding:0;background:transparent;max-width:calc(100vw - 28px);width:440px;max-height:calc(100vh - 50px);overflow:visible;color:#435a58}
+.life-form-dialog::backdrop{background:rgba(31,42,39,.42);backdrop-filter:blur(3px)}
+.life-form-frame{position:relative;background:#fffdfa;border:1px solid #eadfca;border-radius:20px;padding:25px 25px 23px;box-shadow:0 22px 70px rgba(17,32,28,.18);max-height:calc(100vh - 50px);overflow:auto}
+.life-form-frame h3{font-family:'Noto Serif SC','Songti SC',serif;font-size:22px;margin:0 0 7px;color:#395754}
+.life-form-frame p{font-size:12px;color:#9aa8a4;margin:0 0 18px;line-height:1.8}
+.life-form-frame label{display:block;margin:12px 0 6px;font-size:12px;color:#6b807a;font-weight:700}
+.life-form-frame input[type=text],.life-form-frame input[type=date],.life-form-frame textarea{display:block;width:100%;border-radius:10px;border:1px solid #dce5de;background:#fff;padding:10px 12px;font:13px/1.55 inherit;color:#3e5953;outline-offset:2px;box-sizing:border-box}
+.life-form-frame textarea{min-height:165px;resize:vertical;font-family:'Noto Sans SC',sans-serif}
+.life-form-frame input:focus,.life-form-frame textarea:focus{outline:2px solid #bed4c5;border-color:#91b29e}
+.life-form-frame .life-checkbox-label{display:flex;align-items:center;gap:8px;font-weight:500;margin-top:14px;cursor:pointer}
+.life-dialog-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}
+.life-dialog-actions button{border:1px solid #dce6e1;background:#fff;border-radius:9px;padding:9px 15px;font-size:12px;cursor:pointer;color:#6a8279;font-weight:650}
+.life-dialog-actions .life-primary{background:var(--season-deep,#5e7a67);color:white;border-color:var(--season-deep,#5e7a67)}
+.life-dialog-close{position:absolute;right:20px;top:18px;color:#869b92;background:transparent;border:0;font-size:21px;cursor:pointer}
+.life-letter-paper{white-space:pre-wrap;line-height:1.95;color:#4c5f59;padding:19px;background:#faf7ee;border:1px solid #e9ddc6;border-radius:12px;font-size:13px;max-height:45vh;overflow:auto}
+.life-note{font-size:10px!important;line-height:1.7!important;color:#a29c8d!important;margin-top:13px!important}
+@media(max-width:1180px){.life-card{padding:16px}.life-card-title{font-size:17px}.life-hub{gap:11px}.life-flower-row{padding:8px;gap:8px}.life-flower-action{font-size:10px}}
+@media(max-width:680px){.calendar-left-column{gap:13px}.life-hub{gap:11px;grid-template-columns:1fr}.life-card{border-radius:16px;padding:17px}.life-card-title{font-size:18px}.life-tools{flex-wrap:wrap;gap:7px}.life-form-frame{padding:20px}.life-wish-add{padding:6px!important}}
+@media(prefers-reduced-motion:reduce){.life-card{transition:none}}
+.calendar-left-column .calendar-panel,.life-hub,.life-card,.life-form-frame{box-sizing:border-box}
+.life-wish-add{font-family:inherit}
