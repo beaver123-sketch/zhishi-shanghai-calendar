@@ -643,6 +643,7 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 </style>
 <link rel="stylesheet" href="/data/monthly-life.css?v=20261015-watercolor-v2" />
 <link rel="stylesheet" href="/data/editorial-redesign.css?v=20261015-editorial-theme-v2" />
+<link rel="stylesheet" href="/data/term-art.css?v=20261015-24term-v1" />
 <link rel="stylesheet" href="/data/seasonal-scenes.css?v=20261015-season24-v1" />
 </head>
 <body>
@@ -668,7 +669,7 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 </section>
 <div class="main-layout">
   <div class="calendar-left-column">
-  <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p><div class="month-work-summary" id="monthWorkSummary" aria-live="polite">正在统计本月工作日…</div></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+  <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p><div class="month-work-summary" id="monthWorkSummary" aria-live="polite">正在统计本月工作日…</div><div class="term-signature" id="solarFlowerName" aria-label="当前节气主题花卉"></div></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   <div class="view-legend"><span class="legend-item"><span class="state-strip-sample rest"></span>周末 / 节假日休息</span><span class="legend-item"><span class="state-strip-sample work"></span>调休补班</span><span class="legend-item"><span class="sample-dot"></span>个人备忘</span><span class="legend-item"><span style="color:#b88951">✳</span>节气</span><span class="legend-right">点击任意日期 · 查看小期待与传统黄历</span></div>
   <div class="weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div class="month-grid" id="monthGrid" role="grid" aria-label="月历"></div><div class="month-foot"><span id="footerStats">本月 · 每天都有值得期待的小事</span><button class="foot-link" id="monthIdeasBtn">查看本月全部生活提案 ↗</button></div>
   </main>
@@ -1490,6 +1491,14 @@ function refreshDailyCulture(){
 /* 二十四节气 · 统一的网页主题设计系统。2026 年使用本项目已校准的日期，其他年份沿用现有历算日期。 */
 const SOLAR_TERM_THEMES=window.ZHISHI_DESIGN_SYSTEM?.themes||{};
 const THEME_STORAGE_KEY='zhishi-solar-theme-mode-v1';
+const TERM_FLORAL_ART={
+ '立春':['01','桃花'],'雨水':['02','玉兰'],'惊蛰':['03','迎春花'],'春分':['04','樱花'],
+ '清明':['05','海棠'],'谷雨':['06','紫藤'],'立夏':['07','月季'],'小满':['08','麦穗'],
+ '芒种':['09','荷花'],'夏至':['10','莲花'],'小暑':['11','凌霄'],'大暑':['12','向日葵'],
+ '立秋':['13','桂花'],'处暑':['14','紫薇'],'白露':['15','芦苇'],'秋分':['16','银杏'],
+ '寒露':['17','菊花'],'霜降':['18','红枫'],'立冬':['19','山茶花'],'小雪':['20','红梅'],
+ '大雪':['21','红梅'],'冬至':['22','水仙'],'小寒':['23','松柏'],'大寒':['24','红梅']
+};
 let currentSolarThemeName='';
 function termForShanghaiDay(date){
  const y=Number(date.slice(0,4));
@@ -1513,6 +1522,10 @@ function applySeasonTheme(){
  const deep='color-mix(in srgb,'+colors.primary+' 68%,#202F30)';
  for(const [key,value] of Object.entries({'--season-bg':colors.bg,'--season-primary':colors.primary,'--season-surface':colors.surface,'--season-accent':colors.accent,'--season-deep':deep,'--season-border':'color-mix(in srgb,'+colors.accent+' 29%,#e4e9e8)'}))root.style.setProperty(key,value);
  root.dataset.solarTheme=name;
+ const termArt=TERM_FLORAL_ART[SOLAR_TERM_THEMES[name]?name:term]||TERM_FLORAL_ART[term];
+ if(termArt){root.style.setProperty('--term-art',`url("/data/term-art/${termArt[0]}.webp")`);}
+ const flowerInfo=document.getElementById('solarFlowerName');
+ if(flowerInfo&&termArt)flowerInfo.textContent=(SOLAR_TERM_THEMES[name]?name:term)+' · '+termArt[1]+'水彩';
  const select=document.getElementById('seasonThemeMode');
  if(select&&select.value!==mode)select.value=mode;
  const status=document.getElementById('seasonStatus');
