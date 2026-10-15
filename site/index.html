@@ -630,11 +630,7 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 </header>
 <section class="micro-intro" aria-label="本月生活主题"><div class="micro-intro-title"><span class="micro-dot"></span><span>上海 · 节气与城市生活</span><span class="micro-divider">/</span><span>每天一件值得期待的事</span></div><div class="micro-intro-note">工作日轻松体验 · 假日探索上海 <span>✳</span></div></section>
 <div class="main-layout">
-  <main class="calendar-panel" id="calendarMain"><section class="today-todo-strip" aria-label="今日待办">
-    <div class="today-todo-heading"><strong>今日 <span>To-do</span></strong><small id="todayTodoCount">已完成 0/0</small></div>
-    <div class="today-todo-track" id="todayTodoTrack" aria-live="polite"><span class="today-todo-empty">今天还没有待办</span></div>
-    <button class="today-todo-add" id="todayTodoAdd" type="button" aria-label="添加今天的待办">＋ 添加</button>
-  </section><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+  <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   <div class="view-legend"><span class="legend-item"><span class="state-strip-sample rest"></span>周末 / 节假日休息</span><span class="legend-item"><span class="state-strip-sample work"></span>调休补班</span><span class="legend-item"><span class="sample-dot"></span>个人备忘</span><span class="legend-item"><span style="color:#b88951">✳</span>节气</span><span class="legend-right">点击任意日期 · 查看小期待与传统黄历</span></div>
   <div class="weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div class="month-grid" id="monthGrid" role="grid" aria-label="月历"></div><div class="month-foot"><span id="footerStats">本月 · 每天都有值得期待的小事</span><button class="foot-link" id="monthIdeasBtn">查看本月全部生活提案 ↗</button></div>
   </main>
@@ -974,29 +970,7 @@ function toggleMemoDone(memo){
  renderAll();
  showToast(memo.done?'已完成，今天辛苦啦 ✓':'已恢复为待办');
 }
-function renderTodayTodo(){
- const list=$('todayTodoTrack');list.replaceChildren();
- const todayItems=memos.filter(x=>x.date===todayISO).sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99'));
- const completed=todayItems.filter(x=>Boolean(x.done)).length;
- $('todayTodoCount').textContent=`已完成 ${completed}/${todayItems.length}`;
- if(!todayItems.length){
-   const empty=document.createElement('span');empty.className='today-todo-empty';empty.textContent='今天还没有安排，添加一条吧';list.append(empty);return;
- }
- const fragment=document.createDocumentFragment();
- for(const memo of todayItems){
-   const button=document.createElement('button');button.type='button';
-   button.className='today-todo-item'+(memo.done?' is-done':'');
-   button.title=(memo.time?memo.time+' · ':'')+memo.title;
-   button.setAttribute('aria-label',(memo.done?'取消完成：':'标记完成：')+memo.title);
-   button.setAttribute('aria-pressed',String(Boolean(memo.done)));
-   const check=document.createElement('span');check.className='today-todo-check';check.textContent=memo.done?'✓':'';
-   const name=document.createElement('span');name.className='today-todo-name';name.textContent=(memo.time?memo.time+' · ':'')+memo.title;
-   button.append(check,name);button.addEventListener('click',()=>toggleMemoDone(memo));fragment.append(button);
- }
- list.append(fragment);
-}
-
-function renderAll(){renderTodayTodo();renderCalendar();renderDetails()}
+function renderAll(){renderCalendar();renderDetails()}
 function selectMonth(delta){const d=new Date(Date.UTC(displayYear,displayMonth-1+delta,1));displayYear=d.getUTCFullYear();displayMonth=d.getUTCMonth()+1;const lastDay=new Date(Date.UTC(displayYear,displayMonth,0)).getUTCDate();const keep=Math.min(parseISO(selectedISO).d,lastDay);selectedISO=iso(displayYear,displayMonth,keep);renderAll()}
 $('prevMonth').addEventListener('click',()=>selectMonth(-1));$('nextMonth').addEventListener('click',()=>selectMonth(1));$('todayBtn').addEventListener('click',()=>{selectedISO=todayISO;const p=parseISO(todayISO);displayYear=p.y;displayMonth=p.m;renderAll();showToast('已回到上海今天')});
 function openOverlay(id){$(id).classList.add('open');$(id).setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
@@ -1004,7 +978,6 @@ function closeOverlay(id){$(id).classList.remove('open');$(id).setAttribute('ari
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeOverlay(b.dataset.close)));
 document.querySelectorAll('.overlay').forEach(b=>b.addEventListener('mousedown',e=>{if(e.target===b)closeOverlay(b.id)}));document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(el=>closeOverlay(el.id))});
 const choices=$('colorChoices');function renderChoices(){choices.textContent='';for(const [id,label,color] of categoryOptions){const b=document.createElement('button');b.type='button';b.className='color-option'+(id===chosenCategory?' active':'');b.innerHTML=`<span class="color-dot" style="background:${color}"></span>${label}`;b.addEventListener('click',()=>{chosenCategory=id;renderChoices()});choices.append(b)}}
-$('todayTodoAdd').addEventListener('click',()=>{selectedISO=todayISO;const p=parseISO(todayISO);displayYear=p.y;displayMonth=p.m;renderAll();openMemo()});
 function openMemo(title='',description='',cat='life'){chosenCategory=cat;memoPendingTitle=title;memoPendingDetail=description;const {y,m,d}=parseISO(selectedISO);$('memoModalDate').textContent=`${y}年${m}月${d}日 · ${weekday(selectedISO)} · 上海`;$('memoName').value=title;$('memoDetail').value=description;$('memoTime').value='';renderChoices();openOverlay('memoOverlay');setTimeout(()=>$('memoName').focus(),40)}
 $('addMemoTop').addEventListener('click',()=>openMemo());$('addMemoBlank').addEventListener('click',()=>openMemo());$('saveInspo').addEventListener('click',()=>{const idea=getIdea(selectedISO,preferredVariant(selectedISO));const already=memos.find(a=>a.date===selectedISO&&a.title===idea.title);if(already){showToast('这条期待已经在备忘中了');return}memos.push({id:String(Date.now())+Math.random().toString(36).slice(2),date:selectedISO,title:idea.title,detail:idea.desc+'（'+idea.place+'）',category:'fun',time:''});saveMemos();renderAll();showToast('已把这份小期待收藏到备忘 ♡')});
 $('memoForm').addEventListener('submit',e=>{e.preventDefault();const title=$('memoName').value.trim(),detail=$('memoDetail').value.trim(),time=$('memoTime').value;if(!title)return;memos.push({id:String(Date.now())+Math.random().toString(36).slice(2),date:selectedISO,title,detail,time,category:chosenCategory});saveMemos();closeOverlay('memoOverlay');renderAll();showToast('备忘已保存到此浏览器 ✨')});
