@@ -1407,20 +1407,32 @@ function renderDailyFortune(){
   '立冬':['松柏绿','灰鼠尾草'],'小雪':['霁雪蓝','云雾白'],'大雪':['冰川蓝','霜蓝'],
   '冬至':['冬松绿','暖灰绿'],'小寒':['雾松蓝','浅霜青'],'大寒':['石板蓝','银灰']
  };
- const color=offsets[colorIndex];
- const key=(profile.birthday&&/^\d{4}-\d{2}-\d{2}$/.test(profile.birthday))
-   ?profile.birthday.replace(/-/g,'').split('').reduce((sum,n)=>sum+Number(n),0):0;
+ const birth=birthPillars(profile.birthday,profile.birthPrecision==='unknown'?'':profile.birthTime);
+ /* 依据日主所属五行提供文化配色，不判断喜用神或吉凶。 */
+ const colorsByStem=[
+  [['草木青','#6F9675'],['竹叶绿','#779D7C']],
+  [['草木青','#6F9675'],['竹叶绿','#779D7C']],
+  [['浅朱砂','#B87860'],['竹叶青','#73967A']],
+  [['浅朱砂','#B87860'],['竹叶青','#73967A']],
+  [['秋麦金','#C09A64'],['陶土棕','#AC805F']],
+  [['秋麦金','#C09A64'],['陶土棕','#AC805F']],
+  [['雾银灰','#8997A5'],['暖白金','#BDA87C']],
+  [['雾银灰','#8997A5'],['暖白金','#BDA87C']],
+  [['烟波蓝','#60869D'],['雾青','#6F9697']],
+  [['烟波蓝','#60869D'],['雾青','#6F9697']]
+ ];
+ const personalColor=birth?colorsByStem[birth.dayStem][colorIndex]:null;
+ const color=personalColor?personalColor[1]:offsets[colorIndex];
+ const key=birth?(birth.dayIndex+(birth.hourBranch??0)*3):0;
  const n1=(cycle+key)%9+1,n2=(cycle*3+day.d+key)%9+1;
  const digits=n1===n2?[n1,(n2%9)+1]:[n1,n2];
  const suggestions=['整理书桌，轻装开始','跟朋友分享一个好消息','做一点温和运动','去看看日落或街树','安排一次轻松阅读','认真吃一顿当季餐'];
- $('fortuneColorName').textContent=(names[term]||['节气绿','浅金'])[colorIndex];
+ $('fortuneColorName').textContent=personalColor?personalColor[0]:(names[term]||['节气绿','浅金'])[colorIndex];
  $('fortuneColorDot').style.background=color;
  $('fortuneLuckDigits').textContent=digits.join(' · ');
  $('fortuneTodayTip').textContent=suggestions[(cycle+key)%suggestions.length];
- $('fortuneTodayTip').title=profile.birthday
- ?'已参考本机生日进行趣味配色与取数；缺少出生时辰，不能排完整四柱八字。'
- :'尚未在本设备设置生日，仅按节气与日序给出趣味提示。';
- $('fortuneInfoButton').title='今日色彩取自节气主题，数字依日序及本机保存的生日按趣味规则生成。缺少出生时辰与出生地，非完整四柱八字预测。';
+ $('fortuneTodayTip').title=birth?'色彩参考日主五行文化象征；数字是日期与干支的趣味组合，不能预测吉凶。':'未在本机设置生日，显示节气文化配色与日期趣味数字。';
+ $('fortuneInfoButton').title='传统五行及节气配色文化参考。数字根据日期和个人干支按固定规则生成，不具有预测能力。';
 }
 function refreshDailyCulture(){
  const date=nowShanghai();
@@ -1473,7 +1485,7 @@ window.setInterval(()=>{applySeasonTheme();refreshDailyCulture()},60*1000);
 window.addEventListener('focus',()=>{applySeasonTheme();refreshDailyCulture()});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){applySeasonTheme();refreshDailyCulture()}});
 
-$('fortuneInfoButton').addEventListener('click',()=>{showToast(profile.birthday?'幸运色和数字属于节气与生日的趣味组合；尚缺出生时辰，非完整八字推算。':'幸运色和数字是节气文化趣味参考。设置生日后可参与趣味取数，完整八字需出生时辰。')});
+$('fortuneInfoButton').addEventListener('click',()=>{showToast('色彩参考节气与日主五行文化；数字按日期与干支取数，不具有预测能力。出生时辰未确定时请以暂定时柱为参考。')});
 renderAll();loadWeather();
 </script>
 </body>
