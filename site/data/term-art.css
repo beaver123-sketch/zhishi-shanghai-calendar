@@ -1,0 +1,15 @@
+:root{--term-art:url('/data/term-art/17.webp')}
+.topbar::after,.daily-culture-band::after,.calendar-left-column .calendar-panel::before,.zh-sidebar .inspiration-card.v7-joy-card::after,.life-card-art--flowers{background-image:var(--term-art)!important;background-repeat:no-repeat!important;background-position:center!important;background-size:cover!important}
+.topbar::after{width:185px!important;height:58px!important;opacity:.20!important}
+.daily-culture-band::after{width:180px!important;height:90px!important;top:0!important;right:0!important;opacity:.23!important}
+.calendar-left-column .calendar-panel::before{width:236px!important;height:120px!important;top:-7px!important;right:-8px!important;opacity:.46!important}
+.zh-sidebar .inspiration-card.v7-joy-card::after{content:""!important;display:block!important;width:145px!important;height:95px!important;top:auto!important;bottom:-13px!important;right:-14px!important;opacity:.25!important}
+.life-card-art--flowers{height:133px!important;width:43%!important;opacity:.45!important}
+.term-signature{display:inline-flex;gap:7px;align-items:center;color:var(--season-deep);margin-top:8px;font-size:11px}
+.term-signature::before{content:"";background:var(--season-primary);width:7px;height:7px;border-radius:50%}
+.month-work-summary{display:inline-flex;margin-top:7px;padding:5px 10px;font-size:11px;border:1px solid var(--season-border);border-radius:20px;color:var(--season-deep);background:var(--season-surface)}
+.memo-category-heading{display:flex;justify-content:space-between;gap:8px;margin-top:15px;padding:7px 4px;border-bottom:1px solid #e9e9df}
+.memo-category-heading strong{font-size:11px;font-weight:700;color:var(--memo-group-color)}
+.memo-category-heading strong::before{content:"";display:inline-block;width:7px;height:7px;background:var(--memo-group-color);border-radius:50%;margin-right:8px}
+.memo-category-heading span{font-size:10px;color:#99a29c}
+@media(max-width:700px){.calendar-left-column .calendar-panel::before{width:150px!important;opacity:.26!important}.month-work-summary{font-size:10px}}
