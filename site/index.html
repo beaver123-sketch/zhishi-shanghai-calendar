@@ -620,6 +620,27 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 @media(max-width:700px){.season-control{padding:6px}.season-control select{max-width:80px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter button,.today-btn,.day-cell{transition:none!important}}
 </style>
+
+<style id="daily-poetry-fortune-v1">
+/* Poetry and lifestyle symbolism: vector/color only, no photographs */
+.daily-culture-band{display:flex!important;justify-content:space-between;align-items:center;gap:14px;min-height:51px;margin:16px 3px 6px!important;padding:6px 0!important}
+.daily-verse{display:flex;align-items:center;gap:10px;flex:1 1 auto;min-width:0;color:var(--season-deep,#516b73)}
+.daily-verse .micro-dot{flex:0 0 7px}
+.daily-verse-line{font-family:"Songti SC","Noto Serif SC",serif;font-size:16px;font-weight:680;letter-spacing:.7px;line-height:1.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.daily-verse-source{font-size:11px;font-weight:500;color:#98a7a5;white-space:nowrap;letter-spacing:0}
+.today-fortune{flex:0 0 auto;display:flex;align-items:center;gap:11px;padding:8px 11px 8px 13px;background:color-mix(in srgb,var(--season-surface,#eff3ef) 60%,white);border:1px solid var(--season-border,#e1e9e4);border-radius:12px;color:#70817d;font-size:11px;max-width:100%}
+.fortune-today-caption{font-size:12px;font-weight:750;color:var(--season-deep,#496c62);white-space:nowrap}
+.fortune-today-caption small{font-size:9px;font-weight:500;color:#9faeaa}
+.fortune-today-metric{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.fortune-today-metric b{font-weight:720;color:#475f5b}
+.fortune-color-dot{width:10px;height:10px;background:var(--season-primary);border-radius:50%;border:1px solid #fff8;box-shadow:0 0 0 1px #b7c6b953}
+.fortune-today-tip{border-left:1px solid #d6dfda;padding-left:10px;color:#74877b;white-space:nowrap;max-width:175px;overflow:hidden;text-overflow:ellipsis}
+.fortune-info-button{width:20px;height:20px;flex:0 0 20px;padding:0;border:0;background:transparent;color:#9caeaa;font-size:15px;line-height:20px;text-align:center}
+.fortune-info-button:hover{color:var(--season-deep)}
+@media(max-width:1370px){.daily-verse-source{display:none}.fortune-today-tip{display:none}}
+@media(max-width:990px){.daily-culture-band{align-items:flex-start;flex-direction:column;gap:6px}.daily-verse{width:100%}.today-fortune{width:max-content;max-width:100%}}
+@media(max-width:620px){.daily-culture-band{margin:10px 2px 7px!important;gap:7px}.daily-verse-line{font-size:12px;white-space:normal;overflow:visible;text-overflow:clip;letter-spacing:.1px}.today-fortune{gap:9px;padding:8px 10px}.fortune-today-caption{font-size:11px}.fortune-today-metric{font-size:10px}}
+</style>
 </head>
 <body>
 <div class="page">
@@ -628,7 +649,20 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
   <nav class="topcenter" aria-label="主导航"><button class="active" type="button" id="navCalendar">月历 · 日常</button><button type="button" id="navInspo">每月小期待</button><button type="button" id="navHolidays">节假日安排</button><button type="button" id="navEvents">上海活动</button></nav>
   <div class="toolbar"><label class="season-control" for="seasonThemeMode"><span id="seasonStatus">节气主题</span><select id="seasonThemeMode" aria-label="节气主题模式"><option value="auto">跟随节气</option><option value="neutral">简约固定</option><option value="小寒">小寒</option><option value="大寒">大寒</option><option value="立春">立春</option><option value="雨水">雨水</option><option value="惊蛰">惊蛰</option><option value="春分">春分</option><option value="清明">清明</option><option value="谷雨">谷雨</option><option value="立夏">立夏</option><option value="小满">小满</option><option value="芒种">芒种</option><option value="夏至">夏至</option><option value="小暑">小暑</option><option value="大暑">大暑</option><option value="立秋">立秋</option><option value="处暑">处暑</option><option value="白露">白露</option><option value="秋分">秋分</option><option value="寒露">寒露</option><option value="霜降">霜降</option><option value="立冬">立冬</option><option value="小雪">小雪</option><option value="大雪">大雪</option><option value="冬至">冬至</option></select></label><button class="personal-tools-btn" id="prefsBtn" type="button" title="本机资料与备份">⚙ 我的设置</button><div class="city-tag"><svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.5"/></svg>上海 · 中国</div><button class="circle-btn" title="查看功能说明与数据来源" aria-label="查看功能说明与数据来源" id="aboutBtn"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v6M12 7.5v.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
 </header>
-<section class="micro-intro" aria-label="本月生活主题"><div class="micro-intro-title"><span class="micro-dot"></span><span>上海 · 节气与城市生活</span><span class="micro-divider">/</span><span>每天一件值得期待的事</span></div><div class="micro-intro-note">工作日轻松体验 · 假日探索上海 <span>✳</span></div></section>
+<section class="micro-intro daily-culture-band" aria-label="每日节气诗笺与趣味运势">
+  <div class="daily-verse" aria-live="polite">
+    <span class="micro-dot" aria-hidden="true"></span>
+    <span class="daily-verse-line" id="dailyVerseLine">把诗意留给今日</span>
+    <span class="daily-verse-source" id="dailyVerseSource">每日 00:00 · 北京时间更新</span>
+  </div>
+  <div class="today-fortune" aria-label="今日节气文化运势" aria-live="polite">
+    <span class="fortune-today-caption">今日运势 <small>· 趣味参考</small></span>
+    <span class="fortune-today-metric"><i class="fortune-color-dot" id="fortuneColorDot" aria-hidden="true"></i>幸运色 <b id="fortuneColorName">节气色</b></span>
+    <span class="fortune-today-metric">幸运数字 <b id="fortuneLuckDigits">—</b></span>
+    <span class="fortune-today-tip" id="fortuneTodayTip">适合从一件小事开始</span>
+    <button class="fortune-info-button" id="fortuneInfoButton" type="button" title="查看运势计算说明">ⓘ</button>
+  </div>
+</section>
 <div class="main-layout">
   <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   <div class="view-legend"><span class="legend-item"><span class="state-strip-sample rest"></span>周末 / 节假日休息</span><span class="legend-item"><span class="state-strip-sample work"></span>调休补班</span><span class="legend-item"><span class="sample-dot"></span>个人备忘</span><span class="legend-item"><span style="color:#b88951">✳</span>节气</span><span class="legend-right">点击任意日期 · 查看小期待与传统黄历</span></div>
@@ -1153,6 +1187,187 @@ refreshPersonalPanel();
 loadCityInformation();
 
 
+
+/* 真正的古典诗文节选；按北京时间每日轮换，出处以作者及篇名标明。
+ * 以节气所属季节归类，不将古诗伪称为对应节气当天所作。 */
+const SEASONAL_POEMS={
+spring:[
+['好雨知时节，当春乃发生','杜甫','春夜喜雨'],
+['随风潜入夜，润物细无声','杜甫','春夜喜雨'],
+['晓看红湿处，花重锦官城','杜甫','春夜喜雨'],
+['碧玉妆成一树高，万条垂下绿丝绦','贺知章','咏柳'],
+['不知细叶谁裁出，二月春风似剪刀','贺知章','咏柳'],
+['几处早莺争暖树，谁家新燕啄春泥','白居易','钱塘湖春行'],
+['乱花渐欲迷人眼，浅草才能没马蹄','白居易','钱塘湖春行'],
+['天街小雨润如酥，草色遥看近却无','韩愈','早春呈水部张十八员外'],
+['最是一年春好处，绝胜烟柳满皇都','韩愈','早春呈水部张十八员外'],
+['迟日江山丽，春风花草香','杜甫','绝句二首·其一'],
+['泥融飞燕子，沙暖睡鸳鸯','杜甫','绝句二首·其一'],
+['千里莺啼绿映红，水村山郭酒旗风','杜牧','江南春'],
+['草长莺飞二月天，拂堤杨柳醉春烟','高鼎','村居'],
+['儿童散学归来早，忙趁东风放纸鸢','高鼎','村居'],
+['竹外桃花三两枝，春江水暖鸭先知','苏轼','惠崇春江晚景'],
+['春色满园关不住，一枝红杏出墙来','叶绍翁','游园不值'],
+['人闲桂花落，夜静春山空','王维','鸟鸣涧'],
+['月出惊山鸟，时鸣春涧中','王维','鸟鸣涧'],
+['胜日寻芳泗水滨，无边光景一时新','朱熹','春日'],
+['等闲识得东风面，万紫千红总是春','朱熹','春日'],
+['黄四娘家花满蹊，千朵万朵压枝低','杜甫','江畔独步寻花·其六'],
+['留连戏蝶时时舞，自在娇莺恰恰啼','杜甫','江畔独步寻花·其六'],
+['春眠不觉晓，处处闻啼鸟','孟浩然','春晓'],
+['夜来风雨声，花落知多少','孟浩然','春晓'],
+['日出江花红胜火，春来江水绿如蓝','白居易','忆江南·江南好'],
+['春风又绿江南岸，明月何时照我还','王安石','泊船瓜洲'],
+['春潮带雨晚来急，野渡无人舟自横','韦应物','滁州西涧']
+],
+summer:[
+['接天莲叶无穷碧，映日荷花别样红','杨万里','晓出净慈寺送林子方'],
+['毕竟西湖六月中，风光不与四时同','杨万里','晓出净慈寺送林子方'],
+['小荷才露尖尖角，早有蜻蜓立上头','杨万里','小池'],
+['泉眼无声惜细流，树阴照水爱晴柔','杨万里','小池'],
+['绿树阴浓夏日长，楼台倒影入池塘','高骈','山亭夏日'],
+['水晶帘动微风起，满架蔷薇一院香','高骈','山亭夏日'],
+['黄梅时节家家雨，青草池塘处处蛙','赵师秀','约客'],
+['有约不来过夜半，闲敲棋子落灯花','赵师秀','约客'],
+['稻花香里说丰年，听取蛙声一片','辛弃疾','西江月·夜行黄沙道中'],
+['明月别枝惊鹊，清风半夜鸣蝉','辛弃疾','西江月·夜行黄沙道中'],
+['梅子金黄杏子肥，麦花雪白菜花稀','范成大','四时田园杂兴·其二十五'],
+['日长篱落无人过，惟有蜻蜓蛱蝶飞','范成大','四时田园杂兴·其二十五'],
+['荷风送香气，竹露滴清响','孟浩然','夏日南亭怀辛大'],
+['山光忽西落，池月渐东上','孟浩然','夏日南亭怀辛大'],
+['散发乘夕凉，开轩卧闲敞','孟浩然','夏日南亭怀辛大'],
+['水光潋滟晴方好，山色空蒙雨亦奇','苏轼','饮湖上初晴后雨'],
+['欲把西湖比西子，淡妆浓抹总相宜','苏轼','饮湖上初晴后雨'],
+['竹深树密虫鸣处，时有微凉不是风','杨万里','夏夜追凉'],
+['夜热依然午热同，开门小立月明中','杨万里','夏夜追凉'],
+['别院深深夏席清，石榴开遍透帘明','苏舜钦','夏意'],
+['树阴满地日当午，梦觉流莺时一声','苏舜钦','夏意'],
+['绿遍山原白满川，子规声里雨如烟','翁卷','乡村四月'],
+['乡村四月闲人少，才了蚕桑又插田','翁卷','乡村四月'],
+['清江一曲抱村流，长夏江村事事幽','杜甫','江村'],
+['自去自来堂上燕，相亲相近水中鸥','杜甫','江村'],
+['过雨荷花满院香，沈李浮瓜冰雪凉','李重元','忆王孙·夏词'],
+['纷纷红紫已成尘，布谷声中夏令新','陆游','初夏绝句'],
+['晴日暖风生麦气，绿阴幽草胜花时','王安石','初夏即事']
+],
+autumn:[
+['空山新雨后，天气晚来秋','王维','山居秋暝'],
+['明月松间照，清泉石上流','王维','山居秋暝'],
+['竹喧归浣女，莲动下渔舟','王维','山居秋暝'],
+['自古逢秋悲寂寥，我言秋日胜春朝','刘禹锡','秋词·其一'],
+['晴空一鹤排云上，便引诗情到碧霄','刘禹锡','秋词·其一'],
+['停车坐爱枫林晚，霜叶红于二月花','杜牧','山行'],
+['远上寒山石径斜，白云生处有人家','杜牧','山行'],
+['一年好景君须记，最是橙黄橘绿时','苏轼','赠刘景文'],
+['荷尽已无擎雨盖，菊残犹有傲霜枝','苏轼','赠刘景文'],
+['月落乌啼霜满天，江枫渔火对愁眠','张继','枫桥夜泊'],
+['姑苏城外寒山寺，夜半钟声到客船','张继','枫桥夜泊'],
+['萧萧梧叶送寒声，江上秋风动客情','叶绍翁','夜书所见'],
+['知有儿童挑促织，夜深篱落一灯明','叶绍翁','夜书所见'],
+['湖光秋月两相和，潭面无风镜未磨','刘禹锡','望洞庭'],
+['遥望洞庭山水翠，白银盘里一青螺','刘禹锡','望洞庭'],
+['一道残阳铺水中，半江瑟瑟半江红','白居易','暮江吟'],
+['可怜九月初三夜，露似真珠月似弓','白居易','暮江吟'],
+['野旷天低树，江清月近人','孟浩然','宿建德江'],
+['树树皆秋色，山山唯落晖','王绩','野望'],
+['牧人驱犊返，猎马带禽归','王绩','野望'],
+['秋风生渭水，落叶满长安','贾岛','忆江上吴处士'],
+['碧云天，黄叶地，秋色连波','范仲淹','苏幕遮·怀旧'],
+['山映斜阳天接水，芳草无情，更在斜阳外','范仲淹','苏幕遮·怀旧'],
+['秋阴不散霜飞晚，留得枯荷听雨声','李商隐','宿骆氏亭寄怀崔雍崔衮'],
+['银烛秋光冷画屏，轻罗小扇扑流萤','杜牧','秋夕'],
+['天阶夜色凉如水，卧看牵牛织女星','杜牧','秋夕'],
+['不是花中偏爱菊，此花开尽更无花','元稹','菊花'],
+['怀君属秋夜，散步咏凉天','韦应物','秋夜寄邱员外'],
+['空山松子落，幽人应未眠','韦应物','秋夜寄邱员外'],
+['峨眉山月半轮秋，影入平羌江水流','李白','峨眉山月歌'],
+['秋风起兮白云飞，草木黄落兮雁南归','刘彻','秋风辞']
+],
+winter:[
+['千山鸟飞绝，万径人踪灭','柳宗元','江雪'],
+['孤舟蓑笠翁，独钓寒江雪','柳宗元','江雪'],
+['墙角数枝梅，凌寒独自开','王安石','梅花'],
+['遥知不是雪，为有暗香来','王安石','梅花'],
+['梅须逊雪三分白，雪却输梅一段香','卢梅坡','雪梅·其一'],
+['有梅无雪不精神，有雪无诗俗了人','卢梅坡','雪梅·其二'],
+['晚来天欲雪，能饮一杯无','白居易','问刘十九'],
+['绿蚁新醅酒，红泥小火炉','白居易','问刘十九'],
+['日暮苍山远，天寒白屋贫','刘长卿','逢雪宿芙蓉山主人'],
+['柴门闻犬吠，风雪夜归人','刘长卿','逢雪宿芙蓉山主人'],
+['忽如一夜春风来，千树万树梨花开','岑参','白雪歌送武判官归京'],
+['终南阴岭秀，积雪浮云端','祖咏','终南望余雪'],
+['林表明霁色，城中增暮寒','祖咏','终南望余雪'],
+['夜深知雪重，时闻折竹声','白居易','夜雪'],
+['已讶衾枕冷，复见窗户明','白居易','夜雪'],
+['寒夜客来茶当酒，竹炉汤沸火初红','杜耒','寒夜'],
+['寻常一样窗前月，才有梅花便不同','杜耒','寒夜'],
+['六出飞花入户时，坐看青竹变琼枝','高骈','对雪'],
+['前村深雪里，昨夜一枝开','齐己','早梅'],
+['风递幽香出，禽窥素艳来','齐己','早梅'],
+['邯郸驿里逢冬至，抱膝灯前影伴身','白居易','邯郸冬至夜思家'],
+['想得家中夜深坐，还应说着远行人','白居易','邯郸冬至夜思家'],
+['晨起开门雪满山，雪晴云淡日光寒','郑燮','山中雪后'],
+['檐流未滴梅花冻，一种清孤不等闲','郑燮','山中雪后'],
+['雪似梅花，梅花似雪。似和不似都奇绝','吕本中','踏莎行·雪似梅花'],
+['岁暮阴阳催短景，天涯霜雪霁寒宵','杜甫','阁夜'],
+['最爱东山晴后雪，软红光里涌银山','杨万里','最爱东山晴后雪']
+]
+};
+const SPRING_TERMS=new Set(['立春','雨水','惊蛰','春分','清明','谷雨']);
+const SUMMER_TERMS=new Set(['立夏','小满','芒种','夏至','小暑','大暑']);
+const AUTUMN_TERMS=new Set(['立秋','处暑','白露','秋分','寒露','霜降']);
+function seasonOfTerm(term){return SPRING_TERMS.has(term)?'spring':SUMMER_TERMS.has(term)?'summer':AUTUMN_TERMS.has(term)?'autumn':'winter';}
+function renderDailyVerse(){
+ const date=nowShanghai();
+ const term=termForShanghaiDay(date);
+ const bank=SEASONAL_POEMS[seasonOfTerm(term)]||SEASONAL_POEMS.autumn;
+ const [y,m,d]=date.split('-').map(Number);
+ const ordinal=Math.floor(Date.UTC(y,m-1,d)/86400000);
+ const poem=bank[ordinal%bank.length];
+ $('dailyVerseLine').textContent='“'+poem[0]+'”';
+ $('dailyVerseSource').textContent='— '+poem[1]+'《'+poem[2]+'》 · '+term;
+ $('dailyVerseLine').title=poem[0]+'  — '+poem[1]+'《'+poem[2]+'》';
+}
+function renderDailyFortune(){
+ const date=nowShanghai(),term=termForShanghaiDay(date);
+ const day=parseISO(date),base=Date.UTC(2026,9,12),current=Date.UTC(day.y,day.m-1,day.d);
+ const cycle=((55+Math.round((current-base)/86400000))%60+60)%60;
+ const colors=SOLAR_TERM_THEMES[term]||{primary:'#7D8B67',accent:'#C1B47B'};
+ const offsets=[colors.primary,colors.accent];
+ const colorIndex=cycle%2;
+ const names={
+  '立春':['新芽绿','嫩柳青'],'雨水':['烟雨青','薄雾蓝'],'惊蛰':['柳芽绿','草木青'],
+  '春分':['浅樱粉','桃花灰'],'清明':['竹叶青','雨后绿'],'谷雨':['新茶绿','山雾青'],
+  '立夏':['荷叶绿','浅藤绿'],'小满':['青麦色','嫩草绿'],'芒种':['麦穗金','稻草黄'],
+  '夏至':['湖水蓝','晴空青'],'小暑':['青瓷绿','浅湖蓝'],'大暑':['深海蓝','雾霭蓝'],
+  '立秋':['桂花金','银杏黄'],'处暑':['麦香棕','浅亚麻'],'白露':['雾蓝灰','露珠银'],
+  '秋分':['银杏金','麦穗黄'],'寒露':['橄榄绿','芦穗黄'],'霜降':['枫糖棕','陶土橘'],
+  '立冬':['松柏绿','灰鼠尾草'],'小雪':['霁雪蓝','云雾白'],'大雪':['冰川蓝','霜蓝'],
+  '冬至':['冬松绿','暖灰绿'],'小寒':['雾松蓝','浅霜青'],'大寒':['石板蓝','银灰']
+ };
+ const color=offsets[colorIndex];
+ const key=(profile.birthday&&/^\d{4}-\d{2}-\d{2}$/.test(profile.birthday))
+   ?profile.birthday.replace(/-/g,'').split('').reduce((sum,n)=>sum+Number(n),0):0;
+ const n1=(cycle+key)%9+1,n2=(cycle*3+day.d+key)%9+1;
+ const digits=n1===n2?[n1,(n2%9)+1]:[n1,n2];
+ const suggestions=['整理书桌，轻装开始','跟朋友分享一个好消息','做一点温和运动','去看看日落或街树','安排一次轻松阅读','认真吃一顿当季餐'];
+ $('fortuneColorName').textContent=(names[term]||['节气绿','浅金'])[colorIndex];
+ $('fortuneColorDot').style.background=color;
+ $('fortuneLuckDigits').textContent=digits.join(' · ');
+ $('fortuneTodayTip').textContent=suggestions[(cycle+key)%suggestions.length];
+ $('fortuneTodayTip').title=profile.birthday
+ ?'已参考本机生日进行趣味配色与取数；缺少出生时辰，不能排完整四柱八字。'
+ :'尚未在本设备设置生日，仅按节气与日序给出趣味提示。';
+ $('fortuneInfoButton').title='今日色彩取自节气主题，数字依日序及本机保存的生日按趣味规则生成。缺少出生时辰与出生地，非完整四柱八字预测。';
+}
+function refreshDailyCulture(){
+ const date=nowShanghai();
+ if(refreshDailyCulture.lastDate!==date){
+  refreshDailyCulture.lastDate=date;
+  renderDailyVerse();renderDailyFortune();
+ }
+}
+
 /* 二十四节气 · 统一的网页主题设计系统。2026 年使用本项目已校准的日期，其他年份沿用现有历算日期。 */
 const SOLAR_TERM_THEMES=window.ZHISHI_DESIGN_SYSTEM?.themes||{};
 const THEME_STORAGE_KEY='zhishi-solar-theme-mode-v1';
@@ -1191,10 +1406,12 @@ document.getElementById('seasonThemeMode').addEventListener('change',event=>{
  showToast(event.target.value==='auto'?'已开启随二十四节气自动换色':'主题已切换');
 });
 applySeasonTheme();
-window.setInterval(applySeasonTheme,60*1000);
-window.addEventListener('focus',applySeasonTheme);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)applySeasonTheme()});
+refreshDailyCulture();
+window.setInterval(()=>{applySeasonTheme();refreshDailyCulture()},60*1000);
+window.addEventListener('focus',()=>{applySeasonTheme();refreshDailyCulture()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){applySeasonTheme();refreshDailyCulture()}});
 
+$('fortuneInfoButton').addEventListener('click',()=>{showToast(profile.birthday?'幸运色和数字属于节气与生日的趣味组合；尚缺出生时辰，非完整八字推算。':'幸运色和数字是节气文化趣味参考。设置生日后可参与趣味取数，完整八字需出生时辰。')});
 renderAll();loadWeather();
 </script>
 </body>
