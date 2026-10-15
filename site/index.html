@@ -641,6 +641,7 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 @media(max-width:990px){.daily-culture-band{align-items:flex-start;flex-direction:column;gap:6px}.daily-verse{width:100%}.today-fortune{width:max-content;max-width:100%}}
 @media(max-width:620px){.daily-culture-band{margin:10px 2px 7px!important;gap:7px}.daily-verse-line{font-size:12px;white-space:normal;overflow:visible;text-overflow:clip;letter-spacing:.1px}.today-fortune{gap:9px;padding:8px 10px}.fortune-today-caption{font-size:11px}.fortune-today-metric{font-size:10px}}
 </style>
+<link rel="stylesheet" href="/data/monthly-life.css?v=20261015-1" />
 </head>
 <body>
 <div class="page">
@@ -664,10 +665,13 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
   </div>
 </section>
 <div class="main-layout">
+  <div class="calendar-left-column">
   <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   <div class="view-legend"><span class="legend-item"><span class="state-strip-sample rest"></span>周末 / 节假日休息</span><span class="legend-item"><span class="state-strip-sample work"></span>调休补班</span><span class="legend-item"><span class="sample-dot"></span>个人备忘</span><span class="legend-item"><span style="color:#b88951">✳</span>节气</span><span class="legend-right">点击任意日期 · 查看小期待与传统黄历</span></div>
   <div class="weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div class="month-grid" id="monthGrid" role="grid" aria-label="月历"></div><div class="month-foot"><span id="footerStats">本月 · 每天都有值得期待的小事</span><button class="foot-link" id="monthIdeasBtn">查看本月全部生活提案 ↗</button></div>
   </main>
+  <section id="lifeHub" class="life-hub" aria-label="月度生活手账"></section>
+  </div>
   <aside class="detail-panel zh-sidebar" aria-label="所选日期生活助手">
     <section class="side-overview">
       <div class="day-overview-left">
@@ -1488,5 +1492,6 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden){applySeas
 $('fortuneInfoButton').addEventListener('click',()=>{showToast('色彩参考节气与日主五行文化；数字按日期与干支取数，不具有预测能力。出生时辰未确定时请以暂定时柱为参考。')});
 renderAll();loadWeather();
 </script>
+<script src="/data/monthly-life.js?v=20261015-1"></script>
 </body>
 </html>
