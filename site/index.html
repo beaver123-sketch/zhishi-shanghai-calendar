@@ -816,18 +816,42 @@ const solarTermPlans={
  '冬至':[['包一点饺子或煮份汤圆','下班试做一顿节气晚餐，吃得暖和。','冬至食俗','家里','约 60–80 分钟'],['去老街过一个冬至下午','尝传统点心，走一走城市老街。','冬至民俗','豫园周边','约 3–4 小时']]
 };
 function toIdea(a){if(!Array.isArray(a))return a;return plan(a[0],a[1],a[2],a[3],a[4]);}
+
+// 长期生活提案内容库：每个自然月的三种候选方案按日期独立分配，主推荐和备选不重复。
+const DIVERSE_WEEKDAY_GROUPS=[["城市晚餐","60–80分钟","选择通勤沿线的小馆，提前确认营业时间",["试一碗雪菜肉丝热汤面","找家没尝过的砂锅小馆","认真吃一顿本帮菜","探索一种新的馄饨馅","尝一份现包生煎","找一家做鱼汤的社区餐馆","吃一回有上海味道的葱油拌面","尝一份时令蔬菜小炒"]],["甜品新体验","45–70分钟","就近寻找或在家动手，限定口味以门店为准",["在附近小店尝一杯桂花茶","试做清甜的酒酿小圆子","认真挑一次中式糕点","尝一家新开的水果甜品店","在家调一杯热可可","找一种从没吃过的米糕","亲手做水果酸奶杯","去饮品店尝一次不同茶底"]],["附近展陈","50–85分钟","优先免费或免预约的文化空间，出发前核实是否开放",["到附近图书馆看一场小展","找一处社区公共艺术橱窗","看看邻近文化中心的展板","去商场公共区域找设计陈列","挑一家摄影主题空间","探索一家小型独立书店","欣赏一次城市公共雕塑","寻找一处街区旧物展台"]],["阅读一小时","45–75分钟","在家或顺路书店，慢慢看完一部分内容",["翻一本建筑摄影集","读完一章上海地方史","挑一本植物图鉴记下三种树","寻找一段关于老街区的故事","看一本关于江南园林的小书","听一篇旅行随笔有声书","翻阅一本城市地图册","把一本喜欢的书做成读书卡片"]],["简单手工","60–90分钟","就近买到材料，在家慢慢做，不求复杂",["给上月照片做迷你相册","动手制作一张拼贴明信片","折一个精致的纸艺收纳盒","试做一枚干花书签","为手账设计一张扉页","画一组植物线稿","制作一张私人散步路线卡","用彩纸制作一页季节拼贴"]],["街头摄影","45–70分钟","选择照明良好的安全街区，雨天可换室内",["拍一组晚高峰的路灯","记录沿路不同颜色的店招","找一面有年代感的窗户","拍下三张街角树影","寻找建筑的几何线条","收集街边有趣的字体","用手机拍一次傍晚光线","记录雨后地面的细小倒影"]],["认识花木","45–70分钟","当季花期视天气而定，不保证盛花",["去花店认五种花材","换一盆好照顾的绿植","观察一棵行道树的果实","挑选三枝适合插瓶的花","认识一种常见的香草植物","散步时记录树叶的形状","为家中植物清理一次叶片","找一株路边季节性的野花"]],["微型街区旅行","50–85分钟","只在通勤沿线或家附近进行，不安排跨城跑",["下班多走一个街口","寻找地铁站背面的小街","沿住处附近的小河走走","走进一家老字号杂货店","寻找一处开放的街心花园","去没进过的小巷看看","发现一个公共街角座椅","沿一段有树荫的人行道慢行"]],["夜间文化","70–120分钟","具体演出场次以官方为准，不把未经核实的演出当作在售",["完整欣赏一张爵士专辑","去就近影院看晚场电影","在家看一部上海题材老电影","听一次经典音乐剧录音","挑一场正规平台的艺术讲座","看一部自然主题纪录片","重温一部喜欢的动画长片","为自己安排一场戏剧录播夜"]],["关系与交流","45–90分钟","轻松、不赶场，时间由双方商量",["和朋友约一顿简单的便饭","给家人打一次长电话","给朋友写张手写卡片","和同事交换一家餐馆清单","约一位朋友在附近散步","为家人认真准备一份点心","和朋友在社区咖啡馆坐坐","向久未联系的朋友问候近况"]],["身体与节奏","40–70分钟","控制强度，按自己状态安排",["做一组轻量肩颈拉伸","沿附近社区步道快走","尝试一节初学者瑜伽","在家跟练一次基础普拉提","去就近健身房做轻练习","做一次睡前舒展","在安全场地练习基础跳绳","为周末整理一套舒适的步行装备"]],["整理与创造","45–80分钟","把一件微小但有成果的事认真完成",["整理三张最喜欢的照片","给书架腾出一层空间","把想去的上海场馆写成清单","写一页当天的生活手账","制作一个周末游玩备忘板","给餐桌重新搭配一块桌布","选三张明信片布置书桌","规划一顿第二天的时令早餐"]]];
+const DIVERSE_DAYOFF_GROUPS=[["城市公园","3–5小时","关注开放时间与季节花讯",["去辰山植物园走一条植物路线@辰山植物园·松江","在共青森林公园散步半天@共青森林公园·杨浦","到复兴公园看看城市花园@复兴公园·黄浦","在顾村公园漫游园内步道@顾村公园·宝山"]],["滨水休闲","3–5小时","户外请留意实际天气",["沿徐汇滨江看江边工业建筑@徐汇滨江·徐汇","到北外滩等一次天色变化@北外滩·虹口","去前滩休闲公园吹风@前滩·浦东","顺着苏州河绿道看桥@苏州河沿线"]],["博物馆下午","3–5小时","出发前核实展厅与预约信息",["到上海博物馆人民广场馆看文物@上海博物馆人民广场馆","去上海博物馆东馆探访馆藏@上海博物馆东馆·浦东","在上海自然博物馆认识化石@上海自然博物馆·静安","到上海当代艺术博物馆看艺术@上海当代艺术博物馆·黄浦"]],["海派街区","3–4小时","以开放街巷和公共空间为主",["在洛克外滩源研究老建筑@圆明园路·黄浦","沿武康路寻找经典街角@武康路·徐汇","漫步思南公馆附近的小街@思南公馆·黄浦","走访上生新所的更新建筑@上生·新所·长宁"]],["江南水乡","4–6小时","出发前查询交通、活动与票务",["去朱家角走石桥水巷@朱家角古镇·青浦","到七宝古镇认真吃一顿点心@七宝古镇·闵行","逛蟠龙新天地的河边街巷@蟠龙新天地·青浦","在新场古镇观察临河建筑@新场古镇·浦东"]],["绿色疗愈","3–4小时","实际花期随气温变化",["在上海植物园寻找四季花草@上海植物园·徐汇","到世纪公园找一段林荫路@世纪公园·浦东","在长风公园环湖散步@长风公园·普陀","去鲁迅公园看看季节树木@鲁迅公园·虹口"]],["主题体验","5–8小时","需要预约与门票的场馆以官方为准",["安排一天迪士尼园区游玩@上海迪士尼度假区·浦东","到海昌海洋公园认识海洋生物@上海海昌海洋公园·浦东","沿上海动物园园路慢行@上海动物园·长宁","去上海野生动物园参观户外展区@上海野生动物园·浦东"]],["艺术建筑","3–5小时","具体演出日期必须单独核实",["参观上海文化广场的建筑周边@上海文化广场·黄浦","在上海大剧院附近看公共艺术@上海大剧院·黄浦","到1862艺术中心看看滨江建筑@1862时尚艺术中心·浦东","沿虹口历史风貌区走一圈@虹口历史风貌区"]],["城市更新","3–5小时","以常设空间为主",["去苏河湾万象天地体验立体商业@苏河湾万象天地·静安","在田子坊挑一家设计小铺@田子坊·黄浦","到张园看看旧里弄的新生活@张园·静安","漫步新天地的石库门街区@新天地·黄浦"]],["古典园林","4–6小时","出发前核实闭园日期",["到古猗园欣赏园林布局@古猗园·嘉定","去醉白池感受古典庭院@醉白池·松江","参观曲水园的园林建筑@曲水园·青浦","到秋霞圃看亭台与古树@秋霞圃·嘉定"]],["远足与湖景","4–7小时","注意公共交通、天气和园区开放信息",["去闵行滨江漫步长岸线@闵行滨江·闵行","到崇明东滩湿地看看候鸟栖息地@东滩湿地公园·崇明","绕滴水湖走一段滨湖步道@滴水湖·浦东","去淀山湖附近看开阔湖景@淀山湖周边·青浦"]],["主题博物馆","3–5小时","提前检查门票预约",["到上海天文馆探索星空@上海天文馆·浦东","在中国航海博物馆认识船舶@中国航海博物馆·浦东","去上海电影博物馆看海派电影@上海电影博物馆·徐汇","到上海市历史博物馆了解城市变迁@上海市历史博物馆·黄浦"]]];
+function buildDiversePlans(groups,dayoff){
+ const data=[];
+ for(let col=0;col<8;col++)for(const [type,duration,guide,items] of groups){
+   if(!items[col])continue;
+   const parts=dayoff?items[col].split('@'):[items[col],'家附近 / 通勤沿线'];
+   data.push(plan(parts[0],(dayoff?'出发前安排交通时间。':'下班留出一点时间。')+guide+'。',(dayoff?'休息日 · ':'工作日 · ')+type,parts[1],'约 '+duration));
+ }
+ return data;
+}
+const DIVERSE_WORK_PLANS=buildDiversePlans(DIVERSE_WEEKDAY_GROUPS,false);
+const DIVERSE_REST_PLANS=buildDiversePlans(DIVERSE_DAYOFF_GROUPS,true);
+function ordinalFor(s,dayoff){
+ const {y,m,d}=parseISO(s);let ordinal=-1;
+ for(let i=1;i<=d;i++)if(isRest(iso(y,m,i))===dayoff)ordinal++;
+ return ordinal;
+}
 function getIdea(s,variant=0){
- const {y,m,d}=parseISO(s);const rest=isRest(s);const meta=getCalendarMeta(s);
- const pool=seasonalPlans[m]||(seasonalPlans[10]);
- const catalogue=(rest?pool.rest:pool.work).map(toIdea);
- const special=meta.festival&&festivalPlans[meta.festival]?toIdea(festivalPlans[meta.festival][rest?1:0]):meta.term&&solarTermPlans[meta.term]?toIdea(solarTermPlans[meta.term][rest?1:0]):null;
- let first=(y===2026&&m===10)?october2026[d-1]:(special||catalogue[(d+m)%catalogue.length]);
- if(variant===0)return first;
- const candidates=[...catalogue];
- if(special&&!candidates.some(x=>x.title===special.title))candidates.unshift(special);
- const cleaned=candidates.filter(x=>x.title!==first.title);
- if(!cleaned.length)return first;
- return cleaned[(d+variant-1)%cleaned.length];
+ const {y,m,d}=parseISO(s),dayoff=isRest(s);
+ const slot=((Math.trunc(Number(variant)||0)%3)+3)%3;
+ const order=ordinalFor(s,dayoff);
+ const pool=dayoff?DIVERSE_REST_PLANS:DIVERSE_WORK_PLANS;
+ const pick=n=>pool[n%pool.length];
+ const curated=(y===2026&&m===10)?october2026[d-1]:null;
+ const meta=getCalendarMeta(s);
+ const special=meta.festival&&festivalPlans[meta.festival]?toIdea(festivalPlans[meta.festival][dayoff?1:0]):meta.term&&solarTermPlans[meta.term]?toIdea(solarTermPlans[meta.term][dayoff?1:0]):null;
+ const lead=curated||special;
+ if(lead&&slot===0)return lead;
+ if(lead){
+   const alt=pick(order*2+slot-1);
+   return alt.title===lead.title?pick(order*2+slot+1):alt;
+ }
+ return pick(order*3+slot);
 }
 const ideaVariants={};
 const categoryOptions=[['work','工作','#6497c7'],['life','生活','#e2a16f'],['health','健康','#78a889'],['family','纪念日','#c98dad'],['fun','兴趣','#a995ce'],['important','重要事项','#d87972']];
@@ -992,7 +1016,7 @@ function openInfo(type){const title=$('infoTitle'),intro=$('infoIntro'),content=
  }else{
  title.textContent='关于「知时」';intro.textContent='上海生活日历（在线版）：天气与生活推荐联动，精选已公布的真实活动，并保留传统历法与个人备忘。';const div=document.createElement('div');div.className='modal-section';div.innerHTML='<h4>这个 Demo 已经可以做什么？</h4><p>① 查看公历、农历与二十四节气；② 查看 2026 年国务院正式公布的放假和调休；③ 浏览不需跨城区出行的每日生活小期待，切换同日备选；④ 点击任意日期添加、删除彩色备忘，并在当前浏览器本地保存；⑤ 将生活提案一键添加到备忘。</p><h4 style="margin-top:12px">尚未接入的功能</h4><p>黄历宜忌与个人八字已分开：2026 年 10 月 12 日宜忌经公开黄历核对，其他日期按“建除十二神”民俗规则给出概览（非完整通胜原文），可点击来源链接进一步查询。个人四柱请自行配置，本网站不会在公共资源中发布私人出生信息。传统择日及八字不能预测现实吉凶。已加入第三方在线天气预报获取（需联网，数据不可用时不展示模拟天气）；花讯、提醒推送及多设备同步仍未接入。2026 年节气日期已预置，其他年份为近似历算。2026年部分文化活动参照上海市文旅局官方清单且限定其公布日期；其他月份是常设地点与季节建议，并非实时展期或开花、营业保证。</p><h4 style="margin-top:12px">数据与隐私</h4><p>备忘仅保存在本机浏览器 localStorage；清理浏览器数据可能丢失，暂无账号同步。暂无服务端收集出生信息。</p>';content.append(div);
  }openOverlay('infoOverlay')}
-$('navHolidays').addEventListener('click',()=>openInfo('holiday'));$('navInspo').addEventListener('click',()=>openInfo('ideas'));$('monthIdeasBtn').addEventListener('click',()=>openInfo('ideas'));$('aboutBtn').addEventListener('click',()=>openInfo('about'));$('otherIdeas').addEventListener('click',()=>{ideaVariants[selectedISO]=(ideaVariants[selectedISO]||0)+1;renderDetails();});$('navCalendar').addEventListener('click',()=>$('calendarMain').scrollIntoView({behavior:'smooth',block:'start'}));
+$('navHolidays').addEventListener('click',()=>openInfo('holiday'));$('navInspo').addEventListener('click',()=>openInfo('ideas'));$('monthIdeasBtn').addEventListener('click',()=>openInfo('ideas'));$('aboutBtn').addEventListener('click',()=>openInfo('about'));$('otherIdeas').addEventListener('click',()=>{ideaVariants[selectedISO]=((ideaVariants[selectedISO]??preferredVariant(selectedISO))+1)%3;renderDetails();});$('navCalendar').addEventListener('click',()=>$('calendarMain').scrollIntoView({behavior:'smooth',block:'start'}));
 
 // V7: Real Shanghai event mini-catalogue; public dates and official source links.
 let EVENT_DATA=[]; // 从独立的 data/events.json 加载；页面不会伪造活动实时性。
@@ -1061,8 +1085,8 @@ function renderRightEvents(){
 function renderIdeaAlternatives(){
  const wrap=$('ideaAlternatives');wrap.textContent='';const current=preferredVariant(selectedISO);
  const seen=new Set([getIdea(selectedISO,current).title]);let n=1;
- for(let k=1;k<=20&&n<=2;k++){
-   const v=current+k,idea=getIdea(selectedISO,v);if(seen.has(idea.title))continue;seen.add(idea.title);n++;
+ for(let k=1;k<=2&&n<=2;k++){
+   const v=(current+k)%3,idea=getIdea(selectedISO,v);if(seen.has(idea.title))continue;seen.add(idea.title);n++;
    const b=document.createElement('button');b.type='button';b.className='also-try-option';const title=document.createElement('strong');title.textContent=idea.title;const time=document.createElement('span');time.textContent=idea.duration+' ↗';b.append(title,time);
    b.addEventListener('click',()=>{ideaVariants[selectedISO]=v;renderDetails()});wrap.append(b)
  }
@@ -1090,7 +1114,7 @@ function preferredVariant(s){
  const weather=weatherData[s];
  if(!weather||weather.rain<55)return 0;
  const outdoors=/公园|滨江|花园|户外|登山|爬山|逛街|漫步|散步|游园|观景|野餐|赏花|露营|古镇|雨夜|骑行|湿地|远足|森林/;
- for(let i=0;i<16;i++){
+ for(let i=0;i<3;i++){
    const activity=getIdea(s,i);
    if(!outdoors.test(activity.title+' '+activity.desc+' '+activity.place))return i;
  }
