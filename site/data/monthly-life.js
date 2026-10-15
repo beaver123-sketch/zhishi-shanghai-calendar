@@ -1,4 +1,4 @@
-/* ZhiShi Monthly Life · v1.0
+/* ZhiShi Monthly Life · v2.0
  * Depends on the existing non-module desktop app: nowShanghai, selectedISO,
  * displayMonth/displayYear, EVENT_DATA, openEvents, memos, renderAll, showToast.
  * All personal entries stay in the current browser. No photos in this module.
@@ -8,8 +8,8 @@
 const host=document.getElementById('lifeHub');
 if(!host)return;
 const STORE='zhishi-monthly-life-v1';
-const svgFlower='<svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 19C12 12 12 7 22 5c10 2 10 7 0 14ZM25 22c7-10 12-10 14 0-2 10-7 10-14 0ZM22 25c10 7 10 12 0 14-10-2-10-7 0-14ZM19 22C12 32 7 32 5 22c2-10 7-10 14 0Z" fill="currentColor" opacity=".67"/><circle cx="22" cy="22" r="4" fill="#fff9ee"/></svg>';
-const svgLetter='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="m3.5 7 8.5 6.4L20.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const legacySvgFlower='<svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 19C12 12 12 7 22 5c10 2 10 7 0 14ZM25 22c7-10 12-10 14 0-2 10-7 10-14 0ZM22 25c10 7 10 12 0 14-10-2-10-7 0-14ZM19 22C12 32 7 32 5 22c2-10 7-10 14 0Z" fill="currentColor" opacity=".67"/><circle cx="22" cy="22" r="4" fill="#fff9ee"/></svg>';
+const legacySvgLetter='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="m3.5 7 8.5 6.4L20.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 // Month-specific Shanghai seasonal references, NOT live bloom conditions.
 const seasonal={
 1:[['蜡梅','冬季香花 · 寻找第一缕幽香','上海植物园、共青森林公园'],['早梅','依当年气温观察花苞','上海植物园、世纪公园']],
@@ -26,12 +26,14 @@ const seasonal={
 12:[['茶梅','冬季花木观察','上海植物园、城市公园'],['蜡梅','观察花苞，为来年作准备','共青森林公园、上海植物园']]
 };
 const emptyData=()=>({anniversaries:[],wishlist:[],letters:[]});
+const ART='/data/life-art/';
+
 function txt(s,max=300){return String(s??'').trim().slice(0,max)}
 function safeId(s){return /^[a-z0-9:_-]{1,80}$/i.test(String(s))?String(s):''}
 function validDate(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return false;const [y,m,d]=s.split('-').map(Number),a=new Date(Date.UTC(y,m-1,d));return a.getUTCFullYear()===y&&a.getUTCMonth()===m-1&&a.getUTCDate()===d}
 function clean(input){
  const i=input&&typeof input==='object'?input:{};
- const anniversaries=(Array.isArray(i.anniversaries)?i.anniversaries:[]).slice(0,100).filter(e=>e&&validDate(e.date)&&txt(e.name,70)).map(e=>({id:safeId(e.id)||uid(),name:txt(e.name,70),date:e.date,annual:Boolean(e.annual)}));
+ const anniversaries=(Array.isArray(i.anniversaries)?i.anniversaries:[]).slice(0,100).filter(e=>e&&validDate(e.date)&&txt(e.name,70)).map(e=>({id:safeId(e.id)||uid(),name:txt(e.name,70),date:e.date,annual:Boolean(e.annual),mode:['countdown','countup','anniversary'].includes(e.mode)?e.mode:'countdown'}));
  const wishlist=(Array.isArray(i.wishlist)?i.wishlist:[]).slice(0,150).filter(e=>e&&safeId(e.id)&&txt(e.title)).map(e=>({id:e.id,title:txt(e.title,100),kind:txt(e.kind,30),location:txt(e.location,80),start:validDate(e.start)?e.start:'',end:validDate(e.end)?e.end:'',source:/^https:\/\//.test(e.source||'')?String(e.source).slice(0,500):''}));
  const letters=(Array.isArray(i.letters)?i.letters:[]).slice(0,80).filter(e=>e&&validDate(e.openDate)&&txt(e.body,6000)).map(e=>({id:safeId(e.id)||uid(),title:txt(e.title,80)||'给未来的自己',body:txt(e.body,6000),created:validDate(e.created)?e.created:today(),openDate:e.openDate}));
  return {anniversaries,wishlist,letters};
@@ -59,11 +61,28 @@ const iconButton=(label,action)=>{const b=document.createElement('button');b.typ
 const create=(tag,cls,content)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(content!==undefined)e.textContent=content;return e};
 const el=id=>document.getElementById(id);
 function initMarkup(){
- host.innerHTML=`<article class="life-card life-card--flowers"><div class="life-card-head"><div><div class="life-kicker">SEASONAL FLOWERS / SHANGHAI</div><h3 class="life-card-title">上海此时花开</h3><div class="life-card-sub" id="lifeFlowersMonth"></div></div><span class="life-botanical" aria-hidden="true">${svgFlower}</span></div><div class="life-list" id="lifeFlowerList"></div><p class="life-footnote">参考往年时令，并非实时花况；实际开放、园区展期请出发前核实。</p></article>
-<article class="life-card"><div class="life-card-head"><div><div class="life-kicker">IMPORTANT DAYS</div><h3 class="life-card-title">重要纪念日</h3><div class="life-card-sub">让值得记住的日子有个位置</div></div><button type="button" class="life-mini-button" id="lifeAddDay">＋ 添加</button></div><div class="life-list" id="lifeDayList"></div></article>
-<article class="life-card"><div class="life-card-head"><div><div class="life-kicker">MY CITY WISHLIST</div><h3 class="life-card-title">想去的上海活动</h3><div class="life-card-sub">从真实活动列表中收藏心动的去处</div></div><button type="button" class="life-mini-button" id="lifeBrowseEvents">逛活动 ↗</button></div><div class="life-list" id="lifeWishList"></div></article>
-<article class="life-card life-card--letter"><div class="life-card-head"><div><div class="life-kicker">DEAR FUTURE ME</div><h3 class="life-card-title">写给未来自己的信</h3><div class="life-card-sub">把今天的心事，交给某一天的自己</div></div><button type="button" class="life-mini-button" id="lifeWriteLetter">＋ 写一封</button></div><div class="life-list" id="lifeLetterList"></div><p class="life-footnote">信保存在本机，尚未加密或云同步；到期可在这里打开，不会自动发送通知。</p></article>
-<div class="life-tools"><span>知时 · 月度生活手账　｜　个人记录仅保存在此浏览器</span><span class="life-tools-group"><button type="button" id="lifeExport">↓ 备份</button><button type="button" id="lifeImport">↑ 恢复</button><input type="file" id="lifeImportFile" accept=".json,application/json" hidden></span></div>`;
+ host.innerHTML=`<article class="life-card life-card--flowers" aria-labelledby="lifeFlowerTitle">
+  <div class="life-card-art life-card-art--flowers" aria-hidden="true"></div>
+  <div class="life-card-head"><div><div class="life-kicker">SEASONAL FLOWERS · SHANGHAI</div><h3 class="life-card-title" id="lifeFlowerTitle">上海此时花开 <span class="life-seal" aria-hidden="true">知<br>时</span></h3><div class="life-card-sub" id="lifeFlowersMonth"></div></div></div>
+  <p class="life-season-poem" id="lifeSeasonPoem"></p>
+  <div class="life-list" id="lifeFlowerList"></div>
+  <p class="life-footnote">✳ 参考往年花期，并非实时花况；开放与园区展期请以官方消息为准。</p>
+ </article>
+ <article class="life-card life-card--days" aria-labelledby="lifeDaysTitle">
+  <div class="life-card-head"><div><div class="life-kicker">IMPORTANT DAYS</div><h3 class="life-card-title" id="lifeDaysTitle">重要纪念日 <span class="life-seal" aria-hidden="true">留<br>念</span></h3><div class="life-card-sub">有些日子，值得慢慢数着过</div></div><button type="button" class="life-mini-button" id="lifeAddDay">＋ 添加纪念日</button></div>
+  <div class="life-list life-list--days" id="lifeDayList"></div>
+ </article>
+ <article class="life-card life-card--wishes" aria-labelledby="lifeWishTitle">
+  <div class="life-city-art" aria-hidden="true"></div>
+  <div class="life-card-head"><div><div class="life-kicker">MY CITY WISHLIST</div><h3 class="life-card-title" id="lifeWishTitle">想去的上海活动 <span class="life-seal" aria-hidden="true">心<br>动</span></h3><div class="life-card-sub">把心动的展览与演出，收藏成小小的票根</div></div><button type="button" class="life-mini-button" id="lifeBrowseEvents">逛活动 ↗</button></div>
+  <div class="life-list life-list--tickets" id="lifeWishList"></div>
+ </article>
+ <article class="life-card life-card--letter" aria-labelledby="lifeLetterTitle">
+  <div class="life-card-head"><div><div class="life-kicker">DEAR FUTURE ME</div><h3 class="life-card-title" id="lifeLetterTitle">写给未来自己的信 <span class="life-seal" aria-hidden="true">见<br>字</span></h3><div class="life-card-sub">今日的心事，留到某一天慢慢打开</div></div><button type="button" class="life-mini-button" id="lifeWriteLetter">＋ 写一封</button></div>
+  <div class="life-letter-stage"><div class="life-envelope-art" aria-hidden="true"></div><div class="life-list life-list--letters" id="lifeLetterList"></div></div>
+  <p class="life-footnote">✳ 信保存在本机，未加密或云同步；到期可阅读，不会自动发送通知。</p>
+ </article>
+ <div class="life-tools"><span>知时 · 月度生活手账　|　仅保存在当前浏览器</span><span class="life-tools-group"><button type="button" id="lifeExport">↓ 备份</button><button type="button" id="lifeImport">↑ 恢复</button><input type="file" id="lifeImportFile" accept=".json,application/json" hidden></span></div>`;
  const dlg=document.createElement('dialog');dlg.id='lifeDialog';dlg.className='life-form-dialog';dlg.setAttribute('aria-label','生活手账编辑');document.body.append(dlg);
  el('lifeAddDay').addEventListener('click',()=>editDay());el('lifeBrowseEvents').addEventListener('click',()=>{if(typeof openEvents==='function')openEvents();else el('moreEvents')?.click()});
  el('lifeWriteLetter').addEventListener('click',()=>writeLetter());
@@ -74,51 +93,95 @@ function empty(message,actionName,action){
  if(actionName){const b=create('button','life-text-button',actionName);b.type='button';b.style.marginLeft='6px';b.addEventListener('click',action);box.append(b)}
  return box;
 }
+const FLOWER_NOTE={1:'梅香未远，春意已在枝头酝酿。',2:'风里有花讯，春天正慢慢靠近。',3:'枝头一夜春风，城市也变得温柔。',4:'看满城花事，让春天多停留一会儿。',5:'在盛放的季节，遇见轻盈的夏天。',6:'夏木成荫，荷风将起。',7:'一池清荷，半日慢时光。',8:'夏日尾声，听见叶间的风。',9:'桂花将至，去寻找入秋的第一缕香。',10:'金风送桂香，秋色满申城。',11:'深秋如画，慢慢收藏最后的花色。',12:'岁暮花信，盼一朵早梅。'};
 function flowerMonth(){
  const month=typeof displayMonth==='number'?displayMonth:Number(today().slice(5,7));
- el('lifeFlowersMonth').textContent=month+'月 · 上海季节观察';const list=el('lifeFlowerList');list.replaceChildren();
- for(const [name,desc,where] of seasonal[month]||seasonal[10]){
+ const autumn=month>=9&&month<=11;
+ host.querySelector('.life-card--flowers').classList.toggle('is-autumn',autumn);
+ el('lifeFlowersMonth').textContent=month+'月 · 上海季节观察';
+ el('lifeSeasonPoem').textContent=FLOWER_NOTE[month]||'在城市里，等候时令的花开。';
+ const list=el('lifeFlowerList');list.replaceChildren();
+ for(const [index,[name,desc,where]] of (seasonal[month]||seasonal[10]).entries()){
   const row=create('div','life-flower-row');
-  const svg=create('span','life-botanical');svg.innerHTML=svgFlower;
-  const body=create('div','life-flower-info');body.append(create('div','life-flower-name',name));body.append(create('div','life-flower-desc',desc+' · '+where));
-  const b=create('button','life-flower-action','＋ 提醒');b.type='button';b.title='为所选日期添加观察备忘';
+  const thumb=create('div','life-flower-picture');
+  const artName=/(桂花|金桂|银桂)/.test(name)?'osmanthus-sprig.webp':/(秋菊|菊花|茶梅)/.test(name)?'chrysanthemum.webp':'';
+  if(artName){const image=document.createElement('img');image.src=ART+artName;image.alt='';image.loading='lazy';thumb.append(image)}
+  else{thumb.classList.add('life-flower-picture--generic');thumb.textContent='花\n信'}
+  const body=create('div','life-flower-info');body.append(create('div','life-flower-name',name));
+  body.append(create('div','life-flower-desc',desc));body.append(create('small','life-flower-location',where));
+  const b=create('button','life-flower-action','＋ 提醒');b.type='button';b.title='将花期观察添加到当前选中日期的备忘';
   b.addEventListener('click',()=>{
    const day=typeof selectedISO==='string'?selectedISO:today();const title='观察上海'+name;
-   if(memos.some(x=>x.date===day&&x.title===title)){toast('这条花讯已加入该日期');return}
-   memos.push({id:uid(),date:day,title,detail:where+' · 花况以当日实际情况为准',category:'fun',time:'',done:false});
+   if(memos.some(x=>x.date===day&&x.title===title)){toast('这条花讯已经加入此日期');return}
+   memos.push({id:uid(),date:day,title,detail:where+' · 实际花况以当日为准',category:'fun',time:'',done:false});
    if(saveMemos()){renderAll();toast('已加入 '+short(day)+' 的日历')}else memos.pop();
-  });row.append(svg,body,b);list.append(row);
+  });
+  row.append(thumb,body,b);list.append(row);
  }
+}
+const MODES={countdown:'倒计时',countup:'正计时',anniversary:'周年纪念'};
+function annivYearDate(item,y){const mm=item.date.slice(5,7),dd=item.date.slice(8);return y+'-'+mm+'-'+(mm==='02'&&dd==='29'&&!validDate(y+'-02-29')?'28':dd)}
+function daySummary(item,now){
+ const mode=MODES[item.mode]?item.mode:'countdown',from=item.date;
+ if(mode==='countup'){
+  const age=diffDays(now,from);
+  return {primary:age<0?'还有 '+Math.abs(age)+' 天':'已经 '+age+' 天',secondary:age<0?'开始日还未到':'从那一天起，一直记到现在',sort:age<0?Math.abs(age):9999+age,label:MODES[mode],dateCaption:short(from)+' · 起始日',mode};
+ }
+ if(mode==='anniversary'){
+  if(from>now){const days=diffDays(from,now);return {primary:'还有 '+days+' 天',secondary:'距离第 1 次纪念',sort:days,label:MODES[mode],dateCaption:short(from)+' · 起始日',mode};}
+  const y=Number(now.slice(0,4)),birthY=Number(from.slice(0,4));
+  let years=y-birthY;
+  if(annivYearDate(item,y)>now)years--;
+  years=Math.max(0,years);
+  const next=upcomingDate({date:from,annual:true},now),days=diffDays(next,now);
+  const label=days===0?'今天是第 '+(years||1)+' 周年':'已满 '+years+' 周年';
+  const sub=days===0?'今天值得庆祝！':'离第 '+(years+1)+' 周年还有 '+days+' 天';
+  return {primary:label,secondary:sub,sort:days,label:MODES[mode],dateCaption:short(from)+' · 起始日',mode};
+ }
+ const target=item.annual?upcomingDate(item,now):from;
+ const days=diffDays(target,now);
+ return {primary:days>0?'还有 '+days+' 天':days===0?'就是今天':'已过 '+(-days)+' 天',secondary:days>=0?'期待那一天的到来':'这一天已经过去',sort:days<0?1e6-days:days,label:MODES[mode],dateCaption:short(from)+(item.annual?' · 每年重复':' · 单次'),mode};
+}
+function annivPicture(item){
+ const text=(item.name||'').toLowerCase();
+ const img=/生日|诞生|birthday|生辰/.test(text)?'cake-watercolor.webp':/宠物|小狗|狗狗|犬|猫咪|猫猫/.test(text)?'dog-watercolor.webp':/入职|工作|公司|毕业|职场/.test(text)?'briefcase-watercolor.webp':null;
+ return img?ART+img:ART+'osmanthus-sprig.webp';
 }
 function daysView(){
  const list=el('lifeDayList');list.replaceChildren();const now=today();
- const all=data.anniversaries.map(e=>({...e,next:upcomingDate(e,now)})).sort((a,b)=>{const x=diffDays(a.next,now),y=diffDays(b.next,now);return (x<0?999999+x:x)-(y<0?999999+y:y)});
- if(!all.length){list.append(empty('还没有添加纪念日。可以记生日、重要约定或值得庆祝的日子。'));return}
- for(const it of all.slice(0,4)){
-  const days=diffDays(it.next,now),row=create('div','life-row');const info=create('div','life-row-info');
-  info.append(create('strong','life-row-title',it.name),create('small','life-row-caption',short(it.next)+(it.annual?' · 每年重复':' · 单次')));
-  const count=create('span','life-days'+(days<0?' past':''));
-  if(days<0)count.textContent='已过 '+Math.abs(days)+' 天';else if(days===0)count.textContent='就是今天';else{count.textContent=String(days);count.append(create('small','','天'))}
-  const more=create('button','life-text-button','···');more.type='button';more.title='编辑或删除纪念日';more.addEventListener('click',()=>editDay(it));row.append(info,count,more);list.append(row)
+ const items=data.anniversaries.map(item=>({item,view:daySummary(item,now)})).sort((a,b)=>a.view.sort-b.view.sort);
+ if(!items.length){list.append(empty('记下一天，让值得纪念的日子从这里慢慢开始。','＋ 写下第一个纪念日',()=>editDay()));return}
+ for(const {item,view} of items.slice(0,3)){
+  const row=create('button','life-anniv-row life-anniv-row--'+view.mode);row.type='button';
+  row.title='点击编辑这条纪念日';row.addEventListener('click',()=>editDay(item));
+  const pic=create('span','life-anniv-art');const image=document.createElement('img');image.src=annivPicture(item);image.alt='';image.loading='lazy';pic.append(image);
+  const body=create('span','life-anniv-detail');body.append(create('strong','life-row-title',item.name),create('small','life-row-caption',view.dateCaption));
+  const counter=create('span','life-anniv-counter');const badge=create('span','life-mode-pill life-mode-pill--'+view.mode,view.label);
+  counter.append(badge,create('b','life-anniv-number',view.primary),create('small','life-anniv-next',view.secondary));
+  row.append(pic,body,counter,create('span','life-round-arrow','→'));list.append(row);
  }
- if(all.length>4){const link=create('button','life-text-button','查看全部 '+all.length+' 个纪念日 ↗');link.type='button';link.addEventListener('click',()=>showAllDays(all));list.append(link)}
+ if(items.length>3){const b=iconButton('其余 '+(items.length-3)+' 个纪念日 · 查看全部 ↗',()=>showAllDays(items));b.classList.add('life-all-days');list.append(b)}
 }
-function formatEvent(e){return {id:e.id,title:e.title,kind:e.kind,location:e.location,start:e.start,end:e.end,source:e.source}}
 function hasWish(id){return data.wishlist.some(x=>x.id===id)}
 function toggleWish(item){const i=data.wishlist.findIndex(x=>x.id===item.id);if(i>=0){data.wishlist.splice(i,1);if(save())toast('已从心愿单移除')}else{if(data.wishlist.length>=150){toast('心愿单最多可保留150项');return}data.wishlist.unshift(formatEvent(item));if(save())toast('已加入想去的上海活动')}wishView();decorateEventButtons()}
-function wishView(){const list=el('lifeWishList');list.replaceChildren();const now=today();
- if(!data.wishlist.length){list.append(empty('还没有收藏活动。找到感兴趣的展览或演出，点击 ♡ 想去。'));return}
- for(const item of data.wishlist.slice(0,4)){
-  const row=create('div','life-row');const body=create('div','life-row-info');
-  const past=Boolean(item.end&&item.end<now);
-  body.append(create('strong','life-row-title',item.title));body.append(create('small','life-row-caption',(item.kind||'上海活动')+' · '+(item.start?short(item.start):'开放时间待核实')+' · '+(item.location||'查看官方信息')));
-  const actions=create('span','life-tools-group');
-  if(item.source){const link=create('a','life-wish-source','详情 ↗');link.href=item.source;link.target='_blank';link.rel='noopener noreferrer';actions.append(link)}
-  const remove=create('button','life-text-button','移除');remove.type='button';remove.addEventListener('click',()=>toggleWish(item));actions.append(remove);
-  if(past){const tag=create('span','life-status-tag past','已过期');body.append(tag)}
-  row.append(body,actions);list.append(row)
+function wishView(){const list=el('lifeWishList');list.replaceChildren();
+ if(!data.wishlist.length){list.append(empty('还没有收藏活动。看到喜欢的展览或演出，点 ♡ 加入想去清单。','逛逛上海活动',()=>el('lifeBrowseEvents')?.click()));return}
+ const sorted=[...data.wishlist].sort((a,b)=>(a.start||'9999').localeCompare(b.start||'9999'));
+ for(const [idx,item] of sorted.slice(0,3).entries()){
+  const past=Boolean(item.end&&item.end<today());
+  const row=create('article','life-ticket life-ticket--'+(idx%3));
+  const pic=create('div','life-ticket-art');pic.style.backgroundImage=`url("${ART}shanghai-watercolor.webp")`;
+  const body=create('div','life-ticket-body');body.append(create('small','life-ticket-kind',item.kind||'上海活动'));
+  body.append(create('strong','life-row-title',item.title));
+  body.append(create('span','life-ticket-meta',short(item.start)+' · '+item.location));
+  if(past)body.append(create('span','life-status-tag past','日期已过 · 请核验后续场次'));
+  const controls=create('div','life-ticket-actions');
+  const heart=create('button','life-ticket-heart','♥');heart.type='button';heart.title='取消收藏';heart.setAttribute('aria-label','取消收藏 '+item.title);heart.addEventListener('click',()=>toggleWish(item));
+  controls.append(heart);
+  if(item.source){const link=create('a','life-ticket-link','官方 ↗');link.href=item.source;link.target='_blank';link.rel='noopener noreferrer';link.title='查看活动官方信息';controls.append(link)}
+  row.append(pic,body,controls);list.append(row);
  }
- if(data.wishlist.length>4){const b=create('button','life-text-button','还有 '+(data.wishlist.length-4)+' 项 · 查看全部 ↗');b.type='button';b.addEventListener('click',showAllWishes);list.append(b)}
+ if(data.wishlist.length>3){const b=iconButton('还有 '+(data.wishlist.length-3)+' 张票根 · 查看全部 ↗',showAllWishes);b.classList.add('life-all-wishes');list.append(b)}
 }
 function decorateEventButtons(){
  const events=typeof EVENT_DATA!=='undefined'&&Array.isArray(EVENT_DATA)?EVENT_DATA:[];
@@ -138,35 +201,49 @@ function decorateEventButtons(){
  }
 }
 function letterView(){const list=el('lifeLetterList');list.replaceChildren();const now=today();
- if(!data.letters.length){list.append(empty('想对未来的自己说点什么？写一封信，约定某天再打开。'));return}
+ if(!data.letters.length){list.append(empty('把此刻的心情写成一封信，留给未来的自己。','写一封信',()=>writeLetter()));return}
  const sorted=[...data.letters].sort((a,b)=>a.openDate.localeCompare(b.openDate));
- for(const letter of sorted.slice(0,3)){
+ for(const letter of sorted.slice(0,2)){
   const unlocked=now>=letter.openDate;
-  const row=create('div','life-letter-row'),mark=create('span','life-letter-envelope');mark.innerHTML=svgLetter;
-  const info=create('div','life-letter-info');info.append(create('strong','',letter.title||'给未来的自己'));
-  info.append(create('small','',unlocked?'已到开启日 · '+short(letter.openDate):short(letter.openDate)+' 才能打开 · 还有 '+diffDays(letter.openDate,now)+' 天'));
-  const b=create('button','life-letter-open',unlocked?'打开 ↗':'已封存');b.type='button';b.disabled=!unlocked;
-  b.style.opacity=unlocked?'1':'.6';b.addEventListener('click',()=>readLetter(letter.id));
-  row.append(mark,info,b);list.append(row)
+  const row=create('article','life-letter-stationery'),info=create('div','life-letter-info');
+  info.append(create('strong','',letter.title||'给未来的我'));
+  const desc=unlocked?'已经可以打开 · '+short(letter.openDate):short(letter.openDate)+' 才能打开 · 还有 '+diffDays(letter.openDate,now)+' 天';
+  info.append(create('small','',desc));
+  const btn=create('button','life-letter-open '+(unlocked?'is-open':'is-sealed'),unlocked?'打开 ↗':'已封存');btn.type='button';btn.disabled=!unlocked;
+  btn.addEventListener('click',()=>readLetter(letter.id));row.append(info,btn);list.append(row);
  }
- if(sorted.length>3){const b=create('button','life-text-button','查看全部信件 · '+sorted.length+' 封 ↗');b.type='button';b.addEventListener('click',()=>showAllLetters(sorted));list.append(b)}
+ if(sorted.length>2){const b=iconButton('其余 '+(sorted.length-2)+' 封信 · 查看全部 ↗',()=>showAllLetters(sorted));list.append(b)}
 }
 function render(){flowerMonth();daysView();wishView();letterView()}
-function openDialog(body){const dlg=el('lifeDialog');dlg.innerHTML='';dlg.append(body);dlg.showModal();return dlg}
+function openDialog(body){const dlg=el('lifeDialog');if(dlg.open)dlg.close();dlg.replaceChildren(body);dlg.showModal();return dlg}
 function frame(title,subtitle){const root=create('div','life-form-frame');const close=create('button','life-dialog-close','×');close.type='button';close.title='关闭';close.addEventListener('click',()=>el('lifeDialog').close());root.append(close,create('h3','',title),create('p','',subtitle));return root}
 function addField(root,label,type,required=false){const wrap=create('div','');const id=uid();const l=create('label','',label);l.htmlFor=id;const input=create('input','');input.type=type;input.id=id;input.required=required;wrap.append(l,input);root.append(wrap);return input}
 function footer(root,primary,go,deleteFn){const bar=create('div','life-dialog-actions');if(deleteFn){const del=create('button','','删除');del.type='button';del.style.marginRight='auto';del.addEventListener('click',deleteFn);bar.append(del)}const cancel=create('button','','取消');cancel.type='button';cancel.addEventListener('click',()=>el('lifeDialog').close());const save=create('button','life-primary',primary);save.type='button';save.addEventListener('click',go);bar.append(cancel,save);root.append(bar)}
-function editDay(existing){const item=existing?.id?data.anniversaries.find(x=>x.id===existing.id):null;const root=frame(item?'编辑纪念日':'记下重要的一天','生日、周年纪念或其他重要日期，都可以留在这里。');
- const name=addField(root,'纪念日名称','text',true),date=addField(root,'日期','date',true);name.maxLength=70;name.placeholder='例如：认识一周年';name.value=item?.name||'';date.value=item?.date||today();
- const label=create('label','life-checkbox-label');const repeat=document.createElement('input');repeat.type='checkbox';repeat.checked=item?.annual??true;label.append(repeat,document.createTextNode('每年重复提醒（闰日遇非闰年按2月28日计算）'));root.append(label);
+function editDay(existing){
+ const item=existing?.id?data.anniversaries.find(x=>x.id===existing.id):null;
+ const root=frame(item?'编辑纪念日':'添加纪念日','选择计时方式，让过去与未来都有自己的位置。');
+ const name=addField(root,'这个日子叫什么？','text',true),date=addField(root,'哪一天？','date',true);
+ name.maxLength=70;name.placeholder='例如：我的生日、遇见你的那天';name.value=item?.name||'';date.value=item?.date||today();
+ const modes=create('fieldset','life-mode-selector');const legend=create('legend','','计时方式');modes.append(legend);
+ const selected=item?.mode||'countdown',radios=[];
+ for(const [value,label,hint] of [['countdown','倒计时','距离未来日期还有多久'],['countup','正计时','从过去某天算到现在'],['anniversary','周年纪念','已过周年＋下次纪念日']]){
+  const opt=create('label','life-mode-option');const r=document.createElement('input');r.type='radio';r.name='lifeDayMode';r.value=value;r.checked=selected===value;
+  const main=create('span','');main.append(create('b','',label),create('small','',hint));opt.append(r,main);modes.append(opt);radios.push(r);
+ }
+ root.append(modes);
+ const repeatLabel=create('label','life-checkbox-label');const repeat=document.createElement('input');repeat.type='checkbox';repeat.checked=item?.annual??true;
+ repeatLabel.append(repeat,document.createTextNode('每年重复（如生日）'));root.append(repeatLabel);
+ const updateVisibility=()=>{const active=radios.find(x=>x.checked)?.value||'countdown';repeatLabel.hidden=active!=='countdown';};
+ radios.forEach(x=>x.addEventListener('change',updateVisibility));updateVisibility();
+ root.append(create('p','life-note','2月29日的年度纪念在非闰年按2月28日显示；倒计时与周年纪念会显示明确的计时方向。'));
  footer(root,item?'保存修改':'添加纪念日',()=>{
   if(!name.value.trim()||!validDate(date.value)){toast('请填写名称和有效日期');return}
-  const o={id:item?.id||uid(),name:txt(name.value,70),date:date.value,annual:repeat.checked};
-  if(item){const i=data.anniversaries.findIndex(x=>x.id===item.id);if(i>=0)data.anniversaries[i]=o}
-  else data.anniversaries.push(o);
+  const mode=radios.find(x=>x.checked)?.value||'countdown';
+  const obj={id:item?.id||uid(),name:txt(name.value,70),date:date.value,mode,annual:mode==='anniversary'?true:mode==='countup'?false:repeat.checked};
+  if(item){const i=data.anniversaries.findIndex(x=>x.id===item.id);if(i>=0)data.anniversaries[i]=obj}else data.anniversaries.push(obj);
   if(save()){el('lifeDialog').close();daysView();toast('纪念日已保存')}
  },item?()=>{if(confirm('确定删除这个纪念日吗？')){data.anniversaries=data.anniversaries.filter(x=>x.id!==item.id);save();el('lifeDialog').close();daysView()}}:null);
- openDialog(root)
+ openDialog(root);
 }
 function writeLetter(){const root=frame('写给未来的自己','想象那一天的自己，给未来留一封真正的信。');const title=addField(root,'给这封信起个名字','text',true);title.maxLength=80;title.value='给未来的我';const date=addField(root,'约定开启日期','date',true);date.min=tomorrow(today());date.value=tomorrow(today());
  const label=create('label','','想说的话');const body=create('textarea','');body.maxLength=6000;body.placeholder='今天的心情、一个愿望，或是你想在未来记起的瞬间……';body.rows=8;root.append(label,body);
@@ -182,7 +259,13 @@ function readLetter(id){const letter=data.letters.find(x=>x.id===id);if(!letter|
  const root=frame(letter.title,'写于 '+letter.created+' · 约定 '+letter.openDate+' 开启');root.append(create('div','life-letter-paper',letter.body));
  footer(root,'读完了',()=>el('lifeDialog').close(),()=>{if(confirm('删除这封信？内容无法找回。')){data.letters=data.letters.filter(x=>x.id!==id);save();el('lifeDialog').close();letterView()}});openDialog(root)
 }
-function showAllDays(items){const root=frame('所有纪念日','按照距离今天的时间排序。');for(const x of items){const button=create('button','life-row',x.name+' · '+short(x.next)+'　编辑 ↗');button.type='button';button.style.width='100%';button.style.textAlign='left';button.style.marginBottom='8px';button.addEventListener('click',()=>editDay(x));root.append(button)}footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)}
+function showAllDays(items){
+ const root=frame('我的纪念日','倒计时、正计时与周年纪念，轻轻收好每个重要日期。');
+ for(const {item,view} of items){const b=create('button','life-anniv-row life-anniv-row--'+view.mode);b.type='button';b.style.width='100%';
+  const title=create('span','life-row-info');title.append(create('strong','life-row-title',item.name),create('small','life-row-caption',view.label+' · '+view.dateCaption));
+  b.append(title,create('span','life-anniv-number',view.primary));b.addEventListener('click',()=>editDay(item));root.append(b)}
+ footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)
+}
 function showAllWishes(){const root=frame('所有活动心愿','从上海活动库收藏，具体日期与开放时间请到官方渠道核实。');for(const x of data.wishlist){const row=create('div','life-row');const body=create('div','life-row-info');body.append(create('strong','life-row-title',x.title),create('small','life-row-caption',short(x.start)+' · '+x.location));row.append(body);if(x.source){const a=create('a','life-wish-source','官方 ↗');a.href=x.source;a.target='_blank';a.rel='noopener noreferrer';row.append(a)}const b=create('button','life-text-button','移除');b.type='button';b.addEventListener('click',()=>{toggleWish(x);showAllWishes()});row.append(b);root.append(row)}footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)}
 function showAllLetters(items){const root=frame('写给未来的信','约定的那一天到了，正文才会在页面打开。');for(const x of items){const b=create('button','life-row',x.title+' · '+short(x.openDate)+(today()>=x.openDate?' · 可开启':' · 未到期'));b.type='button';b.style.width='100%';b.style.textAlign='left';b.disabled=today()<x.openDate;b.addEventListener('click',()=>readLetter(x.id));root.append(b)}footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)}
 function exportBackup(){const blob=new Blob([JSON.stringify({schema:STORE,exportedAt:new Date().toISOString(),...data},null,2)],{type:'application/json;charset=utf-8'});const a=document.createElement('a');const link=URL.createObjectURL(blob);a.href=link;a.download='知时-月度生活手账-'+today()+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(link),1500);toast('备份文件已导出，请妥善保存')}

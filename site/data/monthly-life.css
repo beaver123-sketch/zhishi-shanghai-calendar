@@ -64,3 +64,115 @@
 @media(prefers-reduced-motion:reduce){.life-card{transition:none}}
 .calendar-left-column .calendar-panel,.life-hub,.life-card,.life-form-frame{box-sizing:border-box}
 .life-wish-add{font-family:inherit}
+
+/* V2 · 桂花水彩生活手账 · rebuilt interactive cards from approved visual direction.
+   All /data/life-art/*.webp assets are watercolor illustrations, not photographs. */
+.calendar-left-column{gap:18px}
+.life-hub{--life-ink:#31434a;--life-muted:#918f81;--life-paper:#fffdf7;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:17px 18px;padding:0 0 4px}
+.life-card{isolation:isolate;min-width:0;overflow:hidden;padding:24px 24px 20px;border:1px solid #e1d9c5;border-radius:31px 34px 30px 38px;box-shadow:0 15px 38px rgba(111,91,60,.045);background:linear-gradient(155deg,rgba(255,254,251,.97),rgba(251,249,240,.95));transition:box-shadow .3s ease,transform .25s ease,border-color .3s}
+.life-card::after{display:none!important}
+.life-card::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.45;background:repeating-linear-gradient(117deg,transparent 0px,transparent 9px,#d6bf9413 10px,#d6bf9413 11px,transparent 12px),radial-gradient(ellipse at 98% -9%,#e4ca8940,transparent 48%)}
+.life-card--flowers{min-height:395px;background:linear-gradient(133deg,#fffdf6 1%,color-mix(in srgb,var(--season-surface,#efe6d2) 29%,#fffdfa) 98%);border-top-left-radius:42px;border-bottom-right-radius:52px}
+.life-card--days{min-height:390px;border-top-right-radius:52px;background:linear-gradient(160deg,#fffefa 1%,#fcfaf3 100%);margin-top:20px}
+.life-card--wishes{min-height:350px;padding-top:29px;border-top-left-radius:52px;border-bottom-left-radius:29px;background:linear-gradient(155deg,#fffdf9,#fcfaf2);margin-top:-6px}
+.life-card--letter{min-height:357px;margin-top:15px;border-top-right-radius:45px;background:linear-gradient(150deg,#fffdf9,#f9f4e8 96%)}
+.life-card:hover{box-shadow:0 17px 43px rgba(111,91,60,.065)}
+.life-card-head{gap:8px;margin-bottom:15px;position:relative;z-index:3;align-items:start}
+.life-kicker{color:#9b9b8e;font-family:Georgia,'Times New Roman',serif;letter-spacing:2px;font-size:10px;font-weight:700;margin-bottom:9px}
+.life-card-title{color:#243b43;font-family:'Songti SC','Noto Serif SC',serif;font-size:23px;font-weight:740;line-height:1.4;letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.life-card-sub{color:#978f7f;font-family:'Songti SC','Noto Serif SC',serif;font-size:12px;line-height:1.7;margin-top:4px}
+.life-seal{font:700 7px/1.15 'Songti SC',serif;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;flex:0 0 auto;border:1px solid #b4664f;color:#b4664f;border-radius:2px;padding:2px 3px;transform:rotate(6deg);opacity:.78;vertical-align:middle;letter-spacing:0}
+.life-mini-button{background:#fffdf7e0;border:1px solid #dcd4c0;border-radius:13px;color:#6f704e;min-height:34px;padding:8px 13px;font-family:inherit;font-size:11px;box-shadow:0 1px 1px #fff inset}
+.life-mini-button:hover{background:#f5f0df;border-color:#c7b795}
+.life-card--days .life-mini-button{background:#84906a;color:#fff;border-color:#84906a;border-radius:20px;padding:9px 13px}
+.life-card--days .life-mini-button:hover{background:#687b58}
+.life-card-art{position:absolute;pointer-events:none;z-index:0}
+.life-card-art--flowers{top:-11px;right:-5px;width:57%;height:214px;background:url('/data/life-art/osmanthus-hero.webp') center / cover no-repeat;opacity:.81;-webkit-mask-image:radial-gradient(ellipse at 67% 35%,#000 32%,transparent 76%);mask-image:radial-gradient(ellipse at 67% 35%,#000 32%,transparent 76%)}
+.life-card--flowers:not(.is-autumn) .life-card-art--flowers{opacity:.34;filter:saturate(.5)}
+.life-card--flowers .life-card-head{min-height:88px}
+.life-card--flowers .life-kicker,.life-card--flowers .life-card-title,.life-card--flowers .life-card-sub,.life-season-poem{position:relative;z-index:2}
+.life-card--flowers .life-card-head>div{max-width:82%}
+.life-season-poem{font:13px/1.8 'Songti SC','Noto Serif SC',serif;color:#878470;margin:5px 0 13px;max-width:70%;min-height:23px}
+.life-flower-row{background:#ffffffb8;border:1px solid #e6decc;padding:8px 11px 8px 6px;border-radius:20px 26px 19px 25px;min-height:72px;align-items:center;box-shadow:0 3px 10px rgba(132,109,67,.018)}
+.life-flower-picture{width:82px;height:66px;flex:0 0 82px;border-radius:16px;display:grid;place-items:center;overflow:hidden;background:#f8f5eb}
+.life-flower-picture img{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;filter:saturate(.94)}
+.life-flower-picture--generic{white-space:pre-line;font:700 16px/1.35 'Songti SC',serif;letter-spacing:2px;color:#8f9b76;background:radial-gradient(ellipse at 58% 25%,#e4e7d5,transparent 65%),#faf7e8}
+.life-flower-name{font:700 16px/1.4 'Songti SC','Noto Serif SC',serif;color:#304a4a}
+.life-flower-desc{font-size:11px;margin-top:3px;color:#979180;line-height:1.5}
+.life-flower-location{display:block;color:#aaa08c;font-size:10px;line-height:1.45;margin-top:2px}
+.life-flower-action{font-size:11px;color:#998453;font-weight:700;margin-right:2px}
+.life-footnote{font-size:10px;color:#a6a08e;line-height:1.7;margin:13px 0 0;position:relative;z-index:2}
+.life-list{gap:8px;z-index:2}
+.life-card--days .life-list{margin-top:16px}
+.life-anniv-row{appearance:none;display:flex;align-items:center;gap:9px;width:100%;min-width:0;padding:8px 10px;border:1px solid #e8e2d7;background:#fffcf9d9;border-radius:22px 28px 18px 23px;text-align:left;cursor:pointer;color:inherit;transition:transform .18s,border-color .18s;min-height:86px}
+.life-anniv-row:hover{transform:translateY(-1px);border-color:#c5b690}
+.life-anniv-art{width:66px;height:63px;flex:0 0 66px;border-radius:17px;overflow:hidden;display:grid;place-items:center;background:#fffdf8}
+.life-anniv-art img{width:100%;height:100%;display:block;object-fit:cover;mix-blend-mode:multiply}
+.life-anniv-detail{min-width:0;flex:1;align-self:center}
+.life-anniv-detail .life-row-title{font:700 14px/1.45 'Songti SC','Noto Serif SC',serif;color:#263c43}
+.life-anniv-detail .life-row-caption{font-size:10px;color:#a09a8a}
+.life-anniv-counter{flex:0 0 auto;min-width:93px;max-width:135px;display:flex;flex-direction:column;align-items:flex-start;padding:0 0 0 9px;border-left:1px solid #e9e3d8;gap:3px}
+.life-mode-pill{display:inline-block;align-self:flex-start;font-size:10px;line-height:1.2;border-radius:30px;padding:4px 8px;background:#eed7d2;color:#9e635c;white-space:nowrap}
+.life-mode-pill--countup{background:#dfe9e0;color:#667b69}
+.life-mode-pill--anniversary{background:#f2e5c5;color:#a38138}
+.life-anniv-number{font:700 14px/1.3 'Songti SC','Noto Serif SC',serif;color:#304045;white-space:nowrap}
+.life-anniv-next{font:10px/1.35 inherit!important;color:#aba08c;white-space:normal!important}
+.life-round-arrow{display:grid;place-items:center;flex:0 0 20px;height:20px;border-radius:50%;background:#eeeadd;color:#9c997e;font-size:15px}
+.life-card--days .life-all-days{background:transparent;color:#92826d;padding:6px;border:0;align-self:start}
+.life-city-art{position:absolute;left:0;top:0;width:44%;height:125px;background:url('/data/life-art/shanghai-watercolor.webp') left top / contain no-repeat;opacity:.61;pointer-events:none;-webkit-mask-image:linear-gradient(to right,#000 48%,transparent);mask-image:linear-gradient(to right,#000 48%,transparent)}
+.life-card--wishes .life-card-head{min-height:113px}
+.life-card--wishes .life-card-head>div{padding-left:21%;}
+.life-card--wishes .life-kicker{font-size:9px;letter-spacing:1.4px}
+.life-card--wishes .life-mini-button{margin-top:0}
+.life-card--wishes .life-card-title{font-size:22px;white-space:nowrap}
+.life-list--tickets{gap:9px}
+.life-ticket{position:relative;display:flex;align-items:center;gap:10px;min-height:83px;padding:10px 26px 10px 9px;border:1px solid #e6cfc3;background:linear-gradient(117deg,#f5e9de,#fdf9f1);box-shadow:0 5px 15px #ab917718;clip-path:polygon(0 5%,3% 5%,3% 0,97% 0,97% 5%,100% 5%,100% 95%,97% 95%,97% 100%,3% 100%,3% 95%,0 95%)}
+.life-ticket--0{transform:rotate(-.5deg)}
+.life-ticket--1{background:linear-gradient(107deg,#e8eddf,#fbf9ef);border-color:#d7dac9;transform:rotate(.8deg)}
+.life-ticket--2{background:linear-gradient(111deg,#e2ecf2,#f7faf8);border-color:#d2dee5;transform:rotate(-.8deg)}
+.life-ticket-art{width:67px;height:66px;flex:0 0 67px;background-position:left bottom;background-size:cover;background-repeat:no-repeat;border:1px solid #d6d9c9;border-radius:2px;filter:saturate(.81)}
+.life-ticket-body{min-width:0;flex:1;display:flex;flex-direction:column;gap:3px}
+.life-ticket-kind{font-size:10px;color:#ac8966}
+.life-ticket-body .life-row-title{font:700 13px/1.4 'Songti SC','Noto Serif SC',serif;white-space:normal;color:#2f464c;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.life-ticket-meta{font-size:10px;color:#918f89;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.life-ticket-actions{display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center}
+.life-ticket-heart{border:0;background:transparent;color:#ae7668;font-size:19px;cursor:pointer}
+.life-ticket-link{font-size:10px;color:#93856c;text-decoration:none;white-space:nowrap}
+.life-ticket-link:hover{text-decoration:underline}
+.life-card--wishes .life-empty{margin-top:3px;background:#fffefaad;line-height:1.8}
+.life-card--letter .life-card-head{min-height:86px;margin-bottom:2px}
+.life-letter-stage{position:relative;min-height:206px;display:flex;justify-content:flex-end;align-items:center}
+.life-envelope-art{position:absolute;z-index:0;left:-20px;bottom:-4px;width:73%;height:195px;background:url('/data/life-art/envelope-watercolor.webp') left center / contain no-repeat;pointer-events:none;opacity:.9;-webkit-mask-image:radial-gradient(ellipse at 50% 58%,#000 30%,transparent 83%);mask-image:radial-gradient(ellipse at 50% 58%,#000 30%,transparent 83%)}
+.life-list--letters{position:relative;z-index:2;display:flex;flex-direction:column;align-items:end;justify-content:center;width:60%;gap:8px;margin-top:25px}
+.life-letter-stationery{padding:14px 11px;background:#fffdf9ec;border:1px solid #e5d8bd;box-shadow:0 4px 11px #a9926419;border-radius:3px 11px 3px 10px;display:flex;align-items:center;gap:8px;width:100%;min-width:0}
+.life-letter-info{min-width:0;flex:1}
+.life-letter-info strong{font:700 13px/1.5 'Songti SC',serif;color:#343d3b}
+.life-letter-info small{font-size:10px;white-space:normal;line-height:1.6}
+.life-letter-open{font-size:10px;white-space:nowrap;color:#aa9470}
+.life-letter-open.is-open{color:#537e6a}
+.life-list--letters .life-empty{background:#fffaf2d9;font-size:11px;border-color:#e7dbc5;padding:12px 9px}
+.life-list--letters .life-mini-button{background:transparent;padding:4px 0;color:#968367;border:0}
+.life-card--letter .life-footnote{position:relative;z-index:2}
+.life-tools{font-family:'Songti SC','Noto Serif SC',serif;color:#aaa598;padding:4px 8px 12px}
+.life-form-dialog{width:min(500px,calc(100vw - 26px))}
+.life-form-frame{background:linear-gradient(160deg,#fffefa,#fbf7ef);border-color:#ded5c1;border-radius:26px;color:#4b5d56}
+.life-form-frame h3{color:#30464a;font-size:23px}
+.life-form-frame label{color:#6c7a65}
+.life-form-frame input[type=text],.life-form-frame input[type=date],.life-form-frame textarea{border-color:#d9d5c8;background:#fffefa;color:#39494b}
+.life-form-frame .life-primary{background:#7b8967;border-color:#7b8967;color:#fff}
+.life-mode-selector{display:flex;gap:7px;flex-wrap:wrap;border:0;margin:15px 0 4px;padding:0;min-width:0}
+.life-mode-selector legend{font-size:12px;color:#647665;font-weight:700;margin-bottom:5px}
+.life-form-frame .life-mode-option{cursor:pointer;display:flex;flex:1 1 120px;align-items:center;gap:6px;background:#fffefa;padding:10px 8px;border:1px solid #e0dccf;border-radius:12px;margin:0;font-size:11px}
+.life-mode-option:has(input:checked){border-color:#a7ad83;background:#f4f2e5;box-shadow:0 0 0 1px #a7ad833b}
+.life-mode-option input{accent-color:#8a9871}
+.life-mode-option span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.life-mode-option b{color:#506258;font-size:12px}
+.life-mode-option small{font:10px/1.45 inherit;color:#a09e91;font-weight:400}
+.life-form-frame .life-checkbox-label[hidden]{display:none}
+.life-empty{background:#fffdfac4;border-color:#e5dfd1;color:#9b988c}
+.life-empty .life-text-button{font-weight:700;color:#958263}
+@media(min-width:1400px){.life-card{padding:25px 27px}.life-card-title{font-size:25px}.life-flower-picture{width:88px;flex-basis:88px}.life-card--flowers{min-height:410px}.life-card--days{min-height:405px}}
+@media(max-width:1360px){.life-card{padding:18px 16px}.life-card-title{font-size:19px}.life-hub{gap:13px}.life-anniv-art{width:48px;height:52px;flex-basis:48px}.life-anniv-counter{min-width:72px;max-width:110px;padding-left:6px}.life-anniv-number{font-size:12px}.life-ticket-art{flex-basis:48px;width:48px;height:57px}.life-card--wishes .life-card-title{font-size:19px}.life-flower-picture{width:65px;flex-basis:65px}.life-flower-desc{font-size:10px}.life-flower-location{font-size:9px}.life-card-art--flowers{height:176px}}
+@media(max-width:1070px){.life-hub{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.life-card--wishes .life-card-head>div{padding-left:0}.life-city-art{opacity:.23}.life-card--wishes .life-card-head{min-height:91px}.life-letter-stage{min-height:195px}}
+@media(max-width:780px){.life-hub{grid-template-columns:1fr;gap:15px}.life-card{margin-top:0!important;padding:22px 20px;border-radius:25px;min-height:auto}.life-card--flowers{min-height:365px}.life-card--days{min-height:250px}.life-card--wishes{min-height:300px}.life-card--letter{min-height:350px}.life-card-title{font-size:23px}.life-card--wishes .life-card-title{font-size:22px}.life-flower-picture{width:82px;flex-basis:82px}.life-anniv-art{width:60px;flex-basis:60px}.life-anniv-counter{min-width:90px;max-width:150px}.life-anniv-number{font-size:14px}.life-ticket-art{width:67px;flex-basis:67px;height:63px}.life-flower-location{font-size:10px}.life-city-art{opacity:.35}.life-card--wishes .life-card-head>div{padding-left:17%}.life-letter-stage{min-height:200px}}
+@media(max-width:440px){.life-card{padding:20px 15px}.life-card-title{font-size:21px}.life-seal{font-size:6px}.life-card--wishes .life-card-head>div{padding-left:0}.life-city-art{opacity:.13}.life-anniv-row{gap:6px;padding:8px 7px}.life-anniv-art{flex-basis:44px;width:44px;height:48px}.life-anniv-detail .life-row-title{font-size:12px}.life-anniv-counter{min-width:80px;max-width:113px;padding-left:6px}.life-anniv-number{font-size:12px}.life-mode-pill{font-size:9px;padding:3px 6px}.life-round-arrow{display:none}.life-ticket-art{flex-basis:52px;width:52px;height:60px}.life-letter-stage{min-height:178px}.life-envelope-art{width:65%;height:170px}.life-list--letters{width:64%}.life-card-head{gap:5px}.life-mini-button{padding:7px 9px;font-size:10px}.life-card--days .life-mini-button{padding:8px 10px}}
