@@ -668,7 +668,7 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 </section>
 <div class="main-layout">
   <div class="calendar-left-column">
-  <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+  <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p><div class="month-work-summary" id="monthWorkSummary" aria-live="polite">正在统计本月工作日…</div></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   <div class="view-legend"><span class="legend-item"><span class="state-strip-sample rest"></span>周末 / 节假日休息</span><span class="legend-item"><span class="state-strip-sample work"></span>调休补班</span><span class="legend-item"><span class="sample-dot"></span>个人备忘</span><span class="legend-item"><span style="color:#b88951">✳</span>节气</span><span class="legend-right">点击任意日期 · 查看小期待与传统黄历</span></div>
   <div class="weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div class="month-grid" id="monthGrid" role="grid" aria-label="月历"></div><div class="month-foot"><span id="footerStats">本月 · 每天都有值得期待的小事</span><button class="foot-link" id="monthIdeasBtn">查看本月全部生活提案 ↗</button></div>
   </main>
@@ -878,6 +878,28 @@ function ordinalFor(s,dayoff){
  for(let i=1;i<=d;i++)if(isRest(iso(y,m,i))===dayoff)ordinal++;
  return ordinal;
 }
+
+// 江浙沪周末生活灵感：均为城市和常设公共空间的出游建议，不伪称当日有举办活动。
+// 具体花期、汉服租赁预约、徒步开放及跨城交通请出发前自行核实。
+const REGIONAL_WEEKEND_IDEAS=[
+ ['去苏州穿一次汉服逛园林','在平江路周边挑一间正规汉服体验店，选有开放预约的园林慢慢走。出发前查园林预约和租赁服务。','江南文化 · 汉服','苏州 · 平江路 / 园林','半日～1日'],
+ ['苏州拙政园赏四季花木','把拙政园和苏州博物馆周边排成一天，关注当季开放花卉，不把往年花期当实时情况。','周末跨城 · 园林','苏州 · 拙政园','约 1 日'],
+ ['去苏州虎丘看古塔和林木','步行感受虎丘山林与历史建筑，季节花况以景区公告为准。','周末跨城 · 古迹','苏州 · 虎丘','约 1 日'],
+ ['到杭州西湖徒步一小段','从北山街到曲院风荷择一段步道，预留返程时间，雨天调整行程。','周末跨城 · 徒步','杭州 · 西湖','约 1 日'],
+ ['杭州九溪徒步看季节山色','沿开放步道徒步，雨后留意湿滑与路况，按体能决定路线。','周末跨城 · 山野','杭州 · 九溪','约 1 日'],
+ ['杭州龙井村茶山轻徒步','按开放路线看茶田和村落，不进入私人茶园；春季可留意茶季。','周末跨城 · 茶山','杭州 · 龙井村','约 1 日'],
+ ['去嘉兴南湖看湖景和老城','以南湖景区及附近老街为主安排慢游，查好跨城车次和返程时间。','周末跨城 · 湖景','嘉兴 · 南湖','约 1 日'],
+ ['去湖州南浔古镇看水乡','走访临水街巷与古宅，留出时间看傍晚河景。','周末跨城 · 古镇','湖州 · 南浔','约 1 日'],
+ ['无锡鼋头渚赏花看湖','提前核实花期与票务；即使错过花期，也可安排太湖边漫步。','周末跨城 · 湖岸','无锡 · 鼋头渚','约 1 日'],
+ ['无锡惠山古镇汉服漫游','参观古镇街巷，选择商家提供的正规汉服体验服务，提前确认营业。','周末跨城 · 汉服','无锡 · 惠山古镇','约 1 日'],
+ ['去绍兴仓桥直街走一段老城','看水巷、石桥和传统建筑，安排一次慢节奏的周末小旅行。','周末跨城 · 老城','绍兴 · 仓桥直街','约 1 日'],
+ ['南京玄武湖看季节植物','沿环湖开放步道步行，春日花卉、秋日落叶依实际天气为准。','周末跨城 · 公园','南京 · 玄武湖','约 1 日'],
+ ['去杭州太子湾找当季花景','先查公园开放与预约要求，不将春季花讯套用到其他季节。','周末跨城 · 花园','杭州 · 太子湾公园','约 1 日'],
+ ['苏州金鸡湖散步看落日','傍晚沿开放湖岸散步，欣赏城市与湖面的景色。','周末跨城 · 滨水','苏州 · 金鸡湖','约 1 日'],
+ ['湖州莫干山走一条轻徒步线','优先选择开放成熟路线；留意山区天气和返程交通。','周末跨城 · 轻徒步','湖州 · 莫干山','约 1 日'],
+ ['去昆山周庄看清晨水巷','早些出发沿古镇街巷漫游，提前核实景区票务。','周末跨城 · 水乡','昆山 · 周庄','约 1 日']
+].map(row=>plan(row[0],row[1],row[2],row[3],row[4]));
+
 function getIdea(s,variant=0){
  const {y,m,d}=parseISO(s),dayoff=isRest(s);
  const slot=((Math.trunc(Number(variant)||0)%3)+3)%3;
@@ -888,6 +910,9 @@ function getIdea(s,variant=0){
  const meta=getCalendarMeta(s);
  const special=meta.festival&&festivalPlans[meta.festival]?toIdea(festivalPlans[meta.festival][dayoff?1:0]):meta.term&&solarTermPlans[meta.term]?toIdea(solarTermPlans[meta.term][dayoff?1:0]):null;
  const lead=curated||special;
+ const regional=REGIONAL_WEEKEND_IDEAS[(order+((y*12+m)*5))%REGIONAL_WEEKEND_IDEAS.length];
+ if(dayoff&&mondayIndex(s)>=5&&slot===0&&order%2===0&&!meta.festival)return regional;
+ if(dayoff&&slot===2&&order%3===0)return REGIONAL_WEEKEND_IDEAS[(order+((y*12+m)*5)+6)%REGIONAL_WEEKEND_IDEAS.length];
  if(lead&&slot===0)return lead;
  if(lead){
    const alt=pick(order*2+slot-1);
@@ -965,6 +990,10 @@ function renderCalendar(){
  const monthNames=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
  const mid=iso(displayYear,displayMonth,15);$('monthSubtitle').textContent=`${monthNames[displayMonth-1]} · ${lunarInfo(mid).yearName}年 · 上海`;
  const start=iso(displayYear,displayMonth,1),offset=mondayIndex(start),days=new Date(Date.UTC(displayYear,displayMonth,0)).getUTCDate();
+ const workingDates=Array.from({length:days},(_,i)=>iso(displayYear,displayMonth,i+1)).filter(date=>!isRest(date));
+ const workCount=workingDates.length,restCount=days-workCount;
+ $('monthWorkSummary').textContent=`本月 ${workCount} 个工作日 · ${restCount} 个休息日`;
+ $('monthWorkSummary').title=`按中国法定节假日及调休计算；工作日包括补班日，休息日包括周末与法定休假。`;
  const rows=Math.ceil((offset+days)/7),count=Math.max(35,rows*7),first=plusDay(start,-offset);
  const grid=$('monthGrid');grid.textContent='';
  const frag=document.createDocumentFragment();
@@ -1006,7 +1035,17 @@ function renderDetails(){
  const list=$('memoList');list.textContent='';const todays=memos.filter(x=>x.date===selectedISO).sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99'));
  $('memoCount').textContent=todays.length?`· ${todays.length}`:'';
  if(!todays.length){const empty=document.createElement('div');empty.className='memo-empty';empty.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M8 3h8a2 2 0 0 1 2 2v15H6V5a2 2 0 0 1 2-2ZM9 9h6M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>今天还没有备忘</span><span>写下一个小计划吧</span>';list.append(empty)}
- for(const memo of todays){const row=document.createElement('div');row.className='memo-row';const color=document.createElement('span');color.className='memo-color';color.style.background=catObject[memo.category]?.color||'#e2a16f';const body=document.createElement('div');body.className='memo-text';const title=document.createElement('strong');title.textContent=memo.title;const detail=document.createElement('small');detail.textContent=[memo.time,catObject[memo.category]?.name,memo.detail].filter(Boolean).join(' · ');body.append(title,detail);const del=document.createElement('button');del.className='remove-btn';del.textContent='×';del.title='删除备忘';del.setAttribute('aria-label','删除备忘：'+memo.title);del.addEventListener('click',()=>{memos=memos.filter(x=>x.id!==memo.id);saveMemos();renderAll();showToast('已删除备忘')});const completed=document.createElement('button');completed.type='button';completed.className='memo-check'+(memo.done?' checked':'');completed.textContent=memo.done?'✓':'';completed.title=memo.done?'取消完成':'标记完成';completed.setAttribute('aria-label',(memo.done?'取消完成：':'标记完成：')+memo.title);completed.setAttribute('aria-pressed',String(Boolean(memo.done)));completed.addEventListener('click',()=>toggleMemoDone(memo));if(memo.done)row.classList.add('memo-done');row.append(color,completed,body,del);list.append(row)}
+ const memoGroups=categoryOptions.map(([id,name,color])=>({id,name,color,items:todays.filter(item=>item.category===id)})).filter(group=>group.items.length);
+ const misc=todays.filter(item=>!catObject[item.category]);if(misc.length)memoGroups.push({id:'other',name:'其他',color:'#8D9D9A',items:misc});
+ for(const group of memoGroups){
+  const heading=document.createElement('div');heading.className='memo-category-heading';heading.style.setProperty('--memo-group-color',group.color);
+  const label=document.createElement('strong');label.textContent=group.name;
+  const quantity=document.createElement('span');quantity.textContent=group.items.length+' 项';
+  heading.append(label,quantity);list.append(heading);
+  for(const memo of group.items){const row=document.createElement('div');row.className='memo-row';const color=document.createElement('span');color.className='memo-color';color.style.background=catObject[memo.category]?.color||'#e2a16f';const body=document.createElement('div');body.className='memo-text';const title=document.createElement('strong');title.textContent=memo.title;const detail=document.createElement('small');detail.textContent=[memo.time,catObject[memo.category]?.name,memo.detail].filter(Boolean).join(' · ');body.append(title,detail);const del=document.createElement('button');del.className='remove-btn';del.textContent='×';del.title='删除备忘';del.setAttribute('aria-label','删除备忘：'+memo.title);del.addEventListener('click',()=>{memos=memos.filter(x=>x.id!==memo.id);saveMemos();renderAll();showToast('已删除备忘')});const completed=document.createElement('button');completed.type='button';completed.className='memo-check'+(memo.done?' checked':'');completed.textContent=memo.done?'✓':'';completed.title=memo.done?'取消完成':'标记完成';completed.setAttribute('aria-label',(memo.done?'取消完成：':'标记完成：')+memo.title);completed.setAttribute('aria-pressed',String(Boolean(memo.done)));completed.addEventListener('click',()=>toggleMemoDone(memo));if(memo.done)row.classList.add('memo-done');row.append(color,completed,body,del);list.append(row)
+  }
+ }
+
 }
 
 function toggleMemoDone(memo){
