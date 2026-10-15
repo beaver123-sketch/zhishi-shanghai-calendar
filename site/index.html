@@ -551,6 +551,34 @@ body{background:radial-gradient(ellipse 60% 40% at 100% 0%,#edf3f5,transparent 7
 .official-feed{margin-top:22px;background:#f7fafb;border:1px solid #e2ecee;border-radius:15px;padding:16px}.feed-head{display:flex;align-items:center;justify-content:space-between;gap:9px}.feed-head h4{font-size:15px;font-weight:700;margin:5px 0 0;color:#304d53}.feed-badge{font-size:10px;color:#24766e;background:#e1f1ed;padding:3px 8px;border-radius:22px;font-weight:500}.feed-time{font-size:10px;color:#789094}.feed-explain{margin:9px 0 12px;color:#788c90;font-size:11px;line-height:1.8}.feed-list{display:grid;gap:8px;max-height:390px;overflow:auto}.feed-item{display:block;text-decoration:none;color:#334d52;background:white;border:1px solid #e9f0ef;padding:10px 12px;border-radius:10px;transition:.15s}.feed-item:hover{border-color:#afcbca;background:#fcffff}.feed-item strong{display:block;font-size:12px;line-height:1.5;font-weight:650}.feed-item small{font-size:10px;color:#899a9c}.feed-empty{color:#8d9da0;font-size:12px}.pref-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pref-backup{border-top:1px solid #e8eef0;margin-top:19px;padding-top:16px}.pref-backup h4{margin:0;font-size:14px}.pref-backup p{font-size:11px;color:#89969a}.backup-buttons{display:flex;gap:10px}.backup-buttons button{border:1px solid #d6e5e5;background:white;border-radius:10px;padding:10px 14px;color:#426366;font-weight:600}.backup-buttons button:hover{background:#f3f8f8}.activity-footnote{line-height:1.7}
 @media(max-width:560px){.personal-tools-btn{font-size:11px;padding:7px 8px}.pref-fields{grid-template-columns:1fr}.feed-head{align-items:start;flex-direction:column}}
 </style>
+
+<style id="today-todo-strip-v1">
+/* Compact desktop To-do, bound to existing personal memo storage */
+.today-todo-strip{display:flex;align-items:center;gap:13px;min-height:66px;margin:0 0 24px;padding:12px 13px 12px 16px;background:linear-gradient(110deg,#f4f7f5,#f8faf9);border:1px solid #e6eeec;border-radius:14px}
+.today-todo-heading{flex:0 0 104px;display:flex;flex-direction:column;gap:3px;white-space:nowrap}
+.today-todo-heading strong{font-size:13px;color:#33515a;font-weight:760;line-height:1.2}
+.today-todo-heading strong span{font-family:Arial,sans-serif;font-size:12px;letter-spacing:.2px;font-weight:600;color:#79949a;margin-left:3px}
+.today-todo-heading small{font-size:10px;color:#91a5aa}
+.today-todo-track{min-width:0;flex:1;display:flex;gap:8px;align-items:center;overflow:auto hidden;scrollbar-width:none;padding:3px 1px;-webkit-overflow-scrolling:touch}
+.today-todo-track::-webkit-scrollbar{display:none}
+.today-todo-item{flex:0 0 auto;max-width:230px;min-height:37px;display:inline-flex;align-items:center;gap:8px;padding:7px 11px 7px 9px;border:1px solid #e0e9e6;border-radius:9px;background:#fff;color:#4c656b;box-shadow:0 1px 4px #335d4d07;font-size:11px;transition:background .15s,border-color .15s}
+.today-todo-item:hover{border-color:#b2c9c5;background:#fbfdfc}
+.today-todo-item:focus-visible,.today-todo-add:focus-visible{outline:2px solid #8eae9e;outline-offset:2px}
+.today-todo-check{width:16px;height:16px;flex:0 0 16px;display:grid;place-items:center;border:1.4px solid #9ab3af;border-radius:5px;background:#fff;color:#fff;font-size:11px;line-height:1}
+.today-todo-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:170px}
+.today-todo-item.is-done{background:#f2f5f3;border-color:#e5ebe7;color:#98a7a4}
+.today-todo-item.is-done .today-todo-check{background:#698e80;border-color:#698e80}
+.today-todo-item.is-done .today-todo-name{text-decoration:line-through;text-decoration-thickness:1px}
+.today-todo-empty{font-size:11px;color:#a0b0b0;white-space:nowrap;padding:5px 0}
+.today-todo-add{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:8px 11px;min-height:34px;border:1px solid #d6e6e2;border-radius:9px;background:#fff;color:#47776e;font-size:11px;font-weight:680;white-space:nowrap}
+.today-todo-add:hover{background:#eaf2ef}
+.memo-check{flex:0 0 18px;width:18px;height:18px;align-self:center;border:1.4px solid #b5c9c2;background:#fff;border-radius:6px;color:#fff;font-size:12px;display:grid;place-items:center;padding:0}
+.memo-check.checked{background:#6b9081;border-color:#6b9081}
+.memo-row.memo-done .memo-text strong{color:#9aa9a3;text-decoration:line-through;text-decoration-thickness:1px}
+.memo-row.memo-done .memo-text small{color:#adb8b2}
+@media(max-width:900px){.today-todo-strip{gap:9px;padding:10px;margin-bottom:19px}.today-todo-heading{flex-basis:85px}.today-todo-item{max-width:205px}.today-todo-name{max-width:148px}}
+@media(max-width:600px){.today-todo-strip{flex-wrap:wrap;gap:7px;padding:11px}.today-todo-heading{flex:1 1 auto;flex-direction:row;justify-content:space-between;align-items:center}.today-todo-track{flex:1 1 100%;order:3}.today-todo-add{order:2}.today-todo-item{max-width:180px}}
+</style>
 </head>
 <body>
 <div class="page">
@@ -561,7 +589,11 @@ body{background:radial-gradient(ellipse 60% 40% at 100% 0%,#edf3f5,transparent 7
 </header>
 <section class="micro-intro" aria-label="本月生活主题"><div class="micro-intro-title"><span class="micro-dot"></span><span>上海 · 节气与城市生活</span><span class="micro-divider">/</span><span>每天一件值得期待的事</span></div><div class="micro-intro-note">工作日轻松体验 · 假日探索上海 <span>✳</span></div></section>
 <div class="main-layout">
-  <main class="calendar-panel" id="calendarMain"><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+  <main class="calendar-panel" id="calendarMain"><section class="today-todo-strip" aria-label="今日待办">
+    <div class="today-todo-heading"><strong>今日 <span>To-do</span></strong><small id="todayTodoCount">已完成 0/0</small></div>
+    <div class="today-todo-track" id="todayTodoTrack" aria-live="polite"><span class="today-todo-empty">今天还没有待办</span></div>
+    <button class="today-todo-add" id="todayTodoAdd" type="button" aria-label="添加今天的待办">＋ 添加</button>
+  </section><div class="panel-heading"><div class="month-title"><h2 id="monthTitle">2026年 10月</h2><p id="monthSubtitle">OCTOBER · 丙午马年 · 上海</p></div><div class="month-controllers"><button class="narrow-btn today-btn" id="todayBtn" title="回到上海今天">今天</button><button class="narrow-btn" id="prevMonth" aria-label="上个月"><svg viewBox="0 0 24 24" fill="none"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="narrow-btn" id="nextMonth" aria-label="下个月"><svg viewBox="0 0 24 24" fill="none"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   <div class="view-legend"><span class="legend-item"><span class="state-strip-sample rest"></span>周末 / 节假日休息</span><span class="legend-item"><span class="state-strip-sample work"></span>调休补班</span><span class="legend-item"><span class="sample-dot"></span>个人备忘</span><span class="legend-item"><span style="color:#b88951">✳</span>节气</span><span class="legend-right">点击任意日期 · 查看小期待与传统黄历</span></div>
   <div class="weekdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div><div class="month-grid" id="monthGrid" role="grid" aria-label="月历"></div><div class="month-foot"><span id="footerStats">本月 · 每天都有值得期待的小事</span><button class="foot-link" id="monthIdeasBtn">查看本月全部生活提案 ↗</button></div>
   </main>
@@ -866,9 +898,38 @@ function renderDetails(){
  const list=$('memoList');list.textContent='';const todays=memos.filter(x=>x.date===selectedISO).sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99'));
  $('memoCount').textContent=todays.length?`· ${todays.length}`:'';
  if(!todays.length){const empty=document.createElement('div');empty.className='memo-empty';empty.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M8 3h8a2 2 0 0 1 2 2v15H6V5a2 2 0 0 1 2-2ZM9 9h6M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>今天还没有备忘</span><span>写下一个小计划吧</span>';list.append(empty)}
- for(const memo of todays){const row=document.createElement('div');row.className='memo-row';const color=document.createElement('span');color.className='memo-color';color.style.background=catObject[memo.category]?.color||'#e2a16f';const body=document.createElement('div');body.className='memo-text';const title=document.createElement('strong');title.textContent=memo.title;const detail=document.createElement('small');detail.textContent=[memo.time,catObject[memo.category]?.name,memo.detail].filter(Boolean).join(' · ');body.append(title,detail);const del=document.createElement('button');del.className='remove-btn';del.textContent='×';del.title='删除备忘';del.setAttribute('aria-label','删除备忘：'+memo.title);del.addEventListener('click',()=>{memos=memos.filter(x=>x.id!==memo.id);saveMemos();renderAll();showToast('已删除备忘')});row.append(color,body,del);list.append(row)}
+ for(const memo of todays){const row=document.createElement('div');row.className='memo-row';const color=document.createElement('span');color.className='memo-color';color.style.background=catObject[memo.category]?.color||'#e2a16f';const body=document.createElement('div');body.className='memo-text';const title=document.createElement('strong');title.textContent=memo.title;const detail=document.createElement('small');detail.textContent=[memo.time,catObject[memo.category]?.name,memo.detail].filter(Boolean).join(' · ');body.append(title,detail);const del=document.createElement('button');del.className='remove-btn';del.textContent='×';del.title='删除备忘';del.setAttribute('aria-label','删除备忘：'+memo.title);del.addEventListener('click',()=>{memos=memos.filter(x=>x.id!==memo.id);saveMemos();renderAll();showToast('已删除备忘')});const completed=document.createElement('button');completed.type='button';completed.className='memo-check'+(memo.done?' checked':'');completed.textContent=memo.done?'✓':'';completed.title=memo.done?'取消完成':'标记完成';completed.setAttribute('aria-label',(memo.done?'取消完成：':'标记完成：')+memo.title);completed.setAttribute('aria-pressed',String(Boolean(memo.done)));completed.addEventListener('click',()=>toggleMemoDone(memo));if(memo.done)row.classList.add('memo-done');row.append(color,completed,body,del);list.append(row)}
 }
-function renderAll(){renderCalendar();renderDetails()}
+
+function toggleMemoDone(memo){
+ memo.done=!Boolean(memo.done);
+ saveMemos();
+ renderAll();
+ showToast(memo.done?'已完成，今天辛苦啦 ✓':'已恢复为待办');
+}
+function renderTodayTodo(){
+ const list=$('todayTodoTrack');list.replaceChildren();
+ const todayItems=memos.filter(x=>x.date===todayISO).sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99'));
+ const completed=todayItems.filter(x=>Boolean(x.done)).length;
+ $('todayTodoCount').textContent=`已完成 ${completed}/${todayItems.length}`;
+ if(!todayItems.length){
+   const empty=document.createElement('span');empty.className='today-todo-empty';empty.textContent='今天还没有安排，添加一条吧';list.append(empty);return;
+ }
+ const fragment=document.createDocumentFragment();
+ for(const memo of todayItems){
+   const button=document.createElement('button');button.type='button';
+   button.className='today-todo-item'+(memo.done?' is-done':'');
+   button.title=(memo.time?memo.time+' · ':'')+memo.title;
+   button.setAttribute('aria-label',(memo.done?'取消完成：':'标记完成：')+memo.title);
+   button.setAttribute('aria-pressed',String(Boolean(memo.done)));
+   const check=document.createElement('span');check.className='today-todo-check';check.textContent=memo.done?'✓':'';
+   const name=document.createElement('span');name.className='today-todo-name';name.textContent=(memo.time?memo.time+' · ':'')+memo.title;
+   button.append(check,name);button.addEventListener('click',()=>toggleMemoDone(memo));fragment.append(button);
+ }
+ list.append(fragment);
+}
+
+function renderAll(){renderTodayTodo();renderCalendar();renderDetails()}
 function selectMonth(delta){const d=new Date(Date.UTC(displayYear,displayMonth-1+delta,1));displayYear=d.getUTCFullYear();displayMonth=d.getUTCMonth()+1;const lastDay=new Date(Date.UTC(displayYear,displayMonth,0)).getUTCDate();const keep=Math.min(parseISO(selectedISO).d,lastDay);selectedISO=iso(displayYear,displayMonth,keep);renderAll()}
 $('prevMonth').addEventListener('click',()=>selectMonth(-1));$('nextMonth').addEventListener('click',()=>selectMonth(1));$('todayBtn').addEventListener('click',()=>{selectedISO=todayISO;const p=parseISO(todayISO);displayYear=p.y;displayMonth=p.m;renderAll();showToast('已回到上海今天')});
 function openOverlay(id){$(id).classList.add('open');$(id).setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
@@ -876,6 +937,7 @@ function closeOverlay(id){$(id).classList.remove('open');$(id).setAttribute('ari
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeOverlay(b.dataset.close)));
 document.querySelectorAll('.overlay').forEach(b=>b.addEventListener('mousedown',e=>{if(e.target===b)closeOverlay(b.id)}));document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(el=>closeOverlay(el.id))});
 const choices=$('colorChoices');function renderChoices(){choices.textContent='';for(const [id,label,color] of categoryOptions){const b=document.createElement('button');b.type='button';b.className='color-option'+(id===chosenCategory?' active':'');b.innerHTML=`<span class="color-dot" style="background:${color}"></span>${label}`;b.addEventListener('click',()=>{chosenCategory=id;renderChoices()});choices.append(b)}}
+$('todayTodoAdd').addEventListener('click',()=>{selectedISO=todayISO;const p=parseISO(todayISO);displayYear=p.y;displayMonth=p.m;renderAll();openMemo()});
 function openMemo(title='',description='',cat='life'){chosenCategory=cat;memoPendingTitle=title;memoPendingDetail=description;const {y,m,d}=parseISO(selectedISO);$('memoModalDate').textContent=`${y}年${m}月${d}日 · ${weekday(selectedISO)} · 上海`;$('memoName').value=title;$('memoDetail').value=description;$('memoTime').value='';renderChoices();openOverlay('memoOverlay');setTimeout(()=>$('memoName').focus(),40)}
 $('addMemoTop').addEventListener('click',()=>openMemo());$('addMemoBlank').addEventListener('click',()=>openMemo());$('saveInspo').addEventListener('click',()=>{const idea=getIdea(selectedISO,preferredVariant(selectedISO));const already=memos.find(a=>a.date===selectedISO&&a.title===idea.title);if(already){showToast('这条期待已经在备忘中了');return}memos.push({id:String(Date.now())+Math.random().toString(36).slice(2),date:selectedISO,title:idea.title,detail:idea.desc+'（'+idea.place+'）',category:'fun',time:''});saveMemos();renderAll();showToast('已把这份小期待收藏到备忘 ♡')});
 $('memoForm').addEventListener('submit',e=>{e.preventDefault();const title=$('memoName').value.trim(),detail=$('memoDetail').value.trim(),time=$('memoTime').value;if(!title)return;memos.push({id:String(Date.now())+Math.random().toString(36).slice(2),date:selectedISO,title,detail,time,category:chosenCategory});saveMemos();closeOverlay('memoOverlay');renderAll();showToast('备忘已保存到此浏览器 ✨')});
@@ -1042,7 +1104,7 @@ $('exportData').addEventListener('click',()=>{const obj={format:'zhishi-backup-v
 $('importData').addEventListener('click',()=>$('importFile').click());
 $('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;if(file.size>2_000_000){showToast('文件过大，最多 2MB');return}
  try{const val=JSON.parse(await file.text());if(val.format!=='zhishi-backup-v1'||!Array.isArray(val.memos))throw Error('无效的备份格式');
- const safe=val.memos.filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')&&typeof x.title==='string').slice(0,3000).map(x=>({id:String(x.id||Math.random()),date:x.date,title:x.title.slice(0,80),detail:String(x.detail||'').slice(0,320),time:String(x.time||'').slice(0,5),category:['work','life','health','fun','family','important'].includes(x.category)?x.category:'life'}));
+ const safe=val.memos.filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')&&typeof x.title==='string').slice(0,3000).map(x=>({id:String(x.id||Math.random()),date:x.date,title:x.title.slice(0,80),detail:String(x.detail||'').slice(0,320),time:String(x.time||'').slice(0,5),category:['work','life','health','fun','family','important'].includes(x.category)?x.category:'life',done:Boolean(x.done)}));
  if(!confirm(`确定导入 ${safe.length} 条备忘吗？这会覆盖当前浏览器里的备忘。`))return;
  memos=safe;saveMemos();if(val.profile&&typeof val.profile==='object'){profile={birthday:String(val.profile.birthday||''),lunarMonth:String(val.profile.lunarMonth||''),lunarDay:String(val.profile.lunarDay||'')};localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));}
  refreshPersonalPanel();renderAll();showToast(`导入成功：${safe.length} 条`);
