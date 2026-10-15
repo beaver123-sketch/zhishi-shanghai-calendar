@@ -18,7 +18,7 @@
  ['立冬','山茶','初冬静好，山茶渐醒'],['小雪','冬青','寒意初现，冬青添红'],
  ['大雪','雪中梅','雪满枝头，暗香将至'],['冬至','水仙','白昼渐长，水仙含芳']
  ];
- const atlas='/data/solar-flora-atlas.webp?v=20261015-flora1';
+ const atlas='/data/solar-flora-atlas.webp?v=20261015-flora2';
  const root=document.documentElement;
  const summary=document.createElement('div');summary.className='month-work-summary';summary.id='monthWorkSummary';summary.setAttribute('aria-live','polite');
  const monthTitle=document.querySelector('.month-title');if(monthTitle)monthTitle.append(summary);
@@ -104,7 +104,8 @@
  renderDetails=function(){oldDetails();groupToday()};
  const panel=document.getElementById('calendarMain');
  function applyFlower(){
-  const name=root.dataset.solarTheme||termForShanghaiDay(nowShanghai());
+  const selected=root.dataset.solarTheme;
+  const name=THEMES.some(t=>t[0]===selected)?selected:termForShanghaiDay(nowShanghai());
   const idx=THEMES.findIndex(x=>x[0]===name);
   if(idx<0)return;
   const [term,flower,phrase]=THEMES[idx];
