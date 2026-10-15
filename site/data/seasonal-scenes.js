@@ -20,9 +20,11 @@
  ];
  const atlas='/data/solar-flora-atlas.webp?v=20261015-flora2';
  const root=document.documentElement;
- const summary=document.createElement('div');summary.className='month-work-summary';summary.id='monthWorkSummary';summary.setAttribute('aria-live','polite');
- const monthTitle=document.querySelector('.month-title');if(monthTitle)monthTitle.append(summary);
- const monthFlower=document.createElement('div');monthFlower.className='solar-flower-label';monthFlower.id='monthSolarFlowerLabel';monthTitle?.append(monthFlower);
+ const monthTitle=document.querySelector('.month-title');
+ // Reuse the existing summary; never generate a duplicate ID or second status chip.
+ const summary=document.getElementById('monthWorkSummary');
+ const monthFlower=document.getElementById('monthSolarFlowerLabel')||document.createElement('div');
+ monthFlower.className='solar-flower-label';monthFlower.id='monthSolarFlowerLabel';if(!monthFlower.isConnected)monthTitle?.append(monthFlower);
  const groupNames=typeof categoryOptions!=='undefined'?categoryOptions:[['work','工作','#6497c7'],['life','生活','#e2a16f'],['health','健康','#78a889'],['family','纪念日','#c98dad'],['fun','兴趣','#a995ce'],['important','重要事项','#d87972']];
  function workdays(){
   const y=displayYear,m=displayMonth,days=new Date(Date.UTC(y,m,0)).getUTCDate();let work=0,off=0,makeup=0;
@@ -31,6 +33,7 @@
    if(rest)off++;else work++;
    if(h&&h.type==='work')makeup++;
   }
+  if(!summary)return;
   summary.replaceChildren();
   const lead=document.createElement('span');lead.className='month-work-lead';lead.textContent=y===2026?'本月工作日':'本月工作日 · 暂估';
   const main=document.createElement('strong');main.textContent=work+' 天';
@@ -38,29 +41,8 @@
   summary.append(lead,main,side);
   summary.title=y===2026?'根据2026年中国法定放假调休与双休日统计。':'当年的官方调休方案尚未接入，按通常周末估算；请以国务院通知为准。';
  }
- function groupToday(){
-  const host=document.getElementById('memoList');if(!host)return;
-  const notes=memos.filter(v=>v.date===selectedISO).sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99'));
-  if(!notes.length)return;
-  const rows=[...host.querySelectorAll(':scope > .memo-row')];
-  if(rows.length!==notes.length)return;
-  host.textContent='';
-  const specs=groupNames.map(([k,label,color])=>({k,label,color}));
-  const standardIds=new Set(specs.map(x=>x.k));
-  if(notes.some(x=>!standardIds.has(x.category)))specs.push({k:'other',label:'其他',color:'#9fa49b'});
-  for(const group of specs){
-   const matched=notes.map((m,i)=>({memo:m,row:rows[i]})).filter(pair=>group.k==='other'?!standardIds.has(pair.memo.category):pair.memo.category===group.k);
-   if(!matched.length)continue;
-   const section=document.createElement('section');section.className='memo-category-group';section.dataset.category=group.k;
-   const heading=document.createElement('div');heading.className='memo-category-heading';
-   const mark=document.createElement('i');mark.style.background=group.color;mark.setAttribute('aria-hidden','true');
-   const label=document.createElement('span');label.textContent=group.label;
-   const count=document.createElement('small');count.textContent=matched.length+' 项';
-   heading.append(mark,label,count);section.append(heading);
-   for(const pair of matched)section.append(pair.row);
-   host.append(section);
-  }
- }
+ // The base renderDetails() already groups notes by category with accessible controls.
+ // Avoid a second DOM grouping pass which could detach/delete memo handlers.
  const REGIONAL=[
   {season:'spring',title:'去苏州平江路穿一次汉服',place:'苏州 · 平江路',desc:'在历史街巷试试汉服换装与轻拍摄，再沿河逛手作小店。先确认店铺预约和公共场所拍摄要求。',duration:'约 1 天',tip:'上海出发：乘高铁到苏州后换乘市内交通；非当日活动公告。'},
   {season:'spring',title:'去苏州上方山寻找春天的花',place:'苏州 · 上方山国家森林公园',desc:'把半天留给山林花草，穿舒服的鞋走园路；盛花时间依气温而变。',duration:'约 1 天',tip:'出发前确认实际花期及园区预约。'},
@@ -101,7 +83,7 @@
  };
  const oldCalendar=renderCalendar,oldDetails=renderDetails;
  renderCalendar=function(){oldCalendar();workdays()};
- renderDetails=function(){oldDetails();groupToday()};
+ renderDetails=function(){oldDetails()};
  const panel=document.getElementById('calendarMain');
  function applyFlower(){
   const selected=root.dataset.solarTheme;
@@ -122,6 +104,6 @@
  });
  observer.observe(root,{attributes:true,attributeFilter:['data-solar-theme']});
  applyFlower();
- workdays();groupToday();
+ workdays();
  window.ZhiShiSolarScenes={themes:THEMES.map(([term,flower,phrase],i)=>({term,flower,phrase,index:i})),refresh:applyFlower};
 })();
