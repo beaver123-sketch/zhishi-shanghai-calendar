@@ -732,14 +732,19 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 </div></div>
 <div class="overlay" id="memoOverlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="memoModalTitle"><div class="modal-head"><h3 id="memoModalTitle">为这一天留下点什么</h3><button class="close" data-close="memoOverlay" aria-label="关闭">×</button></div><p class="modal-intro" id="memoModalDate">2026年10月12日</p><form id="memoForm"><label class="form-label" for="memoName">备忘内容</label><input id="memoName" class="text-input" maxlength="80" placeholder="例如：傍晚去闻一闻桂花香" required><label class="form-label" for="memoDetail">补充说明（可选）</label><textarea id="memoDetail" class="text-area" maxlength="320" placeholder="想去的地方、想记住的话……"></textarea><label class="form-label" for="memoTime">时间（可选）</label><input id="memoTime" class="text-input" type="time"><label class="form-label">颜色分类</label><div class="colors" id="colorChoices"></div><button type="submit" class="submit">保存这份备忘</button></form></div></div>
 <div class="overlay" id="infoOverlay" aria-hidden="true"><div class="modal large" role="dialog" aria-modal="true" aria-labelledby="infoTitle"><div class="modal-head"><h3 id="infoTitle">节假日安排</h3><button class="close" data-close="infoOverlay" aria-label="关闭">×</button></div><p class="modal-intro" id="infoIntro"></p><div id="infoContent"></div></div></div>
-<div class="overlay" id="prefsOverlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="prefsTitle"><div class="modal-head"><h3 id="prefsTitle">个人设置与数据备份</h3><button class="close" data-close="prefsOverlay" aria-label="关闭">×</button></div><p class="modal-intro">生日与备忘仅保存在当前浏览器，不会随公开网页上传。跨设备同步尚未启用。</p><label class="form-label" for="myBirthday">公历生日（可选）</label><input id="myBirthday" class="text-input" type="date"><div class="pref-fields"><div><label class="form-label" for="myLunarMonth">农历生日月份（可选）</label><select id="myLunarMonth" class="text-input"><option value="">不设置</option><option>正月</option><option>二月</option><option>三月</option><option>四月</option><option>五月</option><option>六月</option><option>七月</option><option>八月</option><option>九月</option><option>十月</option><option>冬月</option><option>腊月</option></select></div><div><label class="form-label" for="myLunarDay">农历日期</label><input id="myLunarDay" class="text-input" type="number" min="1" max="30" placeholder="1 - 30"></div></div><button class="submit" id="savePrefs" type="button">保存到本机</button><div class="pref-backup"><h4>备忘备份</h4><p>定期导出 JSON 文件，可以在更换设备后导入。覆盖导入前建议先备份。</p><div class="backup-buttons"><button type="button" id="exportData">↓ 导出备忘</button><button type="button" id="importData">↑ 导入备忘</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></div></div></div>
+<div class="overlay" id="prefsOverlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="prefsTitle"><div class="modal-head"><h3 id="prefsTitle">个人设置与数据备份</h3><button class="close" data-close="prefsOverlay" aria-label="关闭">×</button></div><p class="modal-intro">生日与备忘仅保存在当前浏览器，不会随公开网页上传。跨设备同步尚未启用。</p><label class="form-label" for="myBirthday">公历生日（可选）</label><input id="myBirthday" class="text-input" type="date"><div class="pref-fields"><div><label class="form-label" for="myLunarMonth">农历生日月份（可选）</label><select id="myLunarMonth" class="text-input"><option value="">不设置</option><option>正月</option><option>二月</option><option>三月</option><option>四月</option><option>五月</option><option>六月</option><option>七月</option><option>八月</option><option>九月</option><option>十月</option><option>冬月</option><option>腊月</option></select></div><div><label class="form-label" for="myLunarDay">农历日期</label><input id="myLunarDay" class="text-input" type="number" min="1" max="30" placeholder="1 - 30"></div></div>
+<div class="pref-fields"><div><label class="form-label" for="myBirthCity">出生城市（可选）</label><input id="myBirthCity" class="text-input" type="text" maxlength="60" autocomplete="off" placeholder="例如：中国某城市"></div>
+<div><label class="form-label" for="myBirthTime">出生时间（可估计）</label><input id="myBirthTime" class="text-input" type="time" step="60"></div></div>
+<label class="form-label" for="myBirthPrecision">时间确定程度</label><select id="myBirthPrecision" class="text-input"><option value="approx">大约这个时间（时柱暂定）</option><option value="exact">时间较确定</option><option value="unknown">不确定时辰</option></select>
+<p class="modal-intro" style="margin:8px 0 12px">四柱按北京时间和节气计算，未校正出生地真太阳时。若时辰不确定，时柱只作参考；所有资料仅保存在当前浏览器。</p>
+<button class="submit" id="savePrefs" type="button">保存到本机</button><div class="pref-backup"><h4>备忘备份</h4><p>定期导出 JSON 文件，可以在更换设备后导入。覆盖导入前建议先备份。</p><div class="backup-buttons"><button type="button" id="exportData">↓ 导出备忘</button><button type="button" id="importData">↑ 导入备忘</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite">已保存</div>
 <script src="/data/solar-term-themes.js?v=20261015"></script>
 <script>
 'use strict';
 const LS_KEY='zhishi-shanghai-calendar-v2';
 const PROFILE_KEY='zhishi-shanghai-profile-v1';
-let profile={birthday:'',lunarMonth:'',lunarDay:''};try{profile={...profile,...JSON.parse(localStorage.getItem(PROFILE_KEY)||'{}')}}catch(e){}
+let profile={birthday:'',lunarMonth:'',lunarDay:'',birthCity:'',birthTime:'',birthPrecision:'unknown'};try{profile={...profile,...JSON.parse(localStorage.getItem(PROFILE_KEY)||'{}')}}catch(e){}
 const nowShanghai=()=>{const parts=new Intl.DateTimeFormat('en-GB',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Shanghai'}).formatToParts(new Date());const get=n=>parts.find(p=>p.type===n).value;return `${get('year')}-${get('month')}-${get('day')}`;};
 const todayISO=nowShanghai();
 const pad=n=>String(n).padStart(2,'0');
@@ -1164,23 +1169,61 @@ function renderOfficialLeads(items){const root=$('officialLeads');root.textConte
  if(!recent.length){const p=document.createElement('p');p.className='feed-empty';p.textContent='暂无自动采集到的活动线索。您仍可查看已确认活动及官方场馆入口。';root.append(p);return;}
  for(const item of recent){const a=document.createElement('a');a.className='feed-item';a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';const t=document.createElement('strong');t.textContent=item.title;const sub=document.createElement('small');sub.textContent=[item.publishedAt||'发布日期未知',item.publisher||'上海市文旅局','查看官方原文 ↗'].join(' · ');a.append(t,sub);root.append(a)}
 }
-function refreshPersonalPanel(){const panel=document.querySelector('.personal-bazi');if(!panel)return;const line=panel.querySelector('.birth-line');const pillars=[...panel.querySelectorAll('.pillar-row b')];
- if(profile.birthday){const date=profile.birthday;line.textContent='出生日期：'+date+' · 仅保存在本机';}
- else line.textContent='未设置出生信息 · 点击顶部「我的设置」添加';
- // 无出生时间、地点和专业历算时，不生成虚构的个人四柱。
- pillars.forEach(b=>b.textContent='待核');
+
+/* 民俗历法：2000-01-01 戊午日；1984 立春后甲子年。
+   使用节气划分年月，北京时间划分时辰，不计算真太阳时。 */
+function birthPillars(date,time){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(date||''))return null;
+ const p=parseISO(date),utc=Date.UTC(p.y,p.m-1,p.d);
+ if(!Number.isFinite(utc)||new Date(utc).toISOString().slice(0,10)!==date||p.y<1900||p.y>2100)return null;
+ const cyc=n=>((n%60)+60)%60;
+ const lichun=Object.entries(getTerms(p.y)).find(x=>x[1]==='立春');
+ const year=lichun&&date<lichun[0]?p.y-1:p.y;
+ const yi=cyc(year-1984),ms=monthBranchFor(date);
+ const mstem=(yi%10%5*2+2+(ms-2+12)%12)%10;
+ const di=cyc(54+Math.round((utc-Date.UTC(2000,0,1))/86400000));
+ const o={year:heavenly[yi%10]+earthly[yi%12],month:heavenly[mstem]+earthly[ms],day:heavenly[di%10]+earthly[di%12],dayStem:di%10,dayIndex:di,hour:'',hourBranch:null};
+ if(/^([01]\d|2[0-3]):[0-5]\d$/.test(time||'')){
+  const hr=Number(time.slice(0,2)),hb=Math.floor(((hr+1)%24)/2);
+  o.hour=heavenly[(di%10%5*2+hb)%10]+earthly[hb];o.hourBranch=hb;
+ }
+ return o;
 }
-$('prefsBtn').addEventListener('click',()=>{$('myBirthday').value=profile.birthday||'';$('myLunarMonth').value=profile.lunarMonth||'';$('myLunarDay').value=profile.lunarDay||'';openOverlay('prefsOverlay')});
-$('savePrefs').addEventListener('click',()=>{const day=$('myLunarDay').value;if(day&&(Number(day)<1||Number(day)>30)){showToast('农历日期应为 1–30');return;}
- profile={birthday:$('myBirthday').value,lunarMonth:$('myLunarMonth').value,lunarDay:day};try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile))}catch(e){showToast('本地存储不可用');return}
- refreshPersonalPanel();closeOverlay('prefsOverlay');renderAll();renderDailyFortune();showToast('个人设置已仅保存在本机')});
+function refreshPersonalPanel(){
+ const panel=document.querySelector('.personal-bazi');if(!panel)return;
+ const line=panel.querySelector('.birth-line'),pil=[...panel.querySelectorAll('.pillar-row b')],labels=[...panel.querySelectorAll('.pillar-row small')];
+ const b=birthPillars(profile.birthday,profile.birthPrecision==='unknown'?'':profile.birthTime);
+ if(!b){line.textContent='未设置公历生日 · 请到「我的设置」填写';pil.forEach(x=>x.textContent='待填');labels[3].textContent='时柱';return}
+ const els=['木','木','火','火','土','土','金','金','水','水'];
+ line.textContent='出生：'+profile.birthday+(profile.birthCity?' · '+profile.birthCity:'')+(profile.birthTime?' · '+profile.birthTime+(profile.birthPrecision!=='exact'?'（约）':''):'')+' · 日主'+heavenly[b.dayStem]+'（'+els[b.dayStem]+'） · 本机保存';
+ [b.year,b.month,b.day,b.hour||'待补'].forEach((x,i)=>pil[i].textContent=x);
+ labels[3].textContent=b.hour?(profile.birthPrecision==='exact'?'时柱':'时柱·暂定'):'时柱·缺';
+ panel.querySelector('.personal-bazi-note').textContent='采用传统干支历法，按北京时间推算，未进行真太阳时校正。'+(b.hour&&profile.birthPrecision!=='exact'?'时柱暂定，实际出生时辰可能改变结果。':'')+'仅供民俗文化参考，不具备现实预测能力。';
+}
+$('prefsBtn').addEventListener('click',()=>{
+ $('myBirthday').value=profile.birthday||'';
+ $('myLunarMonth').value=profile.lunarMonth||'';
+ $('myLunarDay').value=profile.lunarDay||'';
+ $('myBirthCity').value=profile.birthCity||'';
+ $('myBirthTime').value=profile.birthTime||'';
+ $('myBirthPrecision').value=profile.birthPrecision||'unknown';
+ openOverlay('prefsOverlay');
+});
+$('savePrefs').addEventListener('click',()=>{
+ const d=$('myLunarDay').value;
+ if(d&&(Number(d)<1||Number(d)>30)){showToast('农历日期应为 1–30');return}
+ profile={birthday:$('myBirthday').value,lunarMonth:$('myLunarMonth').value,lunarDay:d,birthCity:$('myBirthCity').value.trim().slice(0,60),birthTime:$('myBirthTime').value,birthPrecision:$('myBirthPrecision').value};
+ try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile))}catch(e){showToast('本地存储不可用');return}
+ refreshPersonalPanel();closeOverlay('prefsOverlay');renderAll();renderDailyFortune();
+ showToast('个人资料已保存在本机浏览器');
+});
 $('exportData').addEventListener('click',()=>{const obj={format:'zhishi-backup-v1',exportedAt:new Date().toISOString(),memos,profile};const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='知时-个人备忘-'+todayISO+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),800);showToast('已导出本机备忘')});
 $('importData').addEventListener('click',()=>$('importFile').click());
 $('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;if(file.size>2_000_000){showToast('文件过大，最多 2MB');return}
  try{const val=JSON.parse(await file.text());if(val.format!=='zhishi-backup-v1'||!Array.isArray(val.memos))throw Error('无效的备份格式');
  const safe=val.memos.filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')&&typeof x.title==='string').slice(0,3000).map(x=>({id:String(x.id||Math.random()),date:x.date,title:x.title.slice(0,80),detail:String(x.detail||'').slice(0,320),time:String(x.time||'').slice(0,5),category:['work','life','health','fun','family','important'].includes(x.category)?x.category:'life',done:Boolean(x.done)}));
  if(!confirm(`确定导入 ${safe.length} 条备忘吗？这会覆盖当前浏览器里的备忘。`))return;
- memos=safe;saveMemos();if(val.profile&&typeof val.profile==='object'){profile={birthday:String(val.profile.birthday||''),lunarMonth:String(val.profile.lunarMonth||''),lunarDay:String(val.profile.lunarDay||'')};localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));}
+ memos=safe;saveMemos();if(val.profile&&typeof val.profile==='object'){profile={birthday:String(val.profile.birthday||''),lunarMonth:String(val.profile.lunarMonth||''),lunarDay:String(val.profile.lunarDay||''),birthCity:String(val.profile.birthCity||'').slice(0,60),birthTime:String(val.profile.birthTime||''),birthPrecision:['approx','exact','unknown'].includes(val.profile.birthPrecision)?val.profile.birthPrecision:'unknown'};localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));}
  refreshPersonalPanel();renderAll();showToast(`导入成功：${safe.length} 条`);
  }catch(err){showToast('导入失败：文件不是有效的知时备份')}finally{e.target.value=''}});
 refreshPersonalPanel();
