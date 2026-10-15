@@ -1,0 +1,29 @@
+/* 知时 · 24节气整页插画体系 v1 · illustration atlas / seasonal colors
+   Every season has its own illustrated flower vignette and palette.
+   Keep page geometry, editable content and all interactive functionality intact. */
+:root{--term-flower-position:0% 0%;--term-wash:var(--season-surface);--term-hue:var(--season-primary)}
+html{transition:background-color .55s ease}
+body{transition:background-color .55s ease}
+.page{isolation:isolate}
+.page::before,.page::after{content:"";position:fixed;z-index:-1;pointer-events:none;top:87px;width:clamp(80px,11vw,208px);height:clamp(180px,34vh,370px);opacity:.20;background-image:url('/data/solar-flowers-24.webp');background-size:600% 400%;background-position:var(--term-flower-position);background-repeat:no-repeat;filter:saturate(.87);mask-image:linear-gradient(to bottom,#000 18%,transparent 98%)}
+.page::before{left:0}.page::after{right:0;transform:scaleX(-1);opacity:.12;top:auto;bottom:0}
+.daily-culture-band{background:linear-gradient(110deg,#fffefa 19%,color-mix(in srgb,var(--season-surface) 27%,white) 100%)!important}
+.daily-culture-band::after{background-image:url('/data/solar-flowers-24.webp')!important;background-size:600% 400%!important;background-position:var(--term-flower-position)!important;width:142px!important;height:122px!important;top:-20px!important;right:0!important;opacity:.24!important;filter:saturate(.78);mask-image:linear-gradient(to left,#000 35%,transparent 100%)}
+.calendar-left-column .calendar-panel::before{background-image:url('/data/solar-flowers-24.webp')!important;background-size:600% 400%!important;background-position:var(--term-flower-position)!important;width:235px!important;height:175px!important;top:-26px!important;right:-14px!important;opacity:.29!important;mask-image:linear-gradient(to left,#000 35%,transparent 99%)!important}
+.zh-sidebar .inspiration-card.v7-joy-card::after{background-image:url('/data/solar-flowers-24.webp')!important;background-size:600% 400%!important;background-position:var(--term-flower-position)!important;width:152px!important;height:141px!important;right:-7px!important;top:0!important;opacity:.20!important}
+.zh-sidebar .side-activity-card::after{background-image:url('/data/solar-flowers-24.webp')!important;background-size:600% 400%!important;background-position:var(--term-flower-position)!important;opacity:.11}
+.life-card-art--flowers{background-image:url('/data/solar-flowers-24.webp')!important;background-size:600% 400%!important;background-position:var(--term-flower-position)!important;width:39%!important;height:155px!important;opacity:.34!important}
+.life-card--days::after,.life-card--letter::after{display:block!important;content:"";position:absolute;pointer-events:none;right:-25px;bottom:-29px;top:auto;width:128px;height:120px;border:0;opacity:.14;background:url('/data/solar-flowers-24.webp') var(--term-flower-position)/600% 400% no-repeat;mask-image:radial-gradient(ellipse at 50% 50%,#000 31%,transparent 77%)}
+.life-card--letter .life-envelope-art{opacity:.53}
+.term-signature{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:11px;font-weight:600;color:var(--season-deep);letter-spacing:.3px;white-space:normal;max-width:100%}
+.term-signature::before{content:"";width:20px;height:20px;border-radius:8px;display:inline-block;flex:0 0 20px;background:url('/data/solar-flowers-24.webp') var(--term-flower-position)/600% 400% no-repeat;border:1px solid color-mix(in srgb,var(--season-primary) 18%,white)}
+.month-work-summary{display:inline-flex;align-items:center;gap:7px;margin:8px 0 0;padding:7px 11px;background:color-mix(in srgb,var(--season-surface) 65%,white);border:1px solid var(--season-border);border-radius:10px;color:var(--season-deep);font-size:11px;font-weight:650;line-height:1.6}
+.memo-category-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;background:color-mix(in srgb,var(--memo-group-color) 8%,#fffefa);border:1px solid color-mix(in srgb,var(--memo-group-color) 24%,#efede7);border-radius:9px;padding:7px 10px;margin:15px 0 1px;font-size:11px;color:#4f5e59}
+.memo-category-heading strong{display:flex;align-items:center;gap:7px}
+.memo-category-heading strong::before{content:"";display:block;height:13px;width:4px;background:var(--memo-group-color);border-radius:6px}
+.memo-category-heading span{font-size:10px;color:#9b9b92}
+.memo-category-heading+.memo-row{border-top:0}
+.month-title{min-width:0}
+@media(max-width:1160px){.page::before,.page::after{display:none}.month-work-summary{font-size:10px;padding:5px 7px}.term-signature{font-size:10px}}
+@media(max-width:630px){.daily-culture-band::after{opacity:.12!important}.calendar-left-column .calendar-panel::before{opacity:.12!important;width:112px!important}.life-card-art--flowers{opacity:.24!important}}
+@media(prefers-reduced-motion:reduce){html,body{transition:none!important}}
