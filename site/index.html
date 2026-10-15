@@ -643,6 +643,7 @@ body,.calendar-panel,.topbar,.today-todo-strip,.inspiration-card,.topcenter butt
 </style>
 <link rel="stylesheet" href="/data/monthly-life.css?v=20261015-watercolor-v2" />
 <link rel="stylesheet" href="/data/editorial-redesign.css?v=20261015-editorial-theme-v2" />
+<link rel="stylesheet" href="/data/solar-floral-skins.css?v=20261015-term-24-v1" />
 <link rel="stylesheet" href="/data/term-art.css?v=20261015-24term-v1" />
 <link rel="stylesheet" href="/data/seasonal-scenes.css?v=20261015-season24-v1" />
 </head>
@@ -1489,6 +1490,30 @@ function refreshDailyCulture(){
 }
 
 /* 二十四节气 · 统一的网页主题设计系统。2026 年使用本项目已校准的日期，其他年份沿用现有历算日期。 */
+/* Unique seasonal floral themes; order is chronological from January. */
+const SOLAR_FLOWERS_24={
+ '小寒':['蜡梅','寒枝初香',0], '大寒':['红梅','凌寒独放',1],
+ '立春':['迎春花','迎春花醒',2], '雨水':['玉兰','春雨润玉',3],
+ '惊蛰':['桃花','惊雷醒桃',4], '春分':['樱花','春色平分',5],
+ '清明':['海棠','雨润海棠',6], '谷雨':['牡丹','谷雨花时',7],
+ '立夏':['月季','花影初夏',8], '小满':['石榴花','小满花红',9],
+ '芒种':['栀子花','栀香初浓',10], '夏至':['荷花','荷风清夏',11],
+ '小暑':['紫薇','夏色渐浓',12], '大暑':['睡莲','水上花影',13],
+ '立秋':['桂花','金风送桂',14], '处暑':['紫薇','夏末仍芳',15],
+ '白露':['木槿','露凝花影',16], '秋分':['菊花','秋光平分',17],
+ '寒露':['柿子花果','露重秋深',18], '霜降':['红枫','霜染层林',19],
+ '立冬':['茶梅','初冬花信',20], '小雪':['山茶','微雪含芳',21],
+ '大雪':['雪中梅','雪意初深',22], '冬至':['蜡梅','岁暮温香',23]
+};
+function renderSolarArtwork(term){
+ const flower=SOLAR_FLOWERS_24[term]||SOLAR_FLOWERS_24['寒露'];
+ const i=flower[2],col=i%6,row=Math.floor(i/6);
+ const root=document.documentElement;
+ root.style.setProperty('--term-flower-position',col*20+'% '+row*(100/3)+'%');
+ root.dataset.solarFlower=flower[0];
+ const title=document.getElementById('solarFlowerName');
+ if(title)title.textContent=term+' · '+flower[0]+'｜'+flower[1];
+}
 const SOLAR_TERM_THEMES=window.ZHISHI_DESIGN_SYSTEM?.themes||{};
 const THEME_STORAGE_KEY='zhishi-solar-theme-mode-v1';
 const TERM_FLORAL_ART={
@@ -1531,6 +1556,7 @@ function applySeasonTheme(){
  const status=document.getElementById('seasonStatus');
  if(status){status.textContent=mode==='auto'?term+' · 自动':mode==='neutral'?'简约模式':name+' · 固定';status.title='北京时间 · 当前节气 '+term;}
  currentSolarThemeName=name;
+ renderSolarArtwork(name==='简约固定'||name==='neutral'?term:name);
 }
 document.getElementById('seasonThemeMode').addEventListener('change',event=>{
  try{localStorage.setItem(THEME_STORAGE_KEY,event.target.value)}catch(e){showToast('主题偏好无法保存')}
