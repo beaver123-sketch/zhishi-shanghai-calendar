@@ -1278,7 +1278,8 @@ async function loadCityInformation(){
   if(events.status==='fulfilled' && Array.isArray(events.value.events)){
     const dynamic=autoEvents.status==='fulfilled'&&Array.isArray(autoEvents.value.events)?autoEvents.value.events:[];
     const accepted=[...events.value.events,...dynamic].filter(e=>e&&e.id&&e.title&&e.kind&&e.source&&/^https:\/\//.test(e.source)&&(!e.start||(/^\d{4}-\d{2}-\d{2}$/.test(e.start)&&e.end>=e.start)));
-    const seen=new Set();EVENT_DATA=accepted.filter(e=>{const key=(e.title||'').replace(/\s+/g,'').replace(/[《》·：:（）()]/g,'').slice(0,18)+'|'+(e.start||'');if(seen.has(key))return false;seen.add(key);return true;});
+    const eventIdentity=e=>{const matches=[...(e.title||'').matchAll(/《([^》]+)》/g)];const stem=(matches.length?matches[matches.length-1][1]:(e.title||'')).replace(/[《》·：:（）()\s]/g,'');return stem.slice(0,35)+'|'+(e.start||'')};
+    const seen=new Set();EVENT_DATA=accepted.filter(e=>{const key=eventIdentity(e);if(seen.has(key))return false;seen.add(key);return true;});
     freshness.textContent=`已核实日期活动 ${EVENT_DATA.filter(e=>e.start).length} 条 · ${dynamic.length?'场馆排期自动同步 · ':''}含官方最新资讯`;
     state.textContent='日期活动来自人工核对及场馆官方排期；最新资讯与可预约场次分开展示，具体演出安排以官方为准。';
   }else{
