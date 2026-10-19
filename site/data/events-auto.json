@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "status": "pending",
+  "checkedAt": null,
+  "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
+  "events": [],
+  "note": "已启用剧院排期同步；待下一次定时任务从官网读取确认日期。"
+}
