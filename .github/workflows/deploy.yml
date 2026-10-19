@@ -26,6 +26,8 @@ jobs:
           python-version: '3.12'
       - name: 检查上海官方公开活动资讯
         run: python scripts/update_official.py
+      - name: 同步场馆官方明确日期的演出排期
+        run: python scripts/update_programmes.py
       - name: 验证活动库
         run: |
           python scripts/validate.py
@@ -34,9 +36,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add site/data/leads.json site/data/update-status.json
+          git add site/data/leads.json site/data/update-status.json site/data/events-auto.json
           if ! git diff --cached --quiet; then
-            git commit -m 'chore: refresh Shanghai public activity leads'
+            git commit -m 'chore: refresh Shanghai public leads and dated venue programmes'
             git push
           else
             echo '没有需要提交的更新。'
