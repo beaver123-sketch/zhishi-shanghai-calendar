@@ -20,3 +20,12 @@ for event in events['events']:
 for name in ('leads.json','update-status.json'):
     json.loads((ROOT/name).read_text(encoding='utf-8'))
 print('VALID:',len(seen),'reviewed sample events')
+
+auto=json.loads((ROOT/'events-auto.json').read_text(encoding='utf-8'))
+assert auto['schemaVersion']==1 and auto.get('status') in ('pending','success','stale')
+assert isinstance(auto.get('events'),list)
+for e in auto['events']:
+    assert all(isinstance(e.get(k),str) and e[k] for k in ('id','title','kind','location','start','end','source'))
+    assert date.fromisoformat(e['start'])<=date.fromisoformat(e['end'])
+    assert urlparse(e['source']).hostname=='www.shcstheatre.com'
+print('VALID:',len(auto['events']),'auto-dated venue programmes')
