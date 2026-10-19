@@ -1,0 +1,170 @@
+/* ZhiShi · 24 solar-term solid-color backgrounds · 2026-10-19
+   Pure flat fills. Photos remain only inside genuine event covers or isolated artwork;
+   no raster imagery or gradients are used as a page/hero/card background. */
+:root{
+ --solid-page:#F0F1E6;--solid-surface:#EDF0E3;--solid-soft:#F5F6EE;
+ --solid-paper:#fffefa;--solid-primary:#7D8B67;--solid-deep:#425541;
+ --solid-ink:#333D37;--solid-border:#DFE6D9;
+}
+html,body{
+ background:var(--solid-page)!important;
+ background-image:none!important;
+ background-color:var(--solid-page)!important;
+ color:var(--solid-ink);
+ transition:background-color .45s ease,color .35s ease;
+}
+body .page,body .app{background:transparent!important;background-image:none!important}
+body .page::before,body .page::after,body .topbar::after{
+ content:none!important;display:none!important;background-image:none!important;
+}
+/* Desktop: calm editorial surfaces, never a photo or gradient beneath copy. */
+body .daily-culture-band,
+body .calendar-left-column .calendar-panel,
+body .zh-sidebar .inspiration-card.v7-joy-card,
+body .life-card,
+body .life-card--flowers,
+body .life-card--days,
+body .life-card--wishes,
+body .life-card--letter{
+ background-image:none!important;
+}
+body .daily-culture-band{
+ background:var(--solid-soft)!important;
+ border-color:var(--solid-border)!important;
+}
+body .calendar-left-column .calendar-panel{
+ background:var(--solid-paper)!important;
+ border-color:var(--solid-border)!important;
+}
+body .zh-sidebar .inspiration-card.v7-joy-card{
+ background:var(--solid-surface)!important;
+ border:1px solid var(--solid-border)!important;
+}
+body .life-card,
+body .life-card--days,
+body .life-card--wishes,
+body .life-card--letter{
+ background:var(--solid-paper)!important;
+ border-color:var(--solid-border)!important;
+}
+body .life-card--flowers{
+ background:var(--solid-soft)!important;
+ border-color:var(--solid-border)!important;
+}
+body .daily-culture-band::after,
+body .calendar-left-column .calendar-panel::before,
+body .zh-sidebar .inspiration-card.v7-joy-card::after{
+ content:none!important;display:none!important;background-image:none!important;
+}
+body .topcenter button.active,
+body .zh-sidebar .pill-action,
+body .topbar .mark:not(.watercolor-mark){
+ background:var(--solid-primary)!important;
+ color:#fff!important;
+}
+body .today-btn,
+body .v7-section-head button,
+body .month-work-summary{
+ background:var(--solid-surface)!important;
+ color:var(--solid-deep)!important;
+ border-color:var(--solid-border)!important;
+}
+body .term-signature,body .solar-flower-label{
+ color:var(--solid-deep)!important;
+}
+body .day-cell.today .date-num{background:var(--solid-primary)!important;color:white!important}
+body .day-cell.selected{background:var(--solid-soft)!important}
+body .zh-sidebar .inspiration-card.v7-joy-card h3{color:var(--solid-deep)!important}
+/* Mobile PWA: fully flat-color hero and recommendation panels. */
+body .app{
+ --page:var(--solid-page);--primary:var(--solid-primary);--border:var(--solid-border);
+ --blue:var(--solid-soft);--mint:var(--solid-surface);
+ --ink:var(--solid-ink);--brown:var(--solid-deep);
+}
+body .app .intro{
+ background:var(--solid-surface)!important;
+ background-image:none!important;
+ border-color:var(--solid-border)!important;
+}
+body .app .intro::before,
+body .app .intro::after,
+body .app .joy::before,
+body .app .joy::after{
+ content:none!important;display:none!important;background-image:none!important;
+}
+body .app .joy{
+ background:var(--solid-soft)!important;
+ background-image:none!important;
+ border:1px solid var(--solid-border)!important;
+}
+body .app .card,body .app .activity-card{
+ border-color:var(--solid-border)!important;
+}
+body .app .intro .date-large,
+body .app .page-title,body .app .section-title h2{
+ color:var(--solid-ink)!important;
+}
+body .app .location,
+body .app .chip{
+ background:var(--solid-soft)!important;
+ border-color:var(--solid-border)!important;
+ color:var(--solid-deep)!important;
+}
+body .app .mini-day.on,
+body .app .filter.active,
+body .app .category.selected,
+body .app .check.checked,
+body .app .primary,
+body .app .fab{
+ background:var(--solid-primary)!important;
+ border-color:var(--solid-primary)!important;
+ color:#fff!important;
+}
+body .app .mini-day.on b{background:var(--solid-deep)!important;color:#fff!important}
+body .app .nav-item.active,body .app .text-btn,body .app .more{
+ color:var(--solid-deep)!important;
+}
+body .app .month-day.selected{
+ background:var(--solid-primary)!important;color:#fff!important;
+}
+body .app .month-day.today{box-shadow:inset 0 0 0 2px var(--solid-primary)!important}
+body .app .soft-btn,
+body .app .secondary{
+ background:var(--solid-soft)!important;
+ border-color:var(--solid-border)!important;
+ color:var(--solid-deep)!important;
+}
+body .app .joy h2{color:var(--solid-deep)!important}
+body .app .navbar{background:#fffefaF5!important;border-color:var(--solid-border)!important}
+body .app .solid-term-badge{
+ display:inline-flex;align-items:center;gap:6px;margin-top:9px;
+ padding:4px 9px;border-radius:7px;border:1px solid var(--solid-border);
+ color:var(--solid-deep);background:var(--solid-soft);
+ font-size:10px;letter-spacing:.4px;font-weight:700;line-height:1.5;
+}
+body .app .solid-term-badge::before{
+ content:'';display:block;width:6px;height:6px;
+ border-radius:50%;background:var(--solid-primary);
+}
+body .app .month-solid-work{
+ margin:0 16px 12px;padding:9px 12px;
+ background:var(--solid-soft);color:var(--solid-deep);
+ border:1px solid var(--solid-border);
+ border-radius:10px;font-size:11px;
+ display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+}
+body .app .month-solid-work strong{font-size:14px;color:var(--solid-deep)}
+body .app .solid-memo-heading,
+body .app .solid-notes-heading{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:10px;margin:10px 0 3px;padding:9px 10px;
+ background:var(--solid-soft);border-left:3px solid var(--memo-color,var(--solid-primary));
+ border-radius:7px;color:var(--solid-deep);font-size:11px;font-weight:700;
+}
+body .app .solid-memo-heading small,
+body .app .solid-notes-heading small{font-size:10px;color:var(--sub,#777)}
+@media(max-width:375px){
+ body .app .month-solid-work{padding:8px 9px;font-size:10px}
+ body .app .solid-term-badge{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){html,body{transition:none!important}}
