@@ -151,6 +151,8 @@
   }
  }
  wrapMobileMemos();
+ // Initial inline render happened before this enhancement loaded.
+ if(mobile){renderMemosHome();renderNotes();}
  paint();
  window.setInterval(paint,60000);
  window.addEventListener('focus',paint);
