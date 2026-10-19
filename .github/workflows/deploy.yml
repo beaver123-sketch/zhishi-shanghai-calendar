@@ -1,6 +1,11 @@
 name: 知时 · 上海官方活动资讯定时检查
 
 on:
+  push:
+    paths:
+      - 'scripts/update_programmes.py'
+      - 'scripts/update_official.py'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
   schedule:
     # 每天北京时间 02:17、08:17、14:17、20:17（非准点保证）
