@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-21T08:56:13+08:00",
+  "checkedAt": "2026-10-21T14:56:17+08:00",
   "status": "success",
   "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
   "events": [
@@ -107,6 +107,22 @@
       "location": "上海文化广场 · 主剧场",
       "start": "2026-12-12",
       "end": "2026-12-20",
+      "time": "具体场次请以场馆官方排期为准",
+      "area": "黄浦区",
+      "note": "由剧院公开节目列表自动提取；演出变动、票务请以官方为准。",
+      "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
+      "icon": "♫",
+      "outdoor": false,
+      "review": "场馆官方排期自动同步 · 出行前复核",
+      "autoSource": "上海文化广场官方节目列表"
+    },
+    {
+      "id": "theatre_9a344a77da429702",
+      "title": "法语原创音乐剧《茶花女》",
+      "kind": "音乐剧",
+      "location": "上海文化广场 · 主剧场",
+      "start": "2026-12-24",
+      "end": "2026-12-26",
       "time": "具体场次请以场馆官方排期为准",
       "area": "黄浦区",
       "note": "由剧院公开节目列表自动提取；演出变动、票务请以官方为准。",
