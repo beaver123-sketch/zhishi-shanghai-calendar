@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-23T08:58:53+08:00",
+  "checkedAt": "2026-10-23T14:55:08+08:00",
   "status": "success",
   "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
   "events": [
@@ -139,6 +139,22 @@
       "location": "上海文化广场 · 主剧场",
       "start": "2026-12-30",
       "end": "2027-01-10",
+      "time": "具体场次请以场馆官方排期为准",
+      "area": "黄浦区",
+      "note": "由剧院公开节目列表自动提取；演出变动、票务请以官方为准。",
+      "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
+      "icon": "♫",
+      "outdoor": false,
+      "review": "场馆官方排期自动同步 · 出行前复核",
+      "autoSource": "上海文化广场官方节目列表"
+    },
+    {
+      "id": "theatre_7c35a0dbd19f17d0",
+      "title": "俄语原版音乐剧《最后的试炼》",
+      "kind": "音乐剧",
+      "location": "上海文化广场 · 主剧场",
+      "start": "2027-01-16",
+      "end": "2027-01-17",
       "time": "具体场次请以场馆官方排期为准",
       "area": "黄浦区",
       "note": "由剧院公开节目列表自动提取；演出变动、票务请以官方为准。",
