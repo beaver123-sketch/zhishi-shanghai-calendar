@@ -1,25 +1,9 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-23T20:53:30+08:00",
+  "checkedAt": "2026-10-24T02:52:00+08:00",
   "status": "success",
   "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
   "events": [
-    {
-      "id": "theatre_7b0fe04976f8959d",
-      "title": "第二十五届中国上海国际艺术节参演剧目·莫斯科大剧院芭蕾舞团 芭蕾舞剧 《堂·吉诃德》",
-      "kind": "舞剧",
-      "location": "上海文化广场 · 主剧场",
-      "start": "2026-10-21",
-      "end": "2026-10-23",
-      "time": "具体场次请以场馆官方排期为准",
-      "area": "黄浦区",
-      "note": "由剧院公开节目列表自动提取；演出变动、票务请以官方为准。",
-      "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
-      "icon": "♫",
-      "outdoor": false,
-      "review": "场馆官方排期自动同步 · 出行前复核",
-      "autoSource": "上海文化广场官方节目列表"
-    },
     {
       "id": "theatre_b0dd92a5ae6a0664",
       "title": "第二十五届中国上海国际艺术节参演剧目·莫斯科大剧院芭蕾舞团《芭蕾精粹》",
