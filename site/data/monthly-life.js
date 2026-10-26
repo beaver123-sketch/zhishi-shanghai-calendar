@@ -263,7 +263,7 @@ function writeLetter(){const root=frame('写给未来的自己','想象那一天
  footer(root,'封好这封信',()=>{
   if(!validDate(date.value)||date.value<=today()){toast('请选择明天或以后的日期');return}
   if(!body.value.trim()){toast('写一点话再寄给未来的自己吧');return}
-  data.letters.push({id:uid(),title:txt(title.value,80)||'给未来的自己',body:txt(body.value,6000),openDate:date.value,created:today()});
+  data.letters.push({id:uid(),title:txt(title.value,80)||'给未来的自己',body:txt(body.value,6000),openDate:date.value,created:today(),replies:[]});
   if(save()){el('lifeDialog').close();letterView();toast('信已经封存，到了约定的日子再见 ♡')}
  });openDialog(root)
 }
