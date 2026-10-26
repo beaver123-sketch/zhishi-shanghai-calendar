@@ -1,0 +1,89 @@
+/* Nine watercolor illustration studies. The existing page grid and 24 palettes stay intact.
+ * All illustrations are painted, not photographs. No screenshot is used as UI. */
+:root[data-term-design]{--term-design-visibility:1}
+html[data-term-design] .calendar-left-column .calendar-panel::before,
+html[data-term-design] .daily-culture-band::after,
+html[data-term-design] .zh-sidebar .inspiration-card.v7-joy-card::after,
+html[data-term-design] .life-card-art--flowers,
+html[data-term-design] .zh-sidebar .side-overview::before,
+html[data-term-design] .life-card--wishes .life-city-art,
+html[data-term-design] .life-card--letter .life-envelope-art{
+  background-image:var(--term-design-sheet)!important;
+  background-repeat:no-repeat!important;
+  background-size:200% 200%!important;
+  pointer-events:none;
+}
+/* 01 · calendar: Shanghai seasonal skyline with the selected botanical painting. */
+html[data-term-design] .calendar-left-column .calendar-panel::before{
+  background-position:0% 0%!important;
+  top:3px!important;right:-6px!important;
+  width:clamp(170px,24%,280px)!important;height:158px!important;
+  opacity:.41!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 1%,#000 42%,#000 84%,transparent 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 1%,#000 42%,#000 84%,transparent 100%)!important;
+}
+/* 02 · poetry and daily idea: small botanical accent; foreground remains legible. */
+html[data-term-design] .daily-culture-band::after{
+  background-position:100% 0%!important;
+  width:165px!important;height:103px!important;right:2px!important;top:-10px!important;
+  opacity:.27!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%,#000 78%,transparent 100%)!important;
+  mask-image:linear-gradient(90deg,transparent 0%,#000 30%,#000 78%,transparent 100%)!important;
+}
+html[data-term-design] .zh-sidebar .inspiration-card.v7-joy-card::after{
+  background-position:100% 0%!important;
+  width:110px!important;height:95px!important;right:-4px!important;top:-6px!important;
+  opacity:.20!important;
+  -webkit-mask-image:radial-gradient(ellipse,#000 30%,transparent 82%)!important;
+  mask-image:radial-gradient(ellipse,#000 30%,transparent 82%)!important;
+}
+/* 03 · weather and collected activity: smaller painted Shanghai riverfront. */
+html[data-term-design] .zh-sidebar .side-overview::before{
+  background-position:0% 100%!important;
+  width:176px!important;height:90px!important;right:-4px!important;bottom:-10px!important;
+  opacity:.27!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 28%,#000 78%,transparent)!important;
+  mask-image:linear-gradient(90deg,transparent,#000 28%,#000 78%,transparent)!important;
+}
+html[data-term-design] .life-card--wishes .life-city-art{
+  background-position:0% 100%!important;
+  width:34%!important;height:97px!important;top:2px!important;left:-4px!important;
+  opacity:.18!important;
+  -webkit-mask-image:linear-gradient(90deg,#000 35%,transparent 95%)!important;
+  mask-image:linear-gradient(90deg,#000 35%,transparent 95%)!important;
+}
+/* 04 · lower left botanical illustration uses the flower of this specific solar term. */
+html[data-term-design] .life-card-art--flowers{
+  background-position:100% 0%!important;
+  right:-7px!important;top:-7px!important;width:min(44%,205px)!important;
+  height:151px!important;opacity:.62!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 30%,#000 82%,transparent)!important;
+  mask-image:linear-gradient(90deg,transparent,#000 30%,#000 82%,transparent)!important;
+}
+/* 05 · stationery vignette, never replacing live letter text/actions. */
+html[data-term-design] .life-card--letter .life-envelope-art{
+  background-position:100% 100%!important;
+  width:62%!important;height:192px!important;left:-9px!important;bottom:-4px!important;
+  opacity:.72!important;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 32%,transparent 87%)!important;
+  mask-image:radial-gradient(ellipse at 50% 50%,#000 32%,transparent 87%)!important;
+}
+/* Respect the existing paper and solid 24-theme fills, category colours and rest/work badges. */
+html[data-term-design] .month-title,
+html[data-term-design] .daily-verse,
+html[data-term-design] .life-card-head,
+html[data-term-design] .life-list,
+html[data-term-design] .today-fortune{
+  position:relative;
+  z-index:1;
+}
+@media(max-width:900px){
+ html[data-term-design] .calendar-left-column .calendar-panel::before{width:170px!important;height:112px!important;opacity:.30!important}
+ html[data-term-design] .life-card-art--flowers{width:140px!important;height:121px!important;opacity:.44!important}
+}
+@media(max-width:600px){
+ html[data-term-design] .calendar-left-column .calendar-panel::before{width:99px!important;height:86px!important;opacity:.19!important}
+ html[data-term-design] .daily-culture-band::after{width:90px!important;height:76px!important;opacity:.15!important}
+ html[data-term-design] .life-card--letter .life-envelope-art{opacity:.43!important;width:62%!important}
+}
+@media(prefers-reduced-motion:reduce){html[data-term-design] *{transition:none}}
