@@ -31,11 +31,22 @@ const ART='/data/life-art/';
 function txt(s,max=300){return String(s??'').trim().slice(0,max)}
 function safeId(s){return /^[a-z0-9:_-]{1,80}$/i.test(String(s))?String(s):''}
 function validDate(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return false;const [y,m,d]=s.split('-').map(Number),a=new Date(Date.UTC(y,m-1,d));return a.getUTCFullYear()===y&&a.getUTCMonth()===m-1&&a.getUTCDate()===d}
+function validStamp(s){return typeof s==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(s)&&Number.isFinite(Date.parse(s))}
+function cleanReplies(value,letterDate){
+ if(!Array.isArray(value))return [];
+ // Unlimited reply entries per letter; trim text safely and preserve legacy letters without replies.
+ const fallback=validDate(letterDate)?letterDate+'T00:00:00.000Z':new Date().toISOString();
+ return value.filter(r=>r&&typeof r==='object'&&txt(r.body,3000)).map(r=>({
+  id:safeId(r.id)||uid(),body:txt(r.body,3000),
+  createdAt:validStamp(r.createdAt)?new Date(r.createdAt).toISOString():fallback,
+  updatedAt:validStamp(r.updatedAt)?new Date(r.updatedAt).toISOString():null
+ }));
+}
 function clean(input){
  const i=input&&typeof input==='object'?input:{};
  const anniversaries=(Array.isArray(i.anniversaries)?i.anniversaries:[]).slice(0,100).filter(e=>e&&validDate(e.date)&&txt(e.name,70)).map(e=>({id:safeId(e.id)||uid(),name:txt(e.name,70),date:e.date,annual:Boolean(e.annual),mode:['countdown','countup','anniversary'].includes(e.mode)?e.mode:'countdown'}));
  const wishlist=(Array.isArray(i.wishlist)?i.wishlist:[]).slice(0,150).filter(e=>e&&safeId(e.id)&&txt(e.title)).map(e=>({id:e.id,title:txt(e.title,100),kind:txt(e.kind,30),location:txt(e.location,80),start:validDate(e.start)?e.start:'',end:validDate(e.end)?e.end:'',source:/^https:\/\//.test(e.source||'')?String(e.source).slice(0,500):''}));
- const letters=(Array.isArray(i.letters)?i.letters:[]).slice(0,80).filter(e=>e&&validDate(e.openDate)&&txt(e.body,6000)).map(e=>({id:safeId(e.id)||uid(),title:txt(e.title,80)||'给未来的自己',body:txt(e.body,6000),created:validDate(e.created)?e.created:today(),openDate:e.openDate}));
+ const letters=(Array.isArray(i.letters)?i.letters:[]).slice(0,80).filter(e=>e&&validDate(e.openDate)&&txt(e.body,6000)).map(e=>({id:safeId(e.id)||uid(),title:txt(e.title,80)||'给未来的自己',body:txt(e.body,6000),created:validDate(e.created)?e.created:today(),openDate:e.openDate,replies:cleanReplies(e.replies,e.openDate)}));
  return {anniversaries,wishlist,letters};
 }
 function uid(){return 'li'+Date.now().toString(36)+Math.random().toString(36).slice(2,9)}
@@ -207,7 +218,8 @@ function letterView(){const list=el('lifeLetterList');list.replaceChildren();con
   const unlocked=now>=letter.openDate;
   const row=create('article','life-letter-stationery'),info=create('div','life-letter-info');
   info.append(create('strong','',letter.title||'给未来的我'));
-  const desc=unlocked?'已经可以打开 · '+short(letter.openDate):short(letter.openDate)+' 才能打开 · 还有 '+diffDays(letter.openDate,now)+' 天';
+  const replyCount=Array.isArray(letter.replies)?letter.replies.length:0;
+  const desc=unlocked?'已经可以打开 · '+short(letter.openDate)+(replyCount?' · '+replyCount+' 封回信':''):short(letter.openDate)+' 才能打开 · 还有 '+diffDays(letter.openDate,now)+' 天';
   info.append(create('small','',desc));
   const btn=create('button','life-letter-open '+(unlocked?'is-open':'is-sealed'),unlocked?'打开 ↗':'已封存');btn.type='button';btn.disabled=!unlocked;
   btn.addEventListener('click',()=>readLetter(letter.id));row.append(info,btn);list.append(row);
@@ -255,9 +267,118 @@ function writeLetter(){const root=frame('写给未来的自己','想象那一天
   if(save()){el('lifeDialog').close();letterView();toast('信已经封存，到了约定的日子再见 ♡')}
  });openDialog(root)
 }
-function readLetter(id){const letter=data.letters.find(x=>x.id===id);if(!letter||today()<letter.openDate){toast('还没有到开启日期');return}
- const root=frame(letter.title,'写于 '+letter.created+' · 约定 '+letter.openDate+' 开启');root.append(create('div','life-letter-paper',letter.body));
- footer(root,'读完了',()=>el('lifeDialog').close(),()=>{if(confirm('删除这封信？内容无法找回。')){data.letters=data.letters.filter(x=>x.id!==id);save();el('lifeDialog').close();letterView()}});openDialog(root)
+function replyTime(value){
+ const date=new Date(value);
+ if(!Number.isFinite(date.getTime()))return '时间待核实';
+ const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(date);
+ const part=k=>parts.find(p=>p.type===k)?.value||'';
+ return part('year')+'.'+part('month')+'.'+part('day')+'  '+part('hour')+':'+part('minute');
+}
+function readLetter(id){
+ const letter=data.letters.find(x=>x.id===id);
+ if(!letter||today()<letter.openDate){toast('还没有到开启日期');return}
+ const root=frame(letter.title,'写于 '+letter.created+' · 约定 '+letter.openDate+' 开启');
+ root.classList.add('life-letter-reading');
+ root.append(create('div','life-letter-caption','那时的我'),create('div','life-letter-paper',letter.body));
+ const section=create('section','life-reply-section');
+ section.setAttribute('aria-label','来自未来的回信');
+ const title=create('div','life-reply-heading');
+ title.append(create('h4','', '来自未来的回信'));
+ const count=create('span','life-reply-count');
+ title.append(count);
+ const history=create('div','life-reply-history');
+ const compose=create('div','life-reply-compose');
+ compose.id='lifeReplyCompose';
+ compose.hidden=true;
+ const prompt=create('label','','写给当时的自己');
+ const textarea=create('textarea','life-reply-input');
+ textarea.maxLength=3000;textarea.rows=5;
+ textarea.placeholder='今天的你想对那时的自己说些什么？';
+ const inputId=uid();textarea.id=inputId;prompt.htmlFor=inputId;
+ const note=create('p','life-reply-hint','每次回复都会独立保存，并保留写下的时间。');
+ const actions=create('div','life-reply-compose-actions');
+ const cancel=create('button','life-reply-cancel','取消');cancel.type='button';
+ const submit=create('button','life-reply-submit','保存回信');submit.type='button';
+ actions.append(cancel,submit);compose.append(prompt,textarea,note,actions);
+ const start=create('button','life-reply-start','＋ 写一封回信');start.type='button';
+ start.setAttribute('aria-controls',compose.id);
+ start.setAttribute('aria-expanded','false');
+ let editingId=null;
+ function closeCompose(){
+  compose.hidden=true;textarea.value='';editingId=null;start.hidden=false;
+  start.setAttribute('aria-expanded','false');submit.textContent='保存回信';
+ }
+ function openCompose(existing){
+  editingId=existing?existing.id:null;
+  textarea.value=existing?existing.body:'';
+  compose.hidden=false;start.hidden=true;start.setAttribute('aria-expanded','true');
+  submit.textContent=existing?'保存修改':'保存回信';
+  textarea.focus();
+ }
+ function drawHistory(){
+  history.replaceChildren();
+  const entries=Array.isArray(letter.replies)?letter.replies:[];
+  count.textContent=entries.length+' 封';
+  if(!entries.length){
+   history.append(create('p','life-reply-empty','还没有回信。某一天，你可以从这里与过去的自己重新聊聊。'));
+   return;
+  }
+  const sorted=[...entries].sort((a,b)=>a.createdAt.localeCompare(b.createdAt));
+  sorted.forEach((reply,index)=>{
+   const card=create('article','life-reply-item');
+   const head=create('div','life-reply-item-head');
+   const stamp=create('span','life-reply-date',replyTime(reply.createdAt)+' · 第 '+(index+1)+' 封回信');
+   if(reply.updatedAt){stamp.textContent+=' · 已编辑';stamp.title='最近编辑于 '+replyTime(reply.updatedAt);}
+   const tools=create('div','life-reply-tools');
+   const edit=create('button','','编辑');edit.type='button';
+   edit.setAttribute('aria-label','编辑 '+replyTime(reply.createdAt)+' 的回信');
+   edit.addEventListener('click',()=>openCompose(reply));
+   const remove=create('button','','删除');remove.type='button';
+   remove.setAttribute('aria-label','删除 '+replyTime(reply.createdAt)+' 的回信');
+   remove.addEventListener('click',()=>{
+    if(!confirm('确定删除这封回信吗？删除后无法找回，原始信件不会受到影响。'))return;
+    const original=letter.replies;
+    letter.replies=letter.replies.filter(r=>r.id!==reply.id);
+    if(!save()){letter.replies=original;return;}
+    if(editingId===reply.id)closeCompose();
+    drawHistory();letterView();toast('回信已删除');
+   });
+   tools.append(edit,remove);head.append(stamp,tools);
+   card.append(head,create('p','life-reply-body',reply.body));history.append(card);
+  });
+ }
+ start.addEventListener('click',()=>openCompose(null));
+ cancel.addEventListener('click',closeCompose);
+ submit.addEventListener('click',()=>{
+  const body=txt(textarea.value,3000);
+  if(!body){toast('写下一些想说的话，再保存这封回信吧');textarea.focus();return;}
+  const now=new Date().toISOString();
+  if(editingId){
+   const reply=letter.replies.find(r=>r.id===editingId);
+   if(!reply){toast('回信不存在，无法编辑');closeCompose();return;}
+   const previous={...reply};
+   reply.body=body;reply.updatedAt=now;
+   if(!save()){Object.assign(reply,previous);return;}
+  }else{
+   const reply={id:uid(),body,createdAt:now,updatedAt:null};
+   if(!Array.isArray(letter.replies))letter.replies=[];
+   letter.replies.push(reply);
+   if(!save()){letter.replies.pop();return;}
+  }
+  closeCompose();drawHistory();letterView();toast('回信已保存');
+ });
+ section.append(title,history,start,compose);
+ root.append(section);
+ drawHistory();
+ footer(root,'读完了',()=>el('lifeDialog').close(),()=>{
+  if(confirm('删除这封信及其全部回信？内容无法找回。')){
+   const previous=data.letters;
+   data.letters=data.letters.filter(x=>x.id!==id);
+   if(!save()){data.letters=previous;return;}
+   el('lifeDialog').close();letterView();
+  }
+ });
+ openDialog(root);
 }
 function showAllDays(items){
  const root=frame('我的纪念日','倒计时、正计时与周年纪念，轻轻收好每个重要日期。');
@@ -267,7 +388,7 @@ function showAllDays(items){
  footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)
 }
 function showAllWishes(){const root=frame('所有活动心愿','从上海活动库收藏，具体日期与开放时间请到官方渠道核实。');for(const x of data.wishlist){const row=create('div','life-row');const body=create('div','life-row-info');body.append(create('strong','life-row-title',x.title),create('small','life-row-caption',short(x.start)+' · '+x.location));row.append(body);if(x.source){const a=create('a','life-wish-source','官方 ↗');a.href=x.source;a.target='_blank';a.rel='noopener noreferrer';row.append(a)}const b=create('button','life-text-button','移除');b.type='button';b.addEventListener('click',()=>{toggleWish(x);showAllWishes()});row.append(b);root.append(row)}footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)}
-function showAllLetters(items){const root=frame('写给未来的信','约定的那一天到了，正文才会在页面打开。');for(const x of items){const b=create('button','life-row',x.title+' · '+short(x.openDate)+(today()>=x.openDate?' · 可开启':' · 未到期'));b.type='button';b.style.width='100%';b.style.textAlign='left';b.disabled=today()<x.openDate;b.addEventListener('click',()=>readLetter(x.id));root.append(b)}footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)}
+function showAllLetters(items){const root=frame('写给未来的信','约定的那一天到了，正文才会在页面打开。');for(const x of items){const b=create('button','life-row',x.title+' · '+short(x.openDate)+(today()>=x.openDate?' · 可开启'+(x.replies?.length?' · '+x.replies.length+' 封回信':''):' · 未到期'));b.type='button';b.style.width='100%';b.style.textAlign='left';b.disabled=today()<x.openDate;b.addEventListener('click',()=>readLetter(x.id));root.append(b)}footer(root,'关闭',()=>el('lifeDialog').close());openDialog(root)}
 function exportBackup(){const blob=new Blob([JSON.stringify({schema:STORE,exportedAt:new Date().toISOString(),...data},null,2)],{type:'application/json;charset=utf-8'});const a=document.createElement('a');const link=URL.createObjectURL(blob);a.href=link;a.download='知时-月度生活手账-'+today()+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(link),1500);toast('备份文件已导出，请妥善保存')}
 async function importBackup(e){const f=e.target.files[0];e.target.value='';if(!f)return;if(f.size>1500000){toast('文件超过1.5MB，无法导入');return}
  try{const j=JSON.parse(await f.text());if(j.schema!==STORE)throw Error('文件格式不匹配');const next=clean(j);if(!confirm('将用备份中的纪念日、活动心愿及未来信件覆盖当前内容，确定继续吗？'))return;const old=data;data=next;if(!save()){data=old;return}render();decorateEventButtons();toast('生活手账已恢复')}catch(err){toast('无法导入：请使用本模块导出的备份文件')}
