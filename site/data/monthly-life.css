@@ -176,3 +176,70 @@
 @media(max-width:1070px){.life-hub{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.life-card--wishes .life-card-head>div{padding-left:0}.life-city-art{opacity:.23}.life-card--wishes .life-card-head{min-height:91px}.life-letter-stage{min-height:195px}}
 @media(max-width:780px){.life-hub{grid-template-columns:1fr;gap:15px}.life-card{margin-top:0!important;padding:22px 20px;border-radius:25px;min-height:auto}.life-card--flowers{min-height:365px}.life-card--days{min-height:250px}.life-card--wishes{min-height:300px}.life-card--letter{min-height:350px}.life-card-title{font-size:23px}.life-card--wishes .life-card-title{font-size:22px}.life-flower-picture{width:82px;flex-basis:82px}.life-anniv-art{width:60px;flex-basis:60px}.life-anniv-counter{min-width:90px;max-width:150px}.life-anniv-number{font-size:14px}.life-ticket-art{width:67px;flex-basis:67px;height:63px}.life-flower-location{font-size:10px}.life-city-art{opacity:.35}.life-card--wishes .life-card-head>div{padding-left:17%}.life-letter-stage{min-height:200px}}
 @media(max-width:440px){.life-card{padding:20px 15px}.life-card-title{font-size:21px}.life-seal{font-size:6px}.life-card--wishes .life-card-head>div{padding-left:0}.life-city-art{opacity:.13}.life-anniv-row{gap:6px;padding:8px 7px}.life-anniv-art{flex-basis:44px;width:44px;height:48px}.life-anniv-detail .life-row-title{font-size:12px}.life-anniv-counter{min-width:80px;max-width:113px;padding-left:6px}.life-anniv-number{font-size:12px}.life-mode-pill{font-size:9px;padding:3px 6px}.life-round-arrow{display:none}.life-ticket-art{flex-basis:52px;width:52px;height:60px}.life-letter-stage{min-height:178px}.life-envelope-art{width:65%;height:170px}.life-list--letters{width:64%}.life-card-head{gap:5px}.life-mini-button{padding:7px 9px;font-size:10px}.life-card--days .life-mini-button{padding:8px 10px}}
+
+
+/* V2 · Future-letter correspondence. Replies appear only inside opened letters. */
+.life-letter-reading{width:100%}
+.life-letter-reading .life-letter-caption{
+ font:700 11px/1.5 'Songti SC','Noto Serif SC',serif;
+ letter-spacing:1.4px;color:#829281;margin:22px 1px 9px
+}
+.life-letter-reading .life-letter-paper{
+ max-height:none;overflow:visible;white-space:pre-wrap;overflow-wrap:anywhere;
+ padding:22px 24px;line-height:2.05;background:#f9f7f0;
+ border:1px solid #e8dfcc;border-radius:15px;color:#53645b;
+ font-family:'Songti SC','Noto Serif SC','PingFang SC',serif;font-size:14px
+}
+.life-reply-section{margin-top:27px;padding-top:22px;border-top:1px solid #e5e7dd}
+.life-reply-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 15px}
+.life-reply-heading h4{font:700 18px/1.5 'Songti SC','Noto Serif SC',serif;letter-spacing:.45px;color:#3b514b;margin:0}
+.life-reply-count{font-size:11px;color:#85978c;background:#edf1e9;padding:5px 9px;border-radius:100px;white-space:nowrap}
+.life-reply-history{position:relative;display:grid;gap:14px;margin:4px 0 15px}
+.life-reply-history:not(:has(.life-reply-empty)){padding-left:18px}
+.life-reply-history:not(:has(.life-reply-empty))::before{
+ content:'';position:absolute;left:4px;top:9px;bottom:11px;width:1px;background:#d9e1d7
+}
+.life-reply-empty{font-size:12px!important;line-height:1.9!important;color:#96a397!important;margin:0!important}
+.life-reply-item{position:relative;border:1px solid #e6e8df;border-radius:13px;padding:15px 16px 13px;background:#fffefb}
+.life-reply-item::before{content:'';position:absolute;left:-18px;top:20px;width:9px;height:9px;border-radius:50%;background:#91a692;border:2px solid #fffefa;box-shadow:0 0 0 1px #dbe4d8}
+.life-reply-item-head{display:flex;align-items:start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.life-reply-date{font-size:11px;font-weight:650;color:#708474;line-height:1.7}
+.life-reply-tools{display:flex;gap:10px;flex:none}
+.life-reply-tools button{background:none;border:0;color:#87968c;padding:0 1px;font-size:11px;cursor:pointer}
+.life-reply-tools button:hover,.life-reply-tools button:focus-visible{color:#3e6551;text-decoration:underline}
+.life-reply-body{margin:10px 0 0!important;font:13px/1.95 'PingFang SC','Noto Sans CJK SC',sans-serif!important;color:#516259!important;white-space:pre-wrap;overflow-wrap:anywhere}
+.life-reply-start{
+ display:flex;align-items:center;justify-content:center;gap:5px;width:100%;padding:13px 15px;
+ border:1px dashed #bacbb9;border-radius:12px;background:#f5f8f2;color:#59775f;
+ font-size:12px;font-weight:700;cursor:pointer
+}
+.life-reply-start:hover{background:#edf3e9;border-color:#96b097}
+.life-reply-compose{
+ background:#f8f9f4;border:1px solid #dfe8d9;border-radius:14px;
+ padding:17px 18px 14px;margin-top:13px
+}
+.life-reply-compose[hidden],.life-reply-start[hidden]{display:none!important}
+.life-form-frame .life-reply-compose label{
+ margin:0 0 10px;font-size:12px;color:#58715f;font-weight:700
+}
+.life-form-frame .life-reply-input{
+ width:100%;box-sizing:border-box;min-height:112px;resize:vertical;
+ border-radius:10px;background:#fffefa;border:1px solid #dce5dc;
+ color:#364d43;padding:12px 13px;line-height:1.8
+}
+.life-form-frame .life-reply-input:focus{outline:2px solid #98b3a2;outline-offset:1px}
+.life-reply-hint{font-size:10px!important;color:#8e9c90!important;margin:7px 0 14px!important}
+.life-reply-compose-actions{display:flex;gap:10px;justify-content:flex-end}
+.life-reply-compose-actions button{
+ padding:10px 15px;border-radius:9px;border:1px solid #d8e1d8;
+ background:white;color:#718779;font-size:12px;font-weight:650;cursor:pointer
+}
+.life-reply-compose-actions .life-reply-submit{background:#6f866a;color:white;border-color:#6f866a}
+.life-reply-compose-actions .life-reply-submit:hover{background:#526b52}
+@media(max-width:640px){
+ .life-letter-reading .life-letter-paper{padding:16px;font-size:13px}
+ .life-reply-section{margin-top:21px;padding-top:19px}
+ .life-reply-item{padding:12px}
+ .life-reply-item-head{gap:7px}
+ .life-reply-tools{gap:8px}
+}
