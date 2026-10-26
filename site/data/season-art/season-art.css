@@ -63,8 +63,8 @@ html[data-term-design] .life-card-art--flowers{
 /* 05 · stationery vignette, never replacing live letter text/actions. */
 html[data-term-design] .life-card--letter .life-envelope-art{
   background-position:100% 100%!important;
-  width:62%!important;height:192px!important;left:-9px!important;bottom:-4px!important;
-  opacity:.72!important;
+  width:49%!important;height:164px!important;left:-12px!important;bottom:-4px!important;
+  opacity:.55!important;
   -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 32%,transparent 87%)!important;
   mask-image:radial-gradient(ellipse at 50% 50%,#000 32%,transparent 87%)!important;
 }
@@ -84,6 +84,6 @@ html[data-term-design] .today-fortune{
 @media(max-width:600px){
  html[data-term-design] .calendar-left-column .calendar-panel::before{width:99px!important;height:86px!important;opacity:.19!important}
  html[data-term-design] .daily-culture-band::after{width:90px!important;height:76px!important;opacity:.15!important}
- html[data-term-design] .life-card--letter .life-envelope-art{opacity:.43!important;width:62%!important}
+ html[data-term-design] .life-card--letter .life-envelope-art{opacity:.37!important;width:49%!important}
 }
 @media(prefers-reduced-motion:reduce){html[data-term-design] *{transition:none}}
