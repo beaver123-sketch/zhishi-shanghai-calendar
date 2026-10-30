@@ -1,23 +1,23 @@
 {
-  "checkedAt": "2026-10-30T21:05:56+08:00",
-  "success": [],
-  "failed": [
+  "checkedAt": "2026-10-31T02:56:12+08:00",
+  "success": [
     {
       "source": "上海市文化和旅游局 · 艺术活动",
-      "error": "<urlopen error [Errno 101] Network is unreachable>"
+      "count": 13
     },
     {
       "source": "上海市文化和旅游局 · 文旅要闻",
-      "error": "<urlopen error [Errno 101] Network is unreachable>"
+      "count": 8
     },
     {
       "source": "上海市文化和旅游局 · 各区风采",
-      "error": "<urlopen error [Errno 101] Network is unreachable>"
+      "count": 15
     },
     {
       "source": "上海市文化和旅游局 · 便民信息",
-      "error": "<urlopen error [Errno 101] Network is unreachable>"
+      "count": 6
     }
   ],
+  "failed": [],
   "note": "已爬取资讯只用于线索；具体日期、演出场次和售票状态必须另外核实。"
 }
