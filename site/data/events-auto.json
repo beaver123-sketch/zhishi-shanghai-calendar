@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-01T20:58:38+08:00",
-  "status": "stale",
+  "checkedAt": "2026-11-02T09:17:45+08:00",
+  "status": "success",
   "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
   "events": [
     {
@@ -148,7 +148,5 @@
       "review": "场馆官方排期自动同步 · 出行前复核",
       "autoSource": "上海文化广场官方节目列表"
     }
-  ],
-  "lastAttemptAt": "2026-11-02T02:53:58+08:00",
-  "lastError": "未解析出至少2条当前或未来节目；保留旧版缓存"
+  ]
 }
