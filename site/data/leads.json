@@ -1,7 +1,79 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-02T09:17:40+08:00",
+  "checkedAt": "2026-11-02T15:37:34+08:00",
   "items": [
+    {
+      "id": "8aa335b92f0a05f5",
+      "title": "“佐临意境——纪念黄佐临诞辰120周年展”开幕",
+      "url": "https://whlyj.sh.gov.cn/yshd/20261030/31270aafefaa4d778fa310b86ab4594e.html",
+      "publishedAt": "2026-10-30",
+      "publisher": "上海市文化和旅游局 · 艺术活动",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "5d89fa26c1d7348a",
+      "title": "金秋申城大展云集，8场重磅艺术家个展轮番登场",
+      "url": "https://whlyj.sh.gov.cn/yshd/20261030/3eb3ba2bda464a67a2ea1cd474813639.html",
+      "publishedAt": "2026-10-30",
+      "publisher": "上海市文化和旅游局 · 艺术活动",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "15de3ba1827127cb",
+      "title": "复兴岛迎来2026上海国际摄影艺术展览，工业遗存与光影艺术交织",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261030/d53bbd1d7bfc41f79360a2b03768e7bc.html",
+      "publishedAt": "2026-10-30",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "4feaa3a5d2ef38a8",
+      "title": "以漫画观时代，中国漫画百年回眸巡展11月亮相刘海粟美术馆",
+      "url": "https://whlyj.sh.gov.cn/yshd/20261029/e148e2ad39a04f67949ce83b8e98df24.html",
+      "publishedAt": "2026-10-29",
+      "publisher": "上海市文化和旅游局 · 艺术活动",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "4c345ba082ed2b0c",
+      "title": "聂耳旧居•乐耳坊正式开放，北外滩再添红色文化新地标",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261029/21bfc9c4edca44f2946ee57038e80fc4.html",
+      "publishedAt": "2026-10-29",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "ea5e8255f2bf38f8",
+      "title": "胡问遂艺术馆迎来“海派的诞生：视觉艺术中的黄浦”特展",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261028/690df2077f4f4b339dc73e6957918cb5.html",
+      "publishedAt": "2026-10-28",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "11a843446df2b95d",
+      "title": "琴声飞扬，在上海美术馆感受跨越语言与地域的艺术力量",
+      "url": "https://whlyj.sh.gov.cn/yshd/20261028/794c71cf69da47adadc7416549242e99.html",
+      "publishedAt": "2026-10-28",
+      "publisher": "上海市文化和旅游局 · 艺术活动",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "9f88ef51568e9d41",
+      "title": "“创作是身心与土地的对话”，“大地之上”张雷平作品展开幕",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261026/c79a888e12c6432db8be9c6ba3c53994.html",
+      "publishedAt": "2026-10-26",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "59acaf8a4231bc27",
+      "title": "山河为证，信念向前！龙美术馆展出红色经典纪念长征胜利90周年",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261023/8c966b81040c461fba533300fc643c6e.html",
+      "publishedAt": "2026-10-23",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
     {
       "id": "9f49bc6caf7733c1",
       "title": "第二十五届中国上海国际艺术节今晚在上海大歌剧院开幕，陈吉宁出席，孙业礼、朱忠明致辞",
@@ -11,9 +83,25 @@
       "verification": "官方资讯线索，日期与场次待核实"
     },
     {
+      "id": "83852c9a8ada803d",
+      "title": "免费开放！上海市区规模最大山水公园焕新回归！",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261016/8a31ed2ae0dc4d8faa3453ce869b4c02.html",
+      "publishedAt": "2026-10-16",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
       "id": "5aeedcd52545ba68",
       "title": "4000多位市民共创，徐汇艺术馆上演“天马行空”",
       "url": "https://whlyj.sh.gov.cn/gqfc/20261016/e2e201d9e0494b478d039f54fc1d5a76.html",
+      "publishedAt": "2026-10-16",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "4001f0c83fb08b5a",
+      "title": "城市秋日有了新玩法！2026静安音乐嘉年华“开麦”",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261016/d0595b8e68a64ecfac569f1b8dc0af14.html",
       "publishedAt": "2026-10-16",
       "publisher": "上海市文化和旅游局 · 各区风采",
       "verification": "官方资讯线索，日期与场次待核实"
@@ -43,10 +131,26 @@
       "verification": "官方资讯线索，日期与场次待核实"
     },
     {
+      "id": "247baa456bda8e49",
+      "title": "上海这些地方的花海，美成了莫奈油画！",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261015/2e195d87bc5840c89fe46a7ae8894c6d.html",
+      "publishedAt": "2026-10-15",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
       "id": "1a93c84ae7c5fa64",
       "title": "第十二届上海国际喜剧节11月开幕，300场演出让你开怀跨年",
       "url": "https://whlyj.sh.gov.cn/gqfc/20261015/cfa48dddda5d47f8917ec3b2cad5cba0.html",
       "publishedAt": "2026-10-15",
+      "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "19530ee66e995ba0",
+      "title": "看先锋、听古韵，来徐汇赴一场艺术之约",
+      "url": "https://whlyj.sh.gov.cn/gqfc/20261014/3fe495a5a8354715b69b9dcd7619eda8.html",
+      "publishedAt": "2026-10-14",
       "publisher": "上海市文化和旅游局 · 各区风采",
       "verification": "官方资讯线索，日期与场次待核实"
     },
