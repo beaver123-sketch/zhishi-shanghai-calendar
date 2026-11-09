@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-09T15:38:03+08:00",
+  "checkedAt": "2026-11-09T21:25:12+08:00",
   "items": [
     {
       "id": "fd5db945a9ef78b1",
@@ -56,6 +56,14 @@
       "url": "https://whlyj.sh.gov.cn/gqfc/20261102/21216983887149f58122acf97114d3d1.html",
       "publishedAt": "2026-11-02",
       "publisher": "上海市文化和旅游局 · 各区风采",
+      "verification": "官方资讯线索，日期与场次待核实"
+    },
+    {
+      "id": "c4ee9c0883aac168",
+      "title": "书香暖深秋 上海图书馆11月展览活动上线",
+      "url": "https://whlyj.sh.gov.cn/wbzx/20261030/eb43dd6984364cf298df25952ccae844.html",
+      "publishedAt": "2026-10-30",
+      "publisher": "上海市文化和旅游局 · 便民信息",
       "verification": "官方资讯线索，日期与场次待核实"
     },
     {
@@ -167,7 +175,7 @@
       "title": "免费开放！上海市区规模最大山水公园焕新回归！",
       "url": "https://whlyj.sh.gov.cn/gqfc/20261016/8a31ed2ae0dc4d8faa3453ce869b4c02.html",
       "publishedAt": "2026-10-16",
-      "publisher": "上海市文化和旅游局 · 各区风采",
+      "publisher": "上海市文化和旅游局 · 便民信息",
       "verification": "官方资讯线索，日期与场次待核实"
     },
     {
@@ -215,7 +223,7 @@
       "title": "上海这些地方的花海，美成了莫奈油画！",
       "url": "https://whlyj.sh.gov.cn/gqfc/20261015/2e195d87bc5840c89fe46a7ae8894c6d.html",
       "publishedAt": "2026-10-15",
-      "publisher": "上海市文化和旅游局 · 各区风采",
+      "publisher": "上海市文化和旅游局 · 便民信息",
       "verification": "官方资讯线索，日期与场次待核实"
     },
     {
