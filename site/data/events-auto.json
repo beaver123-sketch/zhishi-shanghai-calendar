@@ -1,25 +1,9 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-15T14:33:17+08:00",
+  "checkedAt": "2026-11-16T02:52:07+08:00",
   "status": "success",
   "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
   "events": [
-    {
-      "id": "theatre_126f70b0befa196d",
-      "title": "法语原版音乐剧《太阳王》",
-      "kind": "音乐剧",
-      "location": "上海文化广场 · 主剧场",
-      "start": "2026-10-30",
-      "end": "2026-11-15",
-      "time": "具体场次请以场馆官方排期为准",
-      "area": "黄浦区",
-      "note": "由剧院公开节目列表自动提取；演出变动、票务请以官方为准。",
-      "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
-      "icon": "♫",
-      "outdoor": false,
-      "review": "场馆官方排期自动同步 · 出行前复核",
-      "autoSource": "上海文化广场官方节目列表"
-    },
     {
       "id": "theatre_6949f460ec9ed027",
       "title": "粤语音乐剧《边城》",
