@@ -1,25 +1,9 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-22T14:48:53+08:00",
+  "checkedAt": "2026-11-23T03:41:13+08:00",
   "status": "success",
   "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
   "events": [
-    {
-      "id": "theatre_6949f460ec9ed027",
-      "title": "粤语音乐剧《边城》",
-      "kind": "音乐剧",
-      "location": "上海文化广场 · 主剧场",
-      "start": "2026-11-20",
-      "end": "2026-11-22",
-      "time": "具体场次请以场馆官方排期为准",
-      "area": "黄浦区",
-      "note": "由剧院公开节目列表自动提取；演出变动、票务请以官方为准。",
-      "source": "https://www.shcstheatre.com/program/programlist_easy.aspx",
-      "icon": "♫",
-      "outdoor": false,
-      "review": "场馆官方排期自动同步 · 出行前复核",
-      "autoSource": "上海文化广场官方节目列表"
-    },
     {
       "id": "theatre_d5fdb24adc80d65c",
       "title": "中文原创音乐剧《海上钢琴师》",
